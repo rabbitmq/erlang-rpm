@@ -1,0 +1,643 @@
+# Copyright Pivotal Software, Inc. 2012-2015. All Rights Reserved.
+#
+# The contents of this file are subject to the Erlang Public License,
+# Version 1.1, (the "License"); you may not use this file except in
+# compliance with the License. You should have received a copy of the
+# Erlang Public License along with this software. If not, it can be
+# retrieved online at http://www.erlang.org/.
+#
+# Software distributed under the License is distributed on an "AS IS"
+# basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See
+# the License for the specific language governing rights and limitations
+# under the License.
+
+%global upstream_ver 18.1
+
+%define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
+
+Name:		erlang
+Version:	%{upstream_ver}
+Release:	1%{?dist}
+Summary:	General-purpose programming language and runtime environment
+
+Group:		Development/Languages
+License:	ERPL
+URL:		http://www.erlang.org
+Source0:	https://github.com/erlang/otp/archive/OTP-%{upstream_ver}.tar.gz
+Source2:        %{OSL_File_Name}
+Vendor:		Pivotal Software, Inc.
+
+
+#   Do not format man-pages and do not install miscellaneous
+Patch1: otp-0001-Do-not-format-man-pages-and-do-not-install-miscellan.patch
+#   Remove rpath
+Patch2: otp-0002-Remove-rpath.patch
+#   Do not install C sources
+Patch3: otp-0003-Do-not-install-C-sources.patch
+#   Do not install erlang sources
+Patch7: otp-0007-Do-not-install-erlang-sources.patch
+
+
+# BuildRoot not strictly needed since F10, but keep it for spec file robustness
+BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+
+BuildRequires:	ncurses-devel
+BuildRequires:	openssl-devel
+BuildRequires:	zlib-devel
+BuildRequires:	m4
+
+Obsoletes: erlang-docbuilder
+Provides: erlang
+
+%description
+This is a minimal packaging of Erlang produced by Pivotal to support
+running RabbitMQ. Compared to the community Erlang packaging it is
+monolithic, has fewer dependencies, and has lower disk and memory
+overhead. Many applications from Erlang Open Telecom Platform (OTP)
+have been removed. The following applications remain: asn1, compiler,
+crypto, erl_interface, erts, hipe, inets, kernel, mnesia, os_mon,
+otp_mibs, public_key, reltool, runtime_tools, sasl, snmp, ssl, stdlib,
+syntax_tools and xmerl.
+
+%define _pivotal_license_file %{_builddir}/otp-OTP-%{upstream_ver}/`basename %{S:2}`
+
+
+%prep
+%setup -q -n otp-OTP-%{upstream_ver}
+
+%patch1 -p1 -b .Do_not_format_man_pages_and_do_not_install_miscellan
+%patch2 -p1 -b .Remove_rpath
+%patch3 -p1 -b .Do_not_install_C_sources
+%patch7 -p1 -b .Do_not_install_erlang_sources
+
+# remove shipped zlib sources
+# commented out because centos only has 1.2.3 and Erlang 18.1 needs a later version
+#rm -f erts/emulator/zlib/*.[ch]
+
+
+# Fix 664 file mode
+chmod 644 lib/kernel/examples/uds_dist/c_src/Makefile
+chmod 644 lib/kernel/examples/uds_dist/src/Makefile
+chmod 644 lib/ssl/examples/certs/Makefile
+chmod 644 lib/ssl/examples/src/Makefile
+
+
+%build
+%global conf_flags --enable-shared-zlib --without-javac --without-odbc
+
+
+# autoconf
+./otp_build autoconf
+
+%ifarch sparcv9 sparc64
+CFLAGS="$RPM_OPT_FLAGS -mcpu=ultrasparc -fno-strict-aliasing" %configure %{conf_flags}
+%else
+CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing" %configure %{conf_flags}
+%endif
+
+
+# remove pre-built stuff
+make clean
+
+cp %{S:2} %{_pivotal_license_file}
+
+touch lib/common_test/SKIP
+touch lib/cosEvent/SKIP
+touch lib/cosEventDomain/SKIP
+touch lib/cosFileTransfer/SKIP
+touch lib/cosNotification/SKIP
+touch lib/cosProperty/SKIP
+touch lib/cosTime/SKIP
+touch lib/cosTransactions/SKIP
+touch lib/debugger/SKIP
+touch lib/dialyzer/SKIP
+touch lib/diameter/SKIP
+touch lib/edoc/SKIP
+touch lib/et/SKIP
+touch lib/erl_docgen/SKIP
+touch lib/gs/SKIP
+touch lib/ic/SKIP
+touch lib/jinterface/SKIP
+touch lib/megaco/SKIP
+touch lib/observer/SKIP
+touch lib/odbc/SKIP
+touch lib/orber/SKIP
+touch lib/ose/SKIP
+touch lib/percept/SKIP
+touch lib/ssh/SKIP
+touch lib/test_server/SKIP
+touch lib/typer/SKIP
+touch lib/webtool/SKIP
+touch lib/wx/SKIP
+
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+make DESTDIR=$RPM_BUILD_ROOT install
+
+# Do not install info files - they are almost empty and useless
+find $RPM_BUILD_ROOT%{_libdir}/erlang -type f -name info -exec rm -f {} \;
+
+# fix 0775 permission on some directories
+chmod 0755 $RPM_BUILD_ROOT%{_libdir}/erlang/bin
+
+# Win32-specific man-pages
+rm -f $RPM_BUILD_ROOT%{_libdir}/erlang/man/man1/erlsrv.*
+rm -f $RPM_BUILD_ROOT%{_libdir}/erlang/man/man1/werl.*
+rm -f $RPM_BUILD_ROOT%{_libdir}/erlang/man/man3/win32reg.*
+
+# remove empty directory
+rm -r $RPM_BUILD_ROOT%{_libdir}/erlang/erts-*/man
+
+# remove outdated script
+rm -f $RPM_BUILD_ROOT%{_libdir}/erlang/Install
+
+# Replace identical executables with symlinks
+for exe in $RPM_BUILD_ROOT%{_libdir}/erlang/erts-*/bin/*
+do
+	base="$(basename "$exe")"
+	next="$RPM_BUILD_ROOT%{_libdir}/erlang/bin/${base}"
+	rel="$(echo "$exe" | sed "s,^$RPM_BUILD_ROOT%{_libdir}/erlang/,../,")"
+	if cmp "$exe" "$next"; then
+		ln -sf "$rel" "$next"
+	fi
+done
+for exe in $RPM_BUILD_ROOT%{_libdir}/erlang/bin/*
+do
+	base="$(basename "$exe")"
+	next="$RPM_BUILD_ROOT%{_bindir}/${base}"
+	rel="$(echo "$exe" | sed "s,^$RPM_BUILD_ROOT,,")"
+	if cmp "$exe" "$next"; then
+		ln -sf "$rel" "$next"
+	fi
+done
+
+rm -rf $RPM_BUILD_ROOT%{_bindir}/ct_run
+rm -rf $RPM_BUILD_ROOT%{_bindir}/dialyzer
+rm -rf $RPM_BUILD_ROOT%{_bindir}/run_test
+rm -rf $RPM_BUILD_ROOT%{_bindir}/typer
+rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/bin/ct_run
+rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/bin/dialyzer
+rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/bin/run_test
+rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/bin/typer
+rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/erts-*/bin/ct_run
+rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/erts-*/bin/dialyzer
+rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/erts-*/bin/typer
+rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/lib/*/examples
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+
+%files
+%defattr(-,root,root)
+
+%doc %{OSL_File_Name}
+
+%dir %{_libdir}/erlang/lib/asn1-*/
+%{_libdir}/erlang/lib/asn1-*/ebin
+%{_libdir}/erlang/lib/asn1-*/priv
+%{_libdir}/erlang/lib/asn1-*/src
+
+
+%{_libdir}/erlang/lib/compiler-*/
+
+
+%{_libdir}/erlang/lib/crypto-*/
+
+%dir %{_libdir}/erlang/lib/eldap-*/
+%{_libdir}/erlang/lib/eldap-*/asn1
+%{_libdir}/erlang/lib/eldap-*/ebin
+%{_libdir}/erlang/lib/eldap-*/include
+%{_libdir}/erlang/lib/eldap-*/src
+
+%{_libdir}/erlang/lib/eunit-*/
+
+%{_libdir}/erlang/lib/erl_interface-*/
+
+
+%dir %{_libdir}/erlang/
+%dir %{_libdir}/erlang/bin/
+%dir %{_libdir}/erlang/lib/
+%dir %{_libdir}/erlang/releases/
+%{_bindir}/epmd
+%{_bindir}/erl
+%{_bindir}/erlc
+%{_bindir}/escript
+%{_bindir}/run_erl
+%{_bindir}/to_erl
+%{_libdir}/erlang/bin/epmd
+%{_libdir}/erlang/bin/erl
+%{_libdir}/erlang/bin/erlc
+%{_libdir}/erlang/bin/escript
+%{_libdir}/erlang/bin/no_dot_erlang.boot
+%{_libdir}/erlang/bin/run_erl
+%{_libdir}/erlang/bin/start
+%{_libdir}/erlang/bin/start.boot
+%{_libdir}/erlang/bin/start.script
+%{_libdir}/erlang/bin/start_clean.boot
+%{_libdir}/erlang/bin/start_erl
+%{_libdir}/erlang/bin/start_sasl.boot
+%{_libdir}/erlang/bin/to_erl
+%dir %{_libdir}/erlang/erts-*/bin
+%{_libdir}/erlang/erts-*/bin/beam
+%{_libdir}/erlang/erts-*/bin/beam.smp
+%{_libdir}/erlang/erts-*/bin/child_setup
+%{_libdir}/erlang/erts-*/bin/dyn_erl
+%{_libdir}/erlang/erts-*/bin/epmd
+%{_libdir}/erlang/erts-*/bin/erl
+%{_libdir}/erlang/erts-*/bin/erl.src
+%{_libdir}/erlang/erts-*/bin/erlc
+%{_libdir}/erlang/erts-*/bin/erlexec
+%{_libdir}/erlang/erts-*/bin/escript
+%{_libdir}/erlang/erts-*/bin/heart
+%{_libdir}/erlang/erts-*/bin/inet_gethost
+%{_libdir}/erlang/erts-*/bin/run_erl
+%{_libdir}/erlang/erts-*/bin/start
+%{_libdir}/erlang/erts-*/bin/start.src
+%{_libdir}/erlang/erts-*/bin/start_erl.src
+%{_libdir}/erlang/erts-*/bin/to_erl
+%{_libdir}/erlang/erts-*/include
+%{_libdir}/erlang/erts-*/lib
+%{_libdir}/erlang/erts-*/src
+%{_libdir}/erlang/lib/erts-*/
+%{_libdir}/erlang/releases/*
+%{_libdir}/erlang/usr/
+
+
+%{_libdir}/erlang/lib/hipe-*/
+
+
+%dir %{_libdir}/erlang/lib/inets-*/
+%{_libdir}/erlang/lib/inets-*/ebin
+%{_libdir}/erlang/lib/inets-*/include
+%{_libdir}/erlang/lib/inets-*/priv
+%{_libdir}/erlang/lib/inets-*/src
+
+
+%dir %{_libdir}/erlang/lib/kernel-*/
+%{_libdir}/erlang/lib/kernel-*/ebin
+%{_libdir}/erlang/lib/kernel-*/include
+%{_libdir}/erlang/lib/kernel-*/src
+
+
+%dir %{_libdir}/erlang/lib/mnesia-*/
+%{_libdir}/erlang/lib/mnesia-*/ebin
+%{_libdir}/erlang/lib/mnesia-*/include
+%{_libdir}/erlang/lib/mnesia-*/src
+
+
+%{_libdir}/erlang/lib/os_mon-*/
+
+%{_libdir}/erlang/lib/otp_mibs-*/
+
+%{_libdir}/erlang/lib/parsetools-*/
+
+%{_libdir}/erlang/lib/public_key-*/
+
+
+%dir %{_libdir}/erlang/lib/reltool-*/
+%{_libdir}/erlang/lib/reltool-*/ebin
+%{_libdir}/erlang/lib/reltool-*/src
+
+%dir %{_libdir}/erlang/lib/syntax_tools-*/
+%{_libdir}/erlang/lib/syntax_tools-*/ebin
+%{_libdir}/erlang/lib/syntax_tools-*/include
+
+%{_libdir}/erlang/lib/runtime_tools-*/
+
+
+%dir %{_libdir}/erlang/lib/sasl-*/
+%{_libdir}/erlang/lib/sasl-*/ebin
+%{_libdir}/erlang/lib/sasl-*/src
+
+
+%dir %{_libdir}/erlang/lib/snmp-*/
+%{_libdir}/erlang/lib/snmp-*/bin
+%{_libdir}/erlang/lib/snmp-*/ebin
+%{_libdir}/erlang/lib/snmp-*/include
+%{_libdir}/erlang/lib/snmp-*/mibs
+%{_libdir}/erlang/lib/snmp-*/priv
+%{_libdir}/erlang/lib/snmp-*/src
+
+
+%dir %{_libdir}/erlang/lib/ssl-*/
+%{_libdir}/erlang/lib/ssl-*/ebin
+%{_libdir}/erlang/lib/ssl-*/src
+
+
+%dir %{_libdir}/erlang/lib/stdlib-*/
+%{_libdir}/erlang/lib/stdlib-*/ebin
+%{_libdir}/erlang/lib/stdlib-*/include
+%{_libdir}/erlang/lib/stdlib-*/src
+
+
+%dir %{_libdir}/erlang/lib/syntax_tools-*/
+%{_libdir}/erlang/lib/syntax_tools-*/ebin
+
+%{_libdir}/erlang/lib/tools-*/
+
+%{_libdir}/erlang/lib/xmerl-*/
+
+
+%changelog
+* Fri Oct 23 2015 Gabriele Santomaggio <gabriele.santomaggio@erlang-solutions.com> - 18.1
+- Fixed build for 18.1
+
+* Thu Oct 13 2015 Michael Klishin <michael@rabbitmq.com> - 18.1
+- Updates for 18.1
+
+* Thu Sep 06 2012 Emile Joubert <emile@rabbitmq.com> - R15B-02.1
+- Updates for R15B02
+- Minimised build requirements
+- Removed docs
+
+* Wed Apr 25 2012 Stuart Williams <swilliams@vmware.com> - erlang-for-rabbitmq
+- Minimised & removed dependencies not required for RabbitMQ and restored single package build.
+
+* Tue Feb 07 2012 Peter Lemenkov <lemenkov@gmail.com> - R15B-00.1
+- Ver. R15B
+
+* Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - R14B-04.1.1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
+* Sun Aug 07 2011 Peter Lemenkov <lemenkov@gmail.com> - R14B-04.1
+- Ver. R14B04
+
+* Sun Aug 07 2011 Peter Lemenkov <lemenkov@gmail.com> - R14B-03.3
+- Use prebuilt docs on EL-[56] also
+
+* Thu Jul 21 2011 Peter Lemenkov <lemenkov@gmail.com> - R14B-03.2
+- Fixed building on F-15
+
+* Wed Jul 20 2011 Peter Lemenkov <lemenkov@gmail.com> - R14B-03.1
+- Ver. R14B03
+- New module - diameter
+- Several new examples directories
+
+* Fri Apr  1 2011 Hans Ulrich Niedermann <hun@n-dimensional.de> - R14B-02.2
+- Work around fop-1.0-14.fc16 bug (#689930) by using prebuilt docs for f16/rawhide
+
+* Mon Mar 21 2011 Hans Ulrich Niedermann <hun@n-dimensional.de> - R14B-02.1
+- snmp-4.19 (R14B02) ships lib/snmp/bin/snmpc
+- inets-5.5.2 puts *.hrl in include/
+- install/symlink *.jar into %%{_javadir} (#679031)
+- Update to upstream maintenance release R14B02
+
+* Sat Feb 12 2011 Hans Ulrich Niedermann <hun@n-dimensional.de> - R14B-01.5
+- erlang-doc does not really require erlang base package (#629723)
+- Add %%{?_isa} for all explicit "Requires:"
+
+* Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - R14B-01.4.1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+* Mon Jan 31 2011 Hans Ulrich Niedermann <hun@n-dimensional.de> - R14B-01.4
+- Adapt %%files: Add wxSystemSettings.3 man page
+- Adapt %%files for change from run_test to ct_run
+- Remove rpaths from lib/ssl-*/bin/esock_ssl
+- Update erlang.spec and otp-00*.patch without numbers
+- otp-get-patches.sh: Remove patch numbering
+
+* Sun Jan 30 2011 Hans Ulrich Niedermann <hun@n-dimensional.de> - R14B-01.3
+- Add "buffer overflow during build" fix (#663260)
+
+* Wed Dec 15 2010 Hans Ulrich Niedermann <hun@n-dimensional.de> - R14B-01.2
+- Update to rebased patches
+
+* Mon Dec 13 2010 Hans Ulrich Niedermann <hun@n-dimensional.de> - R14B-01.1
+- Update to upstream release R14B01 (the patches still need work)
+
+* Thu Nov 18 2010 Peter Lemenkov <lemenkov@gmail.com> - R14B-0.5
+- Fixed building on EL-6
+
+* Mon Nov 15 2010 Peter Lemenkov <lemenkov@gmail.com> - R14B-0.4
+- No more dependent on erlang-rpm-macros sub-package
+
+* Thu Nov 11 2010 Peter Lemenkov <lemenkov@gmail.com> - R14B-0.3
+- Remove pre-built stuff
+
+* Fri Nov  5 2010 Peter Lemenkov <lemenkov@gmail.com> - R14B-0.2
+- Fixed doc-files and man-pages instalation for EL-5
+- Temporarily (I hope) disabled emacs-related stuff in EL-5
+- Disable erlang-rpm-macros subpackage for EL-5
+
+* Wed Sep 29 2010 jkeating - R14B-0.1.1
+- Rebuilt for gcc bug 634757
+
+* Thu Sep 16 2010 Peter Lemenkov <lemenkov@gmail.com> - R14B-0.1
+- R14B release
+
+* Mon Aug  2 2010 Hans Ulrich Niedermann <hun@n-dimensional.de> - R14A-0.6
+- Implement '--without doc' conditional for faster test builds (#618245).
+
+* Fri Jul 30 2010 Hans Ulrich Niedermann <hun@n-dimensional.de> - R14A-0.5
+- Properly hook up (X)Emacs erlang-mode (#491165)
+
+* Mon Jul 26 2010 Hans Ulrich Niedermann <hun@n-dimensional.de> - R14A-0.4
+- Spec file cleanups:
+  - Avoid accidental %%rel increments by rpmdev-bumpspec.
+  - Use %%global for our spec file macros.
+  - Use macro for redundant directory names.
+  - Whitespace cleanups (tabs vs. spaces).
+  - Fix accidental macro usage in %%changelog.
+
+* Wed Jul 14 2010 Dan Horák <dan@danny.cz> - R14A-0.3
+- rebuilt against wxGTK-2.8.11-2
+
+* Sat Jun 26 2010 Peter Lemenkov <lemenkov@gmail.com> - R14A-0.2
+- Updated list of explicit requirements
+
+* Fri Jun 18 2010 Peter Lemenkov <lemenkov@gmail.com> - R14A-0.1
+- R14A release
+
+* Sat May 15 2010 Peter Lemenkov <lemenkov@gmail.com> - R13B-04.12
+- Moved dialyzer and typer executables from erts to appropriate rpms
+
+* Fri May 14 2010 Peter Lemenkov <lemenkov@gmail.com> - R13B-04.11
+- Do not mention nteventlog in os_mon.app, see rhbz #592251
+
+* Thu May  6 2010 Peter Lemenkov <lemenkov@gmail.com> - R13B-04.10
+- Disabled automatic requires/provides generation
+
+* Wed Apr 28 2010 Peter Lemenkov <lemenkov@gmail.com> - R13B-04.9
+- Added missing files, necessary for emacs (see rhbz #585349)
+- Patches rebased
+
+* Tue Apr 27 2010 Peter Lemenkov <lemenkov@gmail.com> - R13B-04.8
+- Added missing BuildRequires libxslt (for building docs)
+- Removed %%post script completely (resolves rhbz #586428)
+- Since now both docs and man-pages are built from sources
+- No need to manually create symlinks in %%{_bindir}
+
+* Mon Apr 26 2010 Peter Lemenkov <lemenkov@gmail.com> - R13B-04.7
+- Build with erlang-rpm-macros
+- Man-files are packed with packages, they belong to
+
+* Mon Apr 26 2010 Peter Lemenkov <lemenkov@gmail.com> - R13B-04.6
+- Made erlang-rpm-macros as separate package
+- Fix error while installing erlang-rpm-macros
+
+* Wed Apr 21 2010 Peter Lemenkov <lemenkov@gmail.com> - R13B-04.5
+- Use erlang rpm macros for adding provides/reqires
+- All %%{_libdir}/erlang/lib/* items were splitted off from main package, which
+  in turn becomes purely virtual now.
+- Removing RPM_BUILD_ROOT from several installed files is no longer required
+
+* Sat Apr 17 2010 Peter Lemenkov <lemenkov@gmail.com> - R13B-04.4
+- Added missing Requires mesa-libGL{U} for wx module (rhbz #583287)
+- Fix for buffer overflow in pcre module (rhbz #583288)
+- Doc sub-package marked as noarch (partially resolves rhbz #491165)
+
+* Fri Mar 26 2010 Peter Lemenkov <lemenkov@gmail.com> - R13B-04.3
+- Added rpm-related stuff for auto-generating erlang dependencies in the future builds
+- Since now *.yrl files are removed too.
+- Removed unnecessary C and Java sources
+
+* Fri Mar 26 2010 Peter Lemenkov <lemenkov@gmail.com> - R13B-04.2
+- Do not remove all files from %%{_libdir}/erlang/lib/*/src - keep
+  *.[yh]rl intact
+- Fix permissions for megaco *.so objects
+- Fix permissions for asn1 *.so objects
+
+* Sat Feb 13 2010 Peter Lemenkov <lemenkov@gmail.com> - R13B-04.1
+- New release R13B-04
+- Since now we're using %%configure instead of ./configure
+- Removed no longer needed fix for newer glibc version
+- Dropped %%patch3 (applied upstream)
+- Rebased patches
+- Added BR fop for rebuilding of docs
+- Use system-wide zlib instead of shipped one
+- Dropped BR gd-devel
+- Removed unneeded sources (should be fixed upstream)
+- Fixed permission for wx driver (should be fixed upstream)
+
+* Thu Oct 22 2009 Lubomir Rintel (Good Data) <lubo.rintel@gooddata.com> - R13B-02-1
+- Update to R13B-02 (patched for what's released as 02-1 by upstream)
+
+* Tue Aug 25 2009 Tomas Mraz <tmraz@redhat.com> - R13B-01.2
+- rebuilt with new openssl
+
+* Mon Aug 10 2009 Gerard Milmeister <gemi@bluewin.ch> - R13B-01.1
+- update to R13B01
+
+* Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - R12B-6.7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+* Tue Apr 21 2009 Debarshi Ray <rishi@fedoraproject.org> R12B-5.7
+- Updated rpath patch.
+- Fixed configure to respect $RPM_OPT_FLAGS.
+
+* Sun Mar  1 2009 Gerard Milmeister <gemi@bluewin.ch> - R12B-5.6
+- new release R12B-5
+- link escript and dialyzer to %%{_bindir}
+
+* Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - R12B-5.5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
+* Sat Feb 14 2009 Dennis Gilmore <dennis@ausil.us> - R12B-4.5
+- fix sparc arches to compile
+
+* Fri Jan 16 2009 Tomas Mraz <tmraz@redhat.com> - R12B-4.4
+- rebuild with new openssl
+
+* Sat Oct 25 2008 Gerard Milmeister <gemi@bluewin.ch> - R12B-4.1
+- new release R12B-4
+
+* Fri Sep  5 2008 Gerard Milmeister <gemi@bluewin.ch> - R12B-3.3
+- fixed sslrpath patch
+
+* Thu Jul 17 2008 Tom "spot" Callaway <tcallawa@redhat.com> - R12B-3.2
+- fix license tag
+
+* Sun Jul  6 2008 Gerard Milmeister <gemi@bluewin.ch> - R12B-3.1
+- new release R12B-3
+
+* Thu Mar 27 2008 Gerard Milmeister <gemi@bluewin.ch> - R12B-1.1
+- new release R12B-1
+
+* Sat Feb 23 2008 Gerard Milmeister <gemi@bluewin.ch> - R12B-0.3
+- disable strict aliasing optimization
+
+* Mon Feb 18 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - R12B-0.2
+- Autorebuild for GCC 4.3
+
+* Sat Dec  8 2007 Gerard Milmeister <gemi@bluewin.ch> - R12B-0.1
+- new release R12B-0
+
+* Wed Dec 05 2007 Release Engineering <rel-eng at fedoraproject dot org> - R11B-6
+ - Rebuild for deps
+
+* Sun Aug 19 2007 Gerard Milmeister <gemi@bluewin.ch> - R11B-5.3
+- fix some permissions
+
+* Sat Aug 18 2007 Gerard Milmeister <gemi@bluewin.ch> - R11B-5.2
+- enable dynamic linking for ssl
+
+* Sat Aug 18 2007 Gerard Milmeister <gemi@bluewin.ch> - R11B-5.1
+- new release R11B-5
+
+* Sat Mar 24 2007 Thomas Fitzsimmons <fitzsim@redhat.com> - R11B-2.4
+- Require java-1.5.0-gcj-devel for build.
+
+* Sun Dec 31 2006 Gerard Milmeister <gemi@bluewin.ch> - R11B-2.3
+- remove buildroot from installed files
+
+* Sat Dec 30 2006 Gerard Milmeister <gemi@bluewin.ch> - R11B-2.2
+- added patch for compiling with glibc 2.5
+
+* Sat Dec 30 2006 Gerard Milmeister <gemi@bluewin.ch> - R11B-2.1
+- new version R11B-2
+
+* Mon Aug 28 2006 Gerard Milmeister <gemi@bluewin.ch> - R11B-0.3
+- Rebuild for FE6
+
+* Wed Jul  5 2006 Gerard Milmeister <gemi@bluewin.ch> - R11B-0.2
+- add BR m4
+
+* Thu May 18 2006 Gerard Milmeister <gemi@bluewin.ch> - R11B-0.1
+- new version R11B-0
+
+* Wed May  3 2006 Gerard Milmeister <gemi@bluewin.ch> - R10B-10.3
+- added patch for run_erl by Knut-Håvard Aksnes
+
+* Mon Mar 13 2006 Gerard Milmeister <gemi@bluewin.ch> - R10B-10.1
+- new version R10B-10
+
+* Thu Dec 29 2005 Gerard Milmeister <gemi@bluewin.ch> - R10B-9.1
+- New Version R10B-9
+
+* Sat Oct 29 2005 Gerard Milmeister <gemi@bluewin.ch> - R10B-8.2
+- updated rpath patch
+
+* Sat Oct 29 2005 Gerard Milmeister <gemi@bluewin.ch> - R10B-8.1
+- New Version R10B-8
+
+* Sat Oct  1 2005 Gerard Milmeister <gemi@bluewin.ch> - R10B-6.4
+- Added tk-devel and tcl-devel to buildreq
+- Added tk to req
+
+* Tue Sep  6 2005 Gerard Milmeister <gemi@bluewin.ch> - R10B-6.3
+- Remove perl BuildRequires
+
+* Tue Aug 30 2005 Gerard Milmeister <gemi@bluewin.ch> - R10B-6.2
+- change /usr/lib to %%{_libdir}
+- redirect output in %%post to /dev/null
+- add unixODBC-devel to BuildRequires
+- split doc off to erlang-doc package
+
+* Sat Jun 25 2005 Gerard Milmeister <gemi@bluewin.ch> - R10B-6.1
+- New Version R10B-6
+
+* Sun Feb 13 2005 Gerard Milmeister <gemi@bluewin.ch> - R10B-3.1
+- New Version R10B-3
+
+* Mon Dec 27 2004 Gerard Milmeister <gemi@bluewin.ch> - 0:R10B-2-0.fdr.1
+- New Version R10B-2
+
+* Wed Oct  6 2004 Gerard Milmeister <gemi@bluewin.ch> - 0:R10B-0.fdr.1
+- New Version R10B
+
+* Thu Oct 16 2003 Gerard Milmeister <gemi@bluewin.ch> - 0:R9B-1.fdr.1
+- First Fedora release
