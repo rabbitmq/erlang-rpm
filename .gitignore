@@ -1,0 +1,10 @@
+BUILD
+SOURCES
+SPECS
+tmp
+dist
+docker/build-dir
+*~
+.sw?
+.*.sw?
+/otp_*.tar.gz
