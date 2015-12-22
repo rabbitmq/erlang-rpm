@@ -1,6 +1,6 @@
-diff -u -r otp_src_18.2-a/lib/asn1/c_src/Makefile otp_src_18.2/lib/asn1/c_src/Makefile
---- otp_src_18.2-a/lib/asn1/c_src/Makefile	2014-12-09 20:11:07.000000000 +0000
-+++ otp_src_18.2/lib/asn1/c_src/Makefile	2015-01-14 12:47:55.655674256 +0000
+diff -u -r otp_src_18.1-a/lib/asn1/c_src/Makefile otp_src_18.1/lib/asn1/c_src/Makefile
+--- otp_src_18.1-a/lib/asn1/c_src/Makefile	2014-12-09 20:11:07.000000000 +0000
++++ otp_src_18.1/lib/asn1/c_src/Makefile	2015-01-14 12:47:55.655674256 +0000
 @@ -142,8 +142,6 @@
  ifneq ($(findstring ose,$(TARGET)),ose)
  	$(INSTALL_PROGRAM) $(NIF_SHARED_OBJ_FILE) "$(RELSYSDIR)/priv/lib"
@@ -10,9 +10,9 @@ diff -u -r otp_src_18.2-a/lib/asn1/c_src/Makefile otp_src_18.2/lib/asn1/c_src/Ma
  
  release_docs_spec:
  
-diff -u -r otp_src_18.2-a/lib/crypto/c_src/Makefile.in otp_src_18.2/lib/crypto/c_src/Makefile.in
---- otp_src_18.2-a/lib/crypto/c_src/Makefile.in	2015-01-14 12:46:32.968754959 +0000
-+++ otp_src_18.2/lib/crypto/c_src/Makefile.in	2015-01-14 12:48:49.902965180 +0000
+diff -u -r otp_src_18.1-a/lib/crypto/c_src/Makefile.in otp_src_18.1/lib/crypto/c_src/Makefile.in
+--- otp_src_18.1-a/lib/crypto/c_src/Makefile.in	2015-01-14 12:46:32.968754959 +0000
++++ otp_src_18.1/lib/crypto/c_src/Makefile.in	2015-01-14 12:48:49.902965180 +0000
 @@ -199,14 +199,10 @@
  include $(ERL_TOP)/make/otp_release_targets.mk
  
@@ -28,9 +28,9 @@ diff -u -r otp_src_18.2-a/lib/crypto/c_src/Makefile.in otp_src_18.2/lib/crypto/c
  	$(INSTALL_PROGRAM) $(CALLBACK_LIB) "$(RELSYSDIR)/priv/lib"
  endif
  endif
-diff -u -r otp_src_18.2-a/lib/erl_interface/src/Makefile.in otp_src_18.2/lib/erl_interface/src/Makefile.in
---- otp_src_18.2-a/lib/erl_interface/src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
-+++ otp_src_18.2/lib/erl_interface/src/Makefile.in	2015-01-14 12:50:04.401991292 +0000
+diff -u -r otp_src_18.1-a/lib/erl_interface/src/Makefile.in otp_src_18.1/lib/erl_interface/src/Makefile.in
+--- otp_src_18.1-a/lib/erl_interface/src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
++++ otp_src_18.1/lib/erl_interface/src/Makefile.in	2015-01-14 12:50:04.401991292 +0000
 @@ -883,15 +883,6 @@
  	$(INSTALL_DIR) "$(RELSYSDIR)/lib"
  	$(INSTALL_DIR) "$(RELSYSDIR)/bin"
@@ -63,9 +63,9 @@ diff -u -r otp_src_18.2-a/lib/erl_interface/src/Makefile.in otp_src_18.2/lib/erl
  
  release_docs:
  
-diff -u -r otp_src_18.2-a/lib/os_mon/c_src/Makefile.in otp_src_18.2/lib/os_mon/c_src/Makefile.in
---- otp_src_18.2-a/lib/os_mon/c_src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
-+++ otp_src_18.2/lib/os_mon/c_src/Makefile.in	2015-01-14 12:46:50.568524945 +0000
+diff -u -r otp_src_18.1-a/lib/os_mon/c_src/Makefile.in otp_src_18.1/lib/os_mon/c_src/Makefile.in
+--- otp_src_18.1-a/lib/os_mon/c_src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
++++ otp_src_18.1/lib/os_mon/c_src/Makefile.in	2015-01-14 12:46:50.568524945 +0000
 @@ -126,7 +126,6 @@
  
  release_spec: opt
@@ -74,9 +74,9 @@ diff -u -r otp_src_18.2-a/lib/os_mon/c_src/Makefile.in otp_src_18.2/lib/os_mon/c
  	$(INSTALL_DIR) "$(RELSYSDIR)/priv/bin"
  	$(INSTALL_PROGRAM) $(TARGET_FILES) "$(RELSYSDIR)/priv/bin"
  
-diff -u -r otp_src_18.2-a/lib/runtime_tools/c_src/Makefile.in otp_src_18.2/lib/runtime_tools/c_src/Makefile.in
---- otp_src_18.2-a/lib/runtime_tools/c_src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
-+++ otp_src_18.2/lib/runtime_tools/c_src/Makefile.in	2015-01-14 12:50:37.609556432 +0000
+diff -u -r otp_src_18.1-a/lib/runtime_tools/c_src/Makefile.in otp_src_18.1/lib/runtime_tools/c_src/Makefile.in
+--- otp_src_18.1-a/lib/runtime_tools/c_src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
++++ otp_src_18.1/lib/runtime_tools/c_src/Makefile.in	2015-01-14 12:50:37.609556432 +0000
 @@ -156,10 +156,8 @@
  include $(ERL_TOP)/make/otp_release_targets.mk
  
@@ -88,9 +88,9 @@ diff -u -r otp_src_18.2-a/lib/runtime_tools/c_src/Makefile.in otp_src_18.2/lib/r
  	$(INSTALL_PROGRAM) $(NIF_LIB) $(SOLIBS) "$(RELSYSDIR)/priv/lib"
  endif
  
-diff -u -r otp_src_18.2-a/lib/tools/c_src/Makefile.in otp_src_18.2/lib/tools/c_src/Makefile.in
---- otp_src_18.2-a/lib/tools/c_src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
-+++ otp_src_18.2/lib/tools/c_src/Makefile.in	2015-01-14 12:46:50.568524945 +0000
+diff -u -r otp_src_18.1-a/lib/tools/c_src/Makefile.in otp_src_18.1/lib/tools/c_src/Makefile.in
+--- otp_src_18.1-a/lib/tools/c_src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
++++ otp_src_18.1/lib/tools/c_src/Makefile.in	2015-01-14 12:46:50.568524945 +0000
 @@ -197,8 +197,6 @@
  RELSYSDIR = $(RELEASE_PATH)/lib/tools-$(TOOLS_VSN)
  
