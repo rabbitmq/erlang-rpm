@@ -1,6 +1,6 @@
-diff -u -r otp_src_18.2-a/lib/crypto/c_src/Makefile.in otp_src_18.2/lib/crypto/c_src/Makefile.in
---- otp_src_18.2-a/lib/crypto/c_src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
-+++ otp_src_18.2/lib/crypto/c_src/Makefile.in	2015-01-14 12:45:52.181287995 +0000
+diff -u -r otp_src_18.1-a/lib/crypto/c_src/Makefile.in otp_src_18.1/lib/crypto/c_src/Makefile.in
+--- otp_src_18.1-a/lib/crypto/c_src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
++++ otp_src_18.1/lib/crypto/c_src/Makefile.in	2015-01-14 12:45:52.181287995 +0000
 @@ -89,7 +89,7 @@
  DYNAMIC_CRYPTO_LIB=@SSL_DYNAMIC_ONLY@
  
@@ -10,9 +10,9 @@ diff -u -r otp_src_18.2-a/lib/crypto/c_src/Makefile.in otp_src_18.2/lib/crypto/c
  CRYPTO_LINK_LIB=$(SSL_DED_LD_RUNTIME_LIBRARY_PATH) -L$(SSL_LIBDIR) -l$(SSL_CRYPTO_LIBNAME)
  EXTRA_FLAGS = -DHAVE_DYNAMIC_CRYPTO_LIB
  else
-diff -u -r otp_src_18.2-a/lib/crypto/priv/Makefile otp_src_18.2/lib/crypto/priv/Makefile
---- otp_src_18.2-a/lib/crypto/priv/Makefile	2014-12-09 20:11:07.000000000 +0000
-+++ otp_src_18.2/lib/crypto/priv/Makefile	2015-01-14 12:45:52.181287995 +0000
+diff -u -r otp_src_18.1-a/lib/crypto/priv/Makefile otp_src_18.1/lib/crypto/priv/Makefile
+--- otp_src_18.1-a/lib/crypto/priv/Makefile	2014-12-09 20:11:07.000000000 +0000
++++ otp_src_18.1/lib/crypto/priv/Makefile	2015-01-14 12:45:52.181287995 +0000
 @@ -60,7 +60,7 @@
  # ----------------------------------------------------
  

@@ -5,7 +5,7 @@ It may be easier to install than RPMs provided by Erlang Solutions in certain en
 
 ## Provided Erlang/OTP Versions
 
-The package currently targets Erlang/OTP 18.1 (64-bit only).
+The package currently targets Erlang/OTP 18.2.1 (64-bit only).
 
 ## Supported CentOS Versions
 
@@ -46,6 +46,11 @@ You must be running an RPMish distro for this to work.
     make
 
 and see `RPMS/x86_64/`.
+
+### Previous Versions
+
+The directory `versions` contains the patch files used for the old versions.
+
 
 ## Copyright and License
 
