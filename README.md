@@ -5,7 +5,7 @@ It may be easier to install than RPMs provided by Erlang Solutions in certain en
 
 ## Provided Erlang/OTP Versions
 
-The package currently targets Erlang/OTP 18.2.1 (64-bit only).
+The package currently targets Erlang/OTP 18.3 (64-bit only).
 
 ## Supported CentOS Versions
 

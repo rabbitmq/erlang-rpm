@@ -1,6 +1,6 @@
-diff -u -r otp_src_18.3-a/erts/etc/common/Makefile.in otp_src_18.3/erts/etc/common/Makefile.in
---- otp_src_18.3-a/erts/etc/common/Makefile.in	2014-12-09 20:11:07.000000000 +0000
-+++ otp_src_18.3/erts/etc/common/Makefile.in	2015-01-14 12:44:58.017995780 +0000
+diff -u -r otp_src_18.2-a/erts/etc/common/Makefile.in otp_src_18.2/erts/etc/common/Makefile.in
+--- otp_src_18.2-a/erts/etc/common/Makefile.in	2014-12-09 20:11:07.000000000 +0000
++++ otp_src_18.2/erts/etc/common/Makefile.in	2015-01-14 12:44:58.017995780 +0000
 @@ -550,10 +550,6 @@
  ifneq ($(INSTALL_TOP_BIN),)
  	$(INSTALL_PROGRAM) $(INSTALL_TOP_BIN) "$(RELEASE_PATH)"
@@ -12,9 +12,9 @@ diff -u -r otp_src_18.3-a/erts/etc/common/Makefile.in otp_src_18.3/erts/etc/comm
  ifneq ($(INSTALL_SRC),)
  	$(INSTALL_DIR) "$(RELEASE_PATH)/erts-$(VSN)/src"
  	$(INSTALL_DATA) $(INSTALL_SRC) "$(RELEASE_PATH)/erts-$(VSN)/src"
-diff -u -r otp_src_18.3-a/erts/etc/unix/Install.src otp_src_18.3/erts/etc/unix/Install.src
---- otp_src_18.3-a/erts/etc/unix/Install.src	2014-12-09 20:11:07.000000000 +0000
-+++ otp_src_18.3/erts/etc/unix/Install.src	2015-01-14 12:44:58.945983653 +0000
+diff -u -r otp_src_18.2-a/erts/etc/unix/Install.src otp_src_18.2/erts/etc/unix/Install.src
+--- otp_src_18.2-a/erts/etc/unix/Install.src	2014-12-09 20:11:07.000000000 +0000
++++ otp_src_18.2/erts/etc/unix/Install.src	2015-01-14 12:44:58.945983653 +0000
 @@ -140,14 +140,5 @@
  cp -p ../releases/%I_SYSTEM_VSN%/no_dot_erlang.boot .
  cp -p $Name.boot start.boot
