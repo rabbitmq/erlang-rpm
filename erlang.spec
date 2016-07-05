@@ -11,7 +11,7 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 18.3
+%global upstream_ver 18.3.4
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
 
