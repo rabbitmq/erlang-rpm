@@ -13,7 +13,7 @@
 
 FINAL_OUTPUT_DIR=FINAL_RPMS
 
-OTP_RELEASE=18.3.4
+OTP_RELEASE=19.0
 
 # Where official Erlang distribution files come from...
 OTP_SRC_TGZ_FILE=OTP-$(OTP_RELEASE).tar.gz
@@ -29,7 +29,7 @@ rpms:	clean erlang
 
 prepare:
 	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp dist
-	wget -O $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) $(ERLANG_DISTPOINT)
+	wget -O $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) $(ERLANG_DISTPOINT)#
 	tar -zxf $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) -C dist
 	cp $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) SOURCES
 	rm $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE)

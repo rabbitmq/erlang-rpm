@@ -11,7 +11,7 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 18.3.4
+%global upstream_ver 19.0
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
 
@@ -122,12 +122,12 @@ touch lib/megaco/SKIP
 touch lib/observer/SKIP
 touch lib/odbc/SKIP
 touch lib/orber/SKIP
-touch lib/ose/SKIP
+#touch lib/ose/SKIP
 touch lib/percept/SKIP
 touch lib/ssh/SKIP
-touch lib/test_server/SKIP
+#touch lib/test_server/SKIP
 touch lib/typer/SKIP
-touch lib/webtool/SKIP
+#touch lib/webtool/SKIP
 touch lib/wx/SKIP
 
 make
@@ -244,7 +244,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/erlang/erts-*/bin
 %{_libdir}/erlang/erts-*/bin/beam
 %{_libdir}/erlang/erts-*/bin/beam.smp
-%{_libdir}/erlang/erts-*/bin/child_setup
+%{_libdir}/erlang/erts-*/bin/erl_child_setup
 %{_libdir}/erlang/erts-*/bin/dyn_erl
 %{_libdir}/erlang/erts-*/bin/epmd
 %{_libdir}/erlang/erts-*/bin/erl
