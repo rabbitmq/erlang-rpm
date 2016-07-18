@@ -343,6 +343,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Jul 17 2016 Gabriele Santomaggio <gabriele.santomaggio@erlang-solutions.com> - 19.0
+- update for 19.0
+
 * Tue Jul 05 2016 Gabriele Santomaggio <gabriele.santomaggio@erlang-solutions.com> - 18.3.4
 - update for 18.3.4
 
