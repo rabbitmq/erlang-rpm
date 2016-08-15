@@ -1,0 +1,89 @@
+diff -u -r otp_src_19.0-a/lib/asn1/c_src/Makefile otp_src_19.0/lib/asn1/c_src/Makefile
+--- otp_src_19.0-a/lib/asn1/c_src/Makefile	2016-07-15 13:21:42.000000000 +0200
++++ otp_src_19.0/lib/asn1/c_src/Makefile	2016-07-15 13:21:25.000000000 +0200
+@@ -136,8 +136,6 @@
+ release_spec: opt
+ 	$(INSTALL_DIR) "$(RELSYSDIR)/priv/lib"
+ 	$(INSTALL_PROGRAM) $(NIF_SHARED_OBJ_FILE) "$(RELSYSDIR)/priv/lib"
+-	$(INSTALL_DIR) "$(RELSYSDIR)/c_src"
+-	$(INSTALL_DATA) *.c "$(RELSYSDIR)/c_src"
+
+ release_docs_spec:
+
+diff -u -r otp_src_19.0-a/lib/crypto/c_src/Makefile.in otp_src_19.0/lib/crypto/c_src/Makefile.in
+--- otp_src_19.0-a/lib/crypto/c_src/Makefile.in	2016-07-15 12:32:53.000000000 +0200
++++ otp_src_19.0/lib/crypto/c_src/Makefile.in	2016-07-15 13:32:32.000000000 +0200
+@@ -195,13 +195,10 @@
+ include $(ERL_TOP)/make/otp_release_targets.mk
+
+ release_spec: opt
+-	$(INSTALL_DIR) "$(RELSYSDIR)/priv/obj"
+ 	$(INSTALL_DIR) "$(RELSYSDIR)/priv/lib"
+ 	$(INSTALL_DATA) $(NIF_MAKEFILE) "$(RELSYSDIR)/priv/obj"
+-	$(INSTALL_PROGRAM) $(CRYPTO_OBJS) "$(RELSYSDIR)/priv/obj"
+ 	$(INSTALL_PROGRAM) $(NIF_LIB) "$(RELSYSDIR)/priv/lib"
+ ifeq ($(DYNAMIC_CRYPTO_LIB),yes)
+-	$(INSTALL_PROGRAM) $(CALLBACK_OBJS) "$(RELSYSDIR)/priv/obj"
+ 	$(INSTALL_PROGRAM) $(CALLBACK_LIB) "$(RELSYSDIR)/priv/lib"
+ endif
+
+diff -u -r otp_src_18.3-a/lib/erl_interface/src/Makefile.in otp_src_18.3/lib/erl_interface/src/Makefile.in
+--- otp_src_18.3-a/lib/erl_interface/src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
++++ otp_src_18.3/lib/erl_interface/src/Makefile.in	2015-01-14 12:50:04.401991292 +0000
+@@ -883,15 +883,6 @@
+ 	$(INSTALL_DIR) "$(RELSYSDIR)/lib"
+ 	$(INSTALL_DIR) "$(RELSYSDIR)/bin"
+ 	$(INSTALL_DIR) "$(RELSYSDIR)/ebin"
+-	$(INSTALL_DIR) "$(RELSYSDIR)/src/auxdir"
+-	$(INSTALL_DIR) "$(RELSYSDIR)/src/connect"
+-	$(INSTALL_DIR) "$(RELSYSDIR)/src/decode"
+-	$(INSTALL_DIR) "$(RELSYSDIR)/src/encode"
+-	$(INSTALL_DIR) "$(RELSYSDIR)/src/epmd"
+-	$(INSTALL_DIR) "$(RELSYSDIR)/src/legacy"
+-	$(INSTALL_DIR) "$(RELSYSDIR)/src/misc"
+-	$(INSTALL_DIR) "$(RELSYSDIR)/src/prog"
+-	$(INSTALL_DIR) "$(RELSYSDIR)/src/registry"
+ 	$(INSTALL_DIR) "$(RELEASE_PATH)/usr/include"
+ 	$(INSTALL_DIR) "$(RELEASE_PATH)/usr/lib"
+ 	$(INSTALL_DATA) $(APP_TARGET)  "$(RELSYSDIR)/ebin/$(APP_FILE)"
+@@ -903,15 +894,6 @@
+ ifneq ($(EXE_TARGETS),)
+ 	$(INSTALL_PROGRAM) $(EXE_TARGETS) "$(RELSYSDIR)/bin"
+ endif
+-	$(INSTALL_DATA) $(EXTRA)        "$(RELSYSDIR)/src"
+-	$(INSTALL_DATA) connect/*.[ch]  "$(RELSYSDIR)/src/connect"
+-	$(INSTALL_DATA) decode/*.[ch]   "$(RELSYSDIR)/src/decode"
+-	$(INSTALL_DATA) encode/*.[ch]   "$(RELSYSDIR)/src/encode"
+-	$(INSTALL_DATA) epmd/*.[ch]     "$(RELSYSDIR)/src/epmd"
+-	$(INSTALL_DATA) misc/*.[ch]     "$(RELSYSDIR)/src/misc"
+-	$(INSTALL_DATA) registry/*.[ch] "$(RELSYSDIR)/src/registry"
+-	$(INSTALL_DATA) legacy/*.[ch]   "$(RELSYSDIR)/src/legacy"
+-	$(INSTALL_DATA) prog/*.[ch]     "$(RELSYSDIR)/src/prog"
+ 
+ release_docs:
+ 
+diff -u -r otp_src_18.3-a/lib/os_mon/c_src/Makefile.in otp_src_18.3/lib/os_mon/c_src/Makefile.in
+--- otp_src_18.3-a/lib/os_mon/c_src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
++++ otp_src_18.3/lib/os_mon/c_src/Makefile.in	2015-01-14 12:46:50.568524945 +0000
+@@ -126,7 +126,6 @@
+ 
+ release_spec: opt
+ 	$(INSTALL_DIR) "$(RELSYSDIR)/src"
+-	$(INSTALL_DATA) $(C_FILES) "$(RELSYSDIR)/src"
+ 	$(INSTALL_DIR) "$(RELSYSDIR)/priv/bin"
+ 	$(INSTALL_PROGRAM) $(TARGET_FILES) "$(RELSYSDIR)/priv/bin"
+
+diff -u -r otp_src_19.0-a/lib/runtime_tools/c_src/Makefile.in  otp_src_19.0/lib/runtime_tools/c_src/Makefile.in
+
+diff -u -r otp_src_19.0-a/lib/tools/c_src/Makefile.in  otp_src_19.0/lib/tools/c_src/Makefile.in
+--- otp_src_19.0-a/lib/tools/c_src/Makefile.in	2016-07-15 12:32:55.000000000 +0200
++++ otp_src_19.0/lib/tools/c_src/Makefile.in	2016-07-15 22:52:04.000000000 +0200
+@@ -190,8 +190,6 @@
+ RELSYSDIR = $(RELEASE_PATH)/lib/tools-$(TOOLS_VSN)
+
+ release_spec: all
+-	$(INSTALL_DIR) "$(RELSYSDIR)/c_src"
+-	$(INSTALL_DATA) $(EMEM_SRCS) $(EMEM_HEADERS) "$(RELSYSDIR)/c_src"
+ ifneq ($(PROGS),)
+ 	$(INSTALL_DIR) "$(RELSYSDIR)/bin"
+ 	$(INSTALL_PROGRAM) $(PROGS) "$(RELSYSDIR)/bin"
