@@ -14,7 +14,7 @@ The package currently targets Erlang/OTP 18.3.x and 19.0.x (64-bit only).
 
 ## Release Artifacts
 
-Package builds can be obtained [from GitHub](https://github.com/rabbitmq/erlang-rpm/releases) and [from rabbitmq.com](http://www.rabbitmq.com/releases/erlang/).
+Package builds can be obtained [from GitHub](https://github.com/rabbitmq/erlang-rpm/releases), [Package Cloud](https://packagecloud.io/rabbitmq/erlang), [Bintray](https://bintray.com/rabbitmq/erlang), and [from rabbitmq.com](http://www.rabbitmq.com/releases/erlang/).
 
 ## Building from Source
 
