@@ -49,8 +49,8 @@ and see `RPMS/x86_64/`.
 
 ### Versions
 
-Branch `stable-18.x` for 18.x versions
-Branch `master` for the last one 
+ * Branch `stable-18.x` for 18.x versions
+ * Branch `master` for the last one 
 
 
 ## Copyright and License
