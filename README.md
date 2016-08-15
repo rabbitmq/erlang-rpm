@@ -5,7 +5,7 @@ It may be easier to install than RPMs provided by Erlang Solutions in certain en
 
 ## Provided Erlang/OTP Versions
 
-The package currently targets Erlang/OTP 18.3 (64-bit only).
+The package currently targets Erlang/OTP 18.3.x and 19.0.x (64-bit only).
 
 ## Supported CentOS Versions
 
@@ -14,10 +14,9 @@ The package currently targets Erlang/OTP 18.3 (64-bit only).
 
 ## Release Artifacts
 
-Package builds are [available from rabbitmq.com](http://www.rabbitmq.com/releases/erlang/)
-and [from GitHub](https://github.com/rabbitmq/erlang-rpm/releases).
+Package builds can be obtained [from GitHub](https://github.com/rabbitmq/erlang-rpm/releases) and [from rabbitmq.com](http://www.rabbitmq.com/releases/erlang/).
 
-## Building
+## Building from Source
 
 ### With Docker
      	 
