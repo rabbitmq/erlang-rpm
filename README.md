@@ -47,9 +47,10 @@ You must be running an RPMish distro for this to work.
 
 and see `RPMS/x86_64/`.
 
-### Previous Versions
+### Versions
 
-The directory `versions` contains the patch files used for the old versions.
+Branch `stable-18.x` for 18.x versions
+Branch `master` for the last one 
 
 
 ## Copyright and License
