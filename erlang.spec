@@ -12,12 +12,13 @@
 # under the License.
 
 %global upstream_ver 18.3.4.4
-
+%global package_ver 18.3.4
+%global package_ver_release 4
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
 
 Name:		erlang
-Version:	%{upstream_ver}
-Release:	1%{?dist}
+Version:	%{package_ver}
+Release:	%{package_ver_release}%{?dist}
 Summary:	General-purpose programming language and runtime environment
 
 Group:		Development/Languages
