@@ -2,19 +2,21 @@
 
 This is a zero dependency 64-bit Erlang RPM package that provides just enough to run RabbitMQ.
 It may be easier to install than RPMs provided by Erlang Solutions in certain environments.
+It may or may not be suitable for running other Erlang-based software or 3rd party RabbitMQ
+plugins.
 
 ## Provided Erlang/OTP Versions
 
-The package currently targets Erlang/OTP `18.3.x`, `19.0.x`, and `19.1.x`. Only 64-bit packages are provided.
+The package currently targets Erlang/OTP `19.0.x` and `19.1.x`. Only 64-bit packages are provided.
 
 ## Supported CentOS Versions
 
- * CentOS 6
  * CentOS 7
+ * CentOS 6
 
 ## Release Artifacts
 
-Package builds can be obtained [from GitHub](https://github.com/rabbitmq/erlang-rpm/releases), [Package Cloud](https://packagecloud.io/rabbitmq/erlang), [Bintray](https://bintray.com/rabbitmq/erlang), and [from rabbitmq.com](http://www.rabbitmq.com/releases/erlang/).
+Binary packages can be obtained [from GitHub](https://github.com/rabbitmq/erlang-rpm/releases), [Package Cloud](https://packagecloud.io/rabbitmq/erlang), and [Bintray](https://bintray.com/rabbitmq/erlang).
 
 ## Building from Source
 
