@@ -11,8 +11,8 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 19.1.6
-%global package_ver  19.1.6
+%global upstream_ver 19.2
+%global package_ver  19.2.0
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
 
@@ -344,6 +344,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 14 2016 Gabriele Santomaggio <gabriele.santomaggio@erlang-solutions.com> - 19.2
+- update for 19.2
+
 * Mon Nov 14 2016 Gabriele Santomaggio <gabriele.santomaggio@erlang-solutions.com> - 19.1.6
 - update for 19.1.6
 
