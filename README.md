@@ -1,6 +1,6 @@
 # Zero-dependency Erlang RPM for RabbitMQ
 
-This is a zero dependency 64-bit Erlang RPM package that provides just enough to run RabbitMQ.
+This is a (virtually) zero dependency 64-bit Erlang RPM package that provides just enough to run RabbitMQ.
 It may be easier to install than RPMs provided by Erlang Solutions in certain environments.
 It may or may not be suitable for running other Erlang-based software or 3rd party RabbitMQ
 plugins.
@@ -13,6 +13,11 @@ The package currently targets Erlang/OTP `19.0.x`,`19.1.x` and `19.2.x`. Only 64
 
  * CentOS 7
  * CentOS 6
+
+## Inherent OpenSSL/libcrypto Dependency
+
+This package intentionally does not include OpenSSL/libcrypto. It must be provisioned separately.
+Recent Erlang versions require a modern OpenSSL version, e.g. `1.0.1`.
 
 ## Release Artifacts
 
