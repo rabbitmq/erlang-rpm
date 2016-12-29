@@ -1,5 +1,7 @@
 FROM centos:{centosfrom}
 
+RUN yum -y update && yum clean all
+
 RUN yum install -y \
   autoconf \
   gcc \
