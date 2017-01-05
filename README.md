@@ -28,22 +28,29 @@ Binary packages can be obtained [from GitHub](https://github.com/rabbitmq/erlang
 ### With Docker
      	 
      cd docker
-     # builds a CentOS 7.1.1503 Docker image with necessary toolchain
-      ./build-docker-image.sh 7.1.1503 --no-cache
+     #
+     # builds a CentOS 7 Docker image with necessary toolchain
+     # 
+      ./build-docker-image.sh 7 --no-cache
+     #
      # builds the RPM in Docker
-     ./build-rpm-in-docker.sh 7.1.1503
-    
+     #
+     ./build-rpm-in-docker.sh 7
+     #
      # Use build-image-and-rpm.sh to execute all scripts 
-     # Ex: Centos 7.1.1503 docker image and build RPM on the image:	
-     ./build-image-and-rpm.sh 7.1.1503 --no-cache
-     
-     # Ex: Centos 6 docker image and build RPM on the image::	
+     # Ex: Centos 7 docker image and build RPM on the image:
+     #
+     ./build-image-and-rpm.sh 7 --no-cache
+     #
+     # Ex: Centos 6 docker image and build RPM on the image:
+     #
      ./build-image-and-rpm.sh 6 --no-cache
-      
-       --no-cache is optional. Use it to rebuild the docker image.
+     # 
+     #  --no-cache is optional. Use it to rebuild the docker image.
+     #
 
 then find the result under `docker/build-dir-{centosversion}/RPMS/x86_64/`. 
-for example : `build-dir-7.1.1503/RPMS/x86_64/`
+for example : `build-dir-7/RPMS/x86_64/`
 
 ### Without Docker
 
