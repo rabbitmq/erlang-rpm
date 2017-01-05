@@ -1,9 +1,55 @@
 #!/bin/sh
-rm -f Dockerfile
-DIR_DOCKER_FILE=docker-centos-$1
-rm -rf $DIR_DOCKER_FILE
-mkdir  $DIR_DOCKER_FILE
-cp Dockerfile.template  $DIR_DOCKER_FILE/Dockerfile
-sed -i 's/{centosfrom}/'$1'/g' $DIR_DOCKER_FILE/Dockerfile
-sudo docker build $2 -t="erlang-rpm-build-"$1 $DIR_DOCKER_FILE 
-
+#
+#	
+#
+docker_file="Dockerfile"
+docker_template="Dockerfile.template"
+centos_version="$1"
+docker_params="$2"
+docker_dir="docker-centos-$centos_version"
+#
+#
+#
+if [ -z $centos_version ]
+then
+	echo "
+Ops: parameters error
+first: version, ex: 6 or 7
+second: --no-cache [optional]
+-----------------------------------------
+Ex: ./build-docker-image.sh 7 --no-cache
+Ex: ./build-docker-image.sh 7
+Ex: ./build-docker-image.sh 6 --no-cache
+EX: ./build-docker-image.sh 6
+"
+	exit 1
+fi
+#
+#
+#
+if [ -e "$docker_file" ]
+then
+	rm -f "$docker_file"
+fi
+#
+#
+#
+if [ -e "$docker_dir" ]
+then
+	rm -rf "$docker_dir"
+	mkdir "$docker_dir"
+else
+	mkdir "$docker_dir"
+fi
+#
+#
+#
+if [ -e "$docker_template" ]
+then
+	cp "$docker_template" "$docker_dir"/"$docker_file"
+	sed -i 's/{centosfrom}/'$centos_version'/g' "$docker_dir"/"$docker_file"
+	sudo docker build $docker_params -t="erlang-rpm-build-""$centos_version" "$docker_dir"
+fi
+#
+#
+#
