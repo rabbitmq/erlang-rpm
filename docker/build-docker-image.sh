@@ -2,15 +2,15 @@
 #
 #	
 #
-_docker_file="Dockerfile"
-_docker_temp="Dockerfile.template"
-_parameter1="$1"
-_parameter2="$2"
-_docker_dir="docker-centos-$_parameter1"
+docker_file="Dockerfile"
+docker_template="Dockerfile.template"
+centos_version="$1"
+docker_params="$2"
+docker_dir="docker-centos-$centos_version"
 #
 #
 #
-if [ -z $_parameter1 ]
+if [ -z $centos_version ]
 then
 	echo "
 Ops: parameters error
@@ -27,31 +27,28 @@ fi
 #
 #
 #
-if [ -e "$_docker_file" ]
+if [ -e "$docker_file" ]
 then
-	rm -f "$_docker_file"
+	rm -f "$docker_file"
 fi
 #
 #
 #
-if [ -e "$_docker_dir" ]
+if [ -e "$docker_dir" ]
 then
-	rm -rf "$_docker_dir"
-	mkdir "$_docker_dir"
+	rm -rf "$docker_dir"
+	mkdir "$docker_dir"
+else
+	mkdir "$docker_dir"
 fi
 #
 #
 #
-if [ -e "$_docker_temp" ]
+if [ -e "$docker_template" ]
 then
-	cp "$_docker_temp" "$_docker_dir"/"$_docker_file"
-	sed -i 's/{centosfrom}/'$1'/g' "$_docker_dir"/"$_docker_file"
-	if [ -z $_parameter2 ]
-	then
-		sudo docker build -t="erlang-rpm-build-""$_parameter1" "$_docker_dir"
-	else
-		sudo docker build "$_parameter2" -t="erlang-rpm-build-""$_parameter1" "$_docker_dir"
-	fi
+	cp "$docker_template" "$docker_dir"/"$docker_file"
+	sed -i 's/{centosfrom}/'$centos_version'/g' "$docker_dir"/"$docker_file"
+	sudo docker build $docker_params -t="erlang-rpm-build-""$centos_version" "$docker_dir"
 fi
 #
 #
