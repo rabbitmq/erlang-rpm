@@ -23,7 +23,7 @@ fi
 #
 if [ -e "$build_dir" ]
 then
-	rm -rf "$build_dir"
+	sudo rm -rf "$build_dir"
 	mkdir -p "$build_dir"
 else
 	mkdir "$build_dir"
