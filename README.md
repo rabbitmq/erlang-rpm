@@ -35,7 +35,7 @@ Binary packages can be obtained [from GitHub](https://github.com/rabbitmq/erlang
      #
      # builds the RPM in Docker
      #
-     ./build-rpm-in-docker.sh 7
+     ./build-rpm-in-docker 7
      #
      # Use build-image-and-rpm.sh to execute all scripts 
      # Ex: Centos 7 docker image and build RPM on the image:
