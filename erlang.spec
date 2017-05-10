@@ -46,6 +46,7 @@ BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRequires:	m4
+BuildRequires:	autoconf
 
 Obsoletes: erlang-docbuilder
 Provides: erlang
