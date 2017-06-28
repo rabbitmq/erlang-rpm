@@ -25,29 +25,7 @@ Binary packages can be obtained [from GitHub](https://github.com/rabbitmq/erlang
 
 To use the Bintray Yum repositories, here are the `.repo` configuration files:
 
-* To use Erlang 18.x on CentOS 6:
-
-    ```ini
-    # In /etc/yum.repos.d/rabbitmq-erlang.repo
-    [rabbitmq-erlang]
-    name=rabbitmq-erlang
-    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/6
-    gpgcheck=0
-    repo_gpgcheck=0
-    enabled=1
-    ```
-
-* To use Erlang 18.x on CentOS 7:
-
-    ```ini
-    # In /etc/yum.repos.d/rabbitmq-erlang.repo
-    [rabbitmq-erlang]
-    name=rabbitmq-erlang
-    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/7
-    gpgcheck=0
-    repo_gpgcheck=0
-    enabled=1
-    ```
+### Erlang 19.x
 
 * To use Erlang 19.x on CentOS 6:
 
@@ -72,6 +50,33 @@ To use the Bintray Yum repositories, here are the `.repo` configuration files:
     repo_gpgcheck=0
     enabled=1
     ```
+
+### Erlang 18.x
+
+* To use Erlang 18.x on CentOS 6:
+
+    ```ini
+    # In /etc/yum.repos.d/rabbitmq-erlang.repo
+    [rabbitmq-erlang]
+    name=rabbitmq-erlang
+    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/6
+    gpgcheck=0
+    repo_gpgcheck=0
+    enabled=1
+    ```
+
+* To use Erlang 18.x on CentOS 7:
+
+    ```ini
+    # In /etc/yum.repos.d/rabbitmq-erlang.repo
+    [rabbitmq-erlang]
+    name=rabbitmq-erlang
+    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/7
+    gpgcheck=0
+    repo_gpgcheck=0
+    enabled=1
+    ```
+
 
 ## Building from Source
 
