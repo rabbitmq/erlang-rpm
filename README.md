@@ -14,8 +14,57 @@ The package currently targets Erlang/OTP 18.3 (64-bit only).
 
 ## Release Artifacts
 
-Package builds are [available from rabbitmq.com](http://www.rabbitmq.com/releases/erlang/)
-and [from GitHub](https://github.com/rabbitmq/erlang-rpm/releases).
+Binary packages can be obtained [from GitHub](https://github.com/rabbitmq/erlang-rpm/releases), [Package Cloud](https://packagecloud.io/rabbitmq/erlang), and [Bintray](https://bintray.com/rabbitmq/rpm/erlang).
+
+To use the Bintray Yum repositories, here are the `.repo` configuration files:
+
+* To use Erlang 18.x on CentOS 6:
+
+    ```ini
+    # In /etc/yum.repos.d/rabbitmq-erlang.repo
+    [rabbitmq-erlang]
+    name=rabbitmq-erlang
+    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/6
+    gpgcheck=0
+    repo_gpgcheck=0
+    enabled=1
+    ```
+
+* To use Erlang 18.x on CentOS 7:
+
+    ```ini
+    # In /etc/yum.repos.d/rabbitmq-erlang.repo
+    [rabbitmq-erlang]
+    name=rabbitmq-erlang
+    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/7
+    gpgcheck=0
+    repo_gpgcheck=0
+    enabled=1
+    ```
+
+* To use Erlang 19.x on CentOS 6:
+
+    ```ini
+    # In /etc/yum.repos.d/rabbitmq-erlang.repo
+    [rabbitmq-erlang]
+    name=rabbitmq-erlang
+    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/19/el/6
+    gpgcheck=0
+    repo_gpgcheck=0
+    enabled=1
+    ```
+
+* To use Erlang 19.x on CentOS 7:
+
+    ```ini
+    # In /etc/yum.repos.d/rabbitmq-erlang.repo
+    [rabbitmq-erlang]
+    name=rabbitmq-erlang
+    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/19/el/7
+    gpgcheck=0
+    repo_gpgcheck=0
+    enabled=1
+    ```
 
 ## Building
 
