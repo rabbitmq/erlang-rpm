@@ -76,30 +76,32 @@ To use the Bintray Yum repositories, here are the `.repo` configuration files:
 ## Building from Source
 
 ### With Docker
-     	 
-     cd docker
-     #
-     # builds a CentOS 7 Docker image with necessary toolchain
-     # 
-      ./build-docker-image.sh 7 --no-cache
-     #
-     # builds the RPM in Docker
-     #
-     ./build-rpm-in-docker 7
-     #
-     # Use build-image-and-rpm.sh to execute all scripts 
-     # Ex: Centos 7 docker image and build RPM on the image:
-     #
-     ./build-image-and-rpm.sh 7 --no-cache
-     #
-     # Ex: Centos 6 docker image and build RPM on the image:
-     #
-     ./build-image-and-rpm.sh 6 --no-cache
-     # 
-     #  --no-cache is optional. Use it to rebuild the docker image.
-     #
 
-then find the result under `docker/build-dir-{centosversion}/RPMS/x86_64/`. 
+```sh
+cd docker
+#
+# builds a CentOS 7 Docker image with necessary toolchain
+#
+ ./build-docker-image.sh 7 --no-cache
+#
+# builds the RPM in Docker
+#
+./build-rpm-in-docker 7
+#
+# Use build-image-and-rpm.sh to execute all scripts
+# Ex: Centos 7 docker image and build RPM on the image:
+#
+./build-image-and-rpm.sh 7 --no-cache
+#
+# Ex: Centos 6 docker image and build RPM on the image:
+#
+./build-image-and-rpm.sh 6 --no-cache
+#
+#  --no-cache is optional. Use it to rebuild the docker image.
+#
+```
+
+then find the result under `docker/build-dir-{centosversion}/RPMS/x86_64/`.
 for example : `build-dir-7/RPMS/x86_64/`
 
 ### Without Docker
