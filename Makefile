@@ -40,6 +40,14 @@ prepare:
 erlang: prepare
 	mkdir -p $(FINAL_OUTPUT_DIR)
 	rpmbuild -vv -bb --nodeps SPECS/erlang.spec $(DEFINES)
+ifneq ($(SIGNING_KEY_ID),)
+	setsid \
+		rpm --addsign \
+		--define '_signature gpg' \
+		--define '_gpg_name $(SIGNING_KEY_ID)' \
+		RPMS/*/*.rpm \
+		< /dev/null
+endif
 	find RPMS -name "*.rpm" -exec sh -c 'mv {} `echo {} | sed 's#^RPMS\/noarch#$(FINAL_OUTPUT_DIR)#'`' ';'
 
 clean:
