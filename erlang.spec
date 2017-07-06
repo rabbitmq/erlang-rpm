@@ -11,8 +11,8 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 19.3.6.1
-%global package_ver  19.3.6.1
+%global upstream_ver 20.0.1
+%global package_ver  20.0.1
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
@@ -118,19 +118,13 @@ touch lib/diameter/SKIP
 touch lib/edoc/SKIP
 touch lib/et/SKIP
 touch lib/erl_docgen/SKIP
-touch lib/gs/SKIP
 touch lib/ic/SKIP
 touch lib/jinterface/SKIP
 touch lib/megaco/SKIP
 touch lib/observer/SKIP
 touch lib/odbc/SKIP
 touch lib/orber/SKIP
-#touch lib/ose/SKIP
-touch lib/percept/SKIP
 touch lib/ssh/SKIP
-#touch lib/test_server/SKIP
-touch lib/typer/SKIP
-#touch lib/webtool/SKIP
 touch lib/wx/SKIP
 
 make
@@ -245,7 +239,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/bin/start_sasl.boot
 %{_libdir}/erlang/bin/to_erl
 %dir %{_libdir}/erlang/erts-*/bin
-%{_libdir}/erlang/erts-*/bin/beam
 %{_libdir}/erlang/erts-*/bin/beam.smp
 %{_libdir}/erlang/erts-*/bin/erl_child_setup
 %{_libdir}/erlang/erts-*/bin/dyn_erl
@@ -346,6 +339,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Jul 6 2017 Jean-Sébastien Pédron <jean-sebastien@rabbitmq.com> - 20.0.1-1
+- Update to Erlang/OTP 20.0.1.
+
 * Mon Jul 3 2017 Gabriele Santomaggio <gabriele.santomaggio@erlang-solutions.com> - 19.3.6.1
 - update for 19.3.6.1
 
