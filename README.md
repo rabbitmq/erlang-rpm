@@ -25,7 +25,8 @@ To use the Bintray Yum repositories, here are the `.repo` configuration files:
     [rabbitmq-erlang]
     name=rabbitmq-erlang
     baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/6
-    gpgcheck=0
+    gpgcheck=1
+    gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
     repo_gpgcheck=0
     enabled=1
     ```
@@ -37,7 +38,8 @@ To use the Bintray Yum repositories, here are the `.repo` configuration files:
     [rabbitmq-erlang]
     name=rabbitmq-erlang
     baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/7
-    gpgcheck=0
+    gpgcheck=1
+    gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
     repo_gpgcheck=0
     enabled=1
     ```
@@ -49,7 +51,8 @@ To use the Bintray Yum repositories, here are the `.repo` configuration files:
     [rabbitmq-erlang]
     name=rabbitmq-erlang
     baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/19/el/6
-    gpgcheck=0
+    gpgcheck=1
+    gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
     repo_gpgcheck=0
     enabled=1
     ```
@@ -61,7 +64,8 @@ To use the Bintray Yum repositories, here are the `.repo` configuration files:
     [rabbitmq-erlang]
     name=rabbitmq-erlang
     baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/19/el/7
-    gpgcheck=0
+    gpgcheck=1
+    gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
     repo_gpgcheck=0
     enabled=1
     ```
