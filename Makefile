@@ -37,6 +37,12 @@ prepare:
 	cp erlang.spec SPECS
 	cp Erlang_ASL2_LICENSE.txt SOURCES
 	yum install -y util-linux
+	if test -f /etc/os-release; then \
+		. /etc/os-release; \
+		if test "$$ID" = 'centos' && test "$$VERSION_ID" -ge 7; then \
+			yum install -y rpm-sign; \
+		fi; \
+	fi
 
 erlang: prepare
 	mkdir -p $(FINAL_OUTPUT_DIR)
