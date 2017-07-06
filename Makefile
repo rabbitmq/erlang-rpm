@@ -36,6 +36,7 @@ prepare:
 	cp *.patch SOURCES
 	cp erlang.spec SPECS
 	cp Erlang_ASL2_LICENSE.txt SOURCES
+	yum install -y util-linux
 
 erlang: prepare
 	mkdir -p $(FINAL_OUTPUT_DIR)
