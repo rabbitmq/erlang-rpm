@@ -7,7 +7,9 @@ plugins.
 
 ## Provided Erlang/OTP Versions
 
-The package currently targets Erlang/OTP `19.0.x`,`19.1.x`,`19.2.x`, `19.3.x` and `20.0.x`. Only 64-bit packages are provided.
+The package currently targets Erlang/OTP `19.3.x` and `20.0.x`. Only 64-bit packages are provided.
+
+`19.0.x`,`19.1.x`, and `19.2.x` are also available but get not updates unless they address a critically important issue.
 
 ## Implicit OpenSSL/libcrypto Dependency
 
