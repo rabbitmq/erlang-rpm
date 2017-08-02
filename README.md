@@ -9,15 +9,17 @@ plugins.
 
 The package currently targets Erlang/OTP `19.0.x`,`19.1.x`,`19.2.x`, `19.3.x` and `20.0.x`. Only 64-bit packages are provided.
 
-## Supported CentOS Versions
-
- * CentOS 7
- * CentOS 6
-
 ## Implicit OpenSSL/libcrypto Dependency
 
 This package intentionally does not include OpenSSL/libcrypto. It must be provisioned separately.
 Recent Erlang versions require a modern OpenSSL version, e.g. `1.0.1`.
+
+## Supported CentOS Versions
+
+**Please note the implicit OpenSSL/libcrypto dependency section above**.
+
+ * CentOS 7
+ * CentOS 6
 
 ## Release Artifacts
 
