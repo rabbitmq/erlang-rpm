@@ -5,11 +5,14 @@ It may be easier to install than RPMs provided by Erlang Solutions in certain en
 It may or may not be suitable for running other Erlang-based software or 3rd party RabbitMQ
 plugins.
 
+This package has an **implicit OpenSSL/libcrypto dependency** (see below).
+
 ## Provided Erlang/OTP Versions
 
 The package currently targets Erlang/OTP `19.3.x` and `20.0.x`. Only 64-bit packages are provided.
 
-`19.0.x`,`19.1.x`, and `19.2.x` are also available but get not updates unless they address a critically important issue.
+`18.3.x`, `19.0.x`,`19.1.x`, and `19.2.x` are also available but get not updates unless
+they address a critically important issue.
 
 ## Implicit OpenSSL/libcrypto Dependency
 
@@ -18,7 +21,7 @@ Recent Erlang versions require a modern OpenSSL version, e.g. `1.0.1`.
 
 ## Supported CentOS Versions
 
-**Please note the implicit OpenSSL/libcrypto dependency section above**.
+Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
  * CentOS 7
  * CentOS 6
@@ -31,87 +34,87 @@ To use the Bintray Yum repositories, here are the `.repo` configuration files:
 
 ### Erlang 20.x
 
-* To use Erlang 20.x on CentOS 6:
+To use Erlang 20.x on CentOS 6:
 
-    ```ini
-    # In /etc/yum.repos.d/rabbitmq-erlang.repo
-    [rabbitmq-erlang]
-    name=rabbitmq-erlang
-    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/20/el/6
-    gpgcheck=1
-    gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
-    repo_gpgcheck=0
-    enabled=1
-    ```
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/20/el/6
+gpgcheck=1
+gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
 
-* To use Erlang 20.x on CentOS 7:
+To use Erlang 20.x on CentOS 7:
 
-    ```ini
-    # In /etc/yum.repos.d/rabbitmq-erlang.repo
-    [rabbitmq-erlang]
-    name=rabbitmq-erlang
-    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/20/el/7
-    gpgcheck=1
-    gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
-    repo_gpgcheck=0
-    enabled=1
-    ```
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/20/el/7
+gpgcheck=1
+gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
 
 ### Erlang 19.x
 
-* To use Erlang 19.x on CentOS 6:
+To use Erlang 19.x on CentOS 6:
 
-    ```ini
-    # In /etc/yum.repos.d/rabbitmq-erlang.repo
-    [rabbitmq-erlang]
-    name=rabbitmq-erlang
-    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/19/el/6
-    gpgcheck=1
-    gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
-    repo_gpgcheck=0
-    enabled=1
-    ```
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/19/el/6
+gpgcheck=1
+gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
 
-* To use Erlang 19.x on CentOS 7:
+To use Erlang 19.x on CentOS 7:
 
-    ```ini
-    # In /etc/yum.repos.d/rabbitmq-erlang.repo
-    [rabbitmq-erlang]
-    name=rabbitmq-erlang
-    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/19/el/7
-    gpgcheck=1
-    gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
-    repo_gpgcheck=0
-    enabled=1
-    ```
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/19/el/7
+gpgcheck=1
+gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
 
 ### Erlang 18.x
 
-* To use Erlang 18.x on CentOS 6:
+To use Erlang 18.x on CentOS 6:
 
-    ```ini
-    # In /etc/yum.repos.d/rabbitmq-erlang.repo
-    [rabbitmq-erlang]
-    name=rabbitmq-erlang
-    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/6
-    gpgcheck=1
-    gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
-    repo_gpgcheck=0
-    enabled=1
-    ```
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/6
+gpgcheck=1
+gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
 
-* To use Erlang 18.x on CentOS 7:
+To use Erlang 18.x on CentOS 7:
 
-    ```ini
-    # In /etc/yum.repos.d/rabbitmq-erlang.repo
-    [rabbitmq-erlang]
-    name=rabbitmq-erlang
-    baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/7
-    gpgcheck=1
-    gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
-    repo_gpgcheck=0
-    enabled=1
-    ```
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/7
+gpgcheck=1
+gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
 
 
 ## Building from Source
