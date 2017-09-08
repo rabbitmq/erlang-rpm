@@ -30,9 +30,13 @@ Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
 Binary packages can be obtained [from GitHub](https://github.com/rabbitmq/erlang-rpm/releases), [Package Cloud](https://packagecloud.io/rabbitmq/erlang), and [Bintray](https://bintray.com/rabbitmq/rpm/erlang).
 
+Yum repositories are available from Bintray and [Package Cloud](https://packagecloud.io/rabbitmq/erlang/).
+
+### Bintray Yum Repositories
+
 To use the Bintray Yum repositories, here are the `.repo` configuration files:
 
-### Erlang 20.x
+#### Erlang 20.x
 
 To use Erlang 20.x on CentOS 6:
 
@@ -60,7 +64,7 @@ repo_gpgcheck=0
 enabled=1
 ```
 
-### Erlang 19.x
+#### Erlang 19.x
 
 To use Erlang 19.x on CentOS 6:
 
@@ -88,7 +92,7 @@ repo_gpgcheck=0
 enabled=1
 ```
 
-### Erlang 18.x
+#### Erlang 18.x
 
 To use Erlang 18.x on CentOS 6:
 
@@ -114,6 +118,68 @@ gpgcheck=1
 gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
 repo_gpgcheck=0
 enabled=1
+```
+
+### Package Cloud
+
+Package Cloud supports a variety of options for RPM package installation: from Yum configuration to shell scripts
+to Chef and Puppet.
+
+See [Package Cloud repository installation](https://packagecloud.io/rabbitmq/erlang/install) page
+for details.
+
+To use the most recent version on CentOS 7:
+
+``` ini
+# In /etc/yum.repos.d/rabbitmq_erlang.repo
+[rabbitmq_erlang]
+name=rabbitmq_erlang
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/7/$basearch
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+[rabbitmq_erlang-source]
+name=rabbitmq_erlang-source
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/7/SRPMS
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+```
+
+To use the most recent version on CentOS 6:
+
+``` ini
+# In /etc/yum.repos.d/rabbitmq_erlang.repo
+[rabbitmq_erlang]
+name=rabbitmq_erlang
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/6/$basearch
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+[rabbitmq_erlang-source]
+name=rabbitmq_erlang-source
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/6/SRPMS
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
 ```
 
 
