@@ -11,7 +11,7 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 20.1.0
+%global upstream_ver 20.1
 %global package_ver  20.1.0
 %global package_ver_release 1
 
@@ -339,7 +339,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Thu Sep 26 2017 Michael Klishin <michael@rabbitmq.com.com> - 20.1.0
+* Tue Sep 26 2017 Michael Klishin <michael@rabbitmq.com.com> - 20.1.0
 - Update to Erlang/OTP 20.1.
 
 * Thu Sep 14 2017 Gabriele Santomaggio <gabriele.santomaggio@erlang-solutions.com> - 20.0.5
@@ -432,7 +432,7 @@ rm -rf $RPM_BUILD_ROOT
 * Fri Oct 23 2015 Gabriele Santomaggio <gabriele.santomaggio@erlang-solutions.com> - 18.1
 - Fixed build for 18.1
 
-* Thu Oct 13 2015 Michael Klishin <michael@rabbitmq.com> - 18.1
+* Tue Oct 13 2015 Michael Klishin <michael@rabbitmq.com> - 18.1
 - Updates for 18.1
 
 * Thu Sep 06 2012 Emile Joubert <emile@rabbitmq.com> - R15B-02.1
