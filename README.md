@@ -38,6 +38,8 @@ To use the Bintray Yum repositories, here are the `.repo` configuration files:
 
 #### Erlang 20.x
 
+Note that [OTP 20 is supported by RabbitMQ starting with version 3.6.11](https://groups.google.com/forum/#!msg/rabbitmq-users/_imbAavBYjY/S0LkV7b8CAAJ).
+
 To use Erlang 20.x on CentOS 6:
 
 ```ini
