@@ -12,7 +12,7 @@
 # under the License.
 
 %global upstream_ver 20.1
-%global package_ver  20.1.0
+%global package_ver  20.1
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
