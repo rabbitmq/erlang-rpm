@@ -94,34 +94,6 @@ repo_gpgcheck=0
 enabled=1
 ```
 
-#### Erlang 18.x
-
-To use Erlang 18.x on CentOS 6:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/6
-gpgcheck=1
-gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
-To use Erlang 18.x on CentOS 7:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/18/el/7
-gpgcheck=1
-gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
 ### Package Cloud
 
 Package Cloud supports a variety of options for RPM package installation: from Yum configuration to shell scripts
