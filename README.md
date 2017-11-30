@@ -40,19 +40,6 @@ To use the Bintray Yum repositories, here are the `.repo` configuration files:
 
 Note that [OTP 20 is supported by RabbitMQ starting with version 3.6.11](https://groups.google.com/forum/#!msg/rabbitmq-users/_imbAavBYjY/S0LkV7b8CAAJ).
 
-To use Erlang 20.x on CentOS 6:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/20/el/6
-gpgcheck=1
-gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
 To use Erlang 20.x on CentOS 7:
 
 ```ini
@@ -66,20 +53,20 @@ repo_gpgcheck=0
 enabled=1
 ```
 
-#### Erlang 19.x
-
-To use Erlang 19.x on CentOS 6:
+To use Erlang 20.x on CentOS 6:
 
 ```ini
 # In /etc/yum.repos.d/rabbitmq-erlang.repo
 [rabbitmq-erlang]
 name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/19/el/6
+baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/20/el/6
 gpgcheck=1
 gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
 repo_gpgcheck=0
 enabled=1
 ```
+
+#### Erlang 19.x
 
 To use Erlang 19.x on CentOS 7:
 
@@ -88,6 +75,19 @@ To use Erlang 19.x on CentOS 7:
 [rabbitmq-erlang]
 name=rabbitmq-erlang
 baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/19/el/7
+gpgcheck=1
+gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
+
+To use Erlang 19.x on CentOS 6:
+
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/19/el/6
 gpgcheck=1
 gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
 repo_gpgcheck=0
