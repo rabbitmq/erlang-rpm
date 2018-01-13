@@ -10,10 +10,10 @@ diff -u -r otp_src_19.0-a/lib/asn1/c_src/Makefile otp_src_19.0/lib/asn1/c_src/Ma
 
  release_docs_spec:
 
-diff -u -r otp_src_19.0-a/lib/crypto/c_src/Makefile.in otp_src_19.0/lib/crypto/c_src/Makefile.in
---- otp_src_19.0-a/lib/crypto/c_src/Makefile.in	2016-07-15 12:32:53.000000000 +0200
-+++ otp_src_19.0/lib/crypto/c_src/Makefile.in	2016-07-15 13:32:32.000000000 +0200
-@@ -195,13 +195,10 @@
+diff -u 20.2.2-orig/lib/crypto/c_src/Makefile.in 20.2.2-patched/lib/crypto/c_src/Makefile.in
+--- 20.2.2-orig/lib/crypto/c_src/Makefile.in	2018-01-14 02:53:48.000000000 +0300
++++ 20.2.2-patched/lib/crypto/c_src/Makefile.in	2018-01-14 02:53:56.000000000 +0300
+@@ -216,16 +216,12 @@
  include $(ERL_TOP)/make/otp_release_targets.mk
 
  release_spec: opt
@@ -26,6 +26,10 @@ diff -u -r otp_src_19.0-a/lib/crypto/c_src/Makefile.in otp_src_19.0/lib/crypto/c
 -	$(INSTALL_PROGRAM) $(CALLBACK_OBJS) "$(RELSYSDIR)/priv/obj"
  	$(INSTALL_PROGRAM) $(CALLBACK_LIB) "$(RELSYSDIR)/priv/lib"
  endif
+-	$(INSTALL_PROGRAM) $(TEST_ENGINE_OBJS) "$(RELSYSDIR)/priv/obj"
+ 	$(INSTALL_PROGRAM) $(TEST_ENGINE_LIB) "$(RELSYSDIR)/priv/lib"
+
+ release_docs_spec:
 
 diff -u -r otp_src_18.3-a/lib/erl_interface/src/Makefile.in otp_src_18.3/lib/erl_interface/src/Makefile.in
 --- otp_src_18.3-a/lib/erl_interface/src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
@@ -59,14 +63,14 @@ diff -u -r otp_src_18.3-a/lib/erl_interface/src/Makefile.in otp_src_18.3/lib/erl
 -	$(INSTALL_DATA) registry/*.[ch] "$(RELSYSDIR)/src/registry"
 -	$(INSTALL_DATA) legacy/*.[ch]   "$(RELSYSDIR)/src/legacy"
 -	$(INSTALL_DATA) prog/*.[ch]     "$(RELSYSDIR)/src/prog"
- 
+
  release_docs:
- 
+
 diff -u -r otp_src_18.3-a/lib/os_mon/c_src/Makefile.in otp_src_18.3/lib/os_mon/c_src/Makefile.in
 --- otp_src_18.3-a/lib/os_mon/c_src/Makefile.in	2014-12-09 20:11:07.000000000 +0000
 +++ otp_src_18.3/lib/os_mon/c_src/Makefile.in	2015-01-14 12:46:50.568524945 +0000
 @@ -126,7 +126,6 @@
- 
+
  release_spec: opt
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(C_FILES) "$(RELSYSDIR)/src"
