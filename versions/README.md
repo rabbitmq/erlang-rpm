@@ -1,4 +1,4 @@
-# OTP Version Patches
+# Patches per OTP Version
 
 This directory primarily exists for archiving purposes.
 
