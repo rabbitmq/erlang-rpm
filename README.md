@@ -157,6 +157,36 @@ metadata_expire=300
 ```
 
 
+## Available Erlang Applications
+
+This package removes certain Erlang/OTP components that are non-essential
+for running RabbitMQ but can greatly complicate installation process by bringing
+in complicated dependencies.
+
+Only the following OTP applications are provided:
+
+ * asn1
+ * compiler
+ * crypto
+ * erl_interface
+ * erts
+ * hipe
+ * inets
+ * kernel
+ * mnesia
+ * os_mon
+ * otp_mibs
+ * public_key
+ * reltool
+ * runtime_tools
+ * sasl
+ * snmp
+ * ssl
+ * stdlib
+ * syntax_tools
+ * xmerl
+
+
 ## Building from Source
 
 ### With Docker
@@ -196,9 +226,63 @@ You must be running an RPMish distro for this to work.
 
 and see `RPMS/x86_64/`.
 
-### Previous Versions
 
-The directory `versions` contains the patch files used for the old versions.
+### Patched Files
+
+The patches applied affect the following files:
+
+ * [erts/etc/common/Makefile.in](https://github.com/erlang/otp/commits/maint/erts/etc/common/Makefile.in)
+ * [erts/etc/unix/Install.src](https://github.com/erlang/otp/commits/maint/erts/etc/unix/Install.src)
+ * [erts/preloaded/src/Makefile](https://github.com/erlang/otp/commits/maint/erts/preloaded/src/Makefile)
+ * [lib/asn1/c_src/Makefile](https://github.com/erlang/otp/commits/maint/lib/asn1/c_src/Makefile)
+ * [lib/asn1/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/asn1/src/Makefile)
+ * [lib/compiler/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/compiler/src/Makefile)
+ * [lib/crypto/c_src/Makefile.in](https://github.com/erlang/otp/commits/maint/lib/crypto/c_src/Makefile.in)
+ * [lib/crypto/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/crypto/src/Makefile)
+ * [lib/crypto/priv/Makefile](https://github.com/erlang/otp/commits/maint/lib/crypto/priv/Makefile)
+ * [lib/debugger/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/debugger/src/Makefile)
+ * [lib/edoc/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/edoc/src/Makefile)
+ * [lib/erl_docgen/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/erl_docgen/src/Makefile)
+ * [lib/erl_interface/src/Makefile.in](https://github.com/erlang/otp/commits/maint/lib/erl_interface/src/Makefile.in)
+ * [lib/hipe/cerl/Makefile](https://github.com/erlang/otp/commits/maint/lib/hipe/cerl/Makefile)
+ * [lib/hipe/flow/Makefile](https://github.com/erlang/otp/commits/maint/lib/hipe/flow/Makefile)
+ * [lib/hipe/icode/Makefile](https://github.com/erlang/otp/commits/maint/lib/hipe/icode/Makefile)
+ * [lib/hipe/main/Makefile](https://github.com/erlang/otp/commits/maint/lib/hipe/main/Makefile)
+ * [lib/hipe/misc/Makefile](https://github.com/erlang/otp/commits/maint/lib/hipe/misc/Makefile)
+ * [lib/hipe/rtl/Makefile](https://github.com/erlang/otp/commits/maint/lib/hipe/rtl/Makefile)
+ * [lib/hipe/util/Makefile](https://github.com/erlang/otp/commits/maint/lib/hipe/util/Makefile)
+ * [lib/inets/src/ftp/Makefile](https://github.com/erlang/otp/commits/maint/lib/inets/src/ftp/Makefile)
+ * [lib/inets/src/http_client/Makefile](https://github.com/erlang/otp/commits/maint/lib/inets/src/http_client/Makefile)
+ * [lib/inets/src/http_lib/Makefile](https://github.com/erlang/otp/commits/maint/lib/inets/src/http_lib/Makefile)
+ * [lib/inets/src/http_server/Makefile](https://github.com/erlang/otp/commits/maint/lib/inets/src/http_server/Makefile)
+ * [lib/inets/src/inets_app/Makefile](https://github.com/erlang/otp/commits/maint/lib/inets/src/inets_app/Makefile)
+ * [lib/kernel/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/kernel/src/Makefile)
+ * [lib/mnesia/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/mnesia/src/Makefile)
+ * [lib/os_mon/c_src/Makefile.in](https://github.com/erlang/otp/commits/maint/lib/os_mon/c_src/Makefile.in)
+ * [lib/os_mon/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/os_mon/src/Makefile)
+ * [lib/otp_mibs/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/otp_mibs/src/Makefile)
+ * [lib/parsetools/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/parsetools/src/Makefile)
+ * [lib/public_key/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/public_key/src/Makefile)
+ * [lib/reltool/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/reltool/src/Makefile)
+ * [lib/runtime_tools/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/runtime_tools/src/Makefile)
+ * [lib/sasl/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/sasl/src/Makefile)
+ * [lib/snmp/src/agent/Makefile](https://github.com/erlang/otp/commits/maint/lib/snmp/src/agent/Makefile)
+ * [lib/snmp/src/app/Makefile](https://github.com/erlang/otp/commits/maint/lib/snmp/src/app/Makefile)
+ * [lib/snmp/src/compile/Makefile](https://github.com/erlang/otp/commits/maint/lib/snmp/src/compile/Makefile)
+ * [lib/snmp/src/manager/Makefile](https://github.com/erlang/otp/commits/maint/lib/snmp/src/manager/Makefile)
+ * [lib/snmp/src/misc/Makefile](https://github.com/erlang/otp/commits/maint/lib/snmp/src/misc/Makefile)
+ * [lib/ssl/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/ssl/src/Makefile)
+ * [lib/stdlib/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/stdlib/src/Makefile)
+ * [lib/syntax_tools/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/syntax_tools/src/Makefile)
+ * [lib/tools/c_src/Makefile.in](https://github.com/erlang/otp/commits/maint/lib/tools/c_src/Makefile.in)
+ * [lib/tools/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/tools/src/Makefile)
+ * [lib/xmerl/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/xmerl/src/Makefile)
+
+
+### Older Versions
+
+The directory `versions` contains the patch files used for the older versions. Git repository
+history can be useful as well.
 
 
 ## Copyright and License
