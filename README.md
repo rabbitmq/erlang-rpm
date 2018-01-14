@@ -48,7 +48,7 @@ To use Erlang 20.x on CentOS 7:
 name=rabbitmq-erlang
 baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/20/el/7
 gpgcheck=1
-gpgkey=https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
 repo_gpgcheck=0
 enabled=1
 ```
