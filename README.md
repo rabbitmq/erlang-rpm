@@ -168,6 +168,7 @@ Only the following OTP applications are provided:
  * asn1
  * compiler
  * crypto
+ * eldap
  * erl_interface
  * erts
  * hipe
