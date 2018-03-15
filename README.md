@@ -9,9 +9,9 @@ This package has an **implicit OpenSSL/libcrypto dependency** (see below).
 
 ## Provided Erlang/OTP Versions
 
-The package currently targets Erlang/OTP `20.2.x` and `20.1.x`, `19.3.x`. Only 64-bit packages are provided.
+The package currently targets Erlang/OTP `20.3.x`, `20.2.x`, `19.3.x`. Only 64-bit packages are provided.
 
-`18.3.x`, `19.0.x`,`19.1.x`, and `19.2.x` are also available but get not updates unless
+Earlier releases going all the way to `18.3.x` are also available but get not updates unless
 they address a critically important issue.
 
 ## Implicit OpenSSL/libcrypto Dependency
@@ -194,38 +194,38 @@ Only the following OTP applications are provided:
 
 ```sh
 cd docker
+
 #
-# builds a CentOS 7 Docker image with necessary toolchain
-#
- ./build-docker-image.sh 7 --no-cache
-#
-# builds the RPM in Docker
-#
-./build-rpm-in-docker 7
-#
-# Use build-image-and-rpm.sh to execute all scripts
-# Ex: Centos 7 docker image and build RPM on the image:
+# Use build-image-and-rpm.sh to execute all scripts:
+# build a Centos 7 image and build the RPM using it
 #
 ./build-image-and-rpm.sh 7 --no-cache
+
 #
-# Ex: Centos 6 docker image and build RPM on the image:
+# To only build a CentOS 7 Docker image with necessary toolchain
 #
-./build-image-and-rpm.sh 6 --no-cache
+ ./build-docker-image.sh 7 --no-cache
+ 
 #
-#  --no-cache is optional. Use it to rebuild the docker image.
+# To only build the RPM using an already built and available image
 #
+./build-rpm-in-docker 7
 ```
 
-then find the result under `docker/build-dir-{centosversion}/RPMS/x86_64/`.
-for example : `build-dir-7/RPMS/x86_64/`
+then find the result under `docker/build-dir-{CentOSVersion}/RPMS/x86_64/`,
+e.g. `build-dir-7/RPMS/x86_64/`.
+
+For CentOS 6, replace the `7` in the examples above with a `6`.
+
 
 ### Without Docker
 
-You must be running an RPMish distro for this to work.
+You must be running an RPM-based distro (CentOS 7 or equivalent RHEL is highly recommended) for this to work.
 
-    make
+    sudo make
 
-and see `RPMS/x86_64/`.
+and see `RPMS/x86_64/`. Note that all artifacts created this way may be owned by root
+due to the use of `sudo`.
 
 
 ### Patched Files
