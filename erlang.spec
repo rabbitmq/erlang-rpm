@@ -1,4 +1,4 @@
-# Copyright Pivotal Software, Inc. 2012-2015. All Rights Reserved.
+# Copyright Pivotal Software, Inc. 2012-2018. All Rights Reserved.
 #
 # The contents of this file are subject to the Erlang Public License,
 # Version 1.1, (the "License"); you may not use this file except in
@@ -11,7 +11,7 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 19.3.6.8
+%global upstream_ver 19.3.6.9
 %global package_ver  19.3.6.8
 %global package_ver_release 1
 
@@ -346,6 +346,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jun 5 2018 Michael Klishin <mklishin@pivotal.io> - 19.3.6.9
+- update for 19.3.6.9
+
 * Mon Apr 9 2018 Michael Klishin <mklishin@pivotal.io> - 19.3.6.8
 - update for 19.3.6.8
 
