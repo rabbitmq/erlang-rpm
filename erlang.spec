@@ -342,37 +342,37 @@ rm -rf $RPM_BUILD_ROOT
 * Fri Jun 8 2018 Michael Klishin <mklishin@pivotal.io> - 20.3.7
 - Update to Erlang/OTP 20.3.7.
 
-* Fri May 18 2018 Michael Klishin <mmklishin@pivotal.io> - 20.3.6
+* Fri May 18 2018 Michael Klishin <mklishin@pivotal.io> - 20.3.6
 - Update to Erlang/OTP 20.3.6.
 
-* Fri Apr 20 2018 Michael Klishin <mmklishin@pivotal.io> - 20.3.4
+* Fri Apr 20 2018 Michael Klishin <mklishin@pivotal.io> - 20.3.4
 - Update to Erlang/OTP 20.3.4.
 
-* Wed Mar 14 2018 Michael Klishin <mmklishin@pivotal.io> - 20.3
+* Wed Mar 14 2018 Michael Klishin <mklishin@pivotal.io> - 20.3
 - Update to Erlang/OTP 20.3.
 
-* Tue Feb 13 2018 Michael Klishin <mmklishin@pivotal.io> - 20.2.3
+* Tue Feb 13 2018 Michael Klishin <mklishin@pivotal.io> - 20.2.3
 - Update to Erlang/OTP 20.2.3.
 
-* Sun Jan 14 2018 Michael Klishin <mmklishin@pivotal.io> - 20.2.2
+* Sun Jan 14 2018 Michael Klishin <mklishin@pivotal.io> - 20.2.2
 - Update to Erlang/OTP 20.2.2.
 
-* Wed Dec 13 2017 Michael Klishin <mmklishin@pivotal.io> - 20.1.7.1
+* Wed Dec 13 2017 Michael Klishin <mklishin@pivotal.io> - 20.1.7.1
 - Update to Erlang/OTP 20.1.7.
 
-* Wed Nov 29 2017 Michael Klishin <mmklishin@pivotal.io> - 20.1.7
+* Wed Nov 29 2017 Michael Klishin <mklishin@pivotal.io> - 20.1.7
 - Update to Erlang/OTP 20.1.7.
 
-* Fri Nov 10 2017 Michael Klishin <mmklishin@pivotal.io> - 20.1.5
+* Fri Nov 10 2017 Michael Klishin <mklishin@pivotal.io> - 20.1.5
 - Update to Erlang/OTP 20.1.5.
 
-* Thu Nov 2 2017 Michael Klishin <mmklishin@pivotal.io> - 20.1.4
+* Thu Nov 2 2017 Michael Klishin <mklishin@pivotal.io> - 20.1.4
 - Update to Erlang/OTP 20.1.4.
 
-* Wed Oct 11 2017 Michael Klishin <mmklishin@pivotal.io> - 20.1.2
+* Wed Oct 11 2017 Michael Klishin <mklishin@pivotal.io> - 20.1.2
 - Update to Erlang/OTP 20.1.2.
 
-* Fri Oct 6 2017 Michael Klishin <mmklishin@pivotal.io> - 20.1.1
+* Fri Oct 6 2017 Michael Klishin <mklishin@pivotal.io> - 20.1.1
 - Update to Erlang/OTP 20.1.1.
 
 * Tue Sep 26 2017 Michael Klishin <mklishin@pivotal.io> - 20.1.0
