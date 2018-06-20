@@ -71,7 +71,7 @@ syntax_tools and xmerl.
 %patch1 -p1 -b .Do_not_format_man_pages_and_do_not_install_miscellan
 %patch2 -p1 -b .Remove_rpath
 %patch3 -p1 -b .Do_not_install_C_sources
-%patch7 -p1 -b .Do_not_install_erlang_sources
+%patch7 -p1 -F1 -b .Do_not_install_erlang_sources
 
 # remove shipped zlib sources
 # commented out because centos only has 1.2.3 and Erlang 18.1 needs a later version
@@ -105,26 +105,19 @@ make clean
 cp %{S:2} %{_pivotal_license_file}
 
 touch lib/common_test/SKIP
-touch lib/cosEvent/SKIP
-touch lib/cosEventDomain/SKIP
-touch lib/cosFileTransfer/SKIP
-touch lib/cosNotification/SKIP
-touch lib/cosProperty/SKIP
-touch lib/cosTime/SKIP
-touch lib/cosTransactions/SKIP
 touch lib/debugger/SKIP
 touch lib/dialyzer/SKIP
 touch lib/diameter/SKIP
 touch lib/edoc/SKIP
 touch lib/et/SKIP
 touch lib/erl_docgen/SKIP
-touch lib/ic/SKIP
+touch lib/ftp/SKIP
 touch lib/jinterface/SKIP
 touch lib/megaco/SKIP
 touch lib/observer/SKIP
 touch lib/odbc/SKIP
-touch lib/orber/SKIP
 touch lib/ssh/SKIP
+touch lib/tftp/SKIP
 touch lib/wx/SKIP
 
 make

@@ -252,7 +252,6 @@ The patches applied affect the following files:
  * [lib/hipe/misc/Makefile](https://github.com/erlang/otp/commits/maint/lib/hipe/misc/Makefile)
  * [lib/hipe/rtl/Makefile](https://github.com/erlang/otp/commits/maint/lib/hipe/rtl/Makefile)
  * [lib/hipe/util/Makefile](https://github.com/erlang/otp/commits/maint/lib/hipe/util/Makefile)
- * [lib/inets/src/ftp/Makefile](https://github.com/erlang/otp/commits/maint/lib/inets/src/ftp/Makefile)
  * [lib/inets/src/http_client/Makefile](https://github.com/erlang/otp/commits/maint/lib/inets/src/http_client/Makefile)
  * [lib/inets/src/http_lib/Makefile](https://github.com/erlang/otp/commits/maint/lib/inets/src/http_lib/Makefile)
  * [lib/inets/src/http_server/Makefile](https://github.com/erlang/otp/commits/maint/lib/inets/src/http_server/Makefile)
