@@ -36,9 +36,39 @@ Yum repositories are available from [Bintray](https://bintray.com/rabbitmq/rpm/e
 
 To use the Bintray Yum repositories, here are the `.repo` configuration files:
 
+#### Erlang 21.x
+
+Note that [Erlang/OTP 21 is supported by RabbitMQ starting with version 3.7.7](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.7).
+
+To use Erlang 21.x on CentOS 7:
+
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/21/el/7
+gpgcheck=1
+gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
+
+To use Erlang 21.x on CentOS 6:
+
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/21/el/6
+gpgcheck=1
+gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
+
 #### Erlang 20.x
 
-Note that [OTP 20 is supported by RabbitMQ starting with version 3.6.11](https://groups.google.com/forum/#!msg/rabbitmq-users/_imbAavBYjY/S0LkV7b8CAAJ).
+Note that [Erlang/OTP 20 is supported by RabbitMQ starting with version 3.6.11](https://groups.google.com/forum/#!msg/rabbitmq-users/_imbAavBYjY/S0LkV7b8CAAJ).
 
 To use Erlang 20.x on CentOS 7:
 
