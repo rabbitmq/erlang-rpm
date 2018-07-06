@@ -9,7 +9,7 @@ This package has an **implicit OpenSSL/libcrypto dependency** (see below).
 
 ## Provided Erlang/OTP Versions
 
-The package currently targets Erlang/OTP `20.3.x`, `20.2.x`, `19.3.x`. Only 64-bit packages are provided.
+The package currently targets Erlang/OTP `21.0.x`, `20.3.x`, `19.3.x`. Only 64-bit packages are provided.
 
 Earlier releases going all the way to `18.3.x` are also available but get not updates unless
 they address a critically important issue.
