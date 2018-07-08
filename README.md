@@ -28,9 +28,9 @@ Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
 ## Release Artifacts
 
-Binary packages can be obtained [from Bintray](https://bintray.com/rabbitmq/rpm/erlang) and [GitHub](https://github.com/rabbitmq/erlang-rpm/releases).
+Yum repositories are available from [Bintray](https://bintray.com/rabbitmq/rpm/erlang) and [Package Cloud](https://packagecloud.io/rabbitmq/erlang/) (see repository setup instructions below).
 
-Yum repositories are available from [Bintray](https://bintray.com/rabbitmq/rpm/erlang) and [Package Cloud](https://packagecloud.io/rabbitmq/erlang/).
+RPM packages can be downloaded [from Bintray](https://bintray.com/rabbitmq/rpm/erlang) and [GitHub](https://github.com/rabbitmq/erlang-rpm/releases).
 
 ### Bintray Yum Repositories
 
