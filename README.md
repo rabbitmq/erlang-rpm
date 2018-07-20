@@ -319,5 +319,5 @@ history can be useful as well.
 
 (c) 2011-current Pivotal Software, Inc.
 
-Released under the [Apache Software License 2.0](https://github.com/rabbitmq/erlang-rpm-packaging/blob/master/Erlang_ASL2_LICENSE.txt),
+Released under the [Apache Software License 2.0](./Erlang_ASL2_LICENSE.txt),
 same as Erlang/OTP starting with 18.0.
