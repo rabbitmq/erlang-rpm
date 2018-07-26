@@ -1,11 +1,13 @@
 # Zero-dependency Erlang RPM for RabbitMQ
 
-This is a (virtually) zero dependency 64-bit Erlang RPM package that provides just enough to run RabbitMQ.
-It may be easier to install than RPMs provided by Erlang Solutions in certain environments.
+This is a (virtually) zero dependency 64-bit Erlang RPM package that provides **just enough to run RabbitMQ**.
+It may be easier to install than other Erlang RPMs in most environments.
 It may or may not be suitable for running other Erlang-based software or 3rd party RabbitMQ
 plugins.
 
 This package has an **implicit OpenSSL/libcrypto dependency** (see below).
+
+Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://github.com/rabbitmq/erlang-debian-package/).
 
 ## Provided Erlang/OTP Versions
 
