@@ -1,4 +1,4 @@
-# Copyright Pivotal Software, Inc. 2012-2015. All Rights Reserved.
+# Copyright Pivotal Software, Inc. 2012-2018. All Rights Reserved.
 #
 # The contents of this file are subject to the Erlang Public License,
 # Version 1.1, (the "License"); you may not use this file except in
@@ -13,7 +13,7 @@
 
 FINAL_OUTPUT_DIR=FINAL_RPMS
 
-OTP_RELEASE=21.0.4
+OTP_RELEASE=21.0.5
 
 # Where official Erlang distribution files come from...
 OTP_SRC_TGZ_FILE=OTP-$(OTP_RELEASE).tar.gz
