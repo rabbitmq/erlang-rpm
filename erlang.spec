@@ -332,6 +332,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 3 2018 Michael Klishin <mklishin@pivotal.io> - 21.0.7
+- Update to Erlang/OTP 21.0.7.
+
 * Wed Aug 29 2018 Michael Klishin <mklishin@pivotal.io> - 21.0.6
 - Update to Erlang/OTP 21.0.6.
 
