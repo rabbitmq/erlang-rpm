@@ -16,6 +16,7 @@ The package currently targets Erlang/OTP `21.1.x`, `21.0.x`, `20.3.x`, `19.3.x`.
 Some earlier releases are available but [highly discouraged](http://www.rabbitmq.com/which-erlang.html) due to known
 bugs that are catastrophic to RabbitMQ.
 
+
 ## Implicit OpenSSL/libcrypto Dependency
 
 This package intentionally does not include OpenSSL/libcrypto. It must be provisioned separately.
@@ -30,9 +31,76 @@ Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
 ## Release Artifacts
 
-Yum repositories are available from [Bintray](https://bintray.com/rabbitmq/rpm/erlang) and [Package Cloud](https://packagecloud.io/rabbitmq/erlang/) (see repository setup instructions below).
+Yum repositories are available from [Package Cloud](https://packagecloud.io/rabbitmq/erlang/) and [Bintray](https://bintray.com/rabbitmq/rpm/erlang) and  (see repository setup instructions below).
 
-RPM packages can be downloaded [from Bintray](https://bintray.com/rabbitmq/rpm/erlang) and [GitHub](https://github.com/rabbitmq/erlang-rpm/releases).
+RPM packages can be downloaded [from GitHub](https://github.com/rabbitmq/erlang-rpm/releases).
+
+### Package Cloud
+
+#### Erlang 21.x
+
+Note that [Erlang/OTP 21 is supported by RabbitMQ starting with version 3.7.7](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.7).
+
+Package Cloud supports a variety of options for RPM package installation: from Yum configuration to shell scripts
+to Chef and Puppet.
+
+See [Package Cloud repository installation](https://packagecloud.io/rabbitmq/erlang/install) page
+for details.
+
+To use the most recent version on CentOS 7:
+
+``` ini
+# In /etc/yum.repos.d/rabbitmq_erlang.repo
+[rabbitmq_erlang]
+name=rabbitmq_erlang
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/7/$basearch
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+[rabbitmq_erlang-source]
+name=rabbitmq_erlang-source
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/7/SRPMS
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+```
+
+To use the most recent version on CentOS 6:
+
+``` ini
+# In /etc/yum.repos.d/rabbitmq_erlang.repo
+[rabbitmq_erlang]
+name=rabbitmq_erlang
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/6/$basearch
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+[rabbitmq_erlang-source]
+name=rabbitmq_erlang-source
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/6/SRPMS
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+```
+
 
 ### Bintray Yum Repositories
 
@@ -126,68 +194,6 @@ repo_gpgcheck=0
 enabled=1
 ```
 
-### Package Cloud
-
-Package Cloud supports a variety of options for RPM package installation: from Yum configuration to shell scripts
-to Chef and Puppet.
-
-See [Package Cloud repository installation](https://packagecloud.io/rabbitmq/erlang/install) page
-for details.
-
-To use the most recent version on CentOS 7:
-
-``` ini
-# In /etc/yum.repos.d/rabbitmq_erlang.repo
-[rabbitmq_erlang]
-name=rabbitmq_erlang
-baseurl=https://packagecloud.io/rabbitmq/erlang/el/7/$basearch
-repo_gpgcheck=1
-gpgcheck=0
-enabled=1
-gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-
-[rabbitmq_erlang-source]
-name=rabbitmq_erlang-source
-baseurl=https://packagecloud.io/rabbitmq/erlang/el/7/SRPMS
-repo_gpgcheck=1
-gpgcheck=0
-enabled=1
-gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-```
-
-To use the most recent version on CentOS 6:
-
-``` ini
-# In /etc/yum.repos.d/rabbitmq_erlang.repo
-[rabbitmq_erlang]
-name=rabbitmq_erlang
-baseurl=https://packagecloud.io/rabbitmq/erlang/el/6/$basearch
-repo_gpgcheck=1
-gpgcheck=0
-enabled=1
-gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-
-[rabbitmq_erlang-source]
-name=rabbitmq_erlang-source
-baseurl=https://packagecloud.io/rabbitmq/erlang/el/6/SRPMS
-repo_gpgcheck=1
-gpgcheck=0
-enabled=1
-gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-```
-
 
 ## Available Erlang Applications
 
@@ -237,7 +243,7 @@ cd docker
 # To only build a CentOS 7 Docker image with necessary toolchain
 #
  ./build-docker-image.sh 7 --no-cache
- 
+
 #
 # To only build the RPM using an already built and available image
 #
