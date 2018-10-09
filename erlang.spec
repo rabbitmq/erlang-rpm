@@ -11,8 +11,8 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 20.3.8.8
-%global package_ver  20.3.8.8
+%global upstream_ver 20.3.8.9
+%global package_ver  20.3.8.9
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
@@ -50,7 +50,6 @@ BuildRequires:	m4
 BuildRequires:	autoconf
 
 Obsoletes: erlang-docbuilder
-Provides: erlang
 
 %description
 This is a minimal packaging of Erlang produced by Pivotal to support
@@ -339,6 +338,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Oct 9 2018 Jean-Sébastien Pédron <jean-sebastien@rabbitmq.com> - 20.3.8.9
+- Update to Erlang/OTP 20.3.8.9.
+- Remove the too generic `Provides: erlang` line which prevented version requirement in packages depending on Erlang from working.
+
 * Wed Aug 29 2018 Michael Klishin <mklishin@pivotal.io> - 20.3.8.8
 - Update to Erlang/OTP 20.3.8.8.
 
