@@ -1,4 +1,4 @@
-# Copyright Pivotal Software, Inc. 2012-2015. All Rights Reserved.
+# Copyright Pivotal Software, Inc. 2012-2018. All Rights Reserved.
 #
 # The contents of this file are subject to the Erlang Public License,
 # Version 1.1, (the "License"); you may not use this file except in
@@ -11,8 +11,8 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 20.3.8.9
-%global package_ver  20.3.8.9
+%global upstream_ver 20.3.8.10
+%global package_ver  20.3.8.10
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
@@ -338,6 +338,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Oct 24 2018 Michael Klishin <mklishin@pivotal.io> - 20.3.8.10
+- Update to Erlang/OTP 20.3.8.10.
+
 * Tue Oct 9 2018 Jean-Sébastien Pédron <jean-sebastien@rabbitmq.com> - 20.3.8.9
 - Update to Erlang/OTP 20.3.8.9.
 - Remove the too generic `Provides: erlang` line which prevented version requirement in packages depending on Erlang from working.
