@@ -35,6 +35,11 @@ Yum repositories are available from [Package Cloud](https://packagecloud.io/rabb
 
 RPM packages can be downloaded [from GitHub](https://github.com/rabbitmq/erlang-rpm/releases).
 
+### Signing Keys
+
+Packages provisioned from PackageCloud are signed by the [PackageCloud repository key](https://packagecloud.io/rabbitmq/erlang/gpgkey).
+Other sources use the standard [RabbitMQ signing key](https://www.rabbitmq.com/signatures.html).
+
 ### Package Cloud
 
 #### Erlang 21.x
