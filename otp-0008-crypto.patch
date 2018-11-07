@@ -1,0 +1,13 @@
+ diff -u -r otp-OTP-20.3.8.10.orig/lib/crypto/c_src/crypto.c  otp-OTP-20.3.8.10/lib/crypto/c_src/crypto.c 
+--- otp-OTP-20.3.8.10.orig/lib/crypto/c_src/crypto.c	2018-11-07 21:53:47.000000000 +0100
++++ otp-OTP-20.3.8.10/lib/crypto/c_src/crypto.c	2018-11-07 21:57:30.000000000 +0100
+@@ -151,7 +151,8 @@
+ #if OPENSSL_VERSION_NUMBER >= PACKED_OPENSSL_VERSION(0,9,8,'o') \
+ 	&& !defined(OPENSSL_NO_EC) \
+ 	&& !defined(OPENSSL_NO_ECDH) \
+-	&& !defined(OPENSSL_NO_ECDSA)
++	&& !defined(OPENSSL_NO_ECDSA) \
++    && !defined(OPENSSL_NO_EC2M)
+ # define HAVE_EC
+ #endif
+ 

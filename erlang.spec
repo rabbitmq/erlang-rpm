@@ -38,7 +38,8 @@ Patch2: otp-0002-Remove-rpath.patch
 Patch3: otp-0003-Do-not-install-C-sources.patch
 #   Do not install erlang sources
 Patch7: otp-0007-Do-not-install-erlang-sources.patch
-
+#   Crypto patch
+Patch8: otp-0008-crypto.patch
 
 # BuildRoot not strictly needed since F10, but keep it for spec file robustness
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
@@ -71,7 +72,7 @@ syntax_tools and xmerl.
 %patch2 -p1 -b .Remove_rpath
 %patch3 -p1 -b .Do_not_install_C_sources
 %patch7 -p1 -b .Do_not_install_erlang_sources
-
+%patch8 -p1 -b .Crypto
 # remove shipped zlib sources
 # commented out because centos only has 1.2.3 and Erlang 18.1 needs a later version
 #rm -f erts/emulator/zlib/*.[ch]
