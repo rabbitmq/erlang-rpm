@@ -11,8 +11,8 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 21.1.1
-%global package_ver  21.1.1
+%global upstream_ver 21.1.2
+%global package_ver  21.1.2
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
@@ -334,6 +334,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Nov 22 2018 Michael Klishin <mklishin@pivotal.io> - 21.1.2
+- Update to Erlang/OTP 21.1.2.
+
 * Tue Nov 6 2018 Gabriele Santomaggio <g.santomaggio@gmil.com> 
 - Add patch file for crypo.c
 
