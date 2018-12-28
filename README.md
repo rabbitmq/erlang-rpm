@@ -281,6 +281,7 @@ The patches applied affect the following files:
  * [lib/asn1/c_src/Makefile](https://github.com/erlang/otp/commits/maint/lib/asn1/c_src/Makefile)
  * [lib/asn1/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/asn1/src/Makefile)
  * [lib/compiler/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/compiler/src/Makefile)
+ * [lib/crypto/c_src/crypto.c](https://github.com/erlang/otp/blob/maint/lib/crypto/c_src/crypto.c)
  * [lib/crypto/c_src/Makefile.in](https://github.com/erlang/otp/commits/maint/lib/crypto/c_src/Makefile.in)
  * [lib/crypto/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/crypto/src/Makefile)
  * [lib/crypto/priv/Makefile](https://github.com/erlang/otp/commits/maint/lib/crypto/priv/Makefile)
