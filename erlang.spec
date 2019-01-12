@@ -1,4 +1,4 @@
-# Copyright Pivotal Software, Inc. 2012-2018. All Rights Reserved.
+# Copyright Pivotal Software, Inc. 2012-2019. All Rights Reserved.
 #
 # The contents of this file are subject to the Erlang Public License,
 # Version 1.1, (the "License"); you may not use this file except in
@@ -11,8 +11,8 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 19.3.6.12
-%global package_ver  19.3.6.12
+%global upstream_ver 19.3.6.13
+%global package_ver  19.3.6.13
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
@@ -345,6 +345,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jan 11 2019 Michael Klishin <mklishin@pivotal.io> - 19.3.6.13
+- Erlang/OTP 19.3.6.13
+
 * Wed Oct 24 2018 Michael Klishin <mklishin@pivotal.io> - 19.3.6.12
 - update for 19.3.6.12
 
