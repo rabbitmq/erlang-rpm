@@ -79,6 +79,12 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ```
 
+To install the package:
+
+``` shell
+yum install erlang
+```
+
 To use the most recent version on CentOS 6:
 
 ``` ini
@@ -104,6 +110,12 @@ gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
+```
+
+To install the package:
+
+``` shell
+yum install erlang
 ```
 
 
@@ -141,6 +153,12 @@ repo_gpgcheck=0
 enabled=1
 ```
 
+To install the package:
+
+``` shell
+yum install erlang
+```
+
 #### Erlang 20.3.x
 
 Note that [Erlang/OTP 20 is supported by RabbitMQ starting with version 3.6.11](https://groups.google.com/forum/#!msg/rabbitmq-users/_imbAavBYjY/S0LkV7b8CAAJ).
@@ -171,6 +189,12 @@ repo_gpgcheck=0
 enabled=1
 ```
 
+To install the package:
+
+``` shell
+yum install erlang
+```
+
 #### Erlang 19.x
 
 To use Erlang 19.x on CentOS 7:
@@ -199,6 +223,11 @@ repo_gpgcheck=0
 enabled=1
 ```
 
+To install the package:
+
+``` shell
+yum install erlang
+```
 
 ## Available Erlang Applications
 
