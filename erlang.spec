@@ -38,6 +38,8 @@ Patch2: otp-0002-Remove-rpath.patch
 Patch3: otp-0003-Do-not-install-C-sources.patch
 #   Do not install erlang sources
 Patch7: otp-0007-Do-not-install-erlang-sources.patch
+#   Remove own configured RM make variable
+Patch8: otp-0008-Remove-own-configured-RM-make-variable.patch
 
 # BuildRoot not strictly needed since F10, but keep it for spec file robustness
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
