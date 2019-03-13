@@ -16,10 +16,10 @@ equal 'rm -f'
  7 files changed, 26 insertions(+), 36 deletions(-)
 
 diff --git a/erts/autoconf/vxworks/sed.general b/erts/autoconf/vxworks/sed.general
-index efa4e99054..0638be12ed 100644
+index 0e99b4dba4..d32fbdc5c0 100644
 --- a/erts/autoconf/vxworks/sed.general
 +++ b/erts/autoconf/vxworks/sed.general
-@@ -99,7 +99,6 @@ s|@INSTALL_PROGRAM@|${INSTALL}|
+@@ -103,7 +103,6 @@ s|@INSTALL_PROGRAM@|${INSTALL}|
  s|@INSTALL_SCRIPT@|${INSTALL}|
  s|@INSTALL_DATA@|${INSTALL} -m 644|
  s|@INSTALL_DIR@|$(INSTALL) -d|
@@ -28,31 +28,10 @@ index efa4e99054..0638be12ed 100644
  s|@ERLANG_OSTYPE@|vxworks|
  s|@vxworks_reclaim@|reclaim.h|
 diff --git a/erts/configure.in b/erts/configure.in
-index c93ab85c4f..111d196390 100644
+index 53e8bd683a..35ae84e101 100644
 --- a/erts/configure.in
 +++ b/erts/configure.in
-@@ -62,7 +62,7 @@ fi
- erl_top=${ERL_TOP}
- 
- # Remove old configuration information
--/bin/rm -f "$ERL_TOP/erts/CONF_INFO"
-+rm -f "$ERL_TOP/erts/CONF_INFO"
- 
- # echo XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
- # echo X
-@@ -863,11 +863,6 @@ fi
- 
- _search_path=/bin:/usr/bin:/usr/local/bin:$PATH
- 
--AC_PATH_PROG(RM, rm, false, $_search_path)
--if test "$ac_cv_path_RM" = false; then
--  AC_MSG_ERROR([No 'rm' command found])
--fi
--
- AC_PATH_PROG(MKDIR, mkdir, false, $_search_path)
- if test "$ac_cv_path_MKDIR" = false; then
-   AC_MSG_ERROR([No 'mkdir' command found])
-@@ -3968,14 +3963,14 @@ if test "$enable_dtrace_test" = "yes" ; then
+@@ -3288,14 +3288,14 @@ if test "$enable_dtrace_test" = "yes" ; then
  		AC_MSG_CHECKING([for 2-stage DTrace precompilation])
                  AC_TRY_COMPILE([ #include "foo-dtrace.h" ],
                      [ERLANG_DIST_PORT_BUSY_ENABLED();],
@@ -60,7 +39,7 @@ index c93ab85c4f..111d196390 100644
 +		    [rm -f $DTRACE_2STEP_TEST
  		     dtrace -G $DTRACE_CPP $DTRACE_BITS_FLAG -Iemulator/beam -o $DTRACE_2STEP_TEST -s emulator/beam/erlang_dtrace.d conftest.$OBJEXT 2>&AS_MESSAGE_LOG_FD
                       if test -f $DTRACE_2STEP_TEST; then
- 			rm $DTRACE_2STEP_TEST
+ 			$RM $DTRACE_2STEP_TEST
                          DTRACE_ENABLED_2STEP=yes
  		     fi],
                      [])
@@ -69,46 +48,46 @@ index c93ab85c4f..111d196390 100644
  		AS_IF([test "x$DTRACE_ENABLED_2STEP" = "xyes"],
  		      [AC_MSG_RESULT([yes])],
                        [AC_MSG_RESULT([no])])
-@@ -4147,7 +4142,7 @@ ssl_done=yes # Default only one run
+@@ -3499,7 +3499,7 @@ ssl_done=yes # Default only one run
  
  # Remove all SKIP files from previous runs
  for a in ssl crypto ssh; do
--  /bin/rm -f $ERL_TOP/lib/$a/SKIP
+-  $RM -f $ERL_TOP/lib/$a/SKIP
 +  rm -f $ERL_TOP/lib/$a/SKIP
  done
  
  SSL_DYNAMIC_ONLY=$enable_dynamic_ssl
-@@ -4730,7 +4725,7 @@ need_java="jinterface ic/java_src"
+@@ -4120,7 +4120,7 @@ need_java="jinterface ic/java_src"
  
  # Remove all SKIP files from previous runs
  for a in $need_java ; do
--  /bin/rm -f $ERL_TOP/lib/$a/SKIP
+-  $RM -f $ERL_TOP/lib/$a/SKIP
 +  rm -f $ERL_TOP/lib/$a/SKIP
  done
  
  if test "X$with_javac" = "Xno"; then
-@@ -4781,7 +4776,7 @@ dnl this deliberately does not believe that 'gcc' is a C++ compiler
+@@ -4171,7 +4171,7 @@ dnl this deliberately does not believe that 'gcc' is a C++ compiler
  AC_CHECK_TOOLS(CXX, [$CCC c++ g++ CC cxx cc++ cl], false)
  
  # Remove SKIP file from previous run
--/bin/rm -f $ERL_TOP/lib/orber/SKIP
+-$RM -f $ERL_TOP/lib/orber/SKIP
 +rm -f $ERL_TOP/lib/orber/SKIP
  
  if test "$CXX" = false; then
    echo "No C++ compiler found" > $ERL_TOP/lib/orber/SKIP
 diff --git a/erts/emulator/Makefile.in b/erts/emulator/Makefile.in
-index 7145824f91..e892943c56 100644
+index 57a9d45887..e7648f2396 100644
 --- a/erts/emulator/Makefile.in
 +++ b/erts/emulator/Makefile.in
-@@ -241,7 +241,6 @@ ifneq ($(findstring ose,$(TARGET)),ose)
+@@ -266,7 +266,6 @@ DEXPORT = @DEXPORT@
+ RANLIB  = @RANLIB@
  STRIP   = strip
- endif
  PERL    = @PERL@
 -RM	= @RM@
  MKDIR	= @MKDIR@
  
  USING_MINGW=@MIXED_CYGWIN_MINGW@
-@@ -441,13 +440,13 @@ $(ERTS_LIB):
+@@ -467,13 +466,13 @@ $(ERTS_LIB):
  
  .PHONY: clean
  clean:
@@ -130,10 +109,10 @@ index 7145824f91..e892943c56 100644
  
  .PHONY: docs
 diff --git a/erts/lib_src/Makefile.in b/erts/lib_src/Makefile.in
-index b680c03b1d..106e2dc983 100644
+index 8e1f5b58c4..1da11c2d0a 100644
 --- a/erts/lib_src/Makefile.in
 +++ b/erts/lib_src/Makefile.in
-@@ -28,7 +28,6 @@ CC=@CC@
+@@ -29,7 +29,6 @@ CC=@CC@
  LD=@LD@
  AR=@AR@
  RANLIB=@RANLIB@
@@ -141,7 +120,7 @@ index b680c03b1d..106e2dc983 100644
  MKDIR=@MKDIR@
  INSTALL=@INSTALL@
  INSTALL_DIR=@INSTALL_DIR@
-@@ -527,9 +526,9 @@ release_docs_spec:
+@@ -536,9 +535,9 @@ release_docs_spec:
  #
  .PHONY: clean
  clean:
@@ -155,10 +134,10 @@ index b680c03b1d..106e2dc983 100644
  #
  # Make dependencies
 diff --git a/lib/tools/c_src/Makefile.in b/lib/tools/c_src/Makefile.in
-index b1eb69f9dc..817d838054 100644
+index cfe91917f8..289322b6fa 100644
 --- a/lib/tools/c_src/Makefile.in
 +++ b/lib/tools/c_src/Makefile.in
-@@ -28,7 +28,6 @@ CC=@CC@
+@@ -29,7 +29,6 @@ CC=@CC@
  LD=@LD@
  AR=@AR@
  RANLIB=@RANLIB@
@@ -166,7 +145,7 @@ index b1eb69f9dc..817d838054 100644
  MKDIR=@MKDIR@
  INSTALL=@INSTALL@
  INSTALL_DIR=@INSTALL_DIR@
-@@ -165,9 +164,9 @@ $(ERTS_LIB):
+@@ -158,9 +157,9 @@ $(ERTS_LIB):
  docs:
  
  clean:
@@ -180,10 +159,10 @@ index b1eb69f9dc..817d838054 100644
  .PHONY: all erts_lib docs clean
  
 diff --git a/make/otp.mk.in b/make/otp.mk.in
-index ddc9cd9b79..0ab17d9649 100644
+index fb573680c8..ceff8f7c31 100644
 --- a/make/otp.mk.in
 +++ b/make/otp.mk.in
-@@ -264,7 +264,6 @@ DEFAULT_GIF_FILES = $(HTMLDIR)/min_head.gif
+@@ -274,7 +274,6 @@ DEFAULT_GIF_FILES = $(HTMLDIR)/min_head.gif
  XSLTPROC = @XSLTPROC@
  FOP = @FOP@
  XMLLINT = @XMLLINT@
@@ -192,21 +171,23 @@ index ddc9cd9b79..0ab17d9649 100644
  MKDIR = @MKDIR@
  
 diff --git a/system/doc/top/Makefile b/system/doc/top/Makefile
-index 823ec18940..e4b2aca612 100644
+index 2f50ff1905..3267bf96df 100644
 --- a/system/doc/top/Makefile
 +++ b/system/doc/top/Makefile
-@@ -242,12 +242,12 @@ html:   $(INDEX_FILES) \
+@@ -261,13 +261,13 @@ html:   $(INDEX_FILES) \
  debug opt: 
  
  clean:
 -	$(RM) -f ../html/js/*.js
--	$(RM) -f PR.template 
+-	$(RM) -f PR.template
+-	$(RM) -f $(XMLDIR)/*.xml
 -	$(RM) -f $(INDEX_FILES) $(MAN_INDEX)
 -	$(RM) -f $(TOP_PDF_FILE) $(TOP_PDF_FILE:%.pdf=%.fo)
 -	$(RM) -f $(INDEX_SCRIPT) $(GLOSSARY_SCRIPT) $(JAVASCRIPT_BUILD_SCRIPT) 
 -	$(RM) -f erl_crash.dump errs core *~
 +	$(RM) ../html/js/*.js
-+	$(RM) PR.template 
++	$(RM) PR.template
++	$(RM) $(XMLDIR)/*.xml
 +	$(RM) $(INDEX_FILES) $(MAN_INDEX)
 +	$(RM) $(TOP_PDF_FILE) $(TOP_PDF_FILE:%.pdf=%.fo)
 +	$(RM) $(INDEX_SCRIPT) $(GLOSSARY_SCRIPT) $(JAVASCRIPT_BUILD_SCRIPT) 
@@ -214,7 +195,7 @@ index 823ec18940..e4b2aca612 100644
  
  # ----------------------------------------------------
  # Release Target
-@@ -271,7 +271,7 @@ release_docs_spec: docs
+@@ -291,7 +291,7 @@ release_docs_spec: docs
  	$(INSTALL_DATA) $(INDEX_SCRIPT) $(MAN_INDEX_SCRIPT) $(JAVASCRIPT_BUILD_SCRIPT) \
  		$(INDEX_SRC) $(MAN_INDEX_SRC) $(JAVASCRIPT_BUILD_SCRIPT_SRC) \
  		$(TEMPLATES) $(RELSYSDIR)/docbuild
