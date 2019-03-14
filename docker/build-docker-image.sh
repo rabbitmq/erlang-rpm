@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 docker_file="Dockerfile"
 docker_template="Dockerfile.template"
@@ -13,12 +13,10 @@ then
 	echo "
 Ops: parameters error
 first: version, ex: 6 or 7
-second: --no-cache [optional]
+second: docker build parameters such as --no-cache
 -----------------------------------------
 Ex: ./build-docker-image.sh 7 --no-cache
-Ex: ./build-docker-image.sh 7
 Ex: ./build-docker-image.sh 6 --no-cache
-EX: ./build-docker-image.sh 6
 "
 exit 1
 fi
