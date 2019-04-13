@@ -8,6 +8,6 @@ to inspect file changes over time.
 ## Where to Get Binary Builds
 
 If you are looking for binary builds of this RPM,
-see the [rabbitmq/rpm Bintray repository](https://bintray.com/rabbitmq/rpm/erlang) and [GitHub releases](https://github.com/rabbitmq/erlang-rpm/releases).
+see [GitHub releases](https://github.com/rabbitmq/erlang-rpm/releases), [rabbitmq/erlang repository on PackageCloud](https://packagecloud.io/rabbitmq/erlang) and [rabbitmq-erlang/rpm Bintray repository](https://bintray.com/rabbitmq-erlang/rpm/erlang).
 
 For Yum repository instructions, see [package documentation](../README.md).
