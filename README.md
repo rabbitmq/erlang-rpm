@@ -28,9 +28,9 @@ Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
 ## Release Artifacts
 
-Binary packages can be obtained [from Bintray](https://bintray.com/rabbitmq/rpm/erlang) and [GitHub](https://github.com/rabbitmq/erlang-rpm/releases).
+Yum repositories are available at [rabbitmq/erlang on Package Cloud](https://packagecloud.io/rabbitmq/erlang/) and [rabbitmq-erlang org on Bintray](https://bintray.com/rabbitmq-erlang/rpm/erlang). See the repository setup instructions below.
 
-Yum repositories are available from [Bintray](https://bintray.com/rabbitmq/rpm/erlang) and [Package Cloud](https://packagecloud.io/rabbitmq/erlang/).
+For direct RPM package downloads, see [GitHub releases](https://github.com/rabbitmq/erlang-rpm/releases).
 
 ### Bintray Yum Repositories
 
@@ -205,7 +205,7 @@ cd docker
 # To only build a CentOS 7 Docker image with necessary toolchain
 #
  ./build-docker-image.sh 7 --no-cache
- 
+
 #
 # To only build the RPM using an already built and available image
 #
