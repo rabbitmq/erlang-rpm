@@ -13,7 +13,7 @@ Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://gith
 
 The package currently targets Erlang/OTP `21.x`, `20.3.x`, `19.3.x`. Only 64-bit packages are provided.
 
-Some earlier releases are available but [highly discouraged](http://www.rabbitmq.com/which-erlang.html) due to known
+Some earlier releases are available but [highly discouraged](https://www.rabbitmq.com/which-erlang.html) due to known
 bugs that are catastrophic to RabbitMQ.
 
 
@@ -31,9 +31,9 @@ Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
 ## Release Artifacts
 
-Yum repositories are available from [Package Cloud](https://packagecloud.io/rabbitmq/erlang/) and [Bintray](https://bintray.com/rabbitmq/rpm/erlang) and  (see repository setup instructions below).
+Yum repositories are available at [rabbitmq/erlang on Package Cloud](https://packagecloud.io/rabbitmq/erlang/) and [rabbitmq-erlang org on Bintray](https://bintray.com/rabbitmq-erlang/rpm/erlang). See the repository setup instructions below.
 
-RPM packages can be downloaded [from GitHub](https://github.com/rabbitmq/erlang-rpm/releases).
+For direct RPM package downloads, see [GitHub releases](https://github.com/rabbitmq/erlang-rpm/releases).
 
 ### Signing Keys
 
