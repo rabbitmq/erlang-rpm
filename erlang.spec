@@ -23,7 +23,7 @@ Release:	%{package_ver_release}%{?dist}
 Summary:	General-purpose programming language and runtime environment
 
 Group:		Development/Languages
-License:	ERPL
+License:	ASL 2.0
 URL:		https://www.erlang.org
 Source0:	https://github.com/erlang/otp/archive/OTP-%{upstream_ver}.tar.gz
 Source2:        %{OSL_File_Name}
