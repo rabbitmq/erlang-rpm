@@ -17,7 +17,7 @@ they address a critically important issue.
 ## Implicit OpenSSL/libcrypto Dependency
 
 This package intentionally does not include OpenSSL/libcrypto. It must be provisioned separately.
-Recent Erlang versions require a modern OpenSSL version, e.g. `1.0.1`.
+Recent Erlang versions require a modern OpenSSL version, currently this means `1.0.2` or later.
 
 ## Supported CentOS Versions
 
