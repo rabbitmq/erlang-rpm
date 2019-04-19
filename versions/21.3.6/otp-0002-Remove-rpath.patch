@@ -1,0 +1,24 @@
+diff -u -r otp-OTP-21.1.1.orig/lib/crypto/c_src/Makefile.in otp-OTP-21.1.1/lib/crypto/c_src/Makefile.in
+--- otp-OTP-21.1.1.orig/lib/crypto/c_src/Makefile.in	2018-10-12 17:12:11.000000000 +0200
++++ otp-OTP-21.1.1/lib/crypto/c_src/Makefile.in	2018-11-02 16:59:43.766304768 +0100
+@@ -96,7 +96,7 @@
+ DYNAMIC_CRYPTO_LIB=@SSL_DYNAMIC_ONLY@
+ 
+ ifeq ($(DYNAMIC_CRYPTO_LIB),yes)
+-SSL_DED_LD_RUNTIME_LIBRARY_PATH = @SSL_DED_LD_RUNTIME_LIBRARY_PATH@
++SSL_DED_LD_RUNTIME_LIBRARY_PATH =
+ CRYPTO_LINK_LIB=$(SSL_DED_LD_RUNTIME_LIBRARY_PATH) -L$(SSL_LIBDIR) -l$(SSL_CRYPTO_LIBNAME)
+ EXTRA_FLAGS = -DHAVE_DYNAMIC_CRYPTO_LIB
+ else
+diff -u -r otp-OTP-21.1.1.orig/lib/crypto/priv/Makefile otp-OTP-21.1.1/lib/crypto/priv/Makefile
+--- otp-OTP-21.1.1.orig/lib/crypto/priv/Makefile	2018-10-12 17:12:11.000000000 +0200
++++ otp-OTP-21.1.1/lib/crypto/priv/Makefile	2018-11-02 17:01:23.294304768 +0100
+@@ -61,7 +61,7 @@
+ # ----------------------------------------------------
+ 
+ $(SO_NIFLIB): $(OBJS)
+-	$(SO_LD) $(SO_LDFLAGS) -L$(SO_SSL_LIBDIR) -Wl,-R$(SO_SSL_LIBDIR) \
++	$(SO_LD) $(SO_LDFLAGS) -L$(SO_SSL_LIBDIR) \
+ 	-o $@ $^ -lcrypto
+ 
+ $(DLL_NIFLIB): $(OBJS)
