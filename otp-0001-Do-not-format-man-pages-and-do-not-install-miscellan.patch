@@ -1,7 +1,7 @@
-diff -u -r otp_src_18.3-a/erts/etc/common/Makefile.in otp_src_18.3/erts/etc/common/Makefile.in
---- otp_src_18.3-a/erts/etc/common/Makefile.in	2014-12-09 20:11:07.000000000 +0000
-+++ otp_src_18.3/erts/etc/common/Makefile.in	2015-01-14 12:44:58.017995780 +0000
-@@ -550,10 +550,6 @@
+diff -u -r otp-OTP-22.0/erts/etc/common/Makefile.in otp-OTP-22.0-patched/erts/etc/common/Makefile.in
+--- otp-OTP-22.0/erts/etc/common/Makefile.in	2019-05-14 19:58:56.000000000 +0300
++++ otp-OTP-22.0-patched/erts/etc/common/Makefile.in	2019-05-14 20:00:19.000000000 +0300
+@@ -496,10 +496,6 @@
  ifneq ($(INSTALL_TOP_BIN),)
  	$(INSTALL_PROGRAM) $(INSTALL_TOP_BIN) "$(RELEASE_PATH)"
  endif
@@ -12,10 +12,10 @@ diff -u -r otp_src_18.3-a/erts/etc/common/Makefile.in otp_src_18.3/erts/etc/comm
  ifneq ($(INSTALL_SRC),)
  	$(INSTALL_DIR) "$(RELEASE_PATH)/erts-$(VSN)/src"
  	$(INSTALL_DATA) $(INSTALL_SRC) "$(RELEASE_PATH)/erts-$(VSN)/src"
-diff -u -r otp_src_18.3-a/erts/etc/unix/Install.src otp_src_18.3/erts/etc/unix/Install.src
---- otp_src_18.3-a/erts/etc/unix/Install.src	2014-12-09 20:11:07.000000000 +0000
-+++ otp_src_18.3/erts/etc/unix/Install.src	2015-01-14 12:44:58.945983653 +0000
-@@ -140,14 +140,5 @@
+diff -u -r otp-OTP-22.0/erts/etc/unix/Install.src otp-OTP-22.0-patched/erts/etc/unix/Install.src
+--- otp-OTP-22.0/erts/etc/unix/Install.src	2019-05-10 15:42:49.000000000 +0300
++++ otp-OTP-22.0-patched/erts/etc/unix/Install.src	2019-05-14 19:59:11.000000000 +0300
+@@ -141,14 +141,5 @@
  cp -p ../releases/%I_SYSTEM_VSN%/no_dot_erlang.boot .
  cp -p $Name.boot start.boot
  cp -p ../releases/%I_SYSTEM_VSN%/$Name.script start.script
