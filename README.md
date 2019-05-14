@@ -248,7 +248,6 @@ Only the following OTP applications are provided:
  * kernel
  * mnesia
  * os_mon
- * otp_mibs
  * public_key
  * reltool
  * runtime_tools
@@ -333,7 +332,6 @@ The patches applied affect the following files:
  * [lib/mnesia/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/mnesia/src/Makefile)
  * [lib/os_mon/c_src/Makefile.in](https://github.com/erlang/otp/commits/maint/lib/os_mon/c_src/Makefile.in)
  * [lib/os_mon/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/os_mon/src/Makefile)
- * [lib/otp_mibs/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/otp_mibs/src/Makefile)
  * [lib/parsetools/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/parsetools/src/Makefile)
  * [lib/public_key/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/public_key/src/Makefile)
  * [lib/reltool/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/reltool/src/Makefile)
