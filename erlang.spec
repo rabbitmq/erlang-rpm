@@ -11,7 +11,7 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 21.3.7.1
+%global upstream_ver 22.0
 %global package_ver  22.0
 %global package_ver_release 1
 
