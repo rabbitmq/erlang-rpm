@@ -11,7 +11,7 @@ Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://gith
 
 ## Provided Erlang/OTP Versions
 
-The package currently targets Erlang/OTP `21.x`, `20.3.x`, `19.3.x`. Only 64-bit packages are provided.
+The package currently targets Erlang/OTP `22.x`, `21.3.x`, `20.3.x`, `19.3.x`. Only 64-bit packages are provided.
 
 Some earlier releases are available but [highly discouraged](https://www.rabbitmq.com/which-erlang.html) due to known
 bugs that are catastrophic to RabbitMQ.
@@ -121,7 +121,44 @@ yum install erlang
 
 ### Bintray Yum Repositories
 
-To use the Bintray Yum repositories, here are the `.repo` configuration files:
+To use the Bintray Yum repositories, use the `.repo` configuration files demonstrated in the following
+few sections.
+
+#### Erlang 22.x
+
+Note that [Erlang/OTP 22 is supported by RabbitMQ starting with version 3.7.15](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.15).
+
+To use Erlang 22.x on CentOS 7:
+
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/22/el/7
+gpgcheck=1
+gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
+
+To use Erlang 22.x on CentOS 6:
+
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/22/el/6
+gpgcheck=1
+gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
+
+To install the package:
+
+``` shell
+yum install erlang
+```
 
 #### Erlang 21.x
 
