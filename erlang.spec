@@ -69,7 +69,7 @@ syntax_tools and xmerl.
 %patch1 -p1 -b .Do_not_format_man_pages_and_do_not_install_miscellan
 %patch2 -p1 -b .Remove_rpath
 %patch3 -p1 -b .Do_not_install_C_sources
-%patch7 -p1 -F1 -b .Do_not_install_erlang_sources
+%patch7 -p1 -F2 -b .Do_not_install_erlang_sources
 
 
 # remove shipped zlib sources
