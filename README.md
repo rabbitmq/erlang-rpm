@@ -42,9 +42,9 @@ Other sources use the standard [RabbitMQ signing key](https://www.rabbitmq.com/s
 
 ### Package Cloud
 
-#### Erlang 21.x
+#### Erlang 22.x
 
-Note that [Erlang/OTP 21 is supported by RabbitMQ starting with version 3.7.7](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.7).
+Note that [Erlang/OTP 22 is supported by RabbitMQ starting with version 3.7.15](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.15).
 
 Package Cloud supports a variety of options for RPM package installation: from Yum configuration to shell scripts
 to Chef and Puppet.
@@ -112,7 +112,7 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ```
 
-To install the package:
+Then install the package:
 
 ``` shell
 yum install erlang
