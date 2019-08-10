@@ -47,6 +47,13 @@ BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRequires:	m4
 BuildRequires:	autoconf
+%if ! (0%{?rhel} && 0%{?rhel} <= 6)
+BuildRequires:	systemd-devel
+BuildRequires:	systemd
+%{?systemd_requires}
+Requires:	systemd
+%endif
+
 
 Obsoletes: erlang-docbuilder
 
@@ -85,7 +92,7 @@ chmod 644 lib/ssl/examples/src/Makefile
 
 
 %build
-%global conf_flags --enable-shared-zlib --without-javac --without-odbc
+%global conf_flags --enable-shared-zlib --enable-systemd --without-javac --without-odbc
 
 
 # autoconf
