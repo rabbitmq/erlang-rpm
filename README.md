@@ -26,9 +26,9 @@ Recent Erlang versions require a modern OpenSSL version, currently this means `1
 
 Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
- * CentOS 8 (experimental, builds and installs)
+ * CentOS 8 (experimental, packages are distributed)
  * CentOS 7 (production ready, packages are distributed)
- * CentOS 6 (deprecated, packages are distributed)
+ * CentOS 6 (**deprecated**, packages are distributed)
 
 ## Release Artifacts
 
@@ -52,6 +52,39 @@ to Chef and Puppet.
 
 See [Package Cloud repository installation](https://packagecloud.io/rabbitmq/erlang/install) page
 for details.
+
+To use the most recent version on CentOS 8:
+
+``` ini
+# In /etc/yum.repos.d/rabbitmq_erlang.repo
+[rabbitmq_erlang]
+name=rabbitmq_erlang
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/8/$basearch
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+[rabbitmq_erlang-source]
+name=rabbitmq_erlang-source
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/8/SRPMS
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+```
+
+To install the package:
+
+``` shell
+yum install erlang
+```
 
 To use the most recent version on CentOS 7:
 
@@ -129,6 +162,19 @@ few sections.
 
 Note that [Erlang/OTP 22 is supported by RabbitMQ starting with version 3.7.15](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.15).
 
+To use Erlang 22.x on CentOS 8:
+
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/22/el/8
+gpgcheck=1
+gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
+
 To use Erlang 22.x on CentOS 7:
 
 ```ini
@@ -164,6 +210,19 @@ yum install erlang
 #### Erlang 21.x
 
 Note that [Erlang/OTP 21 is supported by RabbitMQ starting with version 3.7.7](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.7).
+
+To use Erlang 21.x on CentOS 8:
+
+```ini
+# In /etc/yum.repos.d/rabbitmq-erlang.repo
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/8
+gpgcheck=1
+gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+```
 
 To use Erlang 21.x on CentOS 7:
 
