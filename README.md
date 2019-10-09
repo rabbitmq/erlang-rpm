@@ -26,8 +26,9 @@ Recent Erlang versions require a modern OpenSSL version, currently this means `1
 
 Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
- * CentOS 7
- * CentOS 6
+ * CentOS 8 (experimental, builds and installs)
+ * CentOS 7 (production ready, packages are distributed)
+ * CentOS 6 (deprecated, packages are distributed)
 
 ## Release Artifacts
 
