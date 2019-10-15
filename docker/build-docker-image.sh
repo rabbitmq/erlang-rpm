@@ -12,9 +12,10 @@ if [ -z "$centos_version" ]
 then
 	echo "
 Ops: parameters error
-first: version, ex: 6 or 7
+first: version, ex: 8, 7, or 6
 second: docker build parameters such as --no-cache
 -----------------------------------------
+Ex: ./build-docker-image.sh 8 --no-cache
 Ex: ./build-docker-image.sh 7 --no-cache
 Ex: ./build-docker-image.sh 6 --no-cache
 "
@@ -33,9 +34,17 @@ fi
 
 mkdir "$docker_dir"
 
+echo "Will build an image for CentOS $centos_version using Docker file at $docker_dir/$docker_file"
+
 if [ -e "$docker_template" ]
 then
 	cp "$docker_template" "$docker_dir"/"$docker_file"
-	sed -i .bak "s/{centosfrom}/$centos_version/g" "$docker_dir"/"$docker_file"
-	sudo docker build "$docker_params" -t="erlang-rpm-build-""$centos_version" "$docker_dir"
+	case $(uname -s) in
+		Linux)
+			sed --in-place=".bak" "s/{centosfrom}/$centos_version/g" "$docker_dir"/"$docker_file"
+			sudo docker build "$docker_params" -t="erlang-rpm-build-""$centos_version" "$docker_dir";;
+		*)
+			sed -i ".bak" "s/{centosfrom}/$centos_version/g" "$docker_dir"/"$docker_file"
+			docker build "$docker_params" -t="erlang-rpm-build-""$centos_version" "$docker_dir";;
+	esac
 fi
