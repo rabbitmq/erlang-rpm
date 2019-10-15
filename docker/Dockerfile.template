@@ -13,6 +13,7 @@ RUN yum install -y \
   tar \
   wget \
   zlib-devel \
+  systemd-devel \
   make
 
 RUN mkdir /build
