@@ -388,9 +388,12 @@ For CentOS 6, replace the `7` in the examples above with a `6`.
 
 ### Without Docker
 
-You must be running an RPM-based distro (CentOS 7 or equivalent RHEL is highly recommended) for this to work.
+You must be running an RPM-based distro (CentOS 8, 7 or equivalent RHEL is highly recommended) for this to work.
 
-    sudo make
+``` shell
+# add sudo if required by the local Docker installation
+make
+```
 
 and see `RPMS/x86_64/`. Note that all artifacts created this way may be owned by root
 due to the use of `sudo`.

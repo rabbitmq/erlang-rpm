@@ -2,7 +2,7 @@
 
 centos_version="$1"
 build_dir="build-dir-$centos_version"
-packages=( "Makefile" "*.patch" "erlang.spec" "Erlang_ASL2_LICENSE.txt" )
+	packages=( "Makefile" "erlang.spec" "Erlang_ASL2_LICENSE.txt" )
 
 if [ -z "$centos_version" ]
 then
@@ -15,13 +15,19 @@ Ex: ./build-rpm-in-docker.sh 7
 	exit 1
 fi
 
+echo "Recreating build dir $build_dir"
+
 if [ -e "$build_dir" ]
 then
-	sudo rm -rf "$build_dir"
+	rm -rf "$build_dir"
 fi
 
 mkdir "$build_dir"
 
+echo "Copying patches to build dir $build_dir"
+cp ../*.patch "$build_dir"
+
+echo "Copying other files to build dir $build_dir"
 for file in "${packages[@]}"
 do
 	cp ../"$file" "$build_dir"
@@ -32,4 +38,9 @@ then
 	cp -r ../dist "$build_dir"/dist
 fi
 
-sudo docker run -i -t -v "$PWD"/"$build_dir":/build/"$build_dir" erlang-rpm-build-"$centos_version"
+case $(uname -s) in
+	Linux)
+		sudo docker run -i -t -v "$PWD"/"$build_dir":/build/"$build_dir" erlang-rpm-build-"$centos_version";;
+	*)
+		docker run -i -t -v "$PWD"/"$build_dir":/build/"$build_dir" erlang-rpm-build-"$centos_version";;
+esac
