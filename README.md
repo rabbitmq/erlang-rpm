@@ -75,7 +75,8 @@ name=rabbitmq_erlang-source
 baseurl=https://packagecloud.io/rabbitmq/erlang/el/8/SRPMS
 repo_gpgcheck=1
 gpgcheck=0
-enabled=1# PackageCloud's repository key and RabbitMQ package signing key
+enabled=1
+# PackageCloud's repository key and RabbitMQ package signing key
 gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
        https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
 sslverify=1
