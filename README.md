@@ -28,7 +28,7 @@ Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
  * CentOS 8
  * CentOS 7
- * CentOS 6 (**[deprecated](https://wiki.centos.org/About/Product)**, packages are distributed)
+ * CentOS 6 (**[deprecated](https://wiki.centos.org/About/Product)**)
 
 ## Release Artifacts
 
