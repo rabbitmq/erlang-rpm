@@ -26,8 +26,8 @@ Recent Erlang versions require a modern OpenSSL version, currently this means `1
 
 Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
- * CentOS 8 (experimental, packages are distributed)
- * CentOS 7 (production ready, packages are distributed)
+ * CentOS 8
+ * CentOS 7
  * CentOS 6 (**[deprecated](https://wiki.centos.org/About/Product)**, packages are distributed)
 
 ## Release Artifacts
@@ -61,9 +61,11 @@ To use the most recent version on CentOS 8:
 name=rabbitmq_erlang
 baseurl=https://packagecloud.io/rabbitmq/erlang/el/8/$basearch
 repo_gpgcheck=1
-gpgcheck=0
+gpgcheck=1
 enabled=1
+# PackageCloud's repository key and RabbitMQ package signing key
 gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+       https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
@@ -73,8 +75,9 @@ name=rabbitmq_erlang-source
 baseurl=https://packagecloud.io/rabbitmq/erlang/el/8/SRPMS
 repo_gpgcheck=1
 gpgcheck=0
-enabled=1
+enabled=1# PackageCloud's repository key and RabbitMQ package signing key
 gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+       https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
@@ -94,9 +97,11 @@ To use the most recent version on CentOS 7:
 name=rabbitmq_erlang
 baseurl=https://packagecloud.io/rabbitmq/erlang/el/7/$basearch
 repo_gpgcheck=1
-gpgcheck=0
+gpgcheck=1
 enabled=1
+# PackageCloud's repository key and RabbitMQ package signing key
 gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+       https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
@@ -107,7 +112,9 @@ baseurl=https://packagecloud.io/rabbitmq/erlang/el/7/SRPMS
 repo_gpgcheck=1
 gpgcheck=0
 enabled=1
+# PackageCloud's repository key and RabbitMQ package signing key
 gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+       https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
@@ -127,9 +134,11 @@ To use the most recent version on CentOS 6:
 name=rabbitmq_erlang
 baseurl=https://packagecloud.io/rabbitmq/erlang/el/6/$basearch
 repo_gpgcheck=1
-gpgcheck=0
+gpgcheck=1
 enabled=1
+# PackageCloud's repository key and RabbitMQ package signing key
 gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+       https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
@@ -140,7 +149,9 @@ baseurl=https://packagecloud.io/rabbitmq/erlang/el/6/SRPMS
 repo_gpgcheck=1
 gpgcheck=0
 enabled=1
+# PackageCloud's repository key and RabbitMQ package signing key
 gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+       https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
@@ -149,7 +160,7 @@ metadata_expire=300
 Then install the package:
 
 ``` shell
-yum install erlang
+yum install -y erlang
 ```
 
 
