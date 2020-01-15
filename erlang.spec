@@ -339,7 +339,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Wed Jan 15 2019 Michael Klishin <mklishin@pivotal.io> - 22.2.2
+* Wed Jan 15 2020 Michael Klishin <mklishin@pivotal.io> - 22.2.2
 - Update to Erlang/OTP 22.2.2.
 
 * Thu Dec 19 2019 Michael Klishin <mklishin@pivotal.io> - 22.2.1
