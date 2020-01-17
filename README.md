@@ -470,7 +470,9 @@ history can be useful as well.
 
 ## Copyright and License
 
-(c) 2011-current Pivotal Software, Inc.
+Copyright VMware, Inc. 2011-2013. All Rights Reserved.
+Copyright Pivotal Software, Inc. 2013-2019. All Rights Reserved.
+Copyright VMware, Inc. 2020. All Rights Reserved.
 
 Released under the [Apache Software License 2.0](./Erlang_ASL2_LICENSE.txt),
 same as Erlang/OTP starting with 18.0.

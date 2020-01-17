@@ -1,4 +1,6 @@
-# Copyright Pivotal Software, Inc. 2012-2019. All Rights Reserved.
+# Copyright VMware, Inc. 2011-2013. All Rights Reserved.
+# Copyright Pivotal Software, Inc. 2013-2019. All Rights Reserved.
+# Copyright VMware, Inc. 2020. All Rights Reserved.
 #
 # The contents of this file are subject to the Erlang Public License,
 # Version 1.1, (the "License"); you may not use this file except in
