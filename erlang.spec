@@ -1,6 +1,4 @@
-# Copyright VMware, Inc. 2011-2013. All Rights Reserved.
-# Copyright Pivotal Software, Inc. 2013-2019. All Rights Reserved.
-# Copyright VMware, Inc. 2020. All Rights Reserved.
+# Copyright VMware, Inc and its affiliates, 2011-2020. All Rights Reserved.
 #
 # The contents of this file are subject to the Erlang Public License,
 # Version 1.1, (the "License"); you may not use this file except in
@@ -13,8 +11,8 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 22.2.7
-%global package_ver  22.2.7
+%global upstream_ver 22.2.8
+%global package_ver  22.2.8
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
@@ -341,6 +339,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Mar 4 2020 Michael Klishin <mklishin@pivotal.io> - 22.2.8
+- Update to Erlang/OTP 22.2.8.
+
 * Wed Feb 19 2020 Michael Klishin <mklishin@pivotal.io> - 22.2.7
 - Update to Erlang/OTP 22.2.7.
 
