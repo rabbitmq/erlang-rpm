@@ -11,8 +11,8 @@
 # the License for the specific language governing rights and limitations
 # under the License.
 
-%global upstream_ver 21.3.8.13
-%global package_ver  21.3.8.13
+%global upstream_ver 21.3.8.14
+%global package_ver  21.3.8.14
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
@@ -341,6 +341,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Mar 8 2020 Michael Klishin <mklishin@pivotal.io> - 21.3.8.14
+- Update to Erlang/OTP 21.3.8.14.
+
 * Tue Feb 4 2020 Michael Klishin <mklishin@pivotal.io> - 21.3.8.13
 - Update to Erlang/OTP 21.3.8.13.
 
