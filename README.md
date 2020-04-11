@@ -269,25 +269,25 @@ cd docker
 
 #
 # Use build-image-and-rpm.sh to execute all scripts:
-# build a Centos 7 image and build the RPM using it
+# build a Centos 8 image and build the RPM using it
 #
-./build-image-and-rpm.sh 7 --no-cache
+./build-image-and-rpm.sh 8 --no-cache
 
 #
-# To only build a CentOS 7 Docker image with necessary toolchain
+# To only build a CentOS 8 Docker image with necessary toolchain
 #
- ./build-docker-image.sh 7 --no-cache
+ ./build-docker-image.sh 8 --no-cache
 
 #
 # To only build the RPM using an already built and available image
 #
-./build-rpm-in-docker 7
+./build-rpm-in-docker 8
 ```
 
 then find the result under `docker/build-dir-{CentOSVersion}/RPMS/x86_64/`,
-e.g. `build-dir-7/RPMS/x86_64/`.
+e.g. `build-dir-8/RPMS/x86_64/`.
 
-For CentOS 6, replace the `7` in the examples above with a `6`.
+For CentOS 7, replace the `8` in the examples above with a `7`.
 
 
 ### Without Docker
