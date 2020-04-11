@@ -363,7 +363,7 @@ history can be useful as well.
 
 ## Copyright and License
 
-(c) 2011-current Pivotal Software, Inc.
+Copyright VMware, Inc and its affiliates, 2011-2020. All Rights Reserved.
 
 Released under the [Apache Software License 2.0](./Erlang_ASL2_LICENSE.txt),
 same as Erlang/OTP starting with 18.0.
