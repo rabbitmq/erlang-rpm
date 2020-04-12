@@ -41,9 +41,7 @@ For direct RPM package downloads, see [GitHub releases](https://github.com/rabbi
 Packages provisioned from PackageCloud are signed by the [PackageCloud repository key](https://packagecloud.io/rabbitmq/erlang/gpgkey).
 Other sources use the standard [RabbitMQ signing key](https://www.rabbitmq.com/signatures.html).
 
-### Package Cloud
-
-#### Erlang 22.x
+### Erlang 22.x from PackageCloud
 
 Note that [Erlang/OTP 22 is supported by RabbitMQ starting with version 3.7.15](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.15).
 
@@ -165,12 +163,12 @@ yum install -y erlang
 ```
 
 
-### Bintray Yum Repositories
+###  Yum Repositories
 
 To use the Bintray Yum repositories, use the `.repo` configuration files demonstrated in the following
 few sections.
 
-#### Erlang 22.x
+### Erlang 22.x from Bintray
 
 Note that [Erlang/OTP 22 is supported by RabbitMQ starting with version 3.7.15](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.15).
 
@@ -219,7 +217,7 @@ To install the package:
 yum install erlang
 ```
 
-#### Erlang 21.x
+### Erlang 21.x from Bintray
 
 Note that [Erlang/OTP 21 is supported by RabbitMQ starting with version 3.7.7](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.7).
 
@@ -268,7 +266,10 @@ To install the package:
 yum install erlang
 ```
 
-#### Erlang 20.3.x
+
+## Legacy Releases
+
+### Erlang 20.3.x from Bintray
 
 Note that [Erlang/OTP 20 is supported by RabbitMQ starting with version 3.6.11](https://groups.google.com/forum/#!msg/rabbitmq-users/_imbAavBYjY/S0LkV7b8CAAJ).
 
@@ -304,7 +305,7 @@ To install the package:
 yum install erlang
 ```
 
-#### Erlang 19.x
+### Erlang 19.x from Bintray
 
 To use Erlang 19.x on CentOS 7:
 
@@ -462,7 +463,7 @@ The patches applied affect the following files:
  * [lib/xmerl/src/Makefile](https://github.com/erlang/otp/commits/maint/lib/xmerl/src/Makefile)
 
 
-### Older Versions
+## Older Versions
 
 The directory `versions` contains the patch files used for the older versions. Git repository
 history can be useful as well.
