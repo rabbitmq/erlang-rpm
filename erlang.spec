@@ -1,4 +1,4 @@
-# Copyright Pivotal Software, Inc. 2012-2019. All Rights Reserved.
+# Copyright VMware, Inc. or its affiliantes, 2012-2020. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 21.3.8.14
-%global package_ver  21.3.8.14
+%global upstream_ver 21.3.8.15
+%global package_ver  21.3.8.15
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
@@ -28,7 +28,7 @@ License:	ASL 2.0
 URL:		https://www.erlang.org
 Source0:	https://github.com/erlang/otp/archive/OTP-%{upstream_ver}.tar.gz
 Source2:        %{OSL_File_Name}
-Vendor:		Pivotal Software, Inc.
+Vendor:		VMware, Inc.
 
 
 #   Do not format man-pages and do not install miscellaneous
@@ -342,6 +342,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Apr 28 2020 Michael Klishin <mklishin@pivotal.io> - 21.3.8.15
+- Update to Erlang/OTP 21.3.8.15.
+
 * Sun Mar 8 2020 Michael Klishin <mklishin@pivotal.io> - 21.3.8.14
 - Update to Erlang/OTP 21.3.8.14.
 
