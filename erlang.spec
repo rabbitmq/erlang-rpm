@@ -332,10 +332,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/lib/stdlib-*/include
 %{_libdir}/erlang/lib/stdlib-*/src
 
-
-%dir %{_libdir}/erlang/lib/syntax_tools-*/
-%{_libdir}/erlang/lib/syntax_tools-*/ebin
-
 %{_libdir}/erlang/lib/tools-*/
 
 %{_libdir}/erlang/lib/xmerl-*/
