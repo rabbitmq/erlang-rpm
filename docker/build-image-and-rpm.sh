@@ -15,4 +15,4 @@ then
 fi
 
 ./build-docker-image.sh "$1" "$2"
-./build-rpm-in-docker "$1"
+./build-rpm-in-docker.sh "$1"
