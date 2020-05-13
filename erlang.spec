@@ -18,6 +18,8 @@
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
 
+%define debug_package %{nil}
+
 Name:		erlang
 Version:	%{package_ver}
 Release:	%{package_ver_release}%{?dist}
@@ -179,12 +181,15 @@ rm -rf $RPM_BUILD_ROOT%{_bindir}/dialyzer
 rm -rf $RPM_BUILD_ROOT%{_bindir}/run_test
 rm -rf $RPM_BUILD_ROOT%{_bindir}/typer
 rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/bin/ct_run
+rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/bin/erl_call
 rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/bin/dialyzer
 rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/bin/run_test
 rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/bin/typer
 rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/erts-*/bin/ct_run
+rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/erts-*/bin/erl_call
 rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/erts-*/bin/dialyzer
 rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/erts-*/bin/typer
+rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/erts-*/bin/yielding_c_fun
 rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/lib/*/examples
 
 %clean
