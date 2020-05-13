@@ -2,9 +2,9 @@
 
 usage() {
   	echo "parameters error"
-	echo "first: version, es: 6 or 7.1.1503 "
+	echo "first: version, e.g. '8' or '7.8' "
 	echo "second: --no-cache [optional]"
-	echo "es: ./build-image-and-rpm.sh 7.1.1503 --no-cache"
+	echo "es: ./build-image-and-rpm.sh '8' --no-cache"
   exit 1
 }
 
