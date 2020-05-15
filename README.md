@@ -17,6 +17,19 @@ Only 64-bit packages are provided.
 Legacy series such as `20.3.x`, `19.3.x` are still produced but are not updated
 frequently by the upstream Erlang/OTP team and should be **considered unmaintained**.
 
+### RabbitMQ Version Compatibility
+
+See [Supported Erlang Versions](https://www.rabbitmq.com/which-erlang.html) in RabbitMQ documentation
+for an up-to-date compatibility matrix.
+
+#### Erlang 23
+
+Erlang 23 will be supported by RabbitMQ [starting with `3.8.4`](https://groups.google.com/forum/#!topic/rabbitmq-users/wlPIWz3UYHQ).
+
+#### Erlang 22
+
+Erlang 22 is supported by RabbitMQ [starting with `3.7.15`](https://groups.google.com/forum/#!topic/rabbitmq-users/vcRLhpUdg_o).
+
 Use of releases older than `19.3.6.13` is [highly discouraged](https://www.rabbitmq.com/which-erlang.html) due to known bugs that can be catastrophic to RabbitMQ deployments.
 
 
