@@ -23,7 +23,7 @@
 Name:		erlang
 Version:	%{package_ver}
 Release:	%{package_ver_release}%{?dist}
-Summary:	General-purpose programming language and runtime environment
+Summary:	Minimalistic Erlang/OTP distribution that provides just enough for running RabbitMQ
 
 Group:		Development/Languages
 License:	ASL 2.0
