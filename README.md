@@ -24,13 +24,13 @@ for an up-to-date compatibility matrix.
 
 #### Erlang 23
 
-Erlang 23 will be supported by RabbitMQ [starting with `3.8.4`](https://groups.google.com/forum/#!topic/rabbitmq-users/wlPIWz3UYHQ).
+Erlang 23 is supported by RabbitMQ [starting with `3.8.4`](https://groups.google.com/forum/#!topic/rabbitmq-users/wlPIWz3UYHQ).
 
 #### Erlang 22
 
 Erlang 22 is supported by RabbitMQ [starting with `3.7.15`](https://groups.google.com/forum/#!topic/rabbitmq-users/vcRLhpUdg_o).
 
-Use of releases older than `19.3.6.13` is [highly discouraged](https://www.rabbitmq.com/which-erlang.html) due to known bugs that can be catastrophic to RabbitMQ deployments.
+Use of releases older than `19.3.6.13` is **[highly discouraged](https://www.rabbitmq.com/which-erlang.html)** due to known bugs that can be catastrophic to RabbitMQ deployments.
 
 
 ## Implicit OpenSSL/libcrypto Dependency
