@@ -12,7 +12,7 @@ Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://gith
 ## Provided Erlang/OTP Versions
 
 The package currently targets Erlang/OTP release series `23.x`, `22.x`, and `21.3.x`.
-Only 64-bit packages are provided.
+Only 64-bit (x86-64) packages are provided.
 
 Legacy series such as `20.3.x`, `19.3.x` are still produced but are not updated
 frequently by the upstream Erlang/OTP team and should be **considered unmaintained**.
