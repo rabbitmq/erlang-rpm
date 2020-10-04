@@ -30,7 +30,9 @@ Erlang 23 is supported by RabbitMQ [starting with `3.8.4`](https://groups.google
 
 Erlang 22 is supported by RabbitMQ [starting with `3.7.15`](https://groups.google.com/forum/#!topic/rabbitmq-users/vcRLhpUdg_o).
 
-Use of releases older than `19.3.6.13` is **[highly discouraged](https://www.rabbitmq.com/which-erlang.html)** due to known bugs that can be catastrophic to RabbitMQ deployments.
+[RabbitMQ Erlang Version Requirements guide](https://www.rabbitmq.com/which-erlang.html) explains what Erlang/OTP
+releases are supported by a given RabbitMQ release. We **highly recommend** following the recommendations
+from that guide and using the most recent release in the supported series.
 
 
 ## Implicit OpenSSL/libcrypto Dependency
