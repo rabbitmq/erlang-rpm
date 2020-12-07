@@ -8,7 +8,7 @@ if [ -z "$centos_version" ]
 then
 	echo "
 Ops: parameters error
-first: version, ex: 8, 7, or 6
+first: version, ex: 8 or 7
 -----------------------------------------
 Ex: ./build-rpm-in-docker.sh 8
 Ex: ./build-rpm-in-docker.sh 7

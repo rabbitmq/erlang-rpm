@@ -46,7 +46,6 @@ Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
  * CentOS 8
  * CentOS 7
- * CentOS 6 (**[deprecated](https://wiki.centos.org/About/Product)**)
 
 ## Release Artifacts
 
@@ -143,43 +142,6 @@ To install the package:
 yum install erlang
 ```
 
-To use the most recent version on CentOS 6:
-
-``` ini
-# In /etc/yum.repos.d/rabbitmq_erlang.repo
-[rabbitmq_erlang]
-name=rabbitmq_erlang
-baseurl=https://packagecloud.io/rabbitmq/erlang/el/6/$basearch
-repo_gpgcheck=1
-gpgcheck=1
-enabled=1
-# PackageCloud's repository key and RabbitMQ package signing key
-gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
-       https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-
-[rabbitmq_erlang-source]
-name=rabbitmq_erlang-source
-baseurl=https://packagecloud.io/rabbitmq/erlang/el/6/SRPMS
-repo_gpgcheck=1
-gpgcheck=0
-enabled=1
-# PackageCloud's repository key and RabbitMQ package signing key
-gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
-       https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-```
-
-Then install the package:
-
-``` shell
-yum install -y erlang
-```
-
 
 ###  Yum Repositories
 
@@ -216,146 +178,6 @@ repo_gpgcheck=0
 enabled=1
 ```
 
-To use Erlang 22.x on CentOS 6:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/22/el/6
-gpgcheck=1
-gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
-To install the package:
-
-``` shell
-yum install erlang
-```
-
-### Erlang 21.x from Bintray
-
-Note that [Erlang/OTP 21 is supported by RabbitMQ starting with version 3.7.7](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.7).
-
-To use Erlang 21.x on CentOS 8:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/8
-gpgcheck=1
-gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
-To use Erlang 21.x on CentOS 7:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/7
-gpgcheck=1
-gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
-To use Erlang 21.x on CentOS 6:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/6
-gpgcheck=1
-gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
-To install the package:
-
-``` shell
-yum install erlang
-```
-
-
-## Legacy Releases
-
-### Erlang 20.3.x from Bintray
-
-Note that [Erlang/OTP 20 is supported by RabbitMQ starting with version 3.6.11](https://groups.google.com/forum/#!msg/rabbitmq-users/_imbAavBYjY/S0LkV7b8CAAJ).
-
-To use Erlang 20.3.x on CentOS 7:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/20/el/7
-gpgcheck=1
-gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
-To use Erlang 20.3.x on CentOS 6:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/20/el/6
-gpgcheck=1
-gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
-To install the package:
-
-``` shell
-yum install erlang
-```
-
-### Erlang 19.x from Bintray
-
-To use Erlang 19.x on CentOS 7:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/19/el/7
-gpgcheck=1
-gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
-To use Erlang 19.x on CentOS 6:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/19/el/6
-gpgcheck=1
-gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
-To install the package:
-
-``` shell
-yum install erlang
-```
 
 ## Available Erlang Applications
 

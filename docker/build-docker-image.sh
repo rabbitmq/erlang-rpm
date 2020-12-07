@@ -12,12 +12,11 @@ if [ -z "$centos_version" ]
 then
 	echo "
 Ops: parameters error
-first: version, ex: 8, 7, or 6
+first: version, ex: 8, or 7
 second: docker build parameters such as --no-cache
 -----------------------------------------
 Ex: ./build-docker-image.sh 8 --no-cache
 Ex: ./build-docker-image.sh 7 --no-cache
-Ex: ./build-docker-image.sh 6 --no-cache
 "
 exit 1
 fi
