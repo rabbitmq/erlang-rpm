@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 23.2.4
-%global package_ver  23.2.4
+%global upstream_ver 23.2.5
+%global package_ver  23.2.5
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
@@ -341,6 +341,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Feb 20 2021 Michael Klishin <klishinm@vmware.com> - 23.2.5
+- Update to Erlang/OTP 23.2.5.
+
 * Wed Feb 10 2021 Michael Klishin <klishinm@vmware.com> - 23.2.4
 - Update to Erlang/OTP 23.2.4.
 
