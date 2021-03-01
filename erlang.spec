@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 23.2.5
-%global package_ver  23.2.5
+%global upstream_ver 23.2.6
+%global package_ver  23.2.6
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
@@ -61,16 +61,16 @@ Requires:	systemd
 Obsoletes: erlang-docbuilder
 
 %description
-This is a minimal packaging of Erlang produced by Pivotal to support
+This is a minimal packaging of Erlang produced by VMware, Inc. to support
 running RabbitMQ. Compared to the community Erlang packaging it is
 monolithic, has fewer dependencies, and has lower disk and memory
 overhead. Many applications from Erlang Open Telecom Platform (OTP)
 have been removed. The following applications remain: asn1, compiler,
-crypto, erl_interface, erts, hipe, inets, kernel, mnesia, os_mon,
+crypto, erl_interface, erts, inets, kernel, mnesia, os_mon,
 public_key, reltool, runtime_tools, sasl, snmp, ssl, stdlib,
 syntax_tools and xmerl.
 
-%define _pivotal_license_file %{_builddir}/otp-OTP-%{upstream_ver}/`basename %{S:2}`
+%define _license_file %{_builddir}/otp-OTP-%{upstream_ver}/`basename %{S:2}`
 
 
 %prep
@@ -114,7 +114,7 @@ CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing" %configure %{conf_flags}
 # remove pre-built stuff
 make clean
 
-cp %{S:2} %{_pivotal_license_file}
+cp %{S:2} %{_license_file}
 
 touch lib/common_test/SKIP
 touch lib/debugger/SKIP
@@ -341,6 +341,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Mar 1 2021 Michael Klishin <klishinm@vmware.com> - 23.2.6
+- Update to Erlang/OTP 23.2.6.
+
 * Sat Feb 20 2021 Michael Klishin <klishinm@vmware.com> - 23.2.5
 - Update to Erlang/OTP 23.2.5.
 
