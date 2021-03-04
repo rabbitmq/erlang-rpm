@@ -18,8 +18,6 @@
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
 
-%define debug_package %{nil}
-
 Name:		erlang
 Version:	%{package_ver}
 Release:	%{package_ver_release}%{?dist}
