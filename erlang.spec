@@ -14,7 +14,7 @@
 
 %global upstream_ver 23.2.7
 %global package_ver  23.2.7
-%global package_ver_release 1
+%global package_ver_release 2
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
 
@@ -340,7 +340,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 
-* Wed Mar 3 2021 Michael Klishin <klishinm@vmware.com> - 23.2.7
+* Wed Mar 4 2021 Jean-Sébastien Pédron <jean-sebastien@rabbitmq.com> - 23.2.7-2
+- Restore the creation of the -debuginfo package.
+
+* Wed Mar 3 2021 Michael Klishin <klishinm@vmware.com> - 23.2.7-1
 - Update to Erlang/OTP 23.2.7.
 
 * Mon Mar 1 2021 Michael Klishin <klishinm@vmware.com> - 23.2.6
