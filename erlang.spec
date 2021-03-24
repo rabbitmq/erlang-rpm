@@ -14,7 +14,7 @@
 
 %global upstream_ver 23.3
 %global package_ver  23.3
-%global package_ver_release 2
+%global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
 
