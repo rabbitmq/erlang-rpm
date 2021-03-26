@@ -22,13 +22,13 @@ frequently by the upstream Erlang/OTP team and should be **considered unmaintain
 See [Supported Erlang Versions](https://www.rabbitmq.com/which-erlang.html) in RabbitMQ documentation
 for an up-to-date compatibility matrix.
 
+#### Erlang 24
+
+Erlang 24 will be [supported by RabbitMQ 3.9 and a future late 3.8 version](https://blog.rabbitmq.com/posts/2021/03/erlang-24-support-roadmap/).
+
 #### Erlang 23
 
 Erlang 23 is supported by RabbitMQ [starting with `3.8.4`](https://groups.google.com/forum/#!topic/rabbitmq-users/wlPIWz3UYHQ).
-
-#### Erlang 22
-
-Erlang 22 is supported by RabbitMQ [starting with `3.7.15`](https://groups.google.com/forum/#!topic/rabbitmq-users/vcRLhpUdg_o).
 
 [RabbitMQ Erlang Version Requirements guide](https://www.rabbitmq.com/which-erlang.html) explains what Erlang/OTP
 releases are supported by a given RabbitMQ release. We **highly recommend** following the recommendations
@@ -38,7 +38,7 @@ from that guide and using the most recent release in the supported series.
 ## Implicit OpenSSL/libcrypto Dependency
 
 This package intentionally **does not include OpenSSL**/libcrypto. It must be provisioned separately.
-Recent Erlang versions require a modern OpenSSL version, currently this means `1.0.2`, `1.1.x`, or later.
+Recent Erlang versions require a modern OpenSSL version, currently this means `1.1.x` or later.
 
 ## Supported CentOS Versions
 
@@ -49,18 +49,17 @@ Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
 ## Release Artifacts
 
-Yum repositories are available at [rabbitmq/erlang on Package Cloud](https://packagecloud.io/rabbitmq/erlang/) and [rabbitmq-erlang org on Bintray](https://bintray.com/rabbitmq-erlang/rpm/erlang). See the repository setup instructions below.
-
 For direct RPM package downloads, see [GitHub releases](https://github.com/rabbitmq/erlang-rpm/releases).
+
+Yum repository is available at [rabbitmq/erlang on Package Cloud](https://packagecloud.io/rabbitmq/erlang/).
+See the repository setup instructions below.
 
 ### Signing Keys
 
 Packages provisioned from PackageCloud are signed by the [PackageCloud repository key](https://packagecloud.io/rabbitmq/erlang/gpgkey).
 Other sources use the standard [RabbitMQ signing key](https://www.rabbitmq.com/signatures.html).
 
-### Erlang 22.x from PackageCloud
-
-Note that [Erlang/OTP 22 is supported by RabbitMQ starting with version 3.7.15](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.15).
+### Latest Erlang Version from PackageCloud
 
 Package Cloud supports a variety of options for RPM package installation: from Yum configuration to shell scripts
 to Chef and Puppet.
@@ -141,43 +140,6 @@ To install the package:
 ``` shell
 yum install erlang
 ```
-
-
-###  Yum Repositories
-
-To use the Bintray Yum repositories, use the `.repo` configuration files demonstrated in the following
-few sections.
-
-### Erlang 22.x from Bintray
-
-Note that [Erlang/OTP 22 is supported by RabbitMQ starting with version 3.7.15](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.15).
-
-To use Erlang 22.x on CentOS 8:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/22/el/8
-gpgcheck=1
-gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
-To use Erlang 22.x on CentOS 7:
-
-```ini
-# In /etc/yum.repos.d/rabbitmq-erlang.repo
-[rabbitmq-erlang]
-name=rabbitmq-erlang
-baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/22/el/7
-gpgcheck=1
-gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-repo_gpgcheck=0
-enabled=1
-```
-
 
 ## Available Erlang Applications
 
@@ -311,7 +273,7 @@ history can be useful as well.
 
 ## Copyright and License
 
-Copyright VMware, Inc and its affiliates, 2011-2020. All Rights Reserved.
+Copyright VMware, Inc and its affiliates, 2011-2021. All Rights Reserved.
 
 Released under the [Apache Software License 2.0](./Erlang_ASL2_LICENSE.txt),
 same as Erlang/OTP starting with 18.0.
