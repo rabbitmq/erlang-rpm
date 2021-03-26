@@ -9,13 +9,10 @@ This package has an **implicit OpenSSL/libcrypto dependency** (see below).
 
 Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://github.com/rabbitmq/erlang-debian-package/).
 
+
 ## Provided Erlang/OTP Versions
 
-The package currently targets Erlang/OTP release series `23.x` and `22.x`.
-Only 64-bit (x86-64) packages are provided.
-
-Older series such as `21.3.x` are not updated
-frequently by the upstream Erlang/OTP team and should be **considered unmaintained**.
+The package targets Erlang/OTP `23.x`. Only 64-bit (x86-64) packages are provided.
 
 ### RabbitMQ Version Compatibility
 
