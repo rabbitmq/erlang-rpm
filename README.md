@@ -7,7 +7,7 @@ plugins.
 
 This package has an **implicit OpenSSL/libcrypto dependency** (see below).
 
-Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://github.com/rabbitmq/erlang-debian-package/).
+Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://www.rabbitmq.com/install-debian.html#erlang-repositories).
 
 
 ## Provided Erlang/OTP Versions
@@ -37,24 +37,51 @@ from that guide and using the most recent release in the supported series.
 This package intentionally **does not include OpenSSL**/libcrypto. It must be provisioned separately.
 Recent Erlang versions require a modern OpenSSL version, currently this means `1.1.x` or later.
 
-## Supported CentOS Versions
+## Supported RHEL and CentOS Versions
 
 Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
- * CentOS 8
- * CentOS 7
+ * RHEL or CentOS 8
+ * RHEL or CentOS 7
 
 ## Release Artifacts
 
 For direct RPM package downloads, see [GitHub releases](https://github.com/rabbitmq/erlang-rpm/releases).
 
-Yum repository is available at [rabbitmq/erlang on Package Cloud](https://packagecloud.io/rabbitmq/erlang/).
+There are two Yum repositories that distributed this package:
+
+ * [rabbitmq/erlang on Package Cloud](https://packagecloud.io/rabbitmq/erlang/)
+ * [rabbitmq/rabbitmq-erlang on Cloudsmith.io](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#repository-setup-yum)
+
 See the repository setup instructions below.
 
 ### Signing Keys
 
-Packages provisioned from PackageCloud are signed by the [PackageCloud repository key](https://packagecloud.io/rabbitmq/erlang/gpgkey).
-Other sources use the standard [RabbitMQ signing key](https://www.rabbitmq.com/signatures.html).
+The package is signed using the standard [RabbitMQ signing key](https://www.rabbitmq.com/signatures.html):
+
+``` shell
+## primary RabbitMQ signing key
+rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+```
+
+To use the PackageCloud Yum repository, a [separate PackageCloud repository key](https://packagecloud.io/rabbitmq/erlang/gpgkey) must be imported:
+
+``` shell
+## primary RabbitMQ signing key
+rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+## modern Erlang repository
+rpm --import https://packagecloud.io/rabbitmq/erlang/gpgkey
+```
+
+
+To use the Cloudsmith Yum repository, a [separate Cloudsmith repository key](https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key) must be imported:
+
+``` shell
+## primary RabbitMQ signing key
+rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+## modern Erlang repository
+rpm --import 'https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key'
+```
 
 ### Latest Erlang Version from PackageCloud
 
@@ -137,6 +164,126 @@ To install the package:
 ``` shell
 yum install erlang
 ```
+
+### Latest Erlang Version from Cloudsmith
+
+Cloudsmith provides shell scripts for quick Yum repository setup.
+See the [Cloudsmith repository installation](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#repository-setup-yum) page
+for details.
+
+To use the most recent version on CentOS 8:
+
+``` ini
+# In /etc/yum.repos.d/rabbitmq_erlang.repo
+[rabbitmq-rabbitmq-erlang]
+name=rabbitmq-rabbitmq-erlang
+baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/8/$basearch
+repo_gpgcheck=1
+enabled=1
+gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+gpgcheck=1
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+pkg_gpgcheck=1
+autorefresh=1
+type=rpm-md
+
+[rabbitmq-rabbitmq-erlang-noarch]
+name=rabbitmq-rabbitmq-erlang-noarch
+baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/8/noarch
+repo_gpgcheck=1
+enabled=1
+gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+gpgcheck=1
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+pkg_gpgcheck=1
+autorefresh=1
+type=rpm-md
+
+[rabbitmq-rabbitmq-erlang-source]
+name=rabbitmq-rabbitmq-erlang-source
+baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/8/SRPMS
+repo_gpgcheck=1
+enabled=1
+gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+gpgcheck=1
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+pkg_gpgcheck=1
+autorefresh=1
+type=rpm-md
+```
+
+To install the package:
+
+``` shell
+yum update -y
+yum install -y erlang
+```
+
+To use the most recent version on CentOS 7:
+
+``` ini
+# In /etc/yum.repos.d/rabbitmq_erlang.repo
+[rabbitmq_erlang]
+name=rabbitmq-rabbitmq-erlang
+baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/7/$basearch
+repo_gpgcheck=1
+enabled=1
+gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+gpgcheck=1
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+pkg_gpgcheck=1
+autorefresh=1
+type=rpm-md
+
+[rabbitmq_erlang-noarch]
+name=rabbitmq-rabbitmq-erlang-noarch
+baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/7/noarch
+repo_gpgcheck=1
+enabled=1
+gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+gpgcheck=1
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+pkg_gpgcheck=1
+autorefresh=1
+type=rpm-md
+
+[rabbitmq_erlang-source]
+name=rabbitmq-rabbitmq-erlang-source
+baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/7/SRPMS
+repo_gpgcheck=1
+enabled=1
+gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+gpgcheck=1
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+pkg_gpgcheck=1
+autorefresh=1
+type=rpm-md
+```
+
+To install the package:
+
+``` shell
+yum update -y
+yum install -y erlang
+```
+
 
 ## Available Erlang Applications
 
