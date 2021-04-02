@@ -37,12 +37,14 @@ from that guide and using the most recent release in the supported series.
 This package intentionally **does not include OpenSSL**/libcrypto. It must be provisioned separately.
 Recent Erlang versions require a modern OpenSSL version, currently this means `1.1.x` or later.
 
-## Supported RHEL and CentOS Versions
+## Supported RHEL, CentOS and Fedora Versions
 
 Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
  * RHEL or CentOS 8
  * RHEL or CentOS 7
+
+The CentOS 8 version of the package usually works as expected on modern Fedora releases.
 
 ## Release Artifacts
 
