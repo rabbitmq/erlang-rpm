@@ -355,7 +355,7 @@ rm -rf $RPM_BUILD_ROOT
 * Wed Mar 24 2021 Michael Klishin <klishinm@vmware.com> - 23.3
 - Update to Erlang/OTP 23.3.
 
-* Wed Mar 4 2021 Jean-Sébastien Pédron <jean-sebastien@rabbitmq.com> - 23.2.7-2
+* Thu Mar 4 2021 Jean-Sébastien Pédron <jean-sebastien@rabbitmq.com> - 23.2.7-2
 - Restore the creation of the -debuginfo package.
 
 * Wed Mar 3 2021 Michael Klishin <klishinm@vmware.com> - 23.2.7-1
