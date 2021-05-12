@@ -12,7 +12,7 @@ Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://www.
 
 ## Provided Erlang/OTP Versions
 
-The package targets Erlang/OTP `23.x`. Only 64-bit (x86-64) packages are provided.
+The package targets Erlang/OTP `24.x` and `23.x`. Only 64-bit (x86-64) packages are provided.
 
 ### RabbitMQ Version Compatibility
 
@@ -21,7 +21,10 @@ for an up-to-date compatibility matrix.
 
 #### Erlang 24
 
-Erlang 24 is [supported by RabbitMQ versions as May 2021](https://blog.rabbitmq.com/posts/2021/03/erlang-24-support-roadmap/).
+Erlang 24 is supported by RabbitMQ [starting with `3.8.16`](https://www.rabbitmq.com/changelog.html)
+[as of May 2021](https://blog.rabbitmq.com/posts/2021/03/erlang-24-support-roadmap/).
+
+It will also be supported by the next feature release, `3.9.0`.
 
 #### Erlang 23
 
