@@ -24,7 +24,8 @@ for an up-to-date compatibility matrix.
 Erlang 24 is supported by RabbitMQ [starting with `3.8.16`](https://www.rabbitmq.com/changelog.html)
 [as of May 2021](https://blog.rabbitmq.com/posts/2021/03/erlang-24-support-roadmap/).
 
-It will also be supported by the next feature release, `3.9.0`.
+Erlang 24 depends on OpenSSL 1.1, which is **not available on CentOS 7**. Therefore Erlang 24 packages
+are **only produced for CentOS 8**.
 
 #### Erlang 23
 
@@ -44,11 +45,9 @@ Recent Erlang versions require a modern OpenSSL version, currently this means `1
 
 Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
- * RHEL or CentOS 8
- * RHEL or CentOS 7
- * Rocky Linux
+ * For Erlang 24: supports RHEL or CentOS 8, modern Fedora, Rocky Linux. **Requires OpenSSL 1.1**
+ * for Erlang 23: RHEL or CentOS 8, RHEL or CentOS 7, modern Fedora. Requires OpenSSL 1.0.x or 1.1.
 
-The CentOS 8 version of the package usually works as expected on modern Fedora releases and Rocky Linux.
 
 ## Release Artifacts
 
