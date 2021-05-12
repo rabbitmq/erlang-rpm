@@ -33,12 +33,10 @@ Vendor:		VMware, Inc.
 
 #   Do not format man-pages and do not install miscellaneous
 Patch1: otp-0001-Do-not-format-man-pages-and-do-not-install-miscellan.patch
-#   Remove rpath
-Patch2: otp-0002-Remove-rpath.patch
 #   Do not install C sources
-Patch3: otp-0003-Do-not-install-C-sources.patch
+Patch2: otp-0002-Do-not-install-C-sources.patch
 #   Do not install erlang sources
-Patch7: otp-0007-Do-not-install-erlang-sources.patch
+Patch3: otp-0003-Do-not-install-erlang-sources.patch
 
 # BuildRoot not strictly needed since F10, but keep it for spec file robustness
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
