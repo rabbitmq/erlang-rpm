@@ -266,9 +266,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/usr/
 
 
-%{_libdir}/erlang/lib/hipe-*/
-
-
 %dir %{_libdir}/erlang/lib/inets-*/
 %{_libdir}/erlang/lib/inets-*/ebin
 %{_libdir}/erlang/lib/inets-*/include
