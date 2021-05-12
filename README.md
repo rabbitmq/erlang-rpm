@@ -93,7 +93,9 @@ Cloudsmith provides shell scripts for quick Yum repository setup.
 See the [Cloudsmith repository installation](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#repository-setup-yum) page
 for details.
 
-To use the most recent version on CentOS 8:
+#### Erlang 24 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux
+
+To use the most recent Erlang version on CentOS 8:
 
 ``` ini
 # In /etc/yum.repos.d/rabbitmq_erlang.repo
@@ -149,7 +151,9 @@ yum update -y
 yum install -y erlang
 ```
 
-To use the most recent version on CentOS 7:
+#### Erlang 23.3 on RHEL 7, CentOS 7
+
+To use Erlang 23 on CentOS 7:
 
 ``` ini
 # In /etc/yum.repos.d/rabbitmq_erlang.repo
@@ -199,12 +203,16 @@ autorefresh=1
 type=rpm-md
 ```
 
-To install the package:
+Then install a specific (23.3) version of the `erlang` package:
 
 ``` shell
 yum update -y
-yum install -y erlang
+yum install -y erlang-23.3.4
 ```
+
+Note that Erlang 24 packages **implicitly depend on OpenSSL 1.1** which is no available
+on RHEL 7 or CentOS 7. Therefore Erlang 24 packages will fail to install
+on those distributions.
 
 
 ### Latest Erlang Version from PackageCloud
@@ -214,6 +222,8 @@ to Chef and Puppet.
 
 See [Package Cloud repository installation](https://packagecloud.io/rabbitmq/erlang/install) page
 for details.
+
+#### Erlang 24 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux
 
 To use the most recent version on CentOS 8:
 
@@ -252,6 +262,8 @@ To install the package:
 yum install erlang
 ```
 
+#### Erlang 23.3 on RHEL 7, CentOS 7
+
 To use the most recent version on CentOS 7:
 
 ``` ini
@@ -283,11 +295,16 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ```
 
-To install the package:
+Then install a specific (23.3) version of the `erlang` package:
 
 ``` shell
-yum install erlang
+yum update -y
+yum install -y erlang-23.3.4
 ```
+
+Note that Erlang 24 packages **implicitly depend on OpenSSL 1.1** which is no available
+on RHEL 7 or CentOS 7. Therefore Erlang 24 packages will fail to install
+on those distributions.
 
 
 ## Available Erlang Applications
