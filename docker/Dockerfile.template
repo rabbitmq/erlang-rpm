@@ -4,7 +4,8 @@ RUN yum -y update && yum clean all
 
 RUN yum install -y \
   autoconf \
-  # includes gcc and gcc-c++
+  # includes gcc and gcc-c++, the latter
+  # is needed to build Erlang/OTP with a JIT
   clang \
   m4 \
   mercurial \
