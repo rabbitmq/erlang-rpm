@@ -4,7 +4,8 @@ RUN yum -y update && yum clean all
 
 RUN yum install -y \
   autoconf \
-  gcc \
+  # includes gcc and gcc-c++
+  clang \
   m4 \
   mercurial \
   openssl-devel \
