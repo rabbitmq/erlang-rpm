@@ -43,16 +43,12 @@ BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRequires:	m4
 BuildRequires:	autoconf
-%if ! (0%{?rhel} && 0%{?rhel} <= 6)
-BuildRequires:	systemd-devel
-BuildRequires:	systemd
-%{?systemd_requires}
-Requires:	systemd
-%endif
-
+# will install gcc and gcc-c++ as dependencies
+BuildRequires:  clang
 
 Obsoletes: erlang-docbuilder
 
