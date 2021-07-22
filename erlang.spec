@@ -79,12 +79,6 @@ syntax_tools and xmerl.
 %patch3 -p1 -b .Do_not_install_C_sources
 %patch7 -p1 -F2 -b .Do_not_install_erlang_sources
 
-
-# remove shipped zlib sources
-# commented out because centos only has 1.2.3 and Erlang 18.1 needs a later version
-#rm -f erts/emulator/zlib/*.[ch]
-
-
 # Fix 664 file mode
 chmod 644 lib/kernel/examples/uds_dist/c_src/Makefile
 chmod 644 lib/kernel/examples/uds_dist/src/Makefile
