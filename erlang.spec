@@ -334,7 +334,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 
-* Sep Jul 4 2021 Michael Klishin <klishinm@vmware.com> - 23.3.4.6
+* Sat Sep 4 2021 Michael Klishin <klishinm@vmware.com> - 23.3.4.6
 - Update to Erlang/OTP 23.3.4.6.
 
 * Thu Jul 22 2021 Michael Klishin <klishinm@vmware.com> - 23.3.4.5
