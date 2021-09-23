@@ -40,7 +40,7 @@ their pull requests closed and locked.
 ## Contributor Agreement
 
 If you want to contribute a non-trivial change, please submit a signed copy of our
-[Contributor Agreement](https://github.com/rabbitmq/ca#how-to-submit) around the time
+[Contributor Agreement](https://cla.pivotal.io) around the time
 you submit your pull request. This will make it much easier (in some cases, possible)
 for the RabbitMQ team at Pivotal to merge your contribution.
 
