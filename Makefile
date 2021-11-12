@@ -14,7 +14,7 @@
 
 FINAL_OUTPUT_DIR=FINAL_RPMS
 
-OTP_RELEASE=24.1.4
+OTP_RELEASE=24.1.5
 
 # Where official Erlang distribution files come from...
 OTP_SRC_TGZ_FILE=OTP-$(OTP_RELEASE).tar.gz
