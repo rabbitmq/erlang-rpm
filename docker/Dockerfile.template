@@ -1,4 +1,4 @@
-FROM centos:{centosfrom}
+FROM quay.io/centos/centos:{centosfrom}
 
 RUN yum -y update && yum clean all
 
