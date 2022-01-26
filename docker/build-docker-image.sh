@@ -25,7 +25,7 @@ case $centos_version in
 		centos_tag=stream9;;
 	*)
 		# 8 and 7
-		centos_tag="$centos_version"
+		centos_tag="$centos_version";;
 esac
 
 if [ -e "$docker_file" ]
