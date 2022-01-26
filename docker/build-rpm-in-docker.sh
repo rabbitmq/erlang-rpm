@@ -1,17 +1,26 @@
 #!/usr/bin/env bash
 
 centos_version="$1"
-build_dir="build-dir-$centos_version"
+case $centos_version in
+	9)
+		centos_tag=stream9;;
+	*)
+		# 8 and 7
+		centos_tag="$centos_version";;
+esac
+
+# this has to match what Dockerfile uses
+build_dir="build-dir-$centos_tag"
 packages=("Makefile" "erlang.spec" "Erlang_ASL2_LICENSE.txt")
 
 if [ -z "$centos_version" ]
 then
 	echo "
 Ops: parameters error
-first: version, ex: 8 or 7
+first: version, ex: 9 or 8
 -----------------------------------------
+Ex: ./build-rpm-in-docker.sh 9
 Ex: ./build-rpm-in-docker.sh 8
-Ex: ./build-rpm-in-docker.sh 7
 "
 	exit 1
 fi
