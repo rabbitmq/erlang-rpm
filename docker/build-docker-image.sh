@@ -3,7 +3,7 @@
 docker_file="Dockerfile"
 docker_template="Dockerfile.template"
 centos_version="$1"
-docker_params="$2"
+docker_params=${2:-"--pull"}
 docker_dir="docker-centos-$centos_version"
 
 if [ -z "$centos_version" ]
