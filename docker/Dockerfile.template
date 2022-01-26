@@ -8,7 +8,6 @@ RUN yum install -y \
   # is needed to build Erlang/OTP with a JIT
   clang \
   m4 \
-  mercurial \
   openssl-devel \
   ncurses-devel \
   rpm-build \
