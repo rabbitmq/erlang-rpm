@@ -93,9 +93,6 @@ chmod 644 lib/ssl/examples/src/Makefile
 %global conf_flags --enable-shared-zlib --without-javac --without-odbc
 %endif
 
-# autoconf
-./otp_build autoconf
-
 %ifarch sparcv9 sparc64
 CFLAGS="$RPM_OPT_FLAGS -mcpu=ultrasparc -fno-strict-aliasing" %configure %{conf_flags}
 %else
