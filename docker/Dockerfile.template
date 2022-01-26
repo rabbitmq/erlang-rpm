@@ -6,7 +6,6 @@ RUN yum install -y \
   autoconf \
   gcc \
   m4 \
-  mercurial \
   openssl-devel \
   ncurses-devel \
   rpm-build \
