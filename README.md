@@ -5,7 +5,17 @@ It may be easier to install than other Erlang RPMs in most environments.
 It may or may not be suitable for running other Erlang-based software or 3rd party RabbitMQ
 plugins.
 
-This package has an **implicit OpenSSL/libcrypto dependency** (see below).
+These packages target **modern RHEL and CentOS versions** as well as recent Fedora releases:
+
+ * CentOS Stream 9
+ * Rocky Linux
+ * CentOS 8
+ * Modern Fedora
+
+Older releases (up to Erlang 23.3) include builds for CentOS 7 and OpenSSL 1.0.
+
+This package has an **implicit OpenSSL/libcrypto dependency** (see below). Starting with Erlang 24,
+the minimum required version is **an equivalent of OpenSSL is 1.1**, only provided by CentOS 8 and CentOS Stream 9.
 
 Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://www.rabbitmq.com/install-debian.html#erlang-repositories).
 
