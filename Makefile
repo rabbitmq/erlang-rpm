@@ -1,4 +1,4 @@
-# Copyright VMware, Inc. or its affiliantes, 2012-2020. All Rights Reserved.
+# Copyright VMware, Inc. or its affiliantes, 2012-2022. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 
 FINAL_OUTPUT_DIR=FINAL_RPMS
 
-OTP_RELEASE=24.2.1
+OTP_RELEASE=24.2.2
 
 # Where official Erlang distribution files come from...
 OTP_SRC_TGZ_FILE=OTP-$(OTP_RELEASE).tar.gz

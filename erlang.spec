@@ -1,4 +1,4 @@
-# Copyright VMware, Inc. or its affiliantes, 2012-2020. All Rights Reserved.
+# Copyright VMware, Inc. or its affiliantes, 2012-2022. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 24.2.1
-%global package_ver  24.2.1
+%global upstream_ver 24.2.2
+%global package_ver  24.2.2
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
@@ -320,6 +320,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Mar 9 2022 Michael Klishin <klishinm@vmware.com> - 24.2.2
+- Update to Erlang/OTP 24.2.2
+
 * Tue Jan 25 2022 Michael Klishin <klishinm@vmware.com> - 24.2.1
 - Update to Erlang/OTP 24.2.1
 
