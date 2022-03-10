@@ -23,6 +23,8 @@ fi
 case $centos_version in
 	9)
 		centos_tag=stream9;;
+	8)
+		centos_tag=stream8;;
 	*)
 		# 8 and 7
 		centos_tag="$centos_version";;
