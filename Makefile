@@ -37,6 +37,7 @@ prepare:
 	cp *.patch SOURCES
 	cp erlang.spec SPECS
 	cp Erlang_ASL2_LICENSE.txt SOURCES
+	yum update -y
 	yum install -y util-linux
 	if test -f /etc/os-release; then \
 		. /etc/os-release; \
