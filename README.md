@@ -12,7 +12,7 @@ These packages target **modern RHEL and CentOS versions** as well as recent Fedo
  * CentOS 8
  * Modern Fedora
 
-Older releases (up to Erlang 23.3) include builds for CentOS 7 and OpenSSL 1.0.
+Older releases (up to Erlang 23.3) may include builds for CentOS 7 and OpenSSL 1.0.
 
 This package has an **implicit OpenSSL/libcrypto dependency** (see below). Starting with Erlang 24,
 the minimum required version is **an equivalent of OpenSSL is 1.1**, only provided by CentOS 8 and CentOS Stream 9.
@@ -55,8 +55,8 @@ Recent Erlang versions require a modern OpenSSL version, currently this means `1
 
 Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
- * For Erlang 24: supports RHEL or CentOS 8, modern Fedora, Rocky Linux. **Requires OpenSSL 1.1**
- * for Erlang 23: RHEL or CentOS 8, RHEL or CentOS 7, modern Fedora. Requires OpenSSL 1.0.x or 1.1.
+ * For Erlang 24: supports RHEL or CentOS Stream 9 or CentOS Stream 8, modern Fedora, Rocky Linux. **Requires OpenSSL 1.1**
+ * for Erlang 23: supports RHEL or CentOS Stream 9 or CentOS Stream 8, modern Fedora. Requires OpenSSL 1.0.x or 1.1.
 
 
 ## Release Artifacts
@@ -161,77 +161,6 @@ yum update -y
 yum install -y erlang
 ```
 
-#### Erlang 23.3 on RHEL 7, CentOS 7
-
-To use Erlang 23 on CentOS 7:
-
-``` ini
-# In /etc/yum.repos.d/rabbitmq_erlang.repo
-[rabbitmq_erlang]
-name=rabbitmq-rabbitmq-erlang
-baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/7/$basearch
-repo_gpgcheck=1
-enabled=1
-gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
-       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
-gpgcheck=1
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-pkg_gpgcheck=1
-autorefresh=1
-type=rpm-md
-
-[rabbitmq_erlang-noarch]
-name=rabbitmq-rabbitmq-erlang-noarch
-baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/7/noarch
-repo_gpgcheck=1
-enabled=1
-gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
-       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
-gpgcheck=1
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-pkg_gpgcheck=1
-autorefresh=1
-type=rpm-md
-
-[rabbitmq_erlang-source]
-name=rabbitmq-rabbitmq-erlang-source
-baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/7/SRPMS
-repo_gpgcheck=1
-enabled=1
-gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
-       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
-gpgcheck=1
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-pkg_gpgcheck=1
-autorefresh=1
-type=rpm-md
-```
-
-Then install a specific (23.3) version of the `erlang` package:
-
-``` shell
-yum update -y
-yum install -y erlang-23.3.4
-```
-
-Note that Erlang 24 packages **implicitly depend on OpenSSL 1.1** which is no available
-on RHEL 7 or CentOS 7. Therefore Erlang 24 packages will fail to install
-on those distributions.
-
-
-### Latest Erlang Version from PackageCloud
-
-Package Cloud supports a variety of options for RPM package installation: from Yum configuration to shell scripts
-to Chef and Puppet.
-
-See [Package Cloud repository installation](https://packagecloud.io/rabbitmq/erlang/install) page
-for details.
 
 #### Erlang 24 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux
 
@@ -270,46 +199,6 @@ To install the package:
 
 ``` shell
 yum install erlang
-```
-
-#### Erlang 23.3 on RHEL 7, CentOS 7
-
-To use the most recent version on CentOS 7:
-
-``` ini
-# In /etc/yum.repos.d/rabbitmq_erlang.repo
-[rabbitmq_erlang]
-name=rabbitmq_erlang
-baseurl=https://packagecloud.io/rabbitmq/erlang/el/7/$basearch
-repo_gpgcheck=1
-gpgcheck=1
-enabled=1
-# PackageCloud's repository key and RabbitMQ package signing key
-gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
-       https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-
-[rabbitmq_erlang-source]
-name=rabbitmq_erlang-source
-baseurl=https://packagecloud.io/rabbitmq/erlang/el/7/SRPMS
-repo_gpgcheck=1
-gpgcheck=0
-enabled=1
-# PackageCloud's repository key and RabbitMQ package signing key
-gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
-       https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-```
-
-Then install a specific (23.3) version of the `erlang` package:
-
-``` shell
-yum update -y
-yum install -y erlang-23.3.4
 ```
 
 Note that Erlang 24 packages **implicitly depend on OpenSSL 1.1** which is no available
@@ -373,7 +262,7 @@ cd docker
 then find the result under `docker/build-dir-{CentOSVersion}/RPMS/x86_64/`,
 e.g. `build-dir-8/RPMS/x86_64/`.
 
-For CentOS 7, replace the `8` in the examples above with a `7`.
+For CentOS Stream 9, replace the `8` in the examples above with a `9`.
 
 
 ### Without Docker
