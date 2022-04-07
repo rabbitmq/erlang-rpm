@@ -43,7 +43,6 @@ BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel
-BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRequires:	m4
 BuildRequires:	autoconf
