@@ -162,6 +162,8 @@ yum install -y erlang
 ```
 
 
+### Latest Erlang Version from PackageCloud
+
 #### Erlang 24 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux
 
 To use the most recent version on CentOS 8:
@@ -176,7 +178,7 @@ gpgcheck=1
 enabled=1
 # PackageCloud's repository key and RabbitMQ package signing key
 gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
-       https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
@@ -189,7 +191,7 @@ gpgcheck=0
 enabled=1
 # PackageCloud's repository key and RabbitMQ package signing key
 gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
-       https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
