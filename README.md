@@ -10,14 +10,15 @@ These packages target **modern RHEL and CentOS versions** as well as recent Fedo
  * RHEL 8.4 or later
  * CentOS Stream 8
  * CentOS Stream 9
- * Rocky Linux
+ * Rocky Linux 8.5 or later
  * Fedora 32 or later
  * Amazon Linux 2022 (Fedora-based) and 2 (via Erlang 23 CentOS 7 builds of this package)
 
 Older releases (up to Erlang 23.3) may include builds for CentOS 7 and OpenSSL 1.0.
 
 This package has an **implicit OpenSSL/libcrypto dependency** (see below). Starting with Erlang 24,
-the minimum required version is **an equivalent of OpenSSL is 1.1**, only provided by CentOS 8 and CentOS Stream 9.
+the minimum required version is **an equivalent of OpenSSL is 1.1**, only provided by Fedora,
+Rocky Linux, CentOS Stream 8 and CentOS Stream 9.
 
 Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://www.rabbitmq.com/install-debian.html#erlang-repositories).
 
@@ -37,7 +38,7 @@ Erlang 24 is supported by RabbitMQ [starting with `3.8.16`](https://www.rabbitmq
 [as of May 2021](https://blog.rabbitmq.com/posts/2021/03/erlang-24-support-roadmap/).
 
 Erlang 24 depends on OpenSSL 1.1, which is **not available on CentOS 7**. Therefore Erlang 24 packages
-are **only produced for CentOS 8**.
+are **only produced for modern Fedora, Rocky Linux and CentOS Stream**.
 
 #### Erlang 23
 
