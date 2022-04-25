@@ -7,7 +7,7 @@ plugins.
 
 These packages target **modern RHEL and CentOS versions** as well as recent Fedora releases:
 
- * RHEL 8
+ * RHEL 8.4 or later
  * CentOS Stream 8
  * CentOS Stream 9
  * Rocky Linux
