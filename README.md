@@ -25,28 +25,27 @@ Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://www.
 
 ## Provided Erlang/OTP Versions
 
-The package targets Erlang/OTP `24.x` and `23.x`. Only 64-bit (x86-64) packages are provided.
+The package targets Erlang/OTP `25.x` and `24.x`. Only 64-bit (x86-64) packages are provided.
 
 ### RabbitMQ Version Compatibility
 
 See [Supported Erlang Versions](https://www.rabbitmq.com/which-erlang.html) in RabbitMQ documentation
 for an up-to-date compatibility matrix.
 
+#### Erlang 25
+
+Erlang 25 is supported by RabbitMQ [starting with `3.10.0`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.0).
+
+Erlang 25 depends on OpenSSL 1.1, which is **not available on CentOS 7**. Therefore Erlang 25 packages
+are **only produced for modern Fedora, Rocky Linux and CentOS Stream**.
+
+
 #### Erlang 24
 
-Erlang 24 is supported by RabbitMQ [starting with `3.8.16`](https://www.rabbitmq.com/changelog.html)
-[as of May 2021](https://blog.rabbitmq.com/posts/2021/03/erlang-24-support-roadmap/).
+Erlang 24 is supported by RabbitMQ [starting with `3.8.16`](https://www.rabbitmq.com/changelog.html).
 
 Erlang 24 depends on OpenSSL 1.1, which is **not available on CentOS 7**. Therefore Erlang 24 packages
 are **only produced for modern Fedora, Rocky Linux and CentOS Stream**.
-
-#### Erlang 23
-
-Erlang 23 is supported by RabbitMQ [starting with `3.8.4`](https://groups.google.com/forum/#!topic/rabbitmq-users/wlPIWz3UYHQ).
-
-[RabbitMQ Erlang Version Requirements guide](https://www.rabbitmq.com/which-erlang.html) explains what Erlang/OTP
-releases are supported by a given RabbitMQ release. We **highly recommend** following the recommendations
-from that guide and using the most recent release in the supported series.
 
 
 ## Implicit OpenSSL/libcrypto Dependency
@@ -58,8 +57,8 @@ Recent Erlang versions require a modern OpenSSL version, currently this means `1
 
 Please note the **implicit OpenSSL/libcrypto dependency** section above.
 
- * For Erlang 24: supports RHEL or CentOS Stream 9 or CentOS Stream 8, modern Fedora, Rocky Linux. **Requires OpenSSL 1.1**
- * for Erlang 23: supports RHEL or CentOS Stream 9 or CentOS Stream 8, modern Fedora. Requires OpenSSL 1.0.x or 1.1.
+ * For Erlang 25: supports RHEL or CentOS Stream 9 or CentOS Stream 8, modern Fedora, Rocky Linux. **Requires OpenSSL 1.1**
+ * for Erlang 24: same as Erlang 25.
 
 
 ## Release Artifacts
@@ -106,7 +105,7 @@ Cloudsmith provides shell scripts for quick Yum repository setup.
 See the [Cloudsmith repository installation](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#repository-setup-yum) page
 for details.
 
-#### Erlang 24 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux
+#### Erlang 25 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux
 
 To use the most recent Erlang version on CentOS 8:
 
@@ -167,7 +166,7 @@ yum install -y erlang
 
 ### Latest Erlang Version from PackageCloud
 
-#### Erlang 24 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux
+#### Erlang 25 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux
 
 To use the most recent version on CentOS 8:
 
@@ -206,8 +205,8 @@ To install the package:
 yum install erlang
 ```
 
-Note that Erlang 24 packages **implicitly depend on OpenSSL 1.1** which is no available
-on RHEL 7 or CentOS 7. Therefore Erlang 24 packages will fail to install
+Note that Erlang 25 packages **implicitly depend on OpenSSL 1.1** which is no available
+on RHEL 7 or CentOS 7. Therefore Erlang 25 packages will fail to install
 on those distributions.
 
 
