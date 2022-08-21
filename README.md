@@ -12,7 +12,7 @@ These packages target **modern RHEL and CentOS versions** as well as recent Fedo
  * CentOS Stream 9
  * Rocky Linux 8.5 or later
  * Fedora 32 or later
- * Amazon Linux 2022 (Fedora-based) and 2 (via Erlang 23 CentOS 7 builds of this package)
+ * Amazon Linux 2022 (Fedora-based) and 2 (via an older [Erlang 23 CentOS 7 build](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.11) of this package)
 
 Older releases (up to Erlang 23.3) may include builds for CentOS 7 and OpenSSL 1.0.
 
