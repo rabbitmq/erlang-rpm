@@ -14,7 +14,7 @@
 
 %global upstream_ver 25.1.1
 %global package_ver  25.1.1
-%global package_ver_release 1
+%global package_ver_release 2
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
 
@@ -48,7 +48,9 @@ BuildRequires:	m4
 BuildRequires:	autoconf
 # will install gcc and gcc-c++ as dependencies
 BuildRequires:  clang
-
+%if ! (0%{?rhel} && 0%{?rhel} <= 6)
+BuildRequires:  systemd-devel
+%endif
 Obsoletes: erlang-docbuilder
 
 %description
@@ -319,6 +321,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Oct 4 2022 Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org> - 25.1.1-2
+- Add systemd-devel build dependency where needed.
+
 * Tue Oct 4 2022 Michael Klishin <klishinm@vmware.com> - 25.1.1
 - Update to Erlang/OTP 25.1.1
 
