@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 24.3.4.7
-%global package_ver  24.3.4.7
+%global upstream_ver 24.3.4.8
+%global package_ver  24.3.4.8
 %global package_ver_release 1
 
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
@@ -319,6 +319,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Mar 2 2023 Arnaud Cogoluegnes <acogoluegnes@vmware.com> - 24.3.4.8
+- Update to Erlang/OTP 24.3.4.8
+
 * Wed Dec 28 2022 Michael Klishin <klishinm@vmware.com> - 24.3.4.7
 - Update to Erlang/OTP 24.3.4.7
 
