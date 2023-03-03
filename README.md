@@ -296,7 +296,7 @@ history can be useful as well.
 
 ## Copyright and License
 
-Copyright VMware, Inc and its affiliates, 2011-2022. All Rights Reserved.
+Copyright VMware, Inc and its affiliates, 2011-2023. All Rights Reserved.
 
 Released under the [Apache Software License 2.0](./Erlang_ASL2_LICENSE.txt),
 same as Erlang/OTP starting with 18.0.
