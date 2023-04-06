@@ -5,22 +5,30 @@ It may be easier to install than other Erlang RPMs in most environments.
 It may or may not be suitable for running other Erlang-based software or 3rd party RabbitMQ
 plugins.
 
-These packages target **modern RHEL and CentOS versions** as well as recent Fedora releases:
+## Supported RPM-based Distributions
+
+These packages target **modern RHEL and CentOS versions** (RHEL/CentOS Stream 8+) as well as recent Fedora releases:
 
  * RHEL 8.4 or later
  * CentOS Stream 8
  * CentOS Stream 9
  * Rocky Linux 8.5 or later
- * Fedora 32 or later
- * Amazon Linux 2023 (Fedora-based) and 2 (via an older [Erlang 23 CentOS 7 build](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.11) of this package)
+ * Fedora 34 or later
+ * Amazon Linux 2023 (Fedora-based)
 
-Older releases (up to Erlang 23.3) may include builds for CentOS 7 and OpenSSL 1.0.
+## What about CentOS 7 and derivatives?
+
+Older releases (up to [Erlang 23.3.4.11](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.11))
+include builds for CentOS 7 and CentOS 7-based distributions (namely Amazon Linux 2), and OpenSSL 1.0.
 
 This package has an **implicit OpenSSL/libcrypto dependency** (see below). Starting with Erlang 24,
 the minimum required version is **an equivalent of OpenSSL is 1.1**, only provided by Fedora,
 Rocky Linux, CentOS Stream 8 and CentOS Stream 9.
 
-Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://www.rabbitmq.com/install-debian.html#erlang-repositories).
+## What about Debian-based distributions?
+
+Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://www.rabbitmq.com/install-debian.html#erlang-repositories)
+and [a modern Erlang PPA for Ubuntu](https://rabbitmq.com/install-debian.html#apt-launchpad-erlang).
 
 
 ## Provided Erlang/OTP Versions
