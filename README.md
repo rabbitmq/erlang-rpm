@@ -9,7 +9,7 @@ ARM64 builds and support, [let us know](https://github.com/rabbitmq/erlang-rpm/d
 
 ## Supported RPM-based Distributions
 
-These packages target **modern RHEL and CentOS versions** (RHEL/CentOS Stream 8+) as well as recent Fedora releases:
+Binary builds of this package target **modern RHEL and CentOS versions** (RHEL/CentOS Stream 8+) as well as recent Fedora releases:
 
  * RHEL 8.4 or later
  * CentOS Stream 8
