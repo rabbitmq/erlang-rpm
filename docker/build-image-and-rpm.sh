@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
 usage() {
-  	echo "parameters error"
+  echo "parameters error"
 	echo "first: version, e.g. 'stream9' or 'stream8' "
-	echo "second: --no-cache [optional]"
-	echo "es: ./build-image-and-rpm.sh 'stream9' --no-cache"
+	echo "second: docker build arguments such as '--no-cache' [optional]"
+	echo "./build-image-and-rpm.sh 'stream9' --no-cache"
   exit 1
 }
 

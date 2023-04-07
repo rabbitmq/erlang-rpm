@@ -9,3 +9,4 @@ docker/docker-*
 .sw?
 .*.sw?
 /otp_*.tar.gz
+RPMS/*
