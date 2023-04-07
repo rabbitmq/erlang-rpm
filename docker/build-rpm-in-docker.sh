@@ -2,18 +2,6 @@
 
 os_name="$1"
 
-case $os_name in
-	9)
-		image="quay.io/centos/centos"
-		image_tag="stream9";;
-	8)
-		image="quay.io/centos/centos"
-		image_tag="stream8";;
-	f38)
-		image="fedora"
-		image_tag="38";;
-esac
-
 # this has to match what Dockerfile uses
 build_dir="pkg-build-dir"
 pkg_files=("Makefile" "erlang.spec" "Erlang_ASL2_LICENSE.txt")

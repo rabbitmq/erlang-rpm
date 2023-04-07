@@ -10,7 +10,7 @@ case $os_name in
 	8|stream8|centos8)
 		image="quay.io/centos/centos"
 		image_tag=stream8;;
-	f38|fedora38)
+	f38|fc38|fedora38)
 		image="fedora"
 		image_tag="38";;
 	al2023|amazonlinux2023)
@@ -24,12 +24,12 @@ if [ -z "$os_name" ]
 then
 	echo "
 Ops: parameters error
-first: version, ex: stream9, stream8, f38
+first: version, ex: stream9, stream8, al2023, fedora38
 second: docker build parameters such as --no-cache
 -----------------------------------------
 Ex: ./build-docker-image.sh stream9 --no-cache
 Ex: ./build-docker-image.sh stream8 --no-cache
-Ex: ./build-docker-image.sh f38 --no-cache
+Ex: ./build-docker-image.sh fedora38 --no-cache
 "
 exit 1
 fi
