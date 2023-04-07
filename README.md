@@ -255,6 +255,8 @@ Only the following OTP applications are provided:
 
 ### With Docker
 
+
+
 ```sh
 cd docker
 
@@ -275,8 +277,8 @@ cd docker
 ./build-rpm-in-docker 8
 ```
 
-then find the result under `docker/build-dir-{CentOSVersion}/RPMS/x86_64/`,
-e.g. `build-dir-8/RPMS/x86_64/`.
+then find the result under `docker/build-dir-{CentOSVersion}/RPMS/{architecture}/`,
+e.g. `build-dir-8/RPMS/{architecture}/`.
 
 For CentOS Stream 9, replace the `8` in the examples above with a `9`.
 

@@ -1,4 +1,7 @@
-FROM quay.io/centos/centos:{centosfrom}
+ARG image
+ARG image_tag
+
+FROM $image:$image_tag
 
 RUN yum -y update && yum clean all
 
@@ -20,4 +23,4 @@ RUN yum install -y \
   make
 
 RUN mkdir /build
-CMD ["sh", "-c", "cd /build/build-dir-{centosfrom} && make"]
+CMD ["sh", "-c", "cd /build/pkg-build-dir && make"]
