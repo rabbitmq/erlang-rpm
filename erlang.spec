@@ -81,11 +81,7 @@ chmod 644 lib/ssl/examples/src/Makefile
 
 
 %build
-%if ! (0%{?rhel} && 0%{?rhel} <= 6)
 %global conf_flags --enable-shared-zlib --enable-systemd --without-javac --without-odbc
-%else
-%global conf_flags --enable-shared-zlib --without-javac --without-odbc
-%endif
 
 %ifarch sparcv9 sparc64
 CFLAGS="$RPM_OPT_FLAGS -mcpu=ultrasparc -fno-strict-aliasing" %configure %{conf_flags}

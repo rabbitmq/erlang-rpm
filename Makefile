@@ -33,8 +33,9 @@ build-deps:
 
 prepare: build-deps
 	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp dist
-ifneq ("$(wildcard $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE))", "")
-	# file exists
+ifneq ("$(wildcard /tmp/$(OTP_SRC_TGZ_FILE))","")
+	# for faster turnaround time during development
+	cp /tmp/$(OTP_SRC_TGZ_FILE) $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE)
 else
 	wget --no-clobber -O $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) $(ERLANG_DISTPOINT)
 endif
