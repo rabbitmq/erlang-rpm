@@ -35,11 +35,11 @@ Vendor:		VMware, Inc.
 
 
 #   Do not format man-pages and do not install miscellaneous
-Patch1: otp-0001-Do-not-format-man-pages-and-do-not-install-miscellan.patch
+Patch0: otp-0001-Do-not-format-man-pages-and-do-not-install-miscellan.patch
 #   Do not install C sources
-Patch2: otp-0002-Do-not-install-C-sources.patch
+Patch1: otp-0002-Do-not-install-C-sources.patch
 #   Do not install erlang sources
-Patch3: otp-0003-Do-not-install-erlang-sources.patch
+Patch2: otp-0003-Do-not-install-erlang-sources.patch
 
 # BuildRoot not strictly needed since F10, but keep it for spec file robustness
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
@@ -69,9 +69,7 @@ syntax_tools and xmerl.
 %prep
 %setup -q -n otp-OTP-%{upstream_ver}
 
-%patch 1 -p1 -b .Do_not_format_man_pages_and_do_not_install_miscellan
-%patch 2 -p1 -b .Do_not_install_C_sources
-%patch 3 -p1 -F2 -b .Do_not_install_erlang_sources
+%autopatch -p 1
 
 # Fix 664 file mode
 chmod 644 lib/kernel/examples/uds_dist/c_src/Makefile
