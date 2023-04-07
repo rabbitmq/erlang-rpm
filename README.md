@@ -255,44 +255,62 @@ Only the following OTP applications are provided:
 
 ### With Docker
 
+This repository provides scripts that can build an image with the `rpmbuild` toolchain
+and build the package in it. They can be found under the `./docker` directory.
+
 ```sh
 cd docker
 
 #
 # Use build-image-and-rpm.sh to execute all scripts:
-# build a Centos 8 image and build the RPM using it
+# build an image and build the RPM in it
 #
-./build-image-and-rpm.sh 8 --no-cache
+# Supported distribution aliases:
+#  * stream9 for CentOS Stream 9
+#  * stream8 for CentOS Stream 8
+#  * al2023 for Amazon Linux 2023
+#  * f38 for Fedora 38
+#
+./build-image-and-rpm.sh stream9 --no-cache
 
 #
-# To only build a CentOS 8 Docker image with necessary toolchain
+# To only build an image with the necessary toolchain,
+# use ./build-docker-image.sh.
 #
- ./build-docker-image.sh 8 --no-cache
+# Supported distribution aliases:
+#  * stream9 for CentOS Stream 9
+#  * stream8 for CentOS Stream 8
+#  * al2023 for Amazon Linux 2023
+#  * f38 for Fedora 38
+ ./build-docker-image.sh stream9 --no-cache
 
 #
-# To only build the RPM using an already built and available image
+# To only build the RPM using an already built and available image,
+# use ./build-rpm-in-docker.sh
 #
-./build-rpm-in-docker 8
+# Supported distribution aliases:
+#  * stream9 for CentOS Stream 9
+#  * stream8 for CentOS Stream 8
+#  * al2023 for Amazon Linux 2023
+#  * f38 for Fedora 38
+#
+./build-rpm-in-docker.sh stream9
 ```
 
-then find the result under `docker/build-dir-{CentOSVersion}/RPMS/x86_64/`,
-e.g. `build-dir-8/RPMS/x86_64/`.
-
-For CentOS Stream 9, replace the `8` in the examples above with a `9`.
-
+Built packages can be found under `docker/pkg-build-dir/RPMS/{architecture}/`.
 
 ### Without Docker
 
-You must be running an RPM-based distro (CentOS Stream 9, modern Fedora or equivalent RHEL is highly recommended) for this to work.
+On an RPM-based distro (CentOS Stream 9, modern Fedora or Amazon Linux 2023), the package can
+be built without containers.
 
 ``` shell
-# add sudo if required by the local Docker installation
+# add sudo if necessary
 make
 ```
 
 and see `RPMS/{architecture}/`. Note that all artifacts created this way may be owned by root
 due to the use of `sudo`.
-
 
 ### Scope of Patching
 
@@ -303,7 +321,7 @@ No source code is patched.
 ## Older Versions
 
 The directory `versions` contains the patch files used for the older versions. Git repository
-history can be useful as well.
+history and release archive can be useful as well.
 
 
 ## Copyright and License

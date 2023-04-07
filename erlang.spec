@@ -69,7 +69,8 @@ syntax_tools and xmerl.
 %prep
 %setup -q -n otp-OTP-%{upstream_ver}
 
-%autopatch -p 1
+# Automatically apply all listed patches
+%autopatch -v -p 1
 
 # Fix 664 file mode
 chmod 644 lib/kernel/examples/uds_dist/c_src/Makefile

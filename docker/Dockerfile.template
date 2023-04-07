@@ -1,23 +1,11 @@
-FROM quay.io/centos/centos:{centosfrom}
+ARG image
+ARG image_tag
 
-RUN yum -y update && yum clean all
+FROM $image:$image_tag
 
-RUN yum install -y \
-  autoconf \
-  # includes gcc and gcc-c++, the latter
-  # is needed to build Erlang/OTP with a JIT
-  clang \
-  m4 \
-  openssl-devel \
-  ncurses-devel \
-  rpm-build \
-  rpmdevtools \
-  rpmlint \
-  tar \
-  wget \
-  zlib-devel \
-  systemd-devel \
-  make
+RUN dnf -y update && dnf clean all
+
+RUN dnf install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
 
 RUN mkdir /build
-CMD ["sh", "-c", "cd /build/build-dir-{centosfrom} && make"]
+CMD ["sh", "-c", "cd /build/pkg-build-dir && make"]
