@@ -3,8 +3,8 @@ SOURCES
 SPECS
 tmp
 dist
-docker/build-dir-*
-docker/docker-centos-*
+docker/*build-dir*
+docker/docker-*
 *~
 .sw?
 .*.sw?
