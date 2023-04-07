@@ -48,11 +48,6 @@ do
 	cp ../"$file" "$build_dir"
 done
 
-if [ -e ../dist ]
-then
-	cp -r ../dist "$build_dir"/dist
-fi
-
 case $(uname -s) in
 	Linux)
 		sudo docker run -i -t -v "$PWD"/"$build_dir":/build/"$build_dir" "erlang-rpm-build-$os_name";;
