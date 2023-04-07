@@ -28,9 +28,16 @@ DEFINES=--define '_topdir $(TOP_DIR)' --define '_tmppath $(TOP_DIR)/tmp' --defin
 
 rpms:	clean erlang
 
-prepare:
+build-deps:
+	yum install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
+
+prepare: build-deps
 	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp dist
-	wget -O $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) $(ERLANG_DISTPOINT)#
+ifneq ("$(wildcard $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE))", "")
+	# file exists
+else
+	wget --no-clobber -O $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) $(ERLANG_DISTPOINT)
+endif
 	tar -zxf $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) -C dist
 	cp $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) SOURCES
 	rm $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE)

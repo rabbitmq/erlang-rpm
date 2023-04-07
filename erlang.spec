@@ -16,6 +16,9 @@
 %global package_ver  25.3
 %global package_ver_release 1
 
+# See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
+%global __brp_check_rpaths %{nil}
+
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
 
 Name:		erlang
@@ -51,7 +54,6 @@ BuildRequires:  clang
 %if ! (0%{?rhel} && 0%{?rhel} <= 6)
 BuildRequires:  systemd-devel
 %endif
-Obsoletes: erlang-docbuilder
 
 %description
 This is a minimal packaging of Erlang produced by VMware, Inc. to support
@@ -69,9 +71,9 @@ syntax_tools and xmerl.
 %prep
 %setup -q -n otp-OTP-%{upstream_ver}
 
-%patch1 -p1 -b .Do_not_format_man_pages_and_do_not_install_miscellan
-%patch2 -p1 -b .Do_not_install_C_sources
-%patch3 -p1 -F2 -b .Do_not_install_erlang_sources
+%patch 1 -p1 -b .Do_not_format_man_pages_and_do_not_install_miscellan
+%patch 2 -p1 -b .Do_not_install_C_sources
+%patch 3 -p1 -F2 -b .Do_not_install_erlang_sources
 
 # Fix 664 file mode
 chmod 644 lib/kernel/examples/uds_dist/c_src/Makefile

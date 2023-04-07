@@ -11,6 +11,8 @@ RUN yum install -y \
   openssl-devel \
   ncurses-devel \
   rpm-build \
+  rpmdevtools \
+  rpmlint \
   tar \
   wget \
   zlib-devel \
