@@ -33,7 +33,11 @@ build-deps:
 
 prepare: build-deps
 	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp dist
+ifneq ("$(wildcard $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE))", "")
+	# file exists
+else
 	wget --no-clobber -O $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) $(ERLANG_DISTPOINT)
+endif
 	tar -zxf $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) -C dist
 	cp $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) SOURCES
 	rm $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE)
