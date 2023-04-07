@@ -16,7 +16,7 @@ These packages target **modern RHEL and CentOS versions** (RHEL/CentOS Stream 8+
  * CentOS Stream 9
  * Rocky Linux 8.5 or later
  * Fedora 34 or later
- * Amazon Linux 2023 (Fedora-based)
+ * Amazon Linux 2023 (x86-64)
 
 ## What about CentOS 7 and derivatives?
 
