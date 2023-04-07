@@ -16,6 +16,9 @@
 %global package_ver  25.3
 %global package_ver_release 1
 
+# See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
+%global __brp_check_rpaths %{nil}
+
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
 
 Name:		erlang
