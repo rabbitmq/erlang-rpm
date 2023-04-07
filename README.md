@@ -280,7 +280,7 @@ For CentOS Stream 9, replace the `8` in the examples above with a `9`.
 
 ### Without Docker
 
-You must be running an RPM-based distro (CentOS 8, 7 or equivalent RHEL is highly recommended) for this to work.
+You must be running an RPM-based distro (CentOS Stream 9, modern Fedora or equivalent RHEL is highly recommended) for this to work.
 
 ``` shell
 # add sudo if required by the local Docker installation
