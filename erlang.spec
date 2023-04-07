@@ -48,8 +48,9 @@ BuildRequires:	m4
 BuildRequires:	autoconf
 # will install gcc and gcc-c++ as dependencies
 BuildRequires:  clang
-
-Obsoletes: erlang-docbuilder
+%if ! (0%{?rhel} && 0%{?rhel} <= 6)
+BuildRequires:  systemd-devel
+%endif
 
 %description
 This is a minimal packaging of Erlang produced by VMware, Inc. to support
@@ -67,9 +68,9 @@ syntax_tools and xmerl.
 %prep
 %setup -q -n otp-OTP-%{upstream_ver}
 
-%patch1 -p1 -b .Do_not_format_man_pages_and_do_not_install_miscellan
-%patch2 -p1 -b .Do_not_install_C_sources
-%patch3 -p1 -F2 -b .Do_not_install_erlang_sources
+%patch 1 -p1 -b .Do_not_format_man_pages_and_do_not_install_miscellan
+%patch 2 -p1 -b .Do_not_install_C_sources
+%patch 3 -p1 -F2 -b .Do_not_install_erlang_sources
 
 # Fix 664 file mode
 chmod 644 lib/kernel/examples/uds_dist/c_src/Makefile
