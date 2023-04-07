@@ -51,9 +51,7 @@ BuildRequires:	m4
 BuildRequires:	autoconf
 # will install gcc and gcc-c++ as dependencies
 BuildRequires:  clang
-%if ! (0%{?rhel} && 0%{?rhel} <= 6)
 BuildRequires:  systemd-devel
-%endif
 
 %description
 This is a minimal packaging of Erlang produced by VMware, Inc. to support
