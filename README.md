@@ -1,8 +1,10 @@
 # Zero-dependency Erlang RPM for RabbitMQ
 
-This is a (virtually) zero dependency x86-64 Erlang RPM package that provides **just enough to run RabbitMQ**.
+This is a (virtually) zero dependency Erlang RPM package that provides **just enough to run RabbitMQ**.
 It may or may not be suitable for running other Erlang-based software or 3rd party RabbitMQ
 plugins.
+
+Team RabbitMQ provides x86-64 builds of the package for CentOS Stream 8 and 9.
 
 ARM64 versions of the package **are not provided as binary builds**. If you'd like to contribute
 ARM64 builds and support, [let us know](https://github.com/rabbitmq/erlang-rpm/discussions/108).
@@ -288,7 +290,7 @@ You must be running an RPM-based distro (CentOS Stream 9, modern Fedora or equiv
 make
 ```
 
-and see `RPMS/x86_64/`. Note that all artifacts created this way may be owned by root
+and see `RPMS/{architecture}/`. Note that all artifacts created this way may be owned by root
 due to the use of `sudo`.
 
 
