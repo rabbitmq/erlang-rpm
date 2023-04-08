@@ -4,21 +4,22 @@ This is a (virtually) zero dependency Erlang RPM package that provides **just en
 It may or may not be suitable for running other Erlang-based software or 3rd party RabbitMQ
 plugins.
 
-Team RabbitMQ provides x86-64 builds of the package for CentOS Stream 8 and 9.
+x86-64 binaries are provided with every release, while aarch64 (ARM64)
+binaries will be limited to new major and minor release, and patches when resources allow.
 
-ARM64 versions of the package **are not provided as binary builds**. If you'd like to contribute
-ARM64 builds and support, [let us know](https://github.com/rabbitmq/erlang-rpm/discussions/108).
+Binary packages can be produced on any host that can run Docker, including
+aarch64 hosts. See the **Building from Source** section below.
 
 ## Supported RPM-based Distributions
 
-Binary builds of this package target **modern RHEL and CentOS versions** (RHEL/CentOS Stream 8+) as well as recent Fedora releases:
+[Binary builds](https://github.com/rabbitmq/erlang-rpm/releases) of this package target **modern RPM-based distributions**:
 
  * RHEL 8.4 or later
  * CentOS Stream 8
  * CentOS Stream 9
  * Rocky Linux 8.5 or later
  * Fedora 34 or later
- * Amazon Linux 2023 (x86-64)
+ * Amazon Linux 2023
 
 ## What about CentOS 7 and derivatives?
 
@@ -37,7 +38,8 @@ and [a modern Erlang PPA for Ubuntu](https://rabbitmq.com/install-debian.html#ap
 
 ## Provided Erlang/OTP Versions
 
-The package targets Erlang/OTP `25.x` and `24.x`. Only 64-bit (x86-64) packages are provided.
+The package targets Erlang/OTP `25.x` and `24.x`. Both x86-64 and aarch64 versions can be
+build in containers.
 
 ### RabbitMQ Version Compatibility
 
@@ -49,7 +51,7 @@ for an up-to-date compatibility matrix.
 Erlang 25 is supported by RabbitMQ [starting with `3.10.0`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.0).
 
 Erlang 25 depends on OpenSSL 1.1, which is **not available on CentOS 7**. Therefore Erlang 25 packages
-are **only produced for modern Fedora, Rocky Linux and CentOS Stream**.
+are **only produced for modern Fedora, Rocky Linux, CentOS Stream, and Amazon Linux 2023**.
 
 
 #### Erlang 24
@@ -65,19 +67,11 @@ are **only produced for modern Fedora, Rocky Linux and CentOS Stream**.
 This package intentionally **does not include OpenSSL**/libcrypto. It must be provisioned separately.
 Recent Erlang versions require a modern OpenSSL version, currently this means `1.1.x` or later.
 
-## Supported RHEL, CentOS and Fedora Versions
-
-Please note the **implicit OpenSSL/libcrypto dependency** section above.
-
- * For Erlang 25: supports RHEL or CentOS Stream 9 or CentOS Stream 8, modern Fedora, Rocky Linux. **Requires OpenSSL 1.1**
- * for Erlang 24: same as Erlang 25.
-
-
 ## Release Artifacts
 
 For direct RPM package downloads, see [GitHub releases](https://github.com/rabbitmq/erlang-rpm/releases).
 
-There are two Yum repositories that distributed this package:
+There are two dnf repositories that distributed this package:
 
  * [rabbitmq/rabbitmq-erlang on Cloudsmith.io](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#repository-setup-yum)
  * [rabbitmq/erlang on Package Cloud](https://packagecloud.io/rabbitmq/erlang/)
@@ -93,7 +87,7 @@ The package is signed using the standard [RabbitMQ signing key](https://www.rabb
 rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
 ```
 
-To use the Cloudsmith Yum repository, a [separate Cloudsmith repository key](https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key) must be imported:
+To use the Cloudsmith dnf repository, a [separate Cloudsmith repository key](https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key) must be imported:
 
 ``` shell
 ## primary RabbitMQ signing key
@@ -102,7 +96,7 @@ rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabb
 rpm --import 'https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key'
 ```
 
-To use the PackageCloud Yum repository, a [separate PackageCloud repository key](https://packagecloud.io/rabbitmq/erlang/gpgkey) must be imported:
+To use the PackageCloud dnf repository, a [separate PackageCloud repository key](https://packagecloud.io/rabbitmq/erlang/gpgkey) must be imported:
 
 ``` shell
 ## primary RabbitMQ signing key
@@ -113,13 +107,71 @@ rpm --import https://packagecloud.io/rabbitmq/erlang/gpgkey
 
 ### Latest Erlang Version from Cloudsmith
 
-Cloudsmith provides shell scripts for quick Yum repository setup.
+Cloudsmith provides shell scripts for quick dnf repository setup.
 See the [Cloudsmith repository installation](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#repository-setup-yum) page
 for details.
 
-#### Erlang 25 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux
+#### Erlang 25 on CentOS Stream 9 (x86-64)
 
-To use the most recent Erlang version on CentOS 8:
+To use the most recent Erlang version on CentOS Stream 9:
+
+``` ini
+# In /etc/yum.repos.d/rabbitmq_erlang.repo
+[rabbitmq-rabbitmq-erlang]
+name=rabbitmq-rabbitmq-erlang
+baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/9/$basearch
+repo_gpgcheck=1
+enabled=1
+gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+gpgcheck=1
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+pkg_gpgcheck=1
+autorefresh=1
+type=rpm-md
+
+[rabbitmq-rabbitmq-erlang-noarch]
+name=rabbitmq-rabbitmq-erlang-noarch
+baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/9/noarch
+repo_gpgcheck=1
+enabled=1
+gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+gpgcheck=1
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+pkg_gpgcheck=1
+autorefresh=1
+type=rpm-md
+
+[rabbitmq-rabbitmq-erlang-source]
+name=rabbitmq-rabbitmq-erlang-source
+baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/9/SRPMS
+repo_gpgcheck=1
+enabled=1
+gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+gpgcheck=1
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+pkg_gpgcheck=1
+autorefresh=1
+type=rpm-md
+```
+
+To install the package:
+
+``` shell
+dnf update -y
+dnf install -y erlang
+```
+
+#### Erlang 25 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux (x86-64)
+
+To use the most recent Erlang version on RHEL 8, CentOS Stream 8, Rocky Linux:
 
 ``` ini
 # In /etc/yum.repos.d/rabbitmq_erlang.repo
@@ -171,8 +223,8 @@ type=rpm-md
 To install the package:
 
 ``` shell
-yum update -y
-yum install -y erlang
+dnf update -y
+dnf install -y erlang
 ```
 
 
@@ -214,7 +266,7 @@ metadata_expire=300
 To install the package:
 
 ``` shell
-yum install erlang
+dnf install erlang
 ```
 
 Note that Erlang 25 packages **implicitly depend on OpenSSL 1.1** which is no available
