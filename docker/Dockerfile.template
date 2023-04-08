@@ -5,7 +5,7 @@ FROM $image:$image_tag
 
 RUN dnf -y update && dnf clean all
 
-RUN dnf install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
+RUN dnf install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make sudo
 
 RUN mkdir /build
 CMD ["sh", "-c", "cd /build/pkg-build-dir && make"]
