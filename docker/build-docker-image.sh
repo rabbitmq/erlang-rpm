@@ -16,8 +16,14 @@ case $os_name in
 	al|al2023|amazonlinux2023)
 		image="amazonlinux"
 		image_tag="2023";;
+	oracle|oracle9|oraclelinux9)
+		image="oraclelinux"
+		image_tag="9";;
 	rocky|rocky9|rockylinux9)
 		image="rockylinux"
+		image_tag="9";;
+	alma|alma9|almalinux9)
+		image="almalinux"
 		image_tag="9";;
 esac
 
@@ -26,8 +32,8 @@ docker_dir="docker-$os_name"
 if [ -z "$os_name" ]
 then
 	echo "
-Ops: parameters error
-first: version, ex: stream9, stream8, al2023, fedora, rocky
+This script takes two arguments.
+first: distribution, one of stream9, stream8, al2023, fedora, rocky, alma, oracle
 second: docker build parameters such as --no-cache
 -----------------------------------------
 Ex: ./build-docker-image.sh stream9 --no-cache

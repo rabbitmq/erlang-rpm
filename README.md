@@ -20,6 +20,8 @@ aarch64 hosts. See the **Building from Source** section below.
  * Rocky Linux 8.5 or later
  * Fedora 34 or later
  * Amazon Linux 2023
+ * Oracle Linux 9
+ * Alma Linux 9
 
 ## What about CentOS 7 and derivatives?
 

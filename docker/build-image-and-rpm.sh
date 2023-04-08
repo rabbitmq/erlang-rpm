@@ -1,10 +1,15 @@
 #!/usr/bin/env sh
 
 usage() {
-  echo "parameters error"
-	echo "first: version, e.g. 'stream9' or 'stream8' "
-	echo "second: docker build arguments such as '--no-cache' [optional]"
-	echo "./build-image-and-rpm.sh 'stream9' --no-cache"
+	echo "
+This script takes two arguments.
+first: distribution, one of stream9, stream8, al2023, fedora, rocky, alma, oracle
+second: docker build parameters such as --no-cache
+-----------------------------------------
+Ex: ./build-image-and-rpm.sh stream9 --no-cache
+Ex: ./build-image-and-rpm.sh stream8 --no-cache
+Ex: ./build-image-and-rpm.sh fedora38 --no-cache
+"
   exit 1
 }
 
