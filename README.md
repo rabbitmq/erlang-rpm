@@ -73,8 +73,8 @@ For direct RPM package downloads, see [GitHub releases](https://github.com/rabbi
 
 There are two dnf repositories that distributed this package:
 
+ * [rabbitmq/erlang on PackageCloud](https://packagecloud.io/rabbitmq/erlang/)
  * [rabbitmq/rabbitmq-erlang on Cloudsmith.io](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#repository-setup-yum)
- * [rabbitmq/erlang on Package Cloud](https://packagecloud.io/rabbitmq/erlang/)
 
 See the repository setup instructions below.
 
@@ -105,15 +105,124 @@ rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabb
 rpm --import https://packagecloud.io/rabbitmq/erlang/gpgkey
 ```
 
-### Latest Erlang Version from Cloudsmith
+## Direct Downloads from GitHub
+
+This package is [distributed as a single RPM](https://github.com/rabbitmq/erlang-rpm/releases), which makes it convenient to
+download and install using `dnf install -y /path/to/erlang.rpm`.
+
+#### Erlang 25 on CentOS Stream 9, Amazon Linux 2023, modern Fedora (x86-64 and aarch)
+
+Erlang 25 x86-64 and aarch64 releases can be provisioned on RHEL 9, CentOS Stream 9, Amazon Linux 2023,
+and modern Fedora using a [direct download](https://github.com/rabbitmq/erlang-rpm/releases):
+
+``` shell
+# This is just an example that uses an aarch64 package for Amazon Linux 2023
+cd /tmp/
+curl -sfL -O https://github.com/rabbitmq/erlang-rpm/releases/download/v25.3/erlang-25.3-1.amzn2023.aarch64.rpm
+sudo dnf install -y ./erlang-25.3-1.amzn2023.aarch64.rpm
+```
+
+### Latest Erlang Version from PackageCloud
+
+This package is distributed via a [dnf repository on PackageCloud](https://packagecloud.io/rabbitmq/erlang).
+
+PackageCloud provides a shell script for quick repository setup:
+
+``` shell
+# inspect the script running it in a sudo shell!
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
+```
+
+#### Erlang 25 on RHEL 9, CentOS Stream 9, modern Fedora, Rocky Linux
+
+To use the most recent version on CentOS Stream 9, modern Fedora, Rocky Linux:
+
+``` ini
+# In /etc/yum.repos.d/rabbitmq_erlang.repo
+[rabbitmq_erlang]
+name=rabbitmq_erlang
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/9/$basearch
+repo_gpgcheck=1
+gpgcheck=1
+enabled=1
+# PackageCloud's repository key and RabbitMQ package signing key
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+[rabbitmq_erlang-source]
+name=rabbitmq_erlang-source
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/9/SRPMS
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+# PackageCloud's repository key and RabbitMQ package signing key
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+```
+
+To install the package:
+
+``` shell
+dnf install erlang
+```
+
+#### Erlang 25 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux
+
+To use the most recent version on CentOS 8:
+
+``` ini
+# In /etc/yum.repos.d/rabbitmq_erlang.repo
+[rabbitmq_erlang]
+name=rabbitmq_erlang
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/8/$basearch
+repo_gpgcheck=1
+gpgcheck=1
+enabled=1
+# PackageCloud's repository key and RabbitMQ package signing key
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+[rabbitmq_erlang-source]
+name=rabbitmq_erlang-source
+baseurl=https://packagecloud.io/rabbitmq/erlang/el/8/SRPMS
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+# PackageCloud's repository key and RabbitMQ package signing key
+gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
+       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+```
+
+To install the package:
+
+``` shell
+dnf install erlang
+```
+
+## Latest Erlang Version from Cloudsmith
+
+This package is distributed via a [dnf repository on Cloudsmith](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/packages/).
 
 Cloudsmith provides shell scripts for quick dnf repository setup.
 See the [Cloudsmith repository installation](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#repository-setup-yum) page
 for details.
 
-#### Erlang 25 on CentOS Stream 9 (x86-64)
+### Erlang 25 on RHEL 9, CentOS Stream 9, modern Fedora, Rocky Linux (x86-64)
 
-To use the most recent Erlang version on CentOS Stream 9:
+Erlang 25 x86-64 releases can be provisioned on RHEL 9, CentOS Stream 9, Rocky Linux, and modern Fedora
+using a dnf (yum) repository on Cloudsmith:
 
 ``` ini
 # In /etc/yum.repos.d/rabbitmq_erlang.repo
@@ -169,9 +278,10 @@ dnf update -y
 dnf install -y erlang
 ```
 
-#### Erlang 25 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux (x86-64)
+### Erlang 25 on RHEL 8, CentOS Stream 8, modern Fedora, Rocky Linux (x86-64)
 
-To use the most recent Erlang version on RHEL 8, CentOS Stream 8, Rocky Linux:
+Erlang 25 x86-64 releases can be provisioned on RHEL 8, CentOS Stream 8, Rocky Linux, and modern Fedora
+using a dnf (yum) repository on Cloudsmith:
 
 ``` ini
 # In /etc/yum.repos.d/rabbitmq_erlang.repo
@@ -226,52 +336,6 @@ To install the package:
 dnf update -y
 dnf install -y erlang
 ```
-
-
-### Latest Erlang Version from PackageCloud
-
-#### Erlang 25 on RHEL 8, CentOS 8, modern Fedora, Rocky Linux
-
-To use the most recent version on CentOS 8:
-
-``` ini
-# In /etc/yum.repos.d/rabbitmq_erlang.repo
-[rabbitmq_erlang]
-name=rabbitmq_erlang
-baseurl=https://packagecloud.io/rabbitmq/erlang/el/8/$basearch
-repo_gpgcheck=1
-gpgcheck=1
-enabled=1
-# PackageCloud's repository key and RabbitMQ package signing key
-gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
-       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-
-[rabbitmq_erlang-source]
-name=rabbitmq_erlang-source
-baseurl=https://packagecloud.io/rabbitmq/erlang/el/8/SRPMS
-repo_gpgcheck=1
-gpgcheck=0
-enabled=1
-# PackageCloud's repository key and RabbitMQ package signing key
-gpgkey=https://packagecloud.io/rabbitmq/erlang/gpgkey
-       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-```
-
-To install the package:
-
-``` shell
-dnf install erlang
-```
-
-Note that Erlang 25 packages **implicitly depend on OpenSSL 1.1** which is no available
-on RHEL 7 or CentOS 7. Therefore Erlang 25 packages will fail to install
-on those distributions.
 
 
 ## Available Erlang Applications
