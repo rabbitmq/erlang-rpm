@@ -23,7 +23,7 @@ aarch64 hosts. See the **Building from Source** section below.
  * Oracle Linux 9
  * Alma Linux 9
 
-## What about CentOS 7 and derivatives?
+## CentOS 7 and derivatives
 
 Older releases (up to [Erlang 23.3.4.11](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.11))
 include builds for CentOS 7 and CentOS 7-based distributions (namely Amazon Linux 2), and OpenSSL 1.0.
@@ -32,7 +32,7 @@ This package has an **implicit OpenSSL/libcrypto dependency** (see below). Start
 the minimum required version is **an equivalent of OpenSSL is 1.1**, only provided by Fedora,
 Rocky Linux, CentOS Stream 8 and CentOS Stream 9.
 
-## What about Debian-based distributions?
+## Packages for Debian-based Distributions
 
 Team RabbitMQ also packages [recent Erlang/OTP releases for Debian](https://www.rabbitmq.com/install-debian.html#erlang-repositories)
 and [a modern Erlang PPA for Ubuntu](https://rabbitmq.com/install-debian.html#apt-launchpad-erlang).
@@ -42,6 +42,9 @@ and [a modern Erlang PPA for Ubuntu](https://rabbitmq.com/install-debian.html#ap
 
 The package targets Erlang/OTP `25.x` and `24.x`. Both x86-64 and aarch64 versions can be
 build in containers.
+
+**Important**: Erlang 26 introduce a number of breaking changes around networking and TLS.
+Packages of Erlang 26 will be provided when Erlang 26 support ships in a GA RabbitMQ release.
 
 ### RabbitMQ Version Compatibility
 
