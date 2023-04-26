@@ -1,0 +1,4 @@
+build-dir-*/*
+docker-*/*
+pkg-build-dir/*
+all_rpms/*

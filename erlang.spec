@@ -1,4 +1,4 @@
-# Copyright VMware, Inc. or its affiliantes, 2012-2020. All Rights Reserved.
+# Copyright VMware, Inc. or its affiliantes, 2012-2022. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,6 +16,9 @@
 %global package_ver  23.3.4.18
 %global package_ver_release 1
 
+# See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
+%global __brp_check_rpaths %{nil}
+
 %define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
 
 Name:		erlang
@@ -32,13 +35,11 @@ Vendor:		VMware, Inc.
 
 
 #   Do not format man-pages and do not install miscellaneous
-Patch1: otp-0001-Do-not-format-man-pages-and-do-not-install-miscellan.patch
-#   Remove rpath
-Patch2: otp-0002-Remove-rpath.patch
+Patch0: otp-0001-Do-not-format-man-pages-and-do-not-install-miscellan.patch
 #   Do not install C sources
-Patch3: otp-0003-Do-not-install-C-sources.patch
+Patch1: otp-0002-Do-not-install-C-sources.patch
 #   Do not install erlang sources
-Patch7: otp-0007-Do-not-install-erlang-sources.patch
+Patch2: otp-0003-Do-not-install-erlang-sources.patch
 
 # BuildRoot not strictly needed since F10, but keep it for spec file robustness
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
@@ -48,15 +49,9 @@ BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRequires:	m4
 BuildRequires:	autoconf
-%if ! (0%{?rhel} && 0%{?rhel} <= 6)
-BuildRequires:	systemd-devel
-BuildRequires:	systemd
-%{?systemd_requires}
-Requires:	systemd
-%endif
-
-
-Obsoletes: erlang-docbuilder
+# will install gcc and gcc-c++ as dependencies
+BuildRequires:  clang
+BuildRequires:  systemd-devel
 
 %description
 This is a minimal packaging of Erlang produced by VMware, Inc. to support
@@ -74,10 +69,8 @@ syntax_tools and xmerl.
 %prep
 %setup -q -n otp-OTP-%{upstream_ver}
 
-%patch1 -p1 -b .Do_not_format_man_pages_and_do_not_install_miscellan
-%patch2 -p1 -b .Remove_rpath
-%patch3 -p1 -b .Do_not_install_C_sources
-%patch7 -p1 -F2 -b .Do_not_install_erlang_sources
+# Automatically apply all listed patches
+%autopatch -v -p 1
 
 # Fix 664 file mode
 chmod 644 lib/kernel/examples/uds_dist/c_src/Makefile
@@ -87,12 +80,7 @@ chmod 644 lib/ssl/examples/src/Makefile
 
 
 %build
-%if ! (0%{?rhel} && 0%{?rhel} <= 6)
-%global conf_flags --enable-shared-zlib --enable-systemd --without-javac --without-odbc
-%else
-%global conf_flags --enable-shared-zlib --without-javac --without-odbc
-%endif
-
+%global conf_flags --enable-shared-zlib --enable-systemd --without-javac --without-odbc --without-hipe
 %ifarch sparcv9 sparc64
 CFLAGS="$RPM_OPT_FLAGS -mcpu=ultrasparc -fno-strict-aliasing" %configure %{conf_flags}
 %else
@@ -113,6 +101,7 @@ touch lib/edoc/SKIP
 touch lib/et/SKIP
 touch lib/erl_docgen/SKIP
 touch lib/ftp/SKIP
+touch lib/hipe/SKIP
 touch lib/jinterface/SKIP
 touch lib/megaco/SKIP
 touch lib/observer/SKIP
@@ -141,6 +130,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/erlang/man/man3/win32reg.*
 
 # remove empty directory
 rm -r $RPM_BUILD_ROOT%{_libdir}/erlang/erts-*/man
+
+rm -f $RPM_BUILD_ROOT%{_libdir}/erlang/misc/format_man_pages
+rm -f $RPM_BUILD_ROOT%{_libdir}/erlang/misc/makewhatis
 
 # remove outdated script
 rm -f $RPM_BUILD_ROOT%{_libdir}/erlang/Install
@@ -260,9 +252,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/usr/
 
 
-%{_libdir}/erlang/lib/hipe-*/
-
-
 %dir %{_libdir}/erlang/lib/inets-*/
 %{_libdir}/erlang/lib/inets-*/ebin
 %{_libdir}/erlang/lib/inets-*/include
@@ -330,7 +319,6 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-
 * Wed Apr 26 2023 Michael Klishin <klishinm@vmware.com> - 23.3.4.18
 - Update to Erlang/OTP 23.3.4.18.
 

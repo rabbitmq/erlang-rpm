@@ -1,0 +1,22 @@
+diff --ignore-blank-lines --ignore-space-change -u -r otp-24.0/lib/asn1/c_src/Makefile otp-24.0-patched/lib/asn1/c_src/Makefile
+--- otp-23.0/lib/asn1/c_src/Makefile	2021-05-12 21:39:39.000000000 +0100
++++ otp-23.0-patched/lib/asn1/c_src/Makefile	2021-05-12 21:39:39.000000000 +0100
+@@ -136,8 +136,6 @@
+ release_spec: opt
+ 	$(INSTALL_DIR) "$(RELSYSDIR)/priv/lib"
+ 	$(INSTALL_PROGRAM) $(NIF_SHARED_OBJ_FILE) "$(RELSYSDIR)/priv/lib"
+-	$(INSTALL_DIR) "$(RELSYSDIR)/c_src"
+-	$(INSTALL_DATA) *.c "$(RELSYSDIR)/c_src"
+
+ release_docs_spec:
+
+diff --ignore-blank-lines --ignore-space-change -u -r otp-23.0/lib/os_mon/c_src/Makefile.in otp-23.0-patched/lib/os_mon/c_src/Makefile.in
+--- otp-24.0/lib/os_mon/c_src/Makefile.in	2021-05-12 21:39:39.000000000 +0100
++++ otp-24.0-patched/lib/os_mon/c_src/Makefile.in	2021-05-12 21:39:39.000000000 +0100
+@@ -127,7 +127,6 @@
+
+ release_spec: opt
+ 	$(INSTALL_DIR) "$(RELSYSDIR)/src"
+-	$(INSTALL_DATA) $(C_FILES) "$(RELSYSDIR)/src"
+ 	$(INSTALL_DIR) "$(RELSYSDIR)/priv/bin"
+ 	$(INSTALL_PROGRAM) $(TARGET_FILES) "$(RELSYSDIR)/priv/bin"
