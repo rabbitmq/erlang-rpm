@@ -5,8 +5,8 @@ tmp
 dist
 docker/*build-dir*
 docker/docker-*
-docker/all_rpms/*
 *~
 .sw?
 .*.sw?
 /otp_*.tar.gz
+RPMS/*

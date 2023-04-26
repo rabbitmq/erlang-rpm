@@ -1,36 +1,46 @@
 #!/usr/bin/env sh
 
-docker_file="Dockerfile"
-docker_template="Dockerfile.template"
-centos_version="$1"
+os_name="$1"
 docker_params=${2:-"--pull"}
-docker_dir="docker-centos-$centos_version"
 
-if [ -z "$centos_version" ]
-then
-	echo "
-Ops: parameters error
-first: version, ex: 9, 8, or 7
-second: docker build parameters such as --no-cache
------------------------------------------
-Ex: ./build-docker-image.sh 9 --no-cache
-Ex: ./build-docker-image.sh 8 --no-cache
-Ex: ./build-docker-image.sh 7 --no-cache
-"
-exit 1
-fi
-
-case $centos_version in
-	9)
-		centos_tag=stream9;;
-	*)
-		# 8 and 7
-		centos_tag="$centos_version";;
+case $os_name in
+	9|stream9|centos9)
+		image="quay.io/centos/centos"
+		image_tag=stream9;;
+	8|stream8|centos8)
+		image="quay.io/centos/centos"
+		image_tag=stream8;;
+	fedora|f38|fc38|fedora38)
+		image="fedora"
+		image_tag="38";;
+	al|al2023|amazonlinux2023)
+		image="amazonlinux"
+		image_tag="2023";;
+	oracle|oracle9|oraclelinux9)
+		image="oraclelinux"
+		image_tag="9";;
+	rocky|rocky9|rockylinux9)
+		image="rockylinux"
+		image_tag="9";;
+	alma|alma9|almalinux9)
+		image="almalinux"
+		image_tag="9";;
 esac
 
-if [ -e "$docker_file" ]
+docker_dir="docker-$os_name"
+
+if [ -z "$os_name" ]
 then
-	rm -f "$docker_file"
+	echo "
+This script takes two arguments.
+first: distribution, one of stream9, stream8, al2023, fedora, rocky, alma, oracle
+second: docker build parameters such as --no-cache
+-----------------------------------------
+Ex: ./build-docker-image.sh stream9 --no-cache
+Ex: ./build-docker-image.sh stream8 --no-cache
+Ex: ./build-docker-image.sh fedora38 --no-cache
+"
+exit 1
 fi
 
 if [ -e "$docker_dir" ]
@@ -40,17 +50,12 @@ fi
 
 mkdir "$docker_dir"
 
-echo "Will build an image for CentOS $centos_version (tag: $centos_tag) using Docker file at $docker_dir/$docker_file"
+echo "Will build an image for ${image}:${image_tag} using Docker file at $docker_dir/Dockerfile"
 
-if [ -e "$docker_template" ]
-then
-	cp "$docker_template" "$docker_dir"/"$docker_file"
+cp Dockerfile.template "$docker_dir/Dockerfile"
 	case $(uname -s) in
 		Linux)
-			sed --in-place=".bak" "s/{centosfrom}/$centos_tag/g" "$docker_dir"/"$docker_file"
-			sudo docker build "$docker_params" -t="erlang-rpm-build-""$centos_version" "$docker_dir";;
+			sudo docker build --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
 		*)
-			sed -i ".bak" "s/{centosfrom}/$centos_tag/g" "$docker_dir"/"$docker_file"
-			docker build "$docker_params" -t="erlang-rpm-build-""$centos_version" "$docker_dir";;
+			docker build --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
 	esac
-fi
