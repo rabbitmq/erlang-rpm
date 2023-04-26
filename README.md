@@ -25,7 +25,7 @@ aarch64 hosts. See the **Building from Source** section below.
 
 ## CentOS 7 and derivatives
 
-Older releases (up to [Erlang 23.3.4.11](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.11))
+Older releases (up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18))
 include builds for CentOS 7 and CentOS 7-based distributions (namely Amazon Linux 2), and OpenSSL 1.0.
 
 This package has an **implicit OpenSSL/libcrypto dependency** (see below). Starting with Erlang 24,
