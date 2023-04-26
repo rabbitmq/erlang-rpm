@@ -35,11 +35,11 @@ Vendor:		VMware, Inc.
 
 
 #   Do not format man-pages and do not install miscellaneous
-Patch1: otp-0001-Do-not-format-man-pages-and-do-not-install-miscellan.patch
+Patch0: otp-0001-Do-not-format-man-pages-and-do-not-install-miscellan.patch
 #   Do not install C sources
-Patch2: otp-0002-Do-not-install-C-sources.patch
+Patch1: otp-0002-Do-not-install-C-sources.patch
 #   Do not install erlang sources
-Patch3: otp-0003-Do-not-install-erlang-sources.patch
+Patch2: otp-0003-Do-not-install-erlang-sources.patch
 
 # BuildRoot not strictly needed since F10, but keep it for spec file robustness
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
@@ -51,9 +51,7 @@ BuildRequires:	m4
 BuildRequires:	autoconf
 # will install gcc and gcc-c++ as dependencies
 BuildRequires:  clang
-%if ! (0%{?rhel} && 0%{?rhel} <= 6)
 BuildRequires:  systemd-devel
-%endif
 
 %description
 This is a minimal packaging of Erlang produced by VMware, Inc. to support
@@ -71,9 +69,8 @@ syntax_tools and xmerl.
 %prep
 %setup -q -n otp-OTP-%{upstream_ver}
 
-%patch 1 -p1 -b .Do_not_format_man_pages_and_do_not_install_miscellan
-%patch 2 -p1 -b .Do_not_install_C_sources
-%patch 3 -p1 -F2 -b .Do_not_install_erlang_sources
+# Automatically apply all listed patches
+%autopatch -v -p 1
 
 # Fix 664 file mode
 chmod 644 lib/kernel/examples/uds_dist/c_src/Makefile
@@ -83,11 +80,7 @@ chmod 644 lib/ssl/examples/src/Makefile
 
 
 %build
-%if ! (0%{?rhel} && 0%{?rhel} <= 6)
 %global conf_flags --enable-shared-zlib --enable-systemd --without-javac --without-odbc
-%else
-%global conf_flags --enable-shared-zlib --without-javac --without-odbc
-%endif
 
 %ifarch sparcv9 sparc64
 CFLAGS="$RPM_OPT_FLAGS -mcpu=ultrasparc -fno-strict-aliasing" %configure %{conf_flags}
