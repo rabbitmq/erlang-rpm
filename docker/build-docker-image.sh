@@ -2,6 +2,7 @@
 
 os_name="$1"
 docker_params=${2:-"--pull"}
+dockerfile="Dockerfile.template"
 
 case $os_name in
 	9|stream9|centos9)
@@ -52,7 +53,7 @@ mkdir "$docker_dir"
 
 echo "Will build an image for ${image}:${image_tag} using Docker file at $docker_dir/Dockerfile"
 
-cp Dockerfile.template "$docker_dir/Dockerfile"
+cp "$dockerfile" "$docker_dir/Dockerfile"
 	case $(uname -s) in
 		Linux)
 			sudo docker build --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
