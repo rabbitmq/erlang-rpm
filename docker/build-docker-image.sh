@@ -3,6 +3,8 @@
 os_name="$1"
 docker_params=${2:-"--pull"}
 
+dockerfile="Dockerfile.template"
+
 case $os_name in
 	9|stream9|centos9)
 		image="quay.io/centos/centos"
@@ -10,6 +12,10 @@ case $os_name in
 	8|stream8|centos8)
 		image="quay.io/centos/centos"
 		image_tag=stream8;;
+	7|centos7)
+		dockerfile="Dockerfile.centos7.template"
+		image="quay.io/centos/centos"
+		image_tag=centos7;;
 	fedora|f38|fc38|fedora38)
 		image="fedora"
 		image_tag="38";;
@@ -52,7 +58,7 @@ mkdir "$docker_dir"
 
 echo "Will build an image for ${image}:${image_tag} using Docker file at $docker_dir/Dockerfile"
 
-cp Dockerfile.template "$docker_dir/Dockerfile"
+cp "$dockerfile" "$docker_dir/Dockerfile"
 	case $(uname -s) in
 		Linux)
 			sudo docker build --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
