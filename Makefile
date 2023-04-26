@@ -28,21 +28,30 @@ DEFINES=--define '_topdir $(TOP_DIR)' --define '_tmppath $(TOP_DIR)/tmp' --defin
 
 rpms:	clean erlang
 
-prepare:
+build-deps:
+	dnf update -y
+	dnf install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
+
+prepare: build-deps
 	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp dist
-	wget -O $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) $(ERLANG_DISTPOINT)#
+ifneq ("$(wildcard /tmp/$(OTP_SRC_TGZ_FILE))","")
+	# for faster turnaround time during development
+	cp /tmp/$(OTP_SRC_TGZ_FILE) $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE)
+else
+	wget --no-clobber -O $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) $(ERLANG_DISTPOINT)
+endif
 	tar -zxf $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) -C dist
 	cp $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) SOURCES
 	rm $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE)
 	cp *.patch SOURCES
 	cp erlang.spec SPECS
 	cp Erlang_ASL2_LICENSE.txt SOURCES
-	yum update -y
-	yum install -y util-linux
+	dnf update -y
+	dnf install -y util-linux
 	if test -f /etc/os-release; then \
 		. /etc/os-release; \
 		if test "$$ID" = 'centos' && test "$$VERSION_ID" -ge 7; then \
-			yum install -y rpm-sign; \
+			dnf install -y rpm-sign; \
 		fi; \
 	fi
 
