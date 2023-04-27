@@ -2,12 +2,12 @@
 
 const all_rpms_dir="all_rpms"
 
-mkdir -p all_rpms_dir
+mkdir -p "$all_rpms_dir"
 
 build_and_fetch_rpm_for() {
   distribution=$1
   ./build-image-and-rpm.sh "$distribution"
-  cp pkg-build-dir/RPMS/*/erlang-* all_rpms/
+  cp pkg-build-dir/RPMS/*/erlang-* "$all_rpms_dir"
 }
 
 # These cover CentOS Stream, Rocky Linux, Alma Linux, Oracle Linux
