@@ -5,6 +5,7 @@ tmp
 dist
 docker/*build-dir*
 docker/docker-*
+docker/*.rpm
 *~
 .sw?
 .*.sw?
