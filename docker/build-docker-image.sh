@@ -6,31 +6,10 @@ docker_params=${2:-"--pull"}
 dockerfile="Dockerfile.template"
 
 case $os_name in
-	9|stream9|centos9)
-		image="quay.io/centos/centos"
-		image_tag=stream9;;
-	8|stream8|centos8)
-		image="quay.io/centos/centos"
-		image_tag=stream8;;
 	7|centos7)
 		dockerfile="Dockerfile.centos7.template"
 		image="quay.io/centos/centos"
 		image_tag=centos7;;
-	fedora|f38|fc38|fedora38)
-		image="fedora"
-		image_tag="38";;
-	al|al2023|amazonlinux2023)
-		image="amazonlinux"
-		image_tag="2023";;
-	oracle|oracle9|oraclelinux9)
-		image="oraclelinux"
-		image_tag="9";;
-	rocky|rocky9|rockylinux9)
-		image="rockylinux"
-		image_tag="9";;
-	alma|alma9|almalinux9)
-		image="almalinux"
-		image_tag="9";;
 esac
 
 docker_dir="docker-$os_name"
@@ -39,12 +18,12 @@ if [ -z "$os_name" ]
 then
 	echo "
 This script takes two arguments.
-first: distribution, one of stream9, stream8, al2023, fedora, rocky, alma, oracle
+first: distribution in this case is always 7,
 second: docker build parameters such as --no-cache
 -----------------------------------------
-Ex: ./build-docker-image.sh stream9 --no-cache
-Ex: ./build-docker-image.sh stream8 --no-cache
-Ex: ./build-docker-image.sh fedora38 --no-cache
+Ex: ./build-docker-image.sh 7 --no-cache
+Ex: ./build-docker-image.sh 7 --no-cache
+Ex: ./build-docker-image.sh 7 --no-cache
 "
 exit 1
 fi
