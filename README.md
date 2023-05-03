@@ -25,12 +25,14 @@ aarch64 hosts. See the **Building from Source** section below.
 
 ## CentOS 7 and derivatives
 
-Older releases (up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18))
-include builds for CentOS 7 and CentOS 7-based distributions (namely Amazon Linux 2), and OpenSSL 1.0.
+[Team RabbitMQ stopped supporting CentOS 7](https://blog.rabbitmq.com/posts/2022/04/centos-7-support-discontinued/) in May 2022.
 
-This package has an **implicit OpenSSL/libcrypto dependency** (see below). Starting with Erlang 24,
-the minimum required version is **an equivalent of OpenSSL is 1.1**, only provided by Fedora,
-Rocky Linux, CentOS Stream 8 and CentOS Stream 9.
+[Erlang 25.3.1](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.1) includes one-off CentOS 7 packages
+statically linked against OpenSSL 1.1.x.
+
+Regular CentOS 7 and Amazon Linux 2 builds were produced up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18).
+They are dynamically linked against OpenSSL 1.0.
+
 
 ## Packages for Debian-based Distributions
 
