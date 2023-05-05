@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 25.3.1
-%global package_ver  25.3.1
+%global upstream_ver 25.3.2
+%global package_ver  25.3.2
 %global package_ver_release 1
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
@@ -316,7 +316,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Thu Mar 8 2023 Michael Klishin <klishinm@vmware.com> - 25.3.1
+* Fri May 5 2023 Michael Klishin <klishinm@vmware.com> - 25.3.2
+- Update to Erlang/OTP 25.3.2
+
+* Tue Apr 25 2023 Michael Klishin <klishinm@vmware.com> - 25.3.1
 - Update to Erlang/OTP 25.3.1
 
 * Wed Mar 8 2023 Michael Klishin <klishinm@vmware.com> - 25.3
