@@ -218,7 +218,7 @@ To install the package:
 dnf install erlang
 ```
 
-## Latest Erlang Version from Cloudsmith
+## Latest Erlang Version from a Cloudsmith Mirror
 
 This package is distributed via a [dnf repository on Cloudsmith](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/packages/).
 
@@ -226,16 +226,24 @@ Cloudsmith provides shell scripts for quick dnf repository setup.
 See the [Cloudsmith repository installation](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#repository-setup-yum) page
 for details.
 
+The repository is **subject to traffic quotas**. When the quota is reached, no package
+installations will be possible for up to several days.
+
+The examples below use a mirror of the Cloudsmith repo. All packages in it are
+**signed with the same signing key**.
+
 ### Erlang 25 on RHEL 9, CentOS Stream 9, modern Fedora, Rocky Linux (x86-64)
 
 Erlang 25 x86-64 releases can be provisioned on RHEL 9, CentOS Stream 9, Rocky Linux, and modern Fedora
-using a dnf (yum) repository on Cloudsmith:
+using a dnf (yum) repository (a Cloudsmith mirror):
 
 ``` ini
-# In /etc/yum.repos.d/rabbitmq_erlang.repo
-[rabbitmq-rabbitmq-erlang]
-name=rabbitmq-rabbitmq-erlang
-baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/9/$basearch
+# In /etc/yum.repos.d/modern_erlang.repo
+[modern-erlang]
+name=modern-erlang-el9
+# uses a Cloudsmith mirror @ yum1.novemberain.com.
+# Unlike Cloudsmith, it does not have traffic quotas
+baseurl=https://yum1.novemberain.com/el/9/$basearch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -247,9 +255,11 @@ pkg_gpgcheck=1
 autorefresh=1
 type=rpm-md
 
-[rabbitmq-rabbitmq-erlang-noarch]
-name=rabbitmq-rabbitmq-erlang-noarch
-baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/9/noarch
+[modern-erlang-noarch]
+name=modern-erlang-el9-noarch
+# uses a Cloudsmith mirror @ yum1.novemberain.com.
+# Unlike Cloudsmith, it does not have traffic quotas
+baseurl=https://yum1.novemberain.com/el/9/noarch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -262,9 +272,11 @@ pkg_gpgcheck=1
 autorefresh=1
 type=rpm-md
 
-[rabbitmq-rabbitmq-erlang-source]
-name=rabbitmq-rabbitmq-erlang-source
-baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/9/SRPMS
+[modern-erlang-source]
+name=modern-erlang-el9-source
+# uses a Cloudsmith mirror @ yum1.novemberain.com.
+# Unlike Cloudsmith, it does not have traffic quotas
+baseurl=https://yum1.novemberain.com/el/9/SRPMS
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -275,7 +287,6 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 pkg_gpgcheck=1
 autorefresh=1
-type=rpm-md
 ```
 
 To install the package:
@@ -288,13 +299,15 @@ dnf install -y erlang
 ### Erlang 25 on RHEL 8, CentOS Stream 8, modern Fedora, Rocky Linux (x86-64)
 
 Erlang 25 x86-64 releases can be provisioned on RHEL 8, CentOS Stream 8, Rocky Linux, and modern Fedora
-using a dnf (yum) repository on Cloudsmith:
+using a dnf (yum) repository (a Cloudsmith mirror):
 
 ``` ini
-# In /etc/yum.repos.d/rabbitmq_erlang.repo
-[rabbitmq-rabbitmq-erlang]
-name=rabbitmq-rabbitmq-erlang
-baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/8/$basearch
+# In /etc/yum.repos.d/modern_erlang.repo
+[modern-erlang]
+name=modern-erlang-el8
+# uses a Cloudsmith mirror @ yum1.novemberain.com.
+# Unlike Cloudsmith, it does not have traffic quotas
+baseurl=https://yum1.novemberain.com/el/8/$basearch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -306,9 +319,11 @@ pkg_gpgcheck=1
 autorefresh=1
 type=rpm-md
 
-[rabbitmq-rabbitmq-erlang-noarch]
-name=rabbitmq-rabbitmq-erlang-noarch
-baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/8/noarch
+[modern-erlang-noarch]
+name=modern-erlang-el8-noarch
+# uses a Cloudsmith mirror @ yum1.novemberain.com.
+# Unlike Cloudsmith, it does not have traffic quotas
+baseurl=https://yum1.novemberain.com/el/8/noarch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -321,9 +336,11 @@ pkg_gpgcheck=1
 autorefresh=1
 type=rpm-md
 
-[rabbitmq-rabbitmq-erlang-source]
-name=rabbitmq-rabbitmq-erlang-source
-baseurl=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/rpm/el/8/SRPMS
+[modern-erlang-source]
+name=modern-erlang-el8-source
+# uses a Cloudsmith mirror @ yum1.novemberain.com.
+# Unlike Cloudsmith, it does not have traffic quotas
+baseurl=https://yum1.novemberain.com/el/8/SRPMS
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -334,7 +351,6 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 pkg_gpgcheck=1
 autorefresh=1
-type=rpm-md
 ```
 
 To install the package:
