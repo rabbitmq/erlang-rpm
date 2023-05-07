@@ -69,11 +69,7 @@ Recent Erlang versions require a modern OpenSSL version, currently this means `1
 
 For direct RPM package downloads, see [GitHub releases](https://github.com/rabbitmq/erlang-rpm/releases).
 
-There are two dnf repositories that distributed this package:
-
- * [rabbitmq/erlang on PackageCloud](https://packagecloud.io/rabbitmq/erlang/)
- * [rabbitmq/rabbitmq-erlang on Cloudsmith.io](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#repository-setup-yum)
-
+There is also a dnf repository that distributes x64_86 builds of this package.
 See the repository setup instructions below.
 
 ### Signing Keys
@@ -94,21 +90,10 @@ rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabb
 rpm --import 'https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key'
 ```
 
-To use the PackageCloud dnf repository, a [separate PackageCloud repository key](https://packagecloud.io/rabbitmq/erlang/gpgkey) must be imported:
-
-``` shell
-## primary RabbitMQ signing key
-rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
-## modern Erlang repository
-rpm --import https://packagecloud.io/rabbitmq/erlang/gpgkey
-```
-
 ## Direct Downloads from GitHub
 
 This package is [distributed as a single RPM](https://github.com/rabbitmq/erlang-rpm/releases), which makes it convenient to
 download and install using `dnf install -y /path/to/erlang.rpm`.
-
-#### Erlang 25 on CentOS Stream 9, Amazon Linux 2023, modern Fedora (x86-64 and aarch)
 
 Erlang 25 x86-64 and aarch64 releases can be provisioned on RHEL 9, CentOS Stream 9, Amazon Linux 2023,
 and modern Fedora using a [direct download](https://github.com/rabbitmq/erlang-rpm/releases):
