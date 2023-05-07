@@ -125,8 +125,8 @@ and modern Fedora using a [direct download](https://github.com/rabbitmq/erlang-r
 ``` shell
 # This is just an example that uses an aarch64 package for Amazon Linux 2023
 cd /tmp/
-curl -sfL -O https://github.com/rabbitmq/erlang-rpm/releases/download/v25.3/erlang-25.3-1.amzn2023.aarch64.rpm
-sudo dnf install -y ./erlang-25.3-1.amzn2023.aarch64.rpm
+curl -sfL -O https://github.com/rabbitmq/erlang-rpm/releases/download/v25.3.2/erlang-25.3.2-1.amzn2023.aarch64.rpm
+sudo dnf install -y ./erlang-25.3.2-1.amzn2023.aarch64.rpm
 ```
 
 ### Latest Erlang Version from PackageCloud
