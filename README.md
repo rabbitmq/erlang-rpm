@@ -42,11 +42,11 @@ and [a modern Erlang PPA for Ubuntu](https://rabbitmq.com/install-debian.html#ap
 
 ## Provided Erlang/OTP Versions
 
-The package targets Erlang/OTP `25.x` and `24.x`. Both x86-64 and aarch64 versions can be
+The package targets Erlang/OTP `26.x`, `25.x`, and `24.x`. Both x86-64 and aarch64 versions can be
 build in containers.
 
-**Important**: Erlang 26 introduce a number of breaking changes around networking and TLS.
-Packages of Erlang 26 will be provided when Erlang 26 support ships in a GA RabbitMQ release.
+**Important**: first RabbitMQ version with **initial** Erlang 26 is supported is [`3.12.0`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0-rc.2).
+Full Erlang 26 support will be announced later.
 
 ### RabbitMQ Version Compatibility
 
