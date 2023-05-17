@@ -53,6 +53,11 @@ Packages of Erlang 26 will be provided when Erlang 26 support ships in a GA Rabb
 See [Supported Erlang Versions](https://www.rabbitmq.com/which-erlang.html) in RabbitMQ documentation
 for an up-to-date compatibility matrix.
 
+#### Erlang 26
+
+First RabbitMQ version with **initial** Erlang 26 is supported is [`3.12.0`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0-rc.2).
+Full Erlang 26 support will be announced later.
+
 #### Erlang 25
 
 Erlang 25 is supported by RabbitMQ [starting with `3.10.0`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.0).
