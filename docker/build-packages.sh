@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-const all_rpms_dir="all_rpms"
+all_rpms_dir="all_rpms"
 
 mkdir -p "$all_rpms_dir"
 
