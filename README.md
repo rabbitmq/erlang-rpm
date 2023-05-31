@@ -27,7 +27,7 @@ aarch64 hosts. See the **Building from Source** section below.
 
 [Team RabbitMQ stopped supporting CentOS 7](https://blog.rabbitmq.com/posts/2022/04/centos-7-support-discontinued/) in May 2022.
 
-[Erlang 25.3.2](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2) includes one-off CentOS 7 packages
+[Erlang 25.3.2.1](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.1) includes one-off CentOS 7 packages
 statically linked against OpenSSL 1.1.x.
 
 Regular CentOS 7 and Amazon Linux 2 builds were produced up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18).
@@ -45,7 +45,7 @@ and [a modern Erlang PPA for Ubuntu](https://rabbitmq.com/install-debian.html#ap
 The package targets Erlang/OTP `26.x`, `25.x`, and `24.x`. Both x86-64 and aarch64 versions can be
 build in containers.
 
-**Important**: first RabbitMQ version with **initial** Erlang 26 is supported is [`3.12.0`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0-rc.3).
+**Important**: first RabbitMQ version with **initial** Erlang 26 is supported is [`3.12.0`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0-rc.4).
 Full Erlang 26 support will be announced later.
 
 ### RabbitMQ Version Compatibility
