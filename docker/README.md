@@ -1,7 +1,7 @@
 # Docker Build Environment
 
-This directory contains tooling that sets up a CentOS 8, 7, or 6
-Docker image which can be used to build the RPM.
+This directory contains tooling that sets up a Docker image which can be used to build
+several flavors (varieties) of the zero-dependency Erlang RPM.
 
 Run
 
