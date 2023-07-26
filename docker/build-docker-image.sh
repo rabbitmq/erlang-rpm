@@ -14,6 +14,9 @@ case $os_name in
 	fedora|f38|fc38|fedora38)
 		image="fedora"
 		image_tag="38";;
+	fedora|f39|fc39|fedora39)
+		image="fedora"
+		image_tag="39";;
 	al|al2023|amazonlinux2023)
 		image="amazonlinux"
 		image_tag="2023";;
