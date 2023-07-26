@@ -6,26 +6,66 @@ Docker image which can be used to build the RPM.
 Run
 
 ``` bash
-./build-docker-image.sh 8 --no-cache
+./build-docker-image.sh stream9 --no-cache
 ```
 
 to build a CentOS Docker image with all the build dependencies, then run
 
-``` bash
-./build-rpm-in-docker.sh 8
-```
-
-to do the build. This will create a directory `build-dir` in this
-directory; you can later get the RPM out of there.
+## Building the RPM
 
 ``` bash
-./build-image-and-rpm.sh 8 --no-cache
+# builds a RHEL 9 and CentOS Stream 9 flavor of the image
+./build-rpm-in-docker.sh stream9
 ```
 
-to execute create the Docker image and build the RPM.
+to do the build. This will create a directory `all_rpms` in this
+directory; the built RPMs will be copied there.
+
+## Building Different Image Flavors
+
+It is possible to build the RPM on and for a number of RPM-based operating systems:
+
+``` bash
+# for RHEL 9 and CentOS Stream 9
+./build-image-and-rpm.sh stream9 --no-cache
+```
+
+``` bash
+# builds an Amazon Linux 2023 flavor of the image
+./build-rpm-in-docker.sh al2023
+```
+
+``` bash
+# builds a Fedora 38 flavor of the image
+./build-rpm-in-docker.sh fc38
+```
+
+``` bash
+# builds a Rocky Linux 9 flavor of the image
+./build-rpm-in-docker.sh rockylinux
+```
+
+``` bash
+# builds an Alma Linux 9 flavor of the image
+./build-rpm-in-docker.sh almalinux
+```
+
+``` bash
+# builds an Oracle Linux 9 flavor of the image
+./build-rpm-in-docker.sh oraclelinux
+```
+
+The commands assume that the image for the targeted distribution was built (see the earlier step).
+
+## Building All Flavors
 
 ``` bash
 ./build-packages.sh
 ```
 
-will produce three packages for CentOS versions from 6 to 8.
+will produce a number of packages for the most popular distributions (in the RabbitMQ community):
+
+ * RHEL 9 and CentOS Stream 9 (including Rocky Linux 9, Alma Linux 9, Oracle Linux 9)
+ * RHEL 8 and CentOS Stream 8
+ * Amazon Linux 2023
+ * Fedora 38
