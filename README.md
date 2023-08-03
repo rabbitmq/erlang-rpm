@@ -45,8 +45,7 @@ and [a modern Erlang PPA for Ubuntu](https://rabbitmq.com/install-debian.html#ap
 The package targets Erlang/OTP `26.x`, `25.x`, and `24.x`. Both x86-64 and aarch64 versions can be
 build in containers.
 
-**Important**: first RabbitMQ version with **initial** Erlang 26 is supported is [`3.12.0`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0-rc.4).
-Full Erlang 26 support will be announced later.
+First RabbitMQ release series with Erlang 26 support is [`3.12`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0).
 
 ### RabbitMQ Version Compatibility
 
@@ -55,8 +54,7 @@ for an up-to-date compatibility matrix.
 
 #### Erlang 26
 
-First RabbitMQ version with **initial** Erlang 26 is supported is [`3.12.0`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0-rc.2).
-Full Erlang 26 support will be announced later.
+First RabbitMQ release series with Erlang 26 support is [`3.12`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0).
 
 #### Erlang 25
 
@@ -115,20 +113,16 @@ and modern Fedora using a [direct download](https://github.com/rabbitmq/erlang-r
 ``` shell
 # This is just an example that uses an aarch64 package for Amazon Linux 2023
 cd /tmp/
-curl -sfL -O https://github.com/rabbitmq/erlang-rpm/releases/download/v25.3.2/erlang-25.3.2-1.amzn2023.aarch64.rpm
-sudo dnf install -y ./erlang-25.3.2-1.amzn2023.aarch64.rpm
+curl -sfL -O https://github.com/rabbitmq/erlang-rpm/releases/download/v25.3.2.5/erlang-25.3.2.5-1.amzn2023.aarch64.rpm
+sudo dnf install -y ./erlang-25.3.2.5-1.amzn2023.aarch64.rpm
 ```
 
 ## Latest Erlang Version from a Cloudsmith Mirror
 
-This package is distributed via a [dnf repository on Cloudsmith](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/packages/).
+This package is distributed via a [dnf repository on Cloudsmith and its mirrors](https://rabbitmq.com/install-rpm.html#cloudsmith).
 
-Cloudsmith provides shell scripts for quick dnf repository setup.
-See the [Cloudsmith repository installation](https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#repository-setup-yum) page
-for details.
-
-The repository is **subject to traffic quotas**. When the quota is reached, no package
-installations will be possible for up to several days.
+The upstream Cloudsmith repository is **subject to traffic quotas**. When the quota is reached, package
+installations will only be possible from the mirrors, so it is highly recommended that you use them.
 
 The examples below use a mirror of the Cloudsmith repo. All packages in it are
 **signed with the same signing key**.
@@ -140,11 +134,17 @@ using a dnf (yum) repository (a Cloudsmith mirror):
 
 ``` ini
 # In /etc/yum.repos.d/modern_erlang.repo
+
+##
+## Zero dependency Erlang RPM
+##
+
 [modern-erlang]
-name=modern-erlang-el9
-# uses a Cloudsmith mirror @ yum1.novemberain.com.
-# Unlike Cloudsmith, it does not have traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/9/$basearch
+name=modern-erlang-el8
+# uses a Cloudsmith mirror @ yum.novemberain.com in addition to its Cloudsmith upstream.
+# Unlike Cloudsmith, the mirror does not have any traffic quotas
+baseurl=https://yum1.novemberain.com/erlang/el/8/$basearch
+        https://yum2.novemberain.com/erlang/el/8/$basearch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -157,10 +157,11 @@ autorefresh=1
 type=rpm-md
 
 [modern-erlang-noarch]
-name=modern-erlang-el9-noarch
-# uses a Cloudsmith mirror @ yum1.novemberain.com.
-# Unlike Cloudsmith, it does not have traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/9/noarch
+name=modern-erlang-el8-noarch
+# uses a Cloudsmith mirror @ yum.novemberain.com.
+# Unlike Cloudsmith, it does not have any traffic quotas
+baseurl=https://yum1.novemberain.com/erlang/el/8/noarch
+        https://yum2.novemberain.com/erlang/el/8/noarch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -174,10 +175,11 @@ autorefresh=1
 type=rpm-md
 
 [modern-erlang-source]
-name=modern-erlang-el9-source
-# uses a Cloudsmith mirror @ yum1.novemberain.com.
-# Unlike Cloudsmith, it does not have traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/9/SRPMS
+name=modern-erlang-el8-source
+# uses a Cloudsmith mirror @ yum.novemberain.com.
+# Unlike Cloudsmith, it does not have any traffic quotas
+baseurl=https://yum1.novemberain.com/erlang/el/8/SRPMS
+        https://yum2.novemberain.com/erlang/el/8/SRPMS
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
