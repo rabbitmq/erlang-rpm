@@ -29,8 +29,8 @@ DEFINES=--define '_topdir $(TOP_DIR)' --define '_tmppath $(TOP_DIR)/tmp' --defin
 rpms:	clean erlang
 
 build-deps:
-	dnf update -y
-	dnf install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
+	sudo dnf update -y
+	sudo dnf install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
 
 prepare: build-deps
 	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp dist
@@ -46,12 +46,12 @@ endif
 	cp *.patch SOURCES
 	cp erlang.spec SPECS
 	cp Erlang_ASL2_LICENSE.txt SOURCES
-	dnf update -y
-	dnf install -y util-linux
+	sudo dnf update -y
+	sudo dnf install -y util-linux
 	if test -f /etc/os-release; then \
 		. /etc/os-release; \
 		if test "$$ID" = 'centos' && test "$$VERSION_ID" -ge 7; then \
-			dnf install -y rpm-sign; \
+			sudo dnf install -y rpm-sign; \
 		fi; \
 	fi
 
