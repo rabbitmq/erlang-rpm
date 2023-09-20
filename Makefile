@@ -21,7 +21,8 @@ OTP_SRC_TGZ_FILE=OTP-$(OTP_RELEASE).tar.gz
 ERLANG_DISTPOINT=https://github.com/erlang/otp/archive/OTP-$(OTP_RELEASE).tar.gz
 
 # Where we will pull tarballs to
-TARBALL_DIR=dist
+TARBALL_DIR=$(PWD)/tarballs
+TMP_SRC_DIR=/tmp/tmp-otp-src
 
 TOP_DIR=$(shell pwd)
 DEFINES=--define '_topdir $(TOP_DIR)' --define '_tmppath $(TOP_DIR)/tmp' --define '_sysconfdir /etc' --define '_localstatedir /var'
@@ -33,24 +34,30 @@ build-deps:
 	sudo dnf install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
 
 prepare: build-deps
-	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp dist
-ifneq ("$(wildcard /tmp/$(OTP_SRC_TGZ_FILE))","")
-	# for faster turnaround time during development
-	cp /tmp/$(OTP_SRC_TGZ_FILE) $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE)
+	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp $(TARBALL_DIR)
+ifneq ("$(wildcard $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE))","")
+	# For faster turnaround time during development,
+	# reuse the tarball under $(TARBALL_DIR) if it exists.
+	#
+	# This directory can be mounted to one in the host.
 else
 	wget --no-clobber -O $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) $(ERLANG_DISTPOINT)
 endif
-	tar -zxf $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) -C dist
+	cd $(TARBALL_DIR)
+
+	# copy all files necessary for building the RPM
 	cp $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE) SOURCES
 	rm $(TARBALL_DIR)/$(OTP_SRC_TGZ_FILE)
 	cp *.patch SOURCES
 	cp erlang.spec SPECS
 	cp Erlang_ASL2_LICENSE.txt SOURCES
+
+	# dnf update, install (package) build-time dependencies
 	sudo dnf update -y
 	sudo dnf install -y util-linux
 	if test -f /etc/os-release; then \
 		. /etc/os-release; \
-		if test "$$ID" = 'centos' && test "$$VERSION_ID" -ge 7; then \
+		if test "$$ID" = 'centos'; then \
 			sudo dnf install -y rpm-sign; \
 		fi; \
 	fi
@@ -69,4 +76,4 @@ endif
 	find RPMS -name "*.rpm" -exec sh -c 'mv {} `echo {} | sed 's#^RPMS\/noarch#$(FINAL_OUTPUT_DIR)#'`' ';'
 
 clean:
-	rm -rf BUILDROOT BUILD SOURCES SPECS SRPMS RPMS tmp $(FINAL_OUTPUT_DIR) dist
+	rm -rf BUILDROOT BUILD SOURCES SPECS SRPMS RPMS tmp $(FINAL_OUTPUT_DIR)

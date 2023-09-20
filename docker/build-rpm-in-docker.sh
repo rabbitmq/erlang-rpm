@@ -26,6 +26,7 @@ then
 fi
 
 mkdir "$build_dir"
+mkdir "$build_dir/dist"
 
 echo "Copying patches to build dir $build_dir"
 cp ../*.patch "$build_dir"
@@ -35,6 +36,8 @@ for file in "${pkg_files[@]}"
 do
 	cp ../"$file" "$build_dir"
 done
+
+chmod -R 777 "$build_dir"
 
 case $(uname -s) in
 	Linux)
