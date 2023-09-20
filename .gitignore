@@ -6,6 +6,8 @@ dist
 docker/*build-dir*
 docker/docker-*
 docker/*.rpm
+docker/tarballs/*
+docker/*.tar.gz
 *~
 .sw?
 .*.sw?
