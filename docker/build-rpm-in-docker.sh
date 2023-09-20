@@ -34,14 +34,14 @@ cp ../*.patch "$build_dir"
 echo "Copying other files to build dir $build_dir"
 for file in "${pkg_files[@]}"
 do
-	cp ../"$file" "$build_dir"
+	echo "Will copy ${file} from ../${file}"
+	cp "../${file}" "$build_dir"
 done
 
-chmod -R 777 "$build_dir"
-
+echo "Will now build the RPM in '$build_dir' using image 'erlang-rpm-build-$os_name'"
 case $(uname -s) in
 	Linux)
-		sudo docker run -i -t -v "$PWD"/"$build_dir":/build/"$build_dir" "erlang-rpm-build-$os_name";;
+		sudo docker run -i -t -v "$PWD"/"$build_dir":/build/"$build_dir":z "erlang-rpm-build-$os_name";;
 	*)
-		docker run -i -t -v "$PWD"/"$build_dir":/build/"$build_dir" "erlang-rpm-build-$os_name";;
+		docker run -i -t -v "$PWD"/"$build_dir":/build/"$build_dir":z "erlang-rpm-build-$os_name";;
 esac
