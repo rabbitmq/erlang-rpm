@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 26.0.2
-%global package_ver  26.0.2
+%global upstream_ver 26.1
+%global package_ver  26.1
 %global package_ver_release 1
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
@@ -30,7 +30,7 @@ Group:		Development/Languages
 License:	ASL 2.0
 URL:		https://www.erlang.org
 Source0:	https://github.com/erlang/otp/archive/OTP-%{upstream_ver}.tar.gz
-Source2:        %{OSL_File_Name}
+Source2:    %{OSL_File_Name}
 Vendor:		VMware, Inc.
 
 
@@ -316,6 +316,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+
+* Wed Sep 20 2023 Michael Klishin <klishinm@vmware.com> - 26.1
+- Update to Erlang/OTP 26.1
+
 * Thu Jun 29 2023 Michael Klishin <klishinm@vmware.com> - 26.0.2
 - Update to Erlang/OTP 26.0.2
 
