@@ -42,7 +42,7 @@ and [a modern Erlang PPA for Ubuntu](https://rabbitmq.com/install-debian.html#ap
 
 ## Provided Erlang/OTP Versions
 
-The package targets Erlang/OTP `25.x` and `24.x`. Both x86-64 and aarch64 versions can be
+he package targets Erlang/OTP `26.x` and `25.x`. Both x86-64 and aarch64 versions can be
 build in containers.
 
 First RabbitMQ release series with Erlang 26 support is [`3.12`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0).
@@ -62,14 +62,6 @@ Erlang 25 is supported by RabbitMQ [starting with `3.10.0`](https://github.com/r
 
 Erlang 25 depends on OpenSSL 1.1, which is **not available on CentOS 7**. Therefore Erlang 25 packages
 are **only produced for modern Fedora, Rocky Linux, CentOS Stream, and Amazon Linux 2023**.
-
-
-#### Erlang 24
-
-Erlang 24 is supported by RabbitMQ [starting with `3.8.16`](https://www.rabbitmq.com/changelog.html).
-
-Erlang 24 depends on OpenSSL 1.1, which is **not available on CentOS 7**. Therefore Erlang 24 packages
-are **only produced for modern Fedora, Rocky Linux and CentOS Stream**.
 
 
 ## Implicit OpenSSL/libcrypto Dependency
@@ -119,7 +111,7 @@ sudo dnf install -y ./erlang-25.3.2.5-1.amzn2023.aarch64.rpm
 
 ## Latest Erlang Version from a Cloudsmith Mirror
 
-This package is distributed via a [dnf repository on Cloudsmith and its mirrors](https://rabbitmq.com/install-rpm.html#cloudsmith).
+This package is distributed via a dnf repository that mirrors from Cloudsmith.
 
 The upstream Cloudsmith repository is **subject to traffic quotas**. When the quota is reached, package
 installations will only be possible from the mirrors, so it is highly recommended that you use them.
@@ -211,6 +203,7 @@ name=modern-erlang-el8
 # uses a Cloudsmith mirror @ yum1.novemberain.com.
 # Unlike Cloudsmith, it does not have traffic quotas
 baseurl=https://yum1.novemberain.com/erlang/el/8/$basearch
+        https://yum1.novemberain.com/erlang/el/8/$basearch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -227,6 +220,7 @@ name=modern-erlang-el8-noarch
 # uses a Cloudsmith mirror @ yum1.novemberain.com.
 # Unlike Cloudsmith, it does not have traffic quotas
 baseurl=https://yum1.novemberain.com/erlang/el/8/noarch
+        https://yum2.novemberain.com/erlang/el/8/noarch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -244,6 +238,7 @@ name=modern-erlang-el8-source
 # uses a Cloudsmith mirror @ yum1.novemberain.com.
 # Unlike Cloudsmith, it does not have traffic quotas
 baseurl=https://yum1.novemberain.com/erlang/el/8/SRPMS
+        https://yum2.novemberain.com/erlang/el/8/SRPMS
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -299,6 +294,10 @@ Only the following OTP applications are provided:
 This repository provides scripts that can build an image with the `rpmbuild` toolchain
 and build the package in it. They can be found under the `./docker` directory.
 
+The recommended host environment for these builds is Fedora 38+. Due to Docker-specific volume
+sharing permissions intricacies, performing such builds on macOS will require
+modifications to the build scripts.
+
 ```sh
 cd docker
 
@@ -346,7 +345,7 @@ On an RPM-based distro (CentOS Stream 9, modern Fedora or Amazon Linux 2023), th
 be built without containers.
 
 ``` shell
-# add sudo if necessary
+# Note: this will use sudo to drive `dnf update -y` and install a few packages
 make
 ```
 
