@@ -80,7 +80,13 @@ chmod 644 lib/ssl/examples/src/Makefile
 
 
 %build
-%global conf_flags --enable-shared-zlib --enable-systemd --without-javac --without-odbc
+%global conf_flags --enable-shared-zlib --enable-dynamic-ssl-lib --enable-systemd --without-javac --without-odbc
+
+## add --enable-fips to enable FIPS mode, which is fully supported
+## on OpenSSL 3 starting with Erlang 26.1
+
+## to tweak compiler flags if necessary
+# export CFLAGS="-Wno-error=implicit-function-declaration -O2 -g"
 
 %ifarch sparcv9 sparc64
 CFLAGS="$RPM_OPT_FLAGS -mcpu=ultrasparc -fno-strict-aliasing" %configure %{conf_flags}
