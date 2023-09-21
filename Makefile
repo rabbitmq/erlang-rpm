@@ -24,14 +24,16 @@ ERLANG_DISTPOINT=https://github.com/erlang/otp/archive/OTP-$(OTP_RELEASE).tar.gz
 TARBALL_DIR=$(PWD)/tarballs
 TMP_SRC_DIR=/tmp/tmp-otp-src
 
+SUDO="sudo"
+
 TOP_DIR=$(shell pwd)
 DEFINES=--define '_topdir $(TOP_DIR)' --define '_tmppath $(TOP_DIR)/tmp' --define '_sysconfdir /etc' --define '_localstatedir /var'
 
 rpms:	clean erlang
 
 build-deps:
-	sudo dnf update -y
-	sudo dnf install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
+	$(SUDO) dnf update -y
+	$(SUDO) dnf install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
 
 prepare: build-deps
 	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp $(TARBALL_DIR)
@@ -53,12 +55,12 @@ endif
 	cp Erlang_ASL2_LICENSE.txt SOURCES
 
 	# dnf update, install (package) build-time dependencies
-	sudo dnf update -y
-	sudo dnf install -y util-linux
+	$(SUDO) dnf update -y
+	$(SUDO) dnf install -y util-linux
 	if test -f /etc/os-release; then \
 		. /etc/os-release; \
 		if test "$$ID" = 'centos'; then \
-			sudo dnf install -y rpm-sign; \
+			$(SUDO) dnf install -y rpm-sign; \
 		fi; \
 	fi
 
