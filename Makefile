@@ -24,7 +24,7 @@ ERLANG_DISTPOINT=https://github.com/erlang/otp/archive/OTP-$(OTP_RELEASE).tar.gz
 TARBALL_DIR=$(PWD)/tarballs
 TMP_SRC_DIR=/tmp/tmp-otp-src
 
-SUDO="sudo"
+SUDO=""
 
 TOP_DIR=$(shell pwd)
 DEFINES=--define '_topdir $(TOP_DIR)' --define '_tmppath $(TOP_DIR)/tmp' --define '_sysconfdir /etc' --define '_localstatedir /var'
