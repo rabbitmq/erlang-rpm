@@ -24,7 +24,7 @@ ERLANG_DISTPOINT=https://github.com/erlang/otp/archive/OTP-$(OTP_RELEASE).tar.gz
 TARBALL_DIR=$(PWD)/tarballs
 TMP_SRC_DIR=/tmp/tmp-otp-src
 
-SUDO=""
+DNF_CMD="dnf"
 
 TOP_DIR=$(shell pwd)
 DEFINES=--define '_topdir $(TOP_DIR)' --define '_tmppath $(TOP_DIR)/tmp' --define '_sysconfdir /etc' --define '_localstatedir /var'
@@ -32,8 +32,8 @@ DEFINES=--define '_topdir $(TOP_DIR)' --define '_tmppath $(TOP_DIR)/tmp' --defin
 rpms:	clean erlang
 
 build-deps:
-	$(SUDO) dnf update -y
-	$(SUDO) dnf install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
+	$(DNF_CMD) update -y
+	$(DNF_CMD) install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
 
 prepare: build-deps
 	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp $(TARBALL_DIR)
@@ -55,12 +55,12 @@ endif
 	cp Erlang_ASL2_LICENSE.txt SOURCES
 
 	# dnf update, install (package) build-time dependencies
-	$(SUDO) dnf update -y
-	$(SUDO) dnf install -y util-linux
+	$(DNF_CMD) update -y
+	$(DNF_CMD) install -y util-linux
 	if test -f /etc/os-release; then \
 		. /etc/os-release; \
 		if test "$$ID" = 'centos'; then \
-			$(SUDO) dnf install -y rpm-sign; \
+			$(DNF_CMD) install -y rpm-sign; \
 		fi; \
 	fi
 
