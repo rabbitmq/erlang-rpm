@@ -13,3 +13,4 @@ docker/*.tar.gz
 .*.sw?
 /otp_*.tar.gz
 RPMS/*
+tarballs/*
