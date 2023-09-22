@@ -1,0 +1,14 @@
+ARG image
+ARG image_tag
+
+FROM $image:$image_tag
+
+RUN tdnf -y update && tdnf clean all
+
+RUN tdnf install -y gcc glibc-devel binutils autoconf m4 openssl-devel ncurses-devel rpm-build tar wget zlib-devel systemd-devel make sudo
+
+RUN ln -s /usr/bin/tdnf /usr/local/bin/dnf
+
+RUN mkdir /build
+WORKDIR /build/pkg-build-dir
+CMD ["sh", "-c", "make", "DNF_CMD=tdnf"]

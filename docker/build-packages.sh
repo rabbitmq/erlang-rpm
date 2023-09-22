@@ -10,6 +10,8 @@ build_and_fetch_rpm_for() {
   cp pkg-build-dir/RPMS/*/erlang-* "$all_rpms_dir"
 }
 
+# Photon OS 5
+build_and_fetch_rpm_for "photon"
 # These cover CentOS Stream, Rocky Linux, Alma Linux, Oracle Linux
 # of the same respective version
 build_and_fetch_rpm_for "stream9"

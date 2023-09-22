@@ -4,6 +4,8 @@ os_name="$1"
 docker_params=${2:-"--pull"}
 dockerfile="Dockerfile.template"
 
+dockerfile_suffix=""
+
 case $os_name in
 	9|stream9|centos9)
 		image="quay.io/centos/centos"
@@ -29,6 +31,10 @@ case $os_name in
 	alma|alma9|almalinux9)
 		image="almalinux"
 		image_tag="9";;
+	photon|photon5|photonos5)
+		image="photon"
+		image_tag="5.0"
+		dockerfile_suffix=".photon"
 esac
 
 docker_dir="docker-$os_name"
@@ -54,12 +60,13 @@ fi
 
 mkdir "$docker_dir"
 
-echo "Will build an image for ${image}:${image_tag} using Docker file at $docker_dir/Dockerfile"
+echo "Will build an image for ${image}:${image_tag}"
+echo "copying $dockerfile$dockerfile_suffix => $docker_dir/Dockerfile"
 
-cp "$dockerfile" "$docker_dir/Dockerfile"
+cp "$dockerfile$dockerfile_suffix" "$docker_dir/Dockerfile"
 	case $(uname -s) in
 		Linux)
-			sudo docker build --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
+			sudo docker build --build-arg image="$image" --build-arg image_tag="$image_tag" --build-arg dnf_cmd="$dnf_cmd" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
 		*)
-			docker build --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
+			docker build --build-arg image="$image" --build-arg image_tag="$image_tag"  --build-arg dnf_cmd="$dnf_cmd" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
 	esac

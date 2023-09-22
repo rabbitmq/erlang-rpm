@@ -32,8 +32,9 @@ DEFINES=--define '_topdir $(TOP_DIR)' --define '_tmppath $(TOP_DIR)/tmp' --defin
 rpms:	clean erlang
 
 build-deps:
+	echo "Will use $(DNF_CMD) for package operations"
 	$(DNF_CMD) update -y
-	$(DNF_CMD) install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build tar wget zlib-devel systemd-devel make
+	$(DNF_CMD) install -y binutils glibc-devel autoconf clang m4 openssl-devel ncurses-devel rpm-build tar wget zlib-devel systemd-devel make
 
 prepare: build-deps
 	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp $(TARBALL_DIR)
