@@ -134,7 +134,7 @@ using a dnf (yum) repository (a Cloudsmith mirror):
 [modern-erlang]
 name=modern-erlang-el8
 # uses a Cloudsmith mirror @ yum.novemberain.com in addition to its Cloudsmith upstream.
-# Unlike Cloudsmith, the mirror does not have any traffic quotas
+# Unlike Cloudsmith, the mirror is very unlikely to hit its traffic quota
 baseurl=https://yum1.novemberain.com/erlang/el/8/$basearch
         https://yum2.novemberain.com/erlang/el/8/$basearch
 repo_gpgcheck=1
@@ -151,7 +151,7 @@ type=rpm-md
 [modern-erlang-noarch]
 name=modern-erlang-el8-noarch
 # uses a Cloudsmith mirror @ yum.novemberain.com.
-# Unlike Cloudsmith, it does not have any traffic quotas
+# Unlike Cloudsmith, the mirror is very unlikely to hit its traffic quotas
 baseurl=https://yum1.novemberain.com/erlang/el/8/noarch
         https://yum2.novemberain.com/erlang/el/8/noarch
 repo_gpgcheck=1
@@ -169,7 +169,7 @@ type=rpm-md
 [modern-erlang-source]
 name=modern-erlang-el8-source
 # uses a Cloudsmith mirror @ yum.novemberain.com.
-# Unlike Cloudsmith, it does not have any traffic quotas
+# Unlike Cloudsmith, the mirror is very unlikely to hit its traffic quotas
 baseurl=https://yum1.novemberain.com/erlang/el/8/SRPMS
         https://yum2.novemberain.com/erlang/el/8/SRPMS
 repo_gpgcheck=1
@@ -218,7 +218,7 @@ type=rpm-md
 [modern-erlang-noarch]
 name=modern-erlang-el8-noarch
 # uses a Cloudsmith mirror @ yum1.novemberain.com.
-# Unlike Cloudsmith, it does not have traffic quotas
+# Unlike Cloudsmith, the mirror is very unlikely to hit its traffic quotas
 baseurl=https://yum1.novemberain.com/erlang/el/8/noarch
         https://yum2.novemberain.com/erlang/el/8/noarch
 repo_gpgcheck=1
@@ -236,7 +236,7 @@ type=rpm-md
 [modern-erlang-source]
 name=modern-erlang-el8-source
 # uses a Cloudsmith mirror @ yum1.novemberain.com.
-# Unlike Cloudsmith, it does not have traffic quotas
+# Unlike Cloudsmith, the mirror is very unlikely to hit its traffic quotas
 baseurl=https://yum1.novemberain.com/erlang/el/8/SRPMS
         https://yum2.novemberain.com/erlang/el/8/SRPMS
 repo_gpgcheck=1
