@@ -27,7 +27,7 @@ aarch64 hosts. See the **Building from Source** section below.
 
 [Team RabbitMQ stopped supporting CentOS 7](https://blog.rabbitmq.com/posts/2022/04/centos-7-support-discontinued/) in May 2022.
 
-Erlang [26.1](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.1) and [25.3.2.3](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.3)
+Erlang [26.1.2](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.1.2) and [25.3.2.3](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.3)
 include one-off CentOS 7 packages statically linked against OpenSSL 1.1.x.
 
 Regular CentOS 7 and Amazon Linux 2 builds were produced up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18).
