@@ -7,7 +7,7 @@ on:
 jobs:
   trigger-build:
     runs-on: ubuntu-22.04
-      - uses: actions/checkout@v4
+    steps:
       - name: Extract Erlang major version
         run: |
           major=$(echo "${{ github.ref_name }}" | cut -d "-" -f 2)
