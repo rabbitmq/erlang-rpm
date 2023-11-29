@@ -1,0 +1,21 @@
+name: Trigger build
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  trigger-build:
+    runs-on: ubuntu-22.04
+      - uses: actions/checkout@v4
+      - name: Extract Erlang major version
+        run: |
+          major=$(echo "${{ github.ref_name }}" | cut -d "-" -f 2)
+          echo $major
+          echo "erlang_major=$major" >> $GITHUB_ENV
+      - name: Trigger build
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          repository: rabbitmq/erlang-packages
+          token: ${{ secrets.CI_GITHUB_TOKEN }}
+          event-type: rpm_erlang_${{ env.erlang_major }}
