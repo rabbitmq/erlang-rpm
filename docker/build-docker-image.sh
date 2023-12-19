@@ -40,7 +40,7 @@ echo "Will build an image for ${image}:${image_tag} using Docker file at $docker
 cp "$dockerfile" "$docker_dir/Dockerfile"
 	case $(uname -s) in
 		Linux)
-			sudo docker build --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
+			sudo docker build --ulimit nofile=1024000:1024000 --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
 		*)
-			docker build --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
+			docker build --ulimit nofile=1024000:1024000 --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
 	esac
