@@ -20,6 +20,7 @@ aarch64 hosts. See the **Building from Source** section below.
  * Rocky Linux 8.5 or later
  * Fedora 34 or later
  * Amazon Linux 2023
+ * VMware PhotonOS 5
  * Oracle Linux 9
  * Alma Linux 9
 
@@ -27,7 +28,7 @@ aarch64 hosts. See the **Building from Source** section below.
 
 [Team RabbitMQ stopped supporting CentOS 7](https://blog.rabbitmq.com/posts/2022/04/centos-7-support-discontinued/) in May 2022.
 
-Erlang [26.2.1](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.1) and [25.3.2.8](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.8)
+Erlang [26.2.2](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.2) and [25.3.2.9](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.9)
 include one-off CentOS 7 packages statically linked against OpenSSL 1.1.x.
 
 Regular CentOS 7 and Amazon Linux 2 builds were produced up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18).
