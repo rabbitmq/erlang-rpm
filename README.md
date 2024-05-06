@@ -18,7 +18,7 @@ aarch64 hosts. See the **Building from Source** section below.
  * CentOS Stream 8
  * CentOS Stream 9
  * Rocky Linux 8.5 or later
- * Fedora 34 or later
+ * Fedora 36 or later
  * Amazon Linux 2023
  * VMware PhotonOS 5
  * Oracle Linux 9
