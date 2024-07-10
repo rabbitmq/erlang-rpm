@@ -17,10 +17,15 @@ aarch64 hosts. See the **Building from Source** section below.
  * RHEL 8.4 or later
  * CentOS Stream 9
  * Fedora 36 or later
- * Rocky Linux 8.5 and 9.x
- * Alma Linux 8.8 and 9.x
+ * Rocky Linux 8.10 and 9.4 (the most recent maintained 8.x and 9.x series)
+ * Alma Linux 8.10 and 9.4 (the most recent maintained 8.x and 9.x series)
  * Amazon Linux 2023
  * Oracle Linux 9
+
+## CentOS 8 and drivatives
+
+CentOS Stream 8 has [reached end of life](https://endoflife.date/centos-stream) in May 2024. The CentOS 8 versions
+of these packages are produced on Rocky Linux 8.10+ from July 2024 and onwards.
 
 ## CentOS 7 and derivatives
 
