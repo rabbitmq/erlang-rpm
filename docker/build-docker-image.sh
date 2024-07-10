@@ -9,8 +9,8 @@ case $os_name in
 		image="quay.io/centos/centos"
 		image_tag=stream9;;
 	8|stream8|centos8)
-		image="quay.io/centos/centos"
-		image_tag=stream8;;
+		image="rockylinux"
+		image_tag=8;;
 	fedora|f38|fc38|fedora38)
 		image="fedora"
 		image_tag="38";;
