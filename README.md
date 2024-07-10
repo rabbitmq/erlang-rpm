@@ -12,23 +12,23 @@ aarch64 hosts. See the **Building from Source** section below.
 
 ## Supported RPM-based Distributions
 
-[Binary builds](https://github.com/rabbitmq/erlang-rpm/releases) of this package target **modern RPM-based distributions**:
+[Binary builds](https://github.com/rabbitmq/erlang-rpm/releases) of this package **target modern RPM-based distributions**:
 
- * RHEL 8.4 or later
+ * RHEL 8.8 and later (the versions [covered by full support](https://access.redhat.com/support/policy/updates/errata))
  * CentOS Stream 9
- * Fedora 36 or later
- * Rocky Linux 8.10 and 9.4 (the most recent maintained 8.x and 9.x series)
- * Alma Linux 8.10 and 9.4 (the most recent maintained 8.x and 9.x series)
+ * Fedora 39  or later
+ * Rocky Linux 8.10 and 9.4 (the [most recent maintained](https://wiki.rockylinux.org/rocky/version/) 8.x and 9.x series)
+ * Alma Linux 8.10 and 9.4 (the [most recent maintained](https://wiki.almalinux.org/release-notes/) 8.x and 9.x series)
  * Amazon Linux 2023
  * VMware PhotonOS 5
  * Oracle Linux 9
 
-## CentOS 8 and drivatives
+## CentOS 8 has Reached End-of-Life
 
 CentOS Stream 8 has [reached end of life](https://endoflife.date/centos-stream) in May 2024. The CentOS 8 versions
 of these packages are produced on Rocky Linux 8.10+ from July 2024 and onwards.
 
-## CentOS 7 and derivatives
+## CentOS 7 has Reached End-of-Life
 
 [Team RabbitMQ stopped supporting CentOS 7](https://blog.rabbitmq.com/posts/2022/04/centos-7-support-discontinued/) in May 2022.
 
