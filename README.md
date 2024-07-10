@@ -15,13 +15,12 @@ aarch64 hosts. See the **Building from Source** section below.
 [Binary builds](https://github.com/rabbitmq/erlang-rpm/releases) of this package target **modern RPM-based distributions**:
 
  * RHEL 8.4 or later
- * CentOS Stream 8
  * CentOS Stream 9
- * Rocky Linux 8.5 or later
- * Fedora 34 or later
+ * Fedora 36 or later
+ * Rocky Linux 8.5 and 9.x
+ * Alma Linux 8.8 and 9.x
  * Amazon Linux 2023
  * Oracle Linux 9
- * Alma Linux 9
 
 ## CentOS 7 and derivatives
 
