@@ -3,6 +3,10 @@ ARG image_tag
 
 FROM $image:$image_tag
 
+# mirror.centos.org is gone
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+
 # see https://github.com/docker/buildx/issues/379
 RUN ulimit -n 1024000 && yum install -y dnf
 RUN ulimit -n 1024000 && dnf group install "Development Tools" -y
