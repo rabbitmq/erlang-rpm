@@ -30,7 +30,7 @@ rpms:	clean erlang
 
 build-deps:
 	dnf update -y
-	dnf install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
+	dnf install -y autoconf gcc m4 ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make
 
 prepare: build-deps
 	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp dist

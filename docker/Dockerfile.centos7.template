@@ -7,13 +7,14 @@ FROM $image:$image_tag
 RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
 RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 
-# see https://github.com/docker/buildx/issues/379
-RUN ulimit -n 1024000 && yum install -y dnf
-RUN ulimit -n 1024000 && dnf group install "Development Tools" -y
-RUN ulimit -n 1024000 && dnf -y update && dnf clean all
+RUN yum clean all
+RUN yum update -y
 
-RUN ulimit -n 1024000 && dnf install -y m4 ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel sudo wget
+RUN yum install -y dnf
+RUN dnf group install "Development Tools" -y
+RUN dnf -y update && dnf clean all
 
+RUN dnf install -y dnf install -y autoconf gcc m4 make m4 ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel sudo wget
 
 RUN wget https://ftp.openssl.org/source/openssl-1.1.1k.tar.gz -P /tmp/
 RUN cd /tmp/ && \
