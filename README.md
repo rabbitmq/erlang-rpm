@@ -104,14 +104,14 @@ rpm --import 'https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495B
 This package is [distributed as a single RPM](https://github.com/rabbitmq/erlang-rpm/releases), which makes it convenient to
 download and install using `dnf install -y /path/to/erlang.rpm`.
 
-Erlang 25 x86-64 and aarch64 releases can be provisioned on RHEL 9, CentOS Stream 9, Amazon Linux 2023,
+Erlang 26 x86-64 and aarch64 releases can be provisioned on RHEL 9, CentOS Stream 9, Amazon Linux 2023,
 and modern Fedora using a [direct download](https://github.com/rabbitmq/erlang-rpm/releases):
 
 ``` shell
 # This is just an example that uses an aarch64 package for Amazon Linux 2023
 cd /tmp/
-curl -sfL -O https://github.com/rabbitmq/erlang-rpm/releases/download/v25.3.2.5/erlang-25.3.2.5-1.amzn2023.aarch64.rpm
-sudo dnf install -y ./erlang-25.3.2.5-1.amzn2023.aarch64.rpm
+curl -sfL -O https://github.com/rabbitmq/erlang-rpm/releases/download/v26.2.5.2/erlang-26.2.5.2-1.amzn2023.aarch64.rpm
+sudo dnf install -y ./erlang-26.2.5.2-1.amzn2023.aarch64.rpm
 ```
 
 ## Latest Erlang Version from a Cloudsmith Mirror
