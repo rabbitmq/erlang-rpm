@@ -31,7 +31,7 @@ of these packages are produced on Rocky Linux 8.10+ from July 2024 and onwards.
 
 [Team RabbitMQ stopped supporting CentOS 7](https://blog.rabbitmq.com/posts/2022/04/centos-7-support-discontinued/) in May 2022.
 
-Erlang [26.1](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.1) and [25.3.2.3](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.3)
+Erlang [26.2.5.3](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.5.3) and [25.3.2.9](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.9)
 include one-off CentOS 7 packages statically linked against OpenSSL 1.1.x.
 
 Regular CentOS 7 and Amazon Linux 2 builds were produced up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18).
@@ -49,23 +49,10 @@ and [a modern Erlang PPA for Ubuntu](https://rabbitmq.com/install-debian.html#ap
 he package targets Erlang/OTP `26.x` and `25.x`. Both x86-64 and aarch64 versions can be
 build in containers.
 
-First RabbitMQ release series with Erlang 26 support is [`3.12`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0).
-
 ### RabbitMQ Version Compatibility
 
 See [Supported Erlang Versions](https://www.rabbitmq.com/which-erlang.html) in RabbitMQ documentation
 for an up-to-date compatibility matrix.
-
-#### Erlang 26
-
-First RabbitMQ release series with Erlang 26 support is [`3.12`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0).
-
-#### Erlang 25
-
-Erlang 25 is supported by RabbitMQ [starting with `3.10.0`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.0).
-
-Erlang 25 depends on OpenSSL 1.1, which is **not available on CentOS 7**. Therefore Erlang 25 packages
-are **only produced for modern Fedora, Rocky Linux, CentOS Stream, and Amazon Linux 2023**.
 
 
 ## Implicit OpenSSL/libcrypto Dependency
@@ -109,8 +96,8 @@ and modern Fedora using a [direct download](https://github.com/rabbitmq/erlang-r
 ``` shell
 # This is just an example that uses an aarch64 package for Amazon Linux 2023
 cd /tmp/
-curl -sfL -O https://github.com/rabbitmq/erlang-rpm/releases/download/v25.3.2.5/erlang-25.3.2.5-1.amzn2023.aarch64.rpm
-sudo dnf install -y ./erlang-25.3.2.5-1.amzn2023.aarch64.rpm
+curl -sfL -O https://github.com/rabbitmq/erlang-rpm/releases/download/v25.3.2.9/erlang-25.3.2.9-1.amzn2023.aarch64.rpm
+sudo dnf install -y ./erlang-25.3.2.9-1.amzn2023.aarch64.rpm
 ```
 
 ## Latest Erlang Version from a Cloudsmith Mirror
@@ -137,10 +124,10 @@ using a dnf (yum) repository (a Cloudsmith mirror):
 
 [modern-erlang]
 name=modern-erlang-el8
-# uses a Cloudsmith mirror @ yum.novemberain.com in addition to its Cloudsmith upstream.
+# uses a Cloudsmith mirror @ yum.rabbitmq.com in addition to its Cloudsmith upstream.
 # Unlike Cloudsmith, the mirror does not have any traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/8/$basearch
-        https://yum2.novemberain.com/erlang/el/8/$basearch
+baseurl=https://yum1.rabbitmq.com/erlang/el/8/$basearch
+        https://yum2.rabbitmq.com/erlang/el/8/$basearch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -154,10 +141,10 @@ type=rpm-md
 
 [modern-erlang-noarch]
 name=modern-erlang-el8-noarch
-# uses a Cloudsmith mirror @ yum.novemberain.com.
+# uses a Cloudsmith mirror @ yum.rabbitmq.com.
 # Unlike Cloudsmith, it does not have any traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/8/noarch
-        https://yum2.novemberain.com/erlang/el/8/noarch
+baseurl=https://yum1.rabbitmq.com/erlang/el/8/noarch
+        https://yum2.rabbitmq.com/erlang/el/8/noarch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -172,10 +159,10 @@ type=rpm-md
 
 [modern-erlang-source]
 name=modern-erlang-el8-source
-# uses a Cloudsmith mirror @ yum.novemberain.com.
+# uses a Cloudsmith mirror @ yum.rabbitmq.com.
 # Unlike Cloudsmith, it does not have any traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/8/SRPMS
-        https://yum2.novemberain.com/erlang/el/8/SRPMS
+baseurl=https://yum1.rabbitmq.com/erlang/el/8/SRPMS
+        https://yum2.rabbitmq.com/erlang/el/8/SRPMS
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -204,10 +191,10 @@ using a dnf (yum) repository (a Cloudsmith mirror):
 # In /etc/yum.repos.d/modern_erlang.repo
 [modern-erlang]
 name=modern-erlang-el8
-# uses a Cloudsmith mirror @ yum1.novemberain.com.
+# uses a Cloudsmith mirror @ yum1.rabbitmq.com.
 # Unlike Cloudsmith, it does not have traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/8/$basearch
-        https://yum1.novemberain.com/erlang/el/8/$basearch
+baseurl=https://yum1.rabbitmq.com/erlang/el/8/$basearch
+        https://yum1.rabbitmq.com/erlang/el/8/$basearch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -221,10 +208,10 @@ type=rpm-md
 
 [modern-erlang-noarch]
 name=modern-erlang-el8-noarch
-# uses a Cloudsmith mirror @ yum1.novemberain.com.
+# uses a Cloudsmith mirror @ yum1.rabbitmq.com.
 # Unlike Cloudsmith, it does not have traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/8/noarch
-        https://yum2.novemberain.com/erlang/el/8/noarch
+baseurl=https://yum1.rabbitmq.com/erlang/el/8/noarch
+        https://yum2.rabbitmq.com/erlang/el/8/noarch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -239,10 +226,10 @@ type=rpm-md
 
 [modern-erlang-source]
 name=modern-erlang-el8-source
-# uses a Cloudsmith mirror @ yum1.novemberain.com.
+# uses a Cloudsmith mirror @ yum1.rabbitmq.com.
 # Unlike Cloudsmith, it does not have traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/8/SRPMS
-        https://yum2.novemberain.com/erlang/el/8/SRPMS
+baseurl=https://yum1.rabbitmq.com/erlang/el/8/SRPMS
+        https://yum2.rabbitmq.com/erlang/el/8/SRPMS
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
