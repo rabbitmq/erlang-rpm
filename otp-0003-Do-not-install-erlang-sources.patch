@@ -60,18 +60,6 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/edoc/src/Makef
 
  release_docs_spec:
 -
-diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/erl_docgen/src/Makefile otp-src-patched/lib/erl_docgen/src/Makefile
---- otp-src/lib/erl_docgen/src/Makefile	2021-05-12 21:31:55.000000000 +0100
-+++ otp-src-patched/lib/erl_docgen/src/Makefile	2020-05-13 23:54:26.000000000 +0100
-@@ -91,8 +91,6 @@
- include $(ERL_TOP)/make/otp_release_targets.mk
-
- release_spec: opt
--	$(INSTALL_DIR) "$(RELSYSDIR)/src"
--	$(INSTALL_DATA) $(ERL_FILES) "$(RELSYSDIR)/src"
- 	$(INSTALL_DIR) "$(RELSYSDIR)/ebin"
- 	$(INSTALL_DATA) $(TARGET_FILES) "$(RELSYSDIR)/ebin"
-
 diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/inets/src/http_client/Makefile otp-src-patched/lib/inets/src/http_client/Makefile
 --- otp-src/lib/inets/src/http_client/Makefile	2021-05-12 21:31:58.000000000 +0100
 +++ otp-src-patched/lib/inets/src/http_client/Makefile	2019-05-28 00:02:47.000000000 +0100
