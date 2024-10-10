@@ -106,7 +106,6 @@ touch lib/dialyzer/SKIP
 touch lib/diameter/SKIP
 touch lib/edoc/SKIP
 touch lib/et/SKIP
-touch lib/erl_docgen/SKIP
 touch lib/ftp/SKIP
 touch lib/jinterface/SKIP
 touch lib/megaco/SKIP
