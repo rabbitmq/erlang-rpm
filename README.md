@@ -32,7 +32,7 @@ of these packages are produced on Rocky Linux 8.10+ from July 2024 and onwards.
 
 [Team RabbitMQ stopped supporting CentOS 7](https://blog.rabbitmq.com/posts/2022/04/centos-7-support-discontinued/) in May 2022.
 
-Erlang [26.2.5.3](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.5.3) and [25.3.2.9](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.9)
+Erlang [26.2.5.4](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.5.4) and [25.3.2.9](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.9)
 include one-off CentOS 7 packages statically linked against OpenSSL 1.1.x.
 
 Regular CentOS 7 and Amazon Linux 2 builds were produced up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18).
@@ -359,6 +359,7 @@ history and release archive can be useful as well.
 ## Copyright and License
 
 Copyright VMware, Inc and its affiliates, 2011-2023. All Rights Reserved.
+Copyright Broadcom. "Broadcom" may refer to Broadcom, Inc or its affiliates, 2023-2024. All Rights Reserved.
 
 Released under the [Apache Software License 2.0](./Erlang_ASL2_LICENSE.txt),
-same as Erlang/OTP starting with 18.0.
+same as Erlang/OTP.
