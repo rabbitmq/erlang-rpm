@@ -14,13 +14,13 @@ RUN yum install -y dnf
 RUN dnf group install "Development Tools" -y
 RUN dnf -y update && dnf clean all
 
-RUN dnf install -y dnf install -y autoconf gcc m4 make m4 ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel sudo wget
+RUN dnf install -y dnf autoconf gcc m4 make m4 ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel sudo wget
 
-RUN wget https://ftp.openssl.org/source/openssl-1.1.1k.tar.gz -P /tmp/
+RUN wget https://mirrors.omnios.org/openssl/openssl-1.1.1w.tar.gz -P /tmp/
 RUN cd /tmp/ && \
- 	tar -xzvf openssl-1.1.1k.tar.gz
+ 	tar -xzvf openssl-1.1.1w.tar.gz
 
-RUN cd /tmp/openssl-1.1.1k && \
+RUN cd /tmp/openssl-1.1.1w && \
 	./config  --prefix=/tmp/ssl --openssldir=/etc/ssl --libdir=lib no-shared zlib-dynamic && \
 	make && \
 	make install 
