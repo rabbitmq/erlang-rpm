@@ -41,7 +41,7 @@ done
 echo "Will now build the RPM in '$build_dir' using image 'erlang-rpm-build-$os_name'"
 case $(uname -s) in
 	Linux)
-		sudo docker run -i -t -v "$PWD"/"$build_dir":/build/"$build_dir":z "erlang-rpm-build-$os_name";;
+		sudo docker run --dns 8.8.8.8 -i -t -v "$PWD"/"$build_dir":/build/"$build_dir":z "erlang-rpm-build-$os_name";;
 	*)
-		docker run -i -t -v "$PWD"/"$build_dir":/build/"$build_dir":z "erlang-rpm-build-$os_name";;
+		docker run --dns 8.8.8.8 -i -t -v "$PWD"/"$build_dir":/build/"$build_dir":z "erlang-rpm-build-$os_name";;
 esac
