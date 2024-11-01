@@ -38,7 +38,7 @@ done
 
 case $(uname -s) in
 	Linux)
-		sudo docker run -i -t -v "$PWD"/"$build_dir":/build/"$build_dir" "erlang-rpm-build-$os_name";;
+		sudo docker run -i -t --dns 8.8.8.8 -v "$PWD"/"$build_dir":/build/"$build_dir" "erlang-rpm-build-$os_name";;
 	*)
-		docker run -i -t -v "$PWD"/"$build_dir":/build/"$build_dir" "erlang-rpm-build-$os_name";;
+		docker run -i -t --dns 8.8.8.8 -v "$PWD"/"$build_dir":/build/"$build_dir" "erlang-rpm-build-$os_name";;
 esac
