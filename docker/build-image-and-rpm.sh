@@ -8,7 +8,7 @@ second: docker build parameters such as --no-cache
 -----------------------------------------
 Ex: ./build-image-and-rpm.sh stream9 --no-cache
 Ex: ./build-image-and-rpm.sh stream8 --no-cache
-Ex: ./build-image-and-rpm.sh fedora38 --no-cache
+Ex: ./build-image-and-rpm.sh fedora41 --no-cache
 "
   exit 1
 }
