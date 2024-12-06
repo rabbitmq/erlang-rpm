@@ -323,6 +323,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 
+* Fri Dec 6 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2.5.6
+- Update to Erlang/OTP 26.2.5.6
+
 * Fri Nov 1 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2.5.5
 - Update to Erlang/OTP 26.2.5.5
 
