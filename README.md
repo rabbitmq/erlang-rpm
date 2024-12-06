@@ -12,22 +12,27 @@ aarch64 hosts. See the **Building from Source** section below.
 
 ## Supported RPM-based Distributions
 
-[Binary builds](https://github.com/rabbitmq/erlang-rpm/releases) of this package target **modern RPM-based distributions**:
+[Binary builds](https://github.com/rabbitmq/erlang-rpm/releases) of this package **target modern RPM-based distributions**:
 
- * RHEL 8.4 or later
- * CentOS Stream 8
+ * RHEL 8.8 and later (the versions [covered by full support](https://access.redhat.com/support/policy/updates/errata))
  * CentOS Stream 9
- * Rocky Linux 8.5 or later
- * Fedora 34 or later
+ * Fedora 39  or later
+ * Rocky Linux 8.10 and 9.4 (the [most recent maintained](https://wiki.rockylinux.org/rocky/version/) 8.x and 9.x series)
+ * Alma Linux 8.10 and 9.4 (the [most recent maintained](https://wiki.almalinux.org/release-notes/) 8.x and 9.x series)
  * Amazon Linux 2023
+ * VMware PhotonOS 5
  * Oracle Linux 9
- * Alma Linux 9
 
-## CentOS 7 and derivatives
+## CentOS 8 has Reached End-of-Life
+
+CentOS Stream 8 has [reached end of life](https://endoflife.date/centos-stream) in May 2024. The CentOS 8 versions
+of these packages are produced on Rocky Linux 8.10+ from July 2024 and onwards.
+
+## CentOS 7 has Reached End-of-Life
 
 [Team RabbitMQ stopped supporting CentOS 7](https://blog.rabbitmq.com/posts/2022/04/centos-7-support-discontinued/) in May 2022.
 
-Erlang [26.1](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.1) and [25.3.2.3](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.3)
+Erlang [26.2.5.4](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.5.4) and [25.3.2.9](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.9)
 include one-off CentOS 7 packages statically linked against OpenSSL 1.1.x.
 
 Regular CentOS 7 and Amazon Linux 2 builds were produced up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18).
@@ -42,26 +47,13 @@ and [a modern Erlang PPA for Ubuntu](https://rabbitmq.com/install-debian.html#ap
 
 ## Provided Erlang/OTP Versions
 
-The package targets Erlang/OTP `26.x` and `25.x`. Both x86-64 and aarch64 versions can be
-build in containers.
-
-First RabbitMQ release series with Erlang 26 support is [`3.12`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0).
+The package targets Erlang/OTP `26.x`. Both x86-64 and aarch64 versions can be
+built in containers.
 
 ### RabbitMQ Version Compatibility
 
 See [Supported Erlang Versions](https://www.rabbitmq.com/which-erlang.html) in RabbitMQ documentation
 for an up-to-date compatibility matrix.
-
-#### Erlang 26
-
-First RabbitMQ release series with Erlang 26 support is [`3.12`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.0).
-
-#### Erlang 25
-
-Erlang 25 is supported by RabbitMQ [starting with `3.10.0`](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.0).
-
-Erlang 25 depends on OpenSSL 1.1, which is **not available on CentOS 7**. Therefore Erlang 25 packages
-are **only produced for modern Fedora, Rocky Linux, CentOS Stream, and Amazon Linux 2023**.
 
 
 ## Implicit OpenSSL/libcrypto Dependency
@@ -99,14 +91,14 @@ rpm --import 'https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495B
 This package is [distributed as a single RPM](https://github.com/rabbitmq/erlang-rpm/releases), which makes it convenient to
 download and install using `dnf install -y /path/to/erlang.rpm`.
 
-Erlang 25 x86-64 and aarch64 releases can be provisioned on RHEL 9, CentOS Stream 9, Amazon Linux 2023,
+Erlang 26 x86-64 and aarch64 releases can be provisioned on RHEL 9, CentOS Stream 9, Amazon Linux 2023,
 and modern Fedora using a [direct download](https://github.com/rabbitmq/erlang-rpm/releases):
 
 ``` shell
 # This is just an example that uses an aarch64 package for Amazon Linux 2023
 cd /tmp/
-curl -sfL -O https://github.com/rabbitmq/erlang-rpm/releases/download/v25.3.2.5/erlang-25.3.2.5-1.amzn2023.aarch64.rpm
-sudo dnf install -y ./erlang-25.3.2.5-1.amzn2023.aarch64.rpm
+curl -sfL -O https://github.com/rabbitmq/erlang-rpm/releases/download/v26.2.5.3/erlang-26.2.5.3-1.amzn2023.aarch64.rpm
+sudo dnf install -y ./erlang-26.2.5.3-1.amzn2023.aarch64.rpm
 ```
 
 ## Latest Erlang Version from a Cloudsmith Mirror
@@ -133,10 +125,10 @@ using a dnf (yum) repository (a Cloudsmith mirror):
 
 [modern-erlang]
 name=modern-erlang-el8
-# uses a Cloudsmith mirror @ yum.novemberain.com in addition to its Cloudsmith upstream.
+# uses a Cloudsmith mirror @ yum.rabbitmq.com in addition to its Cloudsmith upstream.
 # Unlike Cloudsmith, the mirror is very unlikely to hit its traffic quota
-baseurl=https://yum1.novemberain.com/erlang/el/8/$basearch
-        https://yum2.novemberain.com/erlang/el/8/$basearch
+baseurl=https://yum1.rabbitmq.com/erlang/el/8/$basearch
+        https://yum2.rabbitmq.com/erlang/el/8/$basearch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -150,10 +142,10 @@ type=rpm-md
 
 [modern-erlang-noarch]
 name=modern-erlang-el8-noarch
-# uses a Cloudsmith mirror @ yum.novemberain.com.
+# uses a Cloudsmith mirror @ yum.rabbitmq.com.
 # Unlike Cloudsmith, the mirror is very unlikely to hit its traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/8/noarch
-        https://yum2.novemberain.com/erlang/el/8/noarch
+baseurl=https://yum1.rabbitmq.com/erlang/el/8/noarch
+        https://yum2.rabbitmq.com/erlang/el/8/noarch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -168,10 +160,10 @@ type=rpm-md
 
 [modern-erlang-source]
 name=modern-erlang-el8-source
-# uses a Cloudsmith mirror @ yum.novemberain.com.
+# uses a Cloudsmith mirror @ yum.rabbitmq.com.
 # Unlike Cloudsmith, the mirror is very unlikely to hit its traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/8/SRPMS
-        https://yum2.novemberain.com/erlang/el/8/SRPMS
+baseurl=https://yum1.rabbitmq.com/erlang/el/8/SRPMS
+        https://yum2.rabbitmq.com/erlang/el/8/SRPMS
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -200,10 +192,10 @@ using a dnf (yum) repository (a Cloudsmith mirror):
 # In /etc/yum.repos.d/modern_erlang.repo
 [modern-erlang]
 name=modern-erlang-el8
-# uses a Cloudsmith mirror @ yum1.novemberain.com.
+# uses a Cloudsmith mirror @ yum1.rabbitmq.com.
 # Unlike Cloudsmith, it does not have traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/8/$basearch
-        https://yum1.novemberain.com/erlang/el/8/$basearch
+baseurl=https://yum1.rabbitmq.com/erlang/el/8/$basearch
+        https://yum1.rabbitmq.com/erlang/el/8/$basearch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -217,10 +209,10 @@ type=rpm-md
 
 [modern-erlang-noarch]
 name=modern-erlang-el8-noarch
-# uses a Cloudsmith mirror @ yum1.novemberain.com.
+# uses a Cloudsmith mirror @ yum1.rabbitmq.com.
 # Unlike Cloudsmith, the mirror is very unlikely to hit its traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/8/noarch
-        https://yum2.novemberain.com/erlang/el/8/noarch
+baseurl=https://yum1.rabbitmq.com/erlang/el/8/noarch
+        https://yum2.rabbitmq.com/erlang/el/8/noarch
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -235,10 +227,10 @@ type=rpm-md
 
 [modern-erlang-source]
 name=modern-erlang-el8-source
-# uses a Cloudsmith mirror @ yum1.novemberain.com.
+# uses a Cloudsmith mirror @ yum1.rabbitmq.com.
 # Unlike Cloudsmith, the mirror is very unlikely to hit its traffic quotas
-baseurl=https://yum1.novemberain.com/erlang/el/8/SRPMS
-        https://yum2.novemberain.com/erlang/el/8/SRPMS
+baseurl=https://yum1.rabbitmq.com/erlang/el/8/SRPMS
+        https://yum2.rabbitmq.com/erlang/el/8/SRPMS
 repo_gpgcheck=1
 enabled=1
 gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
@@ -367,6 +359,7 @@ history and release archive can be useful as well.
 ## Copyright and License
 
 Copyright VMware, Inc and its affiliates, 2011-2023. All Rights Reserved.
+Copyright Broadcom. "Broadcom" may refer to Broadcom, Inc or its affiliates, 2023-2024. All Rights Reserved.
 
 Released under the [Apache Software License 2.0](./Erlang_ASL2_LICENSE.txt),
-same as Erlang/OTP starting with 18.0.
+same as Erlang/OTP.

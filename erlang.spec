@@ -1,4 +1,4 @@
-# Copyright VMware, Inc. or its affiliantes, 2012-2022. All Rights Reserved.
+# Copyright Broadcom, Inc. or its affiliantes, 2012-2024. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 26.2
-%global package_ver  26.2
+%global upstream_ver 27.1.3
+%global package_ver  27.1.3
 %global package_ver_release 1
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
@@ -106,7 +106,6 @@ touch lib/dialyzer/SKIP
 touch lib/diameter/SKIP
 touch lib/edoc/SKIP
 touch lib/et/SKIP
-touch lib/erl_docgen/SKIP
 touch lib/ftp/SKIP
 touch lib/jinterface/SKIP
 touch lib/megaco/SKIP
@@ -322,6 +321,39 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+
+* Fri Dec 6 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.1.3
+- Update to Erlang/OTP 27.1.3
+
+* Mon Oct 28 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.1.2
+- Update to Erlang/OTP 27.1.2
+
+* Thu Oct 10 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.1.1
+- Update to Erlang/OTP 27.1.1
+
+* Wed Oct 9 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2.5.4
+- Update to Erlang/OTP 26.2.5.4
+
+* Thu Sep 5 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2.5.3
+- Update to Erlang/OTP 26.2.5.3
+
+* Wed Jul 10 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2.5.2
+- Update to Erlang/OTP 26.2.5.2
+
+* Sat May 4 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2.5
+- Update to Erlang/OTP 26.2.5
+
+* Sat Apr 13 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2.4
+- Update to Erlang/OTP 26.2.4
+
+* Thu Mar 7 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2.3
+- Update to Erlang/OTP 26.2.3
+
+* Thu Feb 8 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2.2
+- Update to Erlang/OTP 26.2.2
+
+* Mon Dec 18 2023 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2.1
+- Update to Erlang/OTP 26.2.1
 
 * Wed Dec 13 2023 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2
 - Update to Erlang/OTP 26.2
