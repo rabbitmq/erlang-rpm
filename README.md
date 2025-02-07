@@ -61,7 +61,7 @@ for an up-to-date compatibility matrix.
 This package intentionally **does not include OpenSSL**/libcrypto. It must be provisioned separately.
 Recent Erlang versions require a modern OpenSSL version.
 
-For the `el9` (modern Fedora, RHEL 9, CentOS Stream 9, Rocky Linux 9.x, Alma Linux 9.x, and so on) this means OpenSSL `3.x`.
+For the `el9` variant (modern Fedora, RHEL 9, CentOS Stream 9, Rocky Linux 9.x, Alma Linux 9.x, and so on) this means OpenSSL `3.x`.
 For the `el8` variant (Rocky Linux 8.x, Alma Linux 8.x) this means OpenSSL `1.1.x`.
 
 ## Release Artifacts
