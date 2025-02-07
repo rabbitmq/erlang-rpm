@@ -14,7 +14,7 @@ jobs:
           echo $major
           echo "erlang_major=$major" >> $GITHUB_ENV
       - name: Trigger build
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v3
         with:
           repository: rabbitmq/erlang-packages
           token: ${{ secrets.CI_GITHUB_TOKEN }}
