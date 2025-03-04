@@ -40,6 +40,8 @@ Patch0: otp-0001-Do-not-format-man-pages-and-do-not-install-miscellan.patch
 Patch1: otp-0002-Do-not-install-C-sources.patch
 #   Do not install erlang sources
 Patch2: otp-0003-Do-not-install-erlang-sources.patch
+# A patch for a faulty ESXi 8.0.2 AVX-512 instruction set implementation
+Patch3: otp-0004-esxi-8.0.2.patch
 
 # BuildRoot not strictly needed since F10, but keep it for spec file robustness
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)

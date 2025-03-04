@@ -1,0 +1,27 @@
+diff --git a/erts/emulator/beam/jit/x86/beam_asm.hpp b/erts/emulator/beam/jit/x86/beam_asm.hpp
+index 6cfb7e2d92..049603f856 100644
+--- a/erts/emulator/beam/jit/x86/beam_asm.hpp
++++ b/erts/emulator/beam/jit/x86/beam_asm.hpp
+@@ -960,14 +960,14 @@ protected:
+                                                          Sint32,
+                                                          x86::Inst::Id,
+                                                          CpuFeatures::X86::Id>>;
+-        for (const auto &spec : vectors{{x86::zmm0,
+-                                         8,
+-                                         x86::Inst::kIdVmovups,
+-                                         CpuFeatures::X86::kAVX512_VL},
+-                                        {x86::zmm0,
+-                                         8,
+-                                         x86::Inst::kIdVmovups,
+-                                         CpuFeatures::X86::kAVX512_F},
++        for (const auto &spec : vectors{//{x86::zmm0,
++                                        // 8,
++                                        // x86::Inst::kIdVmovups,
++                                        // CpuFeatures::X86::kAVX512_VL},
++                                        //{x86::zmm0,
++                                        // 8,
++                                        // x86::Inst::kIdVmovups,
++                                        // CpuFeatures::X86::kAVX512_F},
+                                         {x86::ymm0,
+                                          4,
+                                          x86::Inst::kIdVmovups,
