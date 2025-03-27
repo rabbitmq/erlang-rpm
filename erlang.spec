@@ -80,7 +80,8 @@ chmod 644 lib/ssl/examples/src/Makefile
 
 
 %build
-%global conf_flags --enable-shared-zlib --enable-systemd --without-javac --without-odbc --with-ssl=/tmp/ssl
+%global conf_flags --with-ssl=/tmp/ssl --enable-shared-zlib --enable-dynamic-ssl-lib --enable-systemd --enable-hybrid-heap --enable-kernel-poll --enable-jit --with-microstate-accounting=extra --without-javac --without-odbc --without-snmp --without-ssh --without-tftp --without-ftp --without-wx --without-megaco --without-edoc --without-jinterface --disable-sctp --without-diameter
+
 
 
 %ifarch sparcv9 sparc64
