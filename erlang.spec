@@ -14,7 +14,7 @@
 
 %global upstream_ver 27.3
 %global package_ver  27.3
-%global package_ver_release 1
+%global package_ver_release 2
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
 %global __brp_check_rpaths %{nil}
