@@ -297,15 +297,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/lib/sasl-*/src
 
 
-%dir %{_libdir}/erlang/lib/snmp-*/
-%{_libdir}/erlang/lib/snmp-*/bin
-%{_libdir}/erlang/lib/snmp-*/ebin
-%{_libdir}/erlang/lib/snmp-*/include
-%{_libdir}/erlang/lib/snmp-*/mibs
-%{_libdir}/erlang/lib/snmp-*/priv
-%{_libdir}/erlang/lib/snmp-*/src
-
-
 %dir %{_libdir}/erlang/lib/ssl-*/
 %{_libdir}/erlang/lib/ssl-*/ebin
 %{_libdir}/erlang/lib/ssl-*/src
@@ -322,8 +313,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+
 * Tue Feb 25 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 25.3.2.18
 - Update to Erlang/OTP 25.3.2.18
+
+* Fri Mar 28 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 25.3.2.18
+- Drop a few dependencies (snmp, ssh, megaco) that RabbitMQ does not use.
 
 * Fri Dec 6 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 25.3.2.16
 - Update to Erlang/OTP 25.3.2.16
