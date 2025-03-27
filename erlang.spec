@@ -80,7 +80,7 @@ chmod 644 lib/ssl/examples/src/Makefile
 
 
 %build
-%global conf_flags --enable-shared-zlib --enable-dynamic-ssl-lib --enable-systemd --without-javac --without-odbc
+%global conf_flags --enable-shared-zlib --enable-dynamic-ssl-lib --enable-systemd --enable-hybrid-heap --enable-kernel-poll --enable-jit --with-microstate-accounting=extra --without-javac --without-odbc --without-snmp --without-ssh --without-tftp --without-ftp --without-wx --without-megaco --without-edoc --without-jinterface --disable-sctp --without-diameter
 
 ## add --enable-fips to enable FIPS mode, which is fully supported
 ## on OpenSSL 3 starting with Erlang 26.1
