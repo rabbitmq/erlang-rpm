@@ -111,6 +111,7 @@ touch lib/jinterface/SKIP
 touch lib/megaco/SKIP
 touch lib/observer/SKIP
 touch lib/odbc/SKIP
+touch lib/snmp/SKIP
 touch lib/ssh/SKIP
 touch lib/tftp/SKIP
 touch lib/wx/SKIP
