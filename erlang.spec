@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 27.3
-%global package_ver  27.3
-%global package_ver_release 2
+%global upstream_ver 27.3.1
+%global package_ver  27.3.1
+%global package_ver_release 1
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
 %global __brp_check_rpaths %{nil}
@@ -313,6 +313,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar 28 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.1
+- Update to Erlang/OTP 27.3.1
+
 * Thu Mar 27 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3
 - Drop a few dependencies (snmp, ssh, megaco) that RabbitMQ does not use.
 
