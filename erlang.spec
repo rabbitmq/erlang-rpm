@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-# Copyright VMware, Inc. or its affiliantes, 2012-2022. All Rights Reserved.
-||||||| parent of ddfb139 ((c) year)
-# Copyright Broadcom, Inc. or its affiliantes, 2012-2024. All Rights Reserved.
-=======
 # Copyright Broadcom, Inc. or its affiliantes, 2012-2025. All Rights Reserved.
->>>>>>> ddfb139 ((c) year)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -321,11 +315,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 
-* Tue Feb 25 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 25.3.2.18
-- Update to Erlang/OTP 25.3.2.18
+* Fri Mar 28 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 25.3.2.19
+- Update to Erlang/OTP 25.3.2.19.
 
 * Fri Mar 28 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 25.3.2.18
 - Drop a few dependencies (snmp, ssh, megaco) that RabbitMQ does not use.
+
+* Tue Feb 25 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 25.3.2.18
+- Update to Erlang/OTP 25.3.2.18
 
 * Fri Dec 6 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 25.3.2.16
 - Update to Erlang/OTP 25.3.2.16
