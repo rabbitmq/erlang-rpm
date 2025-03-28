@@ -60,7 +60,7 @@ monolithic, has fewer dependencies, and has lower disk and memory
 overhead. Many applications from Erlang Open Telecom Platform (OTP)
 have been removed. The following applications remain: asn1, compiler,
 crypto, erl_interface, erts, inets, kernel, mnesia, os_mon,
-public_key, reltool, runtime_tools, sasl, snmp, ssl, stdlib,
+public_key, reltool, runtime_tools, sasl, ssl, stdlib,
 syntax_tools and xmerl.
 
 %define _license_file %{_builddir}/otp-OTP-%{upstream_ver}/`basename %{S:2}`
