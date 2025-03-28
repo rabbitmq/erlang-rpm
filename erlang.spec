@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 # Copyright VMware, Inc. or its affiliantes, 2012-2022. All Rights Reserved.
+||||||| parent of ddfb139 ((c) year)
+# Copyright Broadcom, Inc. or its affiliantes, 2012-2024. All Rights Reserved.
+=======
+# Copyright Broadcom, Inc. or its affiliantes, 2012-2025. All Rights Reserved.
+>>>>>>> ddfb139 ((c) year)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
