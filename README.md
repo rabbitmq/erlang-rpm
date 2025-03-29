@@ -303,7 +303,7 @@ cd docker
 #  * stream9 for CentOS Stream 9
 #  * stream8 for CentOS Stream 8
 #  * al2023 for Amazon Linux 2023
-#  * f38 for Fedora 38
+#  * f41 for Fedora 41
 #
 ./build-image-and-rpm.sh stream9 --no-cache
 
@@ -315,7 +315,7 @@ cd docker
 #  * stream9 for CentOS Stream 9
 #  * stream8 for CentOS Stream 8
 #  * al2023 for Amazon Linux 2023
-#  * f38 for Fedora 38
+#  * f41 for Fedora 41
  ./build-docker-image.sh stream9 --no-cache
 
 #
@@ -326,7 +326,7 @@ cd docker
 #  * stream9 for CentOS Stream 9
 #  * stream8 for CentOS Stream 8
 #  * al2023 for Amazon Linux 2023
-#  * f38 for Fedora 38
+#  * f41 for Fedora 41
 #
 ./build-rpm-in-docker.sh stream9
 ```
@@ -361,7 +361,7 @@ history and release archive can be useful as well.
 ## Copyright and License
 
 Copyright VMware, Inc and its affiliates, 2011-2023. All Rights Reserved.
-Copyright Broadcom. "Broadcom" may refer to Broadcom, Inc or its affiliates, 2023-2024. All Rights Reserved.
+Copyright Broadcom. "Broadcom" may refer to Broadcom, Inc or its affiliates, 2023-2025. All Rights Reserved.
 
 Released under the [Apache Software License 2.0](./Erlang_ASL2_LICENSE.txt),
 same as Erlang/OTP.
