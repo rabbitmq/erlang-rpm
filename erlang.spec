@@ -1,4 +1,4 @@
-# Copyright Broadcom, Inc. or its affiliantes, 2012-2024. All Rights Reserved.
+# Copyright Broadcom, Inc. or its affiliantes, 2012-2025. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 27.2
-%global package_ver  27.2
+%global upstream_ver 27.3.1
+%global package_ver  27.3.1
 %global package_ver_release 1
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
@@ -60,7 +60,7 @@ monolithic, has fewer dependencies, and has lower disk and memory
 overhead. Many applications from Erlang Open Telecom Platform (OTP)
 have been removed. The following applications remain: asn1, compiler,
 crypto, erl_interface, erts, inets, kernel, mnesia, os_mon,
-public_key, reltool, runtime_tools, sasl, snmp, ssl, stdlib,
+public_key, reltool, runtime_tools, sasl, ssl, stdlib,
 syntax_tools and xmerl.
 
 %define _license_file %{_builddir}/otp-OTP-%{upstream_ver}/`basename %{S:2}`
@@ -80,7 +80,7 @@ chmod 644 lib/ssl/examples/src/Makefile
 
 
 %build
-%global conf_flags --enable-shared-zlib --enable-dynamic-ssl-lib --enable-systemd --without-javac --without-odbc
+%global conf_flags --enable-shared-zlib --enable-dynamic-ssl-lib --enable-systemd --enable-hybrid-heap --enable-kernel-poll --enable-jit --with-microstate-accounting=extra --without-javac --without-odbc --without-snmp --without-ssh --without-tftp --without-ftp --without-wx --without-megaco --without-edoc --without-jinterface --disable-sctp --without-diameter
 
 ## add --enable-fips to enable FIPS mode, which is fully supported
 ## on OpenSSL 3 starting with Erlang 26.1
@@ -111,6 +111,7 @@ touch lib/jinterface/SKIP
 touch lib/megaco/SKIP
 touch lib/observer/SKIP
 touch lib/odbc/SKIP
+touch lib/snmp/SKIP
 touch lib/ssh/SKIP
 touch lib/tftp/SKIP
 touch lib/wx/SKIP
@@ -296,15 +297,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/lib/sasl-*/src
 
 
-%dir %{_libdir}/erlang/lib/snmp-*/
-%{_libdir}/erlang/lib/snmp-*/bin
-%{_libdir}/erlang/lib/snmp-*/ebin
-%{_libdir}/erlang/lib/snmp-*/include
-%{_libdir}/erlang/lib/snmp-*/mibs
-%{_libdir}/erlang/lib/snmp-*/priv
-%{_libdir}/erlang/lib/snmp-*/src
-
-
 %dir %{_libdir}/erlang/lib/ssl-*/
 %{_libdir}/erlang/lib/ssl-*/ebin
 %{_libdir}/erlang/lib/ssl-*/src
@@ -321,6 +313,26 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar 28 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.1
+- Update to Erlang/OTP 27.3.1
+
+* Thu Mar 27 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3
+- Drop a few dependencies (snmp, ssh, megaco) that RabbitMQ does not use.
+
+* Wed Mar 5 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3
+- Update to Erlang/OTP 27.3
+
+* Thu Feb 20 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.2.4
+- Update to Erlang/OTP 27.2.4
+
+* Mon Feb 17 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.2.3
+- Update to Erlang/OTP 27.2.3
+
+* Thu Feb 6 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.2.2
+- Update to Erlang/OTP 27.2.2
+
+* Thu Jan 23 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.2.1
+- Update to Erlang/OTP 27.2.1
 
 * Wed Dec 11 2024 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.2
 - Update to Erlang/OTP 27.2

@@ -16,14 +16,14 @@ aarch64 hosts. See the **Building from Source** section below.
 
  * RHEL 8.10 and later (the most recent series [covered by full support](https://access.redhat.com/support/policy/updates/errata))
  * CentOS Stream 9
- * Fedora 39  or later
+ * Fedora 40 or later
  * Rocky Linux 8.10 and 9.5 (the [most recent maintained](https://wiki.rockylinux.org/rocky/version/) 8.x and 9.x releases)
  * Alma Linux 8.10 and 9.5 (the [most recent maintained](https://wiki.almalinux.org/release-notes/) 8.x and 9.x releases)
  * Amazon Linux 2023
  * VMware PhotonOS 5
  * Oracle Linux 9
 
-## CentOS 8 has Reached End-of-Life
+## RHEL and CentOS Stream 8 Distribution Family
 
 CentOS Stream 8 has [reached end of life](https://endoflife.date/centos-stream) in May 2024. The CentOS 8 versions
 of these packages are produced on Rocky Linux 8.10+ from July 2024 and onwards.
@@ -32,7 +32,7 @@ of these packages are produced on Rocky Linux 8.10+ from July 2024 and onwards.
 
 [Team RabbitMQ stopped supporting CentOS 7](https://blog.rabbitmq.com/posts/2022/04/centos-7-support-discontinued/) in May 2022.
 
-Erlang [27.2](https://github.com/rabbitmq/erlang-rpm/releases/tag/v27.2), [26.2.5.6](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.5.6) and [25.3.2.16](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.16)
+Erlang [27.3.1](https://github.com/rabbitmq/erlang-rpm/releases/tag/v27.3.1), [26.2.5.10](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.5.10) and [25.3.2.19](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.19)
 include one-off CentOS 7 packages statically linked against OpenSSL 1.1.x.
 
 Regular CentOS 7 and Amazon Linux 2 builds were produced up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18).
@@ -47,7 +47,7 @@ and [a modern Erlang PPA for Ubuntu](https://rabbitmq.com/install-debian.html#ap
 
 ## Provided Erlang/OTP Versions
 
-The package targets Erlang/OTP `26.x`. Both x86-64 and aarch64 versions can be
+The package targets Erlang/OTP `27.x` and `26.x`. Both x86-64 and aarch64 versions can be
 built in containers.
 
 ### RabbitMQ Version Compatibility
@@ -56,10 +56,13 @@ See [Supported Erlang Versions](https://www.rabbitmq.com/which-erlang.html) in R
 for an up-to-date compatibility matrix.
 
 
-## Implicit OpenSSL/libcrypto Dependency
+## OpenSSL/libcrypto Version Support
 
 This package intentionally **does not include OpenSSL**/libcrypto. It must be provisioned separately.
-Recent Erlang versions require a modern OpenSSL version, currently this means `1.1.x` or later.
+Recent Erlang versions require a modern OpenSSL version.
+
+For the `el9` variant (modern Fedora, RHEL 9, CentOS Stream 9, Rocky Linux 9.x, Alma Linux 9.x, and so on) this means OpenSSL `3.x`.
+For the `el8` variant (Rocky Linux 8.x, Alma Linux 8.x) this means OpenSSL `1.1.x`.
 
 ## Release Artifacts
 
@@ -272,7 +275,6 @@ Only the following OTP applications are provided:
  * reltool
  * runtime_tools
  * sasl
- * snmp
  * ssl
  * stdlib
  * syntax_tools
@@ -301,7 +303,7 @@ cd docker
 #  * stream9 for CentOS Stream 9
 #  * stream8 for CentOS Stream 8
 #  * al2023 for Amazon Linux 2023
-#  * f38 for Fedora 38
+#  * f41 for Fedora 41
 #
 ./build-image-and-rpm.sh stream9 --no-cache
 
@@ -313,7 +315,7 @@ cd docker
 #  * stream9 for CentOS Stream 9
 #  * stream8 for CentOS Stream 8
 #  * al2023 for Amazon Linux 2023
-#  * f38 for Fedora 38
+#  * f41 for Fedora 41
  ./build-docker-image.sh stream9 --no-cache
 
 #
@@ -324,7 +326,7 @@ cd docker
 #  * stream9 for CentOS Stream 9
 #  * stream8 for CentOS Stream 8
 #  * al2023 for Amazon Linux 2023
-#  * f38 for Fedora 38
+#  * f41 for Fedora 41
 #
 ./build-rpm-in-docker.sh stream9
 ```
@@ -359,7 +361,7 @@ history and release archive can be useful as well.
 ## Copyright and License
 
 Copyright VMware, Inc and its affiliates, 2011-2023. All Rights Reserved.
-Copyright Broadcom. "Broadcom" may refer to Broadcom, Inc or its affiliates, 2023-2024. All Rights Reserved.
+Copyright Broadcom. "Broadcom" may refer to Broadcom, Inc or its affiliates, 2023-2025. All Rights Reserved.
 
 Released under the [Apache Software License 2.0](./Erlang_ASL2_LICENSE.txt),
 same as Erlang/OTP.

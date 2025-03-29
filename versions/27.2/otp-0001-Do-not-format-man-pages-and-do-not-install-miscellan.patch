@@ -1,0 +1,32 @@
+diff -u -r otp-OTP-24.0/erts/etc/common/Makefile.in otp-OTP-24.0-patched/erts/etc/common/Makefile.in
+--- otp-OTP-24.0/erts/etc/common/Makefile.in	2021-05-12 12:58:56.000000000 +0300
++++ otp-OTP-24.0-patched/erts/etc/common/Makefile.in	2019-05-13 13:00:19.000000000 +0300
+@@ -525,10 +525,6 @@
+ ifneq ($(INSTALL_TOP_BIN),)
+ 	$(INSTALL_PROGRAM) $(INSTALL_TOP_BIN) "$(RELEASE_PATH)"
+ endif
+-ifneq ($(INSTALL_MISC),)
+-	$(INSTALL_DIR) "$(RELEASE_PATH)/misc"
+-	$(INSTALL_SCRIPT) $(INSTALL_MISC) "$(RELEASE_PATH)/misc"
+-endif
+ ifneq ($(INSTALL_SRC),)
+ 	$(INSTALL_DIR) "$(RELEASE_PATH)/erts-$(VSN)/src"
+ 	$(INSTALL_DATA) $(INSTALL_SRC) "$(RELEASE_PATH)/erts-$(VSN)/src"
+diff -u -r otp-OTP-24.0/erts/etc/unix/Install.src otp-OTP-24.0-patched/erts/etc/unix/Install.src
+--- otp-OTP-24.0/erts/etc/unix/Install.src	2020-05-10 15:42:49.000000000 +0300
++++ otp-OTP-24.0-patched/erts/etc/unix/Install.src	2021-05-12 12:59:11.000000000 +0300
+@@ -142,14 +142,5 @@
+ cp -p ../releases/%I_SYSTEM_VSN%/no_dot_erlang.boot .
+ cp -p $Name.boot start.boot
+ cp -p ../releases/%I_SYSTEM_VSN%/$Name.script start.script
+-#
+-# Fixing the man pages
+-#
+-
+-if [ -d "$ERL_ROOT/man" ]
+-then
+-    cd "$ERL_ROOT"
+-    ./misc/format_man_pages "$ERL_ROOT"
+-fi
+ 
+ exit 0

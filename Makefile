@@ -1,4 +1,4 @@
-# Copyright Broadcom, Inc. or its affiliantes, 2012-2024. All Rights Reserved.
+# Copyright Broadcom, Inc. or its affiliantes, 2012-2025. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 
 FINAL_OUTPUT_DIR=FINAL_RPMS
 
-OTP_RELEASE=27.2
+OTP_RELEASE=27.3.1
 
 # Where official Erlang distribution files come from...
 OTP_SRC_TGZ_FILE=OTP-$(OTP_RELEASE).tar.gz
