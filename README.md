@@ -23,10 +23,20 @@ aarch64 hosts. See the **Building from Source** section below.
  * VMware PhotonOS 5
  * Oracle Linux 9
 
-## CentOS 7 and derivatives
+## RHEL and CentOS Stream 8 Distribution Family
 
-Older releases (up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18))
-include builds for CentOS 7 and CentOS 7-based distributions (namely Amazon Linux 2), and OpenSSL 1.0.
+CentOS Stream 8 has [reached end of life](https://endoflife.date/centos-stream) in May 2024. The CentOS 8 versions
+of these packages are produced on Rocky Linux 8.10+ from July 2024 and onwards.
+
+## CentOS 7 has Reached End-of-Life
+
+[Team RabbitMQ stopped supporting CentOS 7](https://blog.rabbitmq.com/posts/2022/04/centos-7-support-discontinued/) in May 2022.
+
+Erlang [27.3.2](https://github.com/rabbitmq/erlang-rpm/releases/tag/v27.3.2), [26.2.5.10](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.5.10) and [25.3.2.19](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.19)
+include one-off CentOS 7 packages statically linked against OpenSSL 1.1.x.
+
+Regular CentOS 7 and Amazon Linux 2 builds were produced up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18).
+They are dynamically linked against OpenSSL 1.0.
 
 This package has an **implicit OpenSSL/libcrypto dependency** (see below). Starting with Erlang 24,
 the minimum required version is **an equivalent of OpenSSL is 1.1**, only provided by Fedora,
