@@ -360,8 +360,7 @@ history and release archive can be useful as well.
 
 ## Copyright and License
 
-Copyright VMware, Inc and its affiliates, 2011-2023. All Rights Reserved.
-Copyright Broadcom. "Broadcom" may refer to Broadcom, Inc or its affiliates, 2023-2025. All Rights Reserved.
+Copyright Broadcom. "Broadcom" may refer to Broadcom, Inc or its affiliates, 2011-2025. All Rights Reserved.
 
 Released under the [Apache Software License 2.0](./Erlang_ASL2_LICENSE.txt),
 same as Erlang/OTP.
