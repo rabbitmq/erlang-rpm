@@ -17,5 +17,5 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           repository: rabbitmq/erlang-packages
-          token: ${{ secrets.MK_RELEASE_AUTOMATION_TOKEN }}
+          token: ${{ secrets.MK_RELEASE_AUTOMATION_ERLANG }}
           event-type: rpm_erlang_${{ env.erlang_major }}
