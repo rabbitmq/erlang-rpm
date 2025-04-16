@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 26.2.5.10
-%global package_ver  26.2.5.10
+%global upstream_ver 26.2.5.11
+%global package_ver  26.2.5.11
 %global package_ver_release 1
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
@@ -314,6 +314,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Apr 16 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2.5.11
+- Update to Erlang/OTP 26.2.5.11
+
 * Fri Mar 28 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 26.2.5.10
 - Update to Erlang/OTP 26.2.5.10
 
