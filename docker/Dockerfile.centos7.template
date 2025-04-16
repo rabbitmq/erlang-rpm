@@ -1,7 +1,4 @@
-ARG image
-ARG image_tag
-
-FROM $image:$image_tag
+FROM quay.io/centos/centos:centos7
 
 # mirror.centos.org is gone
 RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*

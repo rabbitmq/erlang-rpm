@@ -5,12 +5,9 @@ docker_params=${2:-"--pull"}
 
 dockerfile="Dockerfile.template"
 
-case $os_name in
-	7|centos7)
-		dockerfile="Dockerfile.centos7.template"
-		image="quay.io/centos/centos"
-		image_tag=centos7;;
-esac
+dockerfile="Dockerfile.centos7.template"
+image="quay.io/centos/centos"
+image_tag=centos7
 
 docker_dir="docker-$os_name"
 
