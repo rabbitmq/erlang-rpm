@@ -300,35 +300,39 @@ cd docker
 # build an image and build the RPM in it
 #
 # Supported distribution aliases:
-#  * stream9 for CentOS Stream 9
-#  * stream8 for CentOS Stream 8
+#  * rocky9 for Rocky Linux 9.x
+#  * alma9 for Alma Linux 9.x
 #  * al2023 for Amazon Linux 2023
 #  * f41 for Fedora 41
-#
-./build-image-and-rpm.sh stream9 --no-cache
+#  * stream9 for CentOS Stream 9
+#  * stream8 for CentOS Stream 8
+./build-image-and-rpm.sh rocky9 --no-cache
 
 #
 # To only build an image with the necessary toolchain,
 # use ./build-docker-image.sh.
 #
 # Supported distribution aliases:
-#  * stream9 for CentOS Stream 9
-#  * stream8 for CentOS Stream 8
+#  * rocky9 for Rocky Linux 9.x
+#  * alma9 for Alma Linux 9.x
 #  * al2023 for Amazon Linux 2023
 #  * f41 for Fedora 41
- ./build-docker-image.sh stream9 --no-cache
+#  * stream9 for CentOS Stream 9
+#  * stream8 for CentOS Stream 8
+ ./build-docker-image.sh rocky9 --no-cache
 
 #
 # To only build the RPM using an already built and available image,
 # use ./build-rpm-in-docker.sh
 #
 # Supported distribution aliases:
-#  * stream9 for CentOS Stream 9
-#  * stream8 for CentOS Stream 8
+#  * rocky9 for Rocky Linux 9.x
+#  * alma9 for Alma Linux 9.x
 #  * al2023 for Amazon Linux 2023
 #  * f41 for Fedora 41
-#
-./build-rpm-in-docker.sh stream9
+#  * stream9 for CentOS Stream 9
+#  * stream8 for CentOS Stream 8
+./build-rpm-in-docker.sh rocky9
 ```
 
 Built packages can be found under `docker/pkg-build-dir/RPMS/{architecture}/`.
