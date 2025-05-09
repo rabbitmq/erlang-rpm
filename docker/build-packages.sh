@@ -12,8 +12,8 @@ build_and_fetch_rpm_for() {
 
 # These cover CentOS Stream, Rocky Linux, Alma Linux, Oracle Linux
 # of the same respective version
-build_and_fetch_rpm_for "stream9"
-build_and_fetch_rpm_for "stream8"
+build_and_fetch_rpm_for "rocky9"
+build_and_fetch_rpm_for "rocky8"
 # These distributions cannot use CentOS Stream packages
 build_and_fetch_rpm_for "al2023"
 build_and_fetch_rpm_for "fc38"

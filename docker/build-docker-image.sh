@@ -5,12 +5,15 @@ docker_params=${2:-"--pull"}
 dockerfile="Dockerfile.template"
 
 case $os_name in
-	9|stream9|centos9)
-		image="quay.io/centos/centos"
-		image_tag=stream9;;
-	8|stream8|centos8)
-		image="rockylinux"
-		image_tag=8;;
+	fedora|f41|fc41|fedora41)
+		image="fedora"
+		image_tag="41";;
+	fedora|f40|fc40|fedora40)
+		image="fedora"
+		image_tag="40";;
+	fedora|f39|fc39|fedora39)
+		image="fedora"
+		image_tag="39";;
 	fedora|f38|fc38|fedora38)
 		image="fedora"
 		image_tag="38";;
@@ -24,11 +27,20 @@ case $os_name in
 		image="oraclelinux"
 		image_tag="9";;
 	rocky|rocky9|rockylinux9)
-		image="rockylinux"
+		image="rockylinux/rockylinux"
 		image_tag="9";;
+	rocky|rocky8|rockylinux8)
+		image="rockylinux/rockylinux"
+		image_tag="8";;
 	alma|alma9|almalinux9)
 		image="almalinux"
 		image_tag="9";;
+	9|stream9|centos9)
+		image="quay.io/centos/centos"
+		image_tag=stream9;;
+	8|stream8|centos8)
+		image="rockylinux"
+		image_tag=8;;
 esac
 
 docker_dir="docker-$os_name"
