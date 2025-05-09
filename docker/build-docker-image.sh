@@ -5,18 +5,12 @@ docker_params=${2:-"--pull"}
 dockerfile="Dockerfile.template"
 
 case $os_name in
-	fedora|f41|fc41|fedora41)
+	fedora|f42|fc42|fedora42)
+		image="fedora"
+		image_tag="42";;
+	f41|fc41|fedora41)
 		image="fedora"
 		image_tag="41";;
-	fedora|f40|fc40|fedora40)
-		image="fedora"
-		image_tag="40";;
-	fedora|f39|fc39|fedora39)
-		image="fedora"
-		image_tag="39";;
-	fedora|f38|fc38|fedora38)
-		image="fedora"
-		image_tag="38";;
 	al|al2023|amazonlinux2023)
 		image="amazonlinux"
 		image_tag="2023";;
