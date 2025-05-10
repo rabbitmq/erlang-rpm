@@ -5,9 +5,9 @@ docker_params=${2:-"--pull"}
 dockerfile="Dockerfile.template"
 
 case $os_name in
-fedora|f42|fc42|fedora40)
-	image="fedora"
-	image_tag="42";;
+fedora|f42|fc42|fedora42)
+		image="fedora"
+		image_tag="42";;
 	fedora|f41|fc41|fedora41)
 		image="fedora"
 		image_tag="41";;
