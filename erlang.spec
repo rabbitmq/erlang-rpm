@@ -258,7 +258,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/erlang/lib/inets-*/
 %{_libdir}/erlang/lib/inets-*/ebin
 %{_libdir}/erlang/lib/inets-*/include
-%{_libdir}/erlang/lib/inets-*/priv
 %{_libdir}/erlang/lib/inets-*/src
 
 
