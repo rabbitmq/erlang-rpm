@@ -16,5 +16,4 @@ build_and_fetch_rpm_for "stream9"
 build_and_fetch_rpm_for "stream8"
 # These distributions cannot use CentOS Stream packages
 build_and_fetch_rpm_for "al2023"
-build_and_fetch_rpm_for "fc38"
 
