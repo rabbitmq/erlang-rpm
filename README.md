@@ -32,7 +32,7 @@ of these packages are produced on Rocky Linux 8.10+ from July 2024 and onwards.
 
 [Team RabbitMQ stopped supporting CentOS 7](https://blog.rabbitmq.com/posts/2022/04/centos-7-support-discontinued/) in May 2022.
 
-Erlang [27.3.4](https://github.com/rabbitmq/erlang-rpm/releases/tag/v27.3.4), [26.2.5.12](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.5.12) and [25.3.2.21](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.21)
+Erlang [27.3.4.2](https://github.com/rabbitmq/erlang-rpm/releases/tag/v27.3.4.2), [26.2.5.14](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.5.14) and [25.3.2.21](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.21)
 include one-off CentOS 7 packages statically linked against OpenSSL 1.1.x.
 
 Regular CentOS 7 and Amazon Linux 2 builds were produced up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18).
@@ -47,8 +47,7 @@ and [a modern Erlang PPA for Ubuntu](https://rabbitmq.com/install-debian.html#ap
 
 ## Provided Erlang/OTP Versions
 
-The package targets Erlang/OTP `27.x` and `26.x`. Both x86-64 and aarch64 versions can be
-built in containers.
+The package targets Erlang/OTP `28.x`, `27.x` and `26.x`. Both x86-64 and aarch64 versions can be built in containers.
 
 ### RabbitMQ Version Compatibility
 
