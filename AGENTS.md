@@ -108,11 +108,15 @@ are hosted in a separate repository, [`rabbitmq/erlang-packages`](https://github
 
 ## Updating for New Releases
 
-When asked to update the package for a new Erlang/OTP release,
+When asked to update the package for a new Erlang/OTP release to a specific version, or told
+that a new Erlang/OTP release is available,
 
- * Use commit `4571febb4b22a9f36cc302bcd46a1aaf08670433` as an example
+ * Determine what series a new release belongs to and switch to the corresponding branch.
+   For example, `28.0.3` belongs to the `28` series and should be done on the `erlang-28` branch;
+   `27.4.3.3` belongs to the Erlang `27` series and should be done on the `erlang-27` branch; and so on
  * Update the version in `Makefile`
  * Update the version (the `package_ver` and `upstream_ver` global variables) and the change log section in `erlang.spec`
+ * Use commit `4571febb4b22a9f36cc302bcd46a1aaf08670433` as an example
 
 ## Backporting
 
@@ -121,3 +125,5 @@ When asked to backport a change, always use the `-x` branch with `git cherry-pic
 ## Committing Changes
 
 When committing changes to the repository, never add yourself as an author, a co-author, or a committer.
+
+Never push your changes unless explicitly asked to do so. Let a human review them and push.
