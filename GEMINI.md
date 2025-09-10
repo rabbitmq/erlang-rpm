@@ -112,7 +112,7 @@ When asked to update the package for a new Erlang/OTP release,
 
  * Use commit `4571febb4b22a9f36cc302bcd46a1aaf08670433` as an example
  * Update the version in `Makefile`
- * Update the version and the change log section in `erlang.spec`
+ * Update the version (the `package_ver` and `upstream_ver` global variables) and the change log section in `erlang.spec`
 
 ## Backporting
 
