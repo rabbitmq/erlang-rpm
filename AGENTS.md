@@ -37,6 +37,8 @@ This repository has one branch per supported Erlang/OTP series:
  * `erlang-26` for Erlang/OTP 26.x
  * `erlang-25` for Erlang/OTP 25.x
 
+Erlang 28.x is the most recent series.
+
 ## Build Dependencies
 
 This package's build infrastructure can be found under `docker`. It requires a Docker or Docker-compatible daemon
@@ -127,3 +129,10 @@ When asked to backport a change, always use the `-x` branch with `git cherry-pic
 When committing changes to the repository, never add yourself as an author, a co-author, or a committer.
 
 Never push your changes unless explicitly asked to do so. Let a human review them and push.
+
+## Metadata: Updating `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`
+
+When updating `AGENTS.md`, `GEMINI.md` and `CLAUDE.md`, treat `AGENTS.md` as the primary instructions file,
+and `GEMINI.md`, `CLAUDE.md` as copies (technically, symlinks).
+
+Treat the branch for the most recent series (covered above) as the source of truth.
