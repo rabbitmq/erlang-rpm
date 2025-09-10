@@ -138,3 +138,10 @@ When asked to backport a change, always use the `-x` command line flag with `git
 When committing changes to the repository, never add yourself as an author, a co-author, or a committer.
 
 Never push your changes unless explicitly asked to do so. Let a human review them and push.
+
+## Metadata: Updating `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`
+
+When updating `AGENTS.md`, `GEMINI.md` and `CLAUDE.md`, treat `AGENTS.md` as the primary instructions file,
+and `GEMINI.md`, `CLAUDE.md` as copies (technically, symlinks).
+
+Treat the branch for the most recent series (covered above) as the source of truth.
