@@ -145,3 +145,5 @@ When updating `AGENTS.md`, `GEMINI.md` and `CLAUDE.md`, treat `AGENTS.md` as the
 and `GEMINI.md`, `CLAUDE.md` as copies (technically, symlinks).
 
 Treat the branch for the most recent series (covered above) as the source of truth.
+
+`AGENTS.md`, `GEMINI.md`, `CLAUDE.md` are collectively called the "agent instruction files".
