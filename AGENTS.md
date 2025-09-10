@@ -37,6 +37,17 @@ This repository has one branch per supported Erlang/OTP series:
  * `erlang-26` for Erlang/OTP 26.x
  * `erlang-25` for Erlang/OTP 25.x
 
+Erlang 28.x is the most recent series.
+
+A few more branches are exotic and exist to provide for one-off builds of this package for CentOS 7 (a long discontinued distribution):
+
+ * `erlang-27.x-centos7` for Erlang/OTP 27.x
+ * `erlang-26.x-centos7` for Erlang/OTP 26.x
+ * `erlang-25.x-centos7` for Erlang/OTP 25.x
+
+The updates to these "CentOS 7" branches are almost always just cherry-picked version updates
+from `erlang-27`, `erlang-26`, and `erlang-25`, respectively.
+
 ## Build Dependencies
 
 This package's build infrastructure can be found under `docker`. It requires a Docker or Docker-compatible daemon
@@ -120,7 +131,7 @@ that a new Erlang/OTP release is available,
 
 ## Backporting
 
-When asked to backport a change, always use the `-x` branch with `git cherry-pick`.
+When asked to backport a change, always use the `-x` command line flag with `git cherry-pick`.
 
 ## Committing Changes
 
