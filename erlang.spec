@@ -19,19 +19,19 @@
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
 %global __brp_check_rpaths %{nil}
 
-%define OSL_File_Name                   Erlang_ASL2_LICENSE.txt
+%global OSL_File_Name                   Erlang_ASL2_LICENSE.txt
+%global _license_file                   %{OSL_File_Name}
 
 Name:		erlang
 Version:	%{package_ver}
 Release:	%{package_ver_release}%{?dist}
 Summary:	Minimalistic Erlang/OTP distribution that provides just enough for running RabbitMQ
 
-Group:		Development/Languages
-License:	ASL 2.0
+Vendor:		Broadcom, Inc.
+License:	Apache-2.0
 URL:		https://www.erlang.org
 Source0:	https://github.com/erlang/otp/archive/OTP-%{upstream_ver}.tar.gz
 Source2:    %{OSL_File_Name}
-Vendor:		VMware, Inc.
 
 
 #   Do not format man-pages and do not install miscellaneous
@@ -40,9 +40,6 @@ Patch0: otp-0001-Do-not-format-man-pages-and-do-not-install-miscellan.patch
 Patch1: otp-0002-Do-not-install-C-sources.patch
 #   Do not install erlang sources
 Patch2: otp-0003-Do-not-install-erlang-sources.patch
-
-# BuildRoot not strictly needed since F10, but keep it for spec file robustness
-BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel
@@ -54,7 +51,7 @@ BuildRequires:  clang
 BuildRequires:  systemd-devel
 
 %description
-This is a minimal packaging of Erlang produced by VMware, Inc. to support
+This is a minimal packaging of Erlang produced by Broadcom, Inc. to support
 running RabbitMQ. Compared to the community Erlang packaging it is
 monolithic, has fewer dependencies, and has lower disk and memory
 overhead. Many applications from Erlang Open Telecom Platform (OTP)
@@ -62,8 +59,6 @@ have been removed. The following applications remain: asn1, compiler,
 crypto, erl_interface, erts, inets, kernel, mnesia, os_mon,
 public_key, reltool, runtime_tools, sasl, ssl, stdlib,
 syntax_tools and xmerl.
-
-%define _license_file %{_builddir}/otp-OTP-%{upstream_ver}/`basename %{S:2}`
 
 
 %prep
@@ -116,7 +111,7 @@ touch lib/ssh/SKIP
 touch lib/tftp/SKIP
 touch lib/wx/SKIP
 
-make
+make -j4
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -183,12 +178,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 
-%doc %{OSL_File_Name}
+%license %{OSL_File_Name}
 
-%dir %{_libdir}/erlang/lib/asn1-*/
-%{_libdir}/erlang/lib/asn1-*/ebin
-%{_libdir}/erlang/lib/asn1-*/priv
-%{_libdir}/erlang/lib/asn1-*/src
+%{_libdir}/erlang/lib/asn1-*/
 
 
 %{_libdir}/erlang/lib/compiler-*/
@@ -196,11 +188,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_libdir}/erlang/lib/crypto-*/
 
-%dir %{_libdir}/erlang/lib/eldap-*/
-%{_libdir}/erlang/lib/eldap-*/asn1
-%{_libdir}/erlang/lib/eldap-*/ebin
-%{_libdir}/erlang/lib/eldap-*/include
-%{_libdir}/erlang/lib/eldap-*/src
+%{_libdir}/erlang/lib/eldap-*/
 
 %{_libdir}/erlang/lib/eunit-*/
 
@@ -255,22 +243,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/usr/
 
 
-%dir %{_libdir}/erlang/lib/inets-*/
-%{_libdir}/erlang/lib/inets-*/ebin
-%{_libdir}/erlang/lib/inets-*/include
-%{_libdir}/erlang/lib/inets-*/src
+%{_libdir}/erlang/lib/inets-*/
 
 
-%dir %{_libdir}/erlang/lib/kernel-*/
-%{_libdir}/erlang/lib/kernel-*/ebin
-%{_libdir}/erlang/lib/kernel-*/include
-%{_libdir}/erlang/lib/kernel-*/src
+%{_libdir}/erlang/lib/kernel-*/
 
 
-%dir %{_libdir}/erlang/lib/mnesia-*/
-%{_libdir}/erlang/lib/mnesia-*/ebin
-%{_libdir}/erlang/lib/mnesia-*/include
-%{_libdir}/erlang/lib/mnesia-*/src
+%{_libdir}/erlang/lib/mnesia-*/
 
 
 %{_libdir}/erlang/lib/os_mon-*/
@@ -284,9 +263,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/lib/reltool-*/ebin
 %{_libdir}/erlang/lib/reltool-*/src
 
-%dir %{_libdir}/erlang/lib/syntax_tools-*/
-%{_libdir}/erlang/lib/syntax_tools-*/ebin
-%{_libdir}/erlang/lib/syntax_tools-*/include
+%{_libdir}/erlang/lib/syntax_tools-*/
 
 %{_libdir}/erlang/lib/runtime_tools-*/
 
@@ -1209,4 +1186,3 @@ rm -rf $RPM_BUILD_ROOT
 - New Version R10B
 
 * Thu Oct 16 2003 Gerard Milmeister <gemi@bluewin.ch> - 0:R9B-1.fdr.1
-- First Fedora release
