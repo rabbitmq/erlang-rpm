@@ -116,7 +116,16 @@ touch lib/ssh/SKIP
 touch lib/tftp/SKIP
 touch lib/wx/SKIP
 
-make
+# Note that we cannot use the _smp_mflags macro
+# because on some systems, it seems to not be
+# cgroups v2 limits-aware, and uses really
+# high -j values which makes Erlang/OTP
+# compilation fail in some cases.
+#
+# -j8 is not an aggressive value but it does make
+# a meaninigful difference in both lower powered
+# and more powerful environments.
+make -j8
 
 %install
 rm -rf $RPM_BUILD_ROOT
