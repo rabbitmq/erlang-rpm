@@ -117,10 +117,10 @@ touch lib/wx/SKIP
 # high -j values which makes Erlang/OTP
 # compilation fail in some cases.
 #
-# -j4 is not an aggressive value but it does make
+# -j8 is not a particularly aggressive value but it does make
 # a meaninigful difference in both lower powered
 # and more powerful environments.
-make -j4
+make -j8
 
 %install
 rm -rf $RPM_BUILD_ROOT
