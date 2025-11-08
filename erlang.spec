@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 27.3.4.5
-%global package_ver  27.3.4.5
+%global upstream_ver 28.1.1
+%global package_ver  28.1.1
 %global package_ver_release 1
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
@@ -267,7 +267,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/erlang/lib/inets-*/
 %{_libdir}/erlang/lib/inets-*/ebin
 %{_libdir}/erlang/lib/inets-*/include
-%{_libdir}/erlang/lib/inets-*/priv
 %{_libdir}/erlang/lib/inets-*/src
 
 
@@ -322,20 +321,23 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Fri Nov 07 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4.5
-- Update to Erlang/OTP 27.3.4.5
+* Mon Oct 20 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.1.1
+- Update to Erlang/OTP 28.1.1
 
-* Tue Oct 28 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4.4
-- Update to Erlang/OTP 27.3.4.4
+* Wed Sep 17 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.1
+- Update to Erlang/OTP 28.1
 
-* Wed Sep 10 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4.3
-- Update to Erlang/OTP 27.3.4.3
+* Thu Sep 11 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.0.4
+- Update to Erlang/OTP 28.0.4
 
-* Thu Jul 17 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4.2
-- Update to Erlang/OTP 27.3.4.2
+* Wed Sep 10 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.0.3
+- Update to Erlang/OTP 28.0.3
 
-* Mon Jun 16 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4.1
-- Update to Erlang/OTP 27.3.4.1
+* Thu Jul 17 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.0.2
+- Update to Erlang/OTP 28.0.2
+
+* Wed May 21 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.0
+- Update to Erlang/OTP 28.0
 
 * Thu May 8 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4
 - Update to Erlang/OTP 27.3.4
