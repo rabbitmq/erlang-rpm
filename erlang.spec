@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 27.3.1
-%global package_ver  27.3.1
+%global upstream_ver 27.3.4.5
+%global package_ver  27.3.4.5
 %global package_ver_release 1
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
@@ -116,7 +116,16 @@ touch lib/ssh/SKIP
 touch lib/tftp/SKIP
 touch lib/wx/SKIP
 
-make
+# Note that we cannot use the _smp_mflags macro
+# because on some systems, it seems to not be
+# cgroups v2 limits-aware, and uses really
+# high -j values which makes Erlang/OTP
+# compilation fail in some cases.
+#
+# -j8 is not an aggressive value but it does make
+# a meaninigful difference in both lower powered
+# and more powerful environments.
+make -j8
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -313,6 +322,30 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Nov 07 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4.5
+- Update to Erlang/OTP 27.3.4.5
+
+* Tue Oct 28 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4.4
+- Update to Erlang/OTP 27.3.4.4
+
+* Wed Sep 10 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4.3
+- Update to Erlang/OTP 27.3.4.3
+
+* Thu Jul 17 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4.2
+- Update to Erlang/OTP 27.3.4.2
+
+* Mon Jun 16 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4.1
+- Update to Erlang/OTP 27.3.4.1
+
+* Thu May 8 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4
+- Update to Erlang/OTP 27.3.4
+
+* Wed Apr 16 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.3
+- Update to Erlang/OTP 27.3.3
+
+* Fri Apr 4 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.2
+- Update to Erlang/OTP 27.3.2
+
 * Fri Mar 28 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.1
 - Update to Erlang/OTP 27.3.1
 

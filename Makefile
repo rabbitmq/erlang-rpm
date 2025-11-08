@@ -14,7 +14,7 @@
 
 FINAL_OUTPUT_DIR=FINAL_RPMS
 
-OTP_RELEASE=27.3.1
+OTP_RELEASE=27.3.4.5
 
 # Where official Erlang distribution files come from...
 OTP_SRC_TGZ_FILE=OTP-$(OTP_RELEASE).tar.gz
@@ -56,13 +56,7 @@ endif
 
 	# dnf update, install (package) build-time dependencies
 	$(DNF_CMD) update -y
-	$(DNF_CMD) install -y util-linux
-	if test -f /etc/os-release; then \
-		. /etc/os-release; \
-		if test "$$ID" = 'centos'; then \
-			$(DNF_CMD) install -y rpm-sign; \
-		fi; \
-	fi
+	$(DNF_CMD) install -y util-linux rpm-sign
 
 erlang: prepare
 	mkdir -p $(FINAL_OUTPUT_DIR)
