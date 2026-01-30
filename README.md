@@ -76,16 +76,16 @@ The package is signed using the standard [RabbitMQ signing key](https://www.rabb
 
 ``` shell
 ## primary RabbitMQ signing key
-rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+rpm --import https://github.com/rabbitmq/signing-keys/releases/download/3.0/rabbitmq-release-signing-key.asc
 ```
 
-To use the Cloudsmith dnf repository, a [separate Cloudsmith repository key](https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key) must be imported:
+To use the Cloudsmith dnf repository, a [separate Cloudsmith repository key](https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key) must be imported:
 
 ``` shell
 ## primary RabbitMQ signing key
-rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+rpm --import https://github.com/rabbitmq/signing-keys/releases/download/3.0/rabbitmq-release-signing-key.asc
 ## modern Erlang repository
-rpm --import 'https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key'
+rpm --import 'https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key'
 ```
 
 ## Direct Downloads from GitHub
@@ -133,7 +133,7 @@ baseurl=https://yum1.rabbitmq.com/erlang/el/8/$basearch
         https://yum2.rabbitmq.com/erlang/el/8/$basearch
 repo_gpgcheck=1
 enabled=1
-gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+gpgkey=https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key
 gpgcheck=1
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
@@ -150,8 +150,8 @@ baseurl=https://yum1.rabbitmq.com/erlang/el/8/noarch
         https://yum2.rabbitmq.com/erlang/el/8/noarch
 repo_gpgcheck=1
 enabled=1
-gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
-       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+gpgkey=https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key
+       https://github.com/rabbitmq/signing-keys/releases/download/3.0/rabbitmq-release-signing-key.asc
 gpgcheck=1
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
@@ -168,8 +168,8 @@ baseurl=https://yum1.rabbitmq.com/erlang/el/8/SRPMS
         https://yum2.rabbitmq.com/erlang/el/8/SRPMS
 repo_gpgcheck=1
 enabled=1
-gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
-       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+gpgkey=https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key
+       https://github.com/rabbitmq/signing-keys/releases/download/3.0/rabbitmq-release-signing-key.asc
 gpgcheck=1
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
@@ -200,7 +200,7 @@ baseurl=https://yum1.rabbitmq.com/erlang/el/8/$basearch
         https://yum1.rabbitmq.com/erlang/el/8/$basearch
 repo_gpgcheck=1
 enabled=1
-gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+gpgkey=https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key
 gpgcheck=1
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
@@ -217,8 +217,8 @@ baseurl=https://yum1.rabbitmq.com/erlang/el/8/noarch
         https://yum2.rabbitmq.com/erlang/el/8/noarch
 repo_gpgcheck=1
 enabled=1
-gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
-       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+gpgkey=https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key
+       https://github.com/rabbitmq/signing-keys/releases/download/3.0/rabbitmq-release-signing-key.asc
 gpgcheck=1
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
@@ -235,8 +235,8 @@ baseurl=https://yum1.rabbitmq.com/erlang/el/8/SRPMS
         https://yum2.rabbitmq.com/erlang/el/8/SRPMS
 repo_gpgcheck=1
 enabled=1
-gpgkey=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
-       https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+gpgkey=https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key
+       https://github.com/rabbitmq/signing-keys/releases/download/3.0/rabbitmq-release-signing-key.asc
 gpgcheck=1
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
