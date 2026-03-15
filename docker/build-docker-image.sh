@@ -14,18 +14,30 @@ case $os_name in
 	al|al2023|amazonlinux2023)
 		image="amazonlinux"
 		image_tag="2023";;
+	oracle10|oraclelinux10)
+		image="oraclelinux"
+		image_tag="10";;
 	oracle|oracle9|oraclelinux9)
 		image="oraclelinux"
 		image_tag="9";;
+	rocky10|rockylinux10)
+		image="rockylinux/rockylinux"
+		image_tag="10";;
 	rocky|rocky9|rockylinux9)
 		image="rockylinux/rockylinux"
 		image_tag="9";;
 	rocky|rocky8|rockylinux8)
 		image="rockylinux/rockylinux"
 		image_tag="8";;
+	alma10|almalinux10)
+		image="almalinux"
+		image_tag="10";;
 	alma|alma9|almalinux9)
 		image="almalinux"
 		image_tag="9";;
+	10|stream10|centos10)
+		image="quay.io/centos/centos"
+		image_tag=stream10;;
 	9|stream9|centos9)
 		image="quay.io/centos/centos"
 		image_tag=stream9;;
@@ -40,7 +52,7 @@ if [ -z "$os_name" ]
 then
 	echo "
 This script takes two arguments.
-first: distribution, one of stream9, stream8, al2023, fedora, rocky, alma, oracle
+first: distribution, one of stream10, stream9, stream8, al2023, fedora, rocky, alma, oracle
 second: docker build parameters such as --no-cache
 -----------------------------------------
 Ex: ./build-docker-image.sh stream9 --no-cache

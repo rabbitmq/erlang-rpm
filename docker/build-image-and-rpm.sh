@@ -3,7 +3,7 @@
 usage() {
 	echo "
 This script takes two arguments.
-first: distribution, one of rocky9, alma9, rocky8, al2023, fedora, oracle
+first: distribution, one of rocky9, alma9, rocky8, stream10, al2023, fedora, oracle
 second: docker build parameters such as --no-cache
 -----------------------------------------
 Ex: ./build-image-and-rpm.sh rocky9 --no-cache

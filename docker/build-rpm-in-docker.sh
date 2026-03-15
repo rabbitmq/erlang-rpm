@@ -10,7 +10,7 @@ if [ -z "$os_name" ]
 then
 	echo "
 Ops: parameters error
-first: version or distribution name, ex: stream9, stream8, f38
+first: version or distribution name, ex: stream10, stream9, stream8, f38
 -----------------------------------------
 Ex: ./build-rpm-in-docker.sh stream9
 Ex: ./build-rpm-in-docker.sh stream8
