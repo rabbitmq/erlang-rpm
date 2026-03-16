@@ -16,9 +16,9 @@ aarch64 hosts. See the **Building from Source** section below.
 
  * RHEL 8.10 and later (the most recent series [covered by full support](https://access.redhat.com/support/policy/updates/errata))
  * CentOS Stream 9 and 10
- * Fedora 40 or later
- * Rocky Linux 8.10, 9.5, and 10.0 (the [most recent maintained](https://wiki.rockylinux.org/rocky/version/) 8.x, 9.x, and 10.x releases)
- * Alma Linux 8.10, 9.5, and 10.0 (the [most recent maintained](https://wiki.almalinux.org/release-notes/) 8.x, 9.x, and 10.x releases)
+ * Fedora 41 or later
+ * Rocky Linux 8.10, 9.7, and 10.0 (the [most recent maintained](https://wiki.rockylinux.org/rocky/version/) 8.x, 9.x, and 10.x releases)
+ * Alma Linux 8.10, 9.7, and 10.0 (the [most recent maintained](https://wiki.almalinux.org/release-notes/) 8.x, 9.x, and 10.x releases)
  * Amazon Linux 2023
  * VMware PhotonOS 5
  * Oracle Linux 9 and 10
