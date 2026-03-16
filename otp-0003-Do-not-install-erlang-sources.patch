@@ -75,8 +75,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/eldap/src/Make
 diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/eunit/src/Makefile otp-src-patched/lib/eunit/src/Makefile
 --- otp-src/lib/eunit/src/Makefile	2021-05-12 21:31:53.000000000 +0100
 +++ otp-src-patched/lib/eunit/src/Makefile	2020-05-13 23:51:34.000000000 +0100
-@@ -120,7 +120,6 @@
- release_spec: opt
+@@ -121,7 +121,6 @@
  	$(INSTALL_DIR) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DATA) $(PARSE_TRANSFORM_BIN) $(OBJECTS) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
