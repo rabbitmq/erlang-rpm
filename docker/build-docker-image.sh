@@ -14,6 +14,9 @@ case $os_name in
 	al|al2023|amazonlinux2023)
 		image="amazonlinux"
 		image_tag="2023";;
+	oracle10|oraclelinux10)
+		image="oraclelinux"
+		image_tag="10";;
 	oracle|oracle9|oraclelinux9)
 		image="oraclelinux"
 		image_tag="9";;
@@ -26,9 +29,15 @@ case $os_name in
 	rocky8|rockylinux8)
 		image="rockylinux/rockylinux"
 		image_tag="8";;
+	alma10|almalinux10)
+		image="almalinux"
+		image_tag="10";;
 	alma|alma9|almalinux9)
 		image="almalinux"
 		image_tag="9";;
+	10|stream10|centos10)
+		image="quay.io/centos/centos"
+		image_tag=stream10;;
 	9|stream9|centos9)
 		image="quay.io/centos/centos"
 		image_tag=stream9;;
