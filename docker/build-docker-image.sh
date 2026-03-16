@@ -17,10 +17,13 @@ case $os_name in
 	oracle|oracle9|oraclelinux9)
 		image="oraclelinux"
 		image_tag="9";;
+	rocky10|rockylinux10)
+		image="rockylinux/rockylinux"
+		image_tag="10";;
 	rocky|rocky9|rockylinux9)
 		image="rockylinux/rockylinux"
 		image_tag="9";;
-	rocky|rocky8|rockylinux8)
+	rocky8|rockylinux8)
 		image="rockylinux/rockylinux"
 		image_tag="8";;
 	alma|alma9|almalinux9)
