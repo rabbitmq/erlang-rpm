@@ -196,7 +196,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/lib/eldap-*/asn1
 %{_libdir}/erlang/lib/eldap-*/ebin
 %{_libdir}/erlang/lib/eldap-*/include
-%{_libdir}/erlang/lib/eldap-*/src
 
 %{_libdir}/erlang/lib/eunit-*/
 
