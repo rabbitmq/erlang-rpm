@@ -1,80 +1,58 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+# Build the OCI image used to produce the zero-dependency Erlang RPM
+# for one RPM-based distribution flavor. Works with docker or podman
+# on macOS and on RPM-based Linux. No sudo.
 
-os_name="$1"
-docker_params=${2:-"--pull"}
-dockerfile="Dockerfile.template"
+set -euo pipefail
 
-case $os_name in
-	fedora|f42|fc42|fedora42)
-		image="fedora"
-		image_tag="42";;
-	f41|fc41|fedora41)
-		image="fedora"
-		image_tag="41";;
-	al|al2023|amazonlinux2023)
-		image="amazonlinux"
-		image_tag="2023";;
-	oracle10|oraclelinux10)
-		image="oraclelinux"
-		image_tag="10";;
-	oracle|oracle9|oraclelinux9)
-		image="oraclelinux"
-		image_tag="9";;
-	rocky10|rockylinux10)
-		image="rockylinux/rockylinux"
-		image_tag="10";;
-	rocky|rocky9|rockylinux9)
-		image="rockylinux/rockylinux"
-		image_tag="9";;
-	rocky|rocky8|rockylinux8)
-		image="rockylinux/rockylinux"
-		image_tag="8";;
-	alma10|almalinux10)
-		image="almalinux"
-		image_tag="10";;
-	alma|alma9|almalinux9)
-		image="almalinux"
-		image_tag="9";;
-	10|stream10|centos10)
-		image="quay.io/centos/centos"
-		image_tag=stream10;;
-	9|stream9|centos9)
-		image="quay.io/centos/centos"
-		image_tag=stream9;;
-	8|stream8|centos8)
-		image="rockylinux"
-		image_tag=8;;
+# shellcheck source=common.sh
+. "$(dirname "$0")/common.sh"
+
+usage() {
+	cat >&2 <<'EOF'
+Usage: build-docker-image.sh <flavor> [extra build args...]
+
+Flavors: 10|stream10  9|stream9  8|stream8
+         rocky10|rocky9|rocky8  alma10|alma9
+         oracle10|oracle9  al2023  fc42|fc41
+EOF
+	exit 1
+}
+
+[[ $# -ge 1 ]] || usage
+flavor=$1; shift
+extra_args=("$@")
+
+case $flavor in
+	fedora|f42|fc42|fedora42)        image="fedora";                tag="42" ;;
+	f41|fc41|fedora41)               image="fedora";                tag="41" ;;
+	al|al2023|amazonlinux2023)       image="amazonlinux";           tag="2023" ;;
+	oracle10|oraclelinux10)          image="oraclelinux";           tag="10" ;;
+	oracle|oracle9|oraclelinux9)     image="oraclelinux";           tag="9" ;;
+	rocky10|rockylinux10)            image="rockylinux/rockylinux"; tag="10" ;;
+	rocky|rocky9|rockylinux9)        image="rockylinux/rockylinux"; tag="9" ;;
+	rocky8|rockylinux8)              image="rockylinux/rockylinux"; tag="8" ;;
+	alma10|almalinux10)              image="almalinux";             tag="10" ;;
+	alma|alma9|almalinux9)           image="almalinux";             tag="9" ;;
+	10|stream10|centos10)            image="quay.io/centos/centos"; tag="stream10" ;;
+	9|stream9|centos9)               image="quay.io/centos/centos"; tag="stream9" ;;
+	8|stream8|centos8)               image="rockylinux";            tag="8" ;;
+	*) echo "Unknown flavor: $flavor" >&2; usage ;;
 esac
 
-docker_dir="docker-$os_name"
+cd "$(dirname "$0")"
 
-if [ -z "$os_name" ]
-then
-	echo "
-This script takes two arguments.
-first: distribution, one of stream10, stream9, stream8, al2023, fedora, rocky, alma, oracle
-second: docker build parameters such as --no-cache
------------------------------------------
-Ex: ./build-docker-image.sh stream9 --no-cache
-Ex: ./build-docker-image.sh stream8 --no-cache
-Ex: ./build-docker-image.sh fedora38 --no-cache
-"
-exit 1
-fi
+engine=$(detect_engine)
+image_tag="erlang-rpm-build-$flavor"
 
-if [ -e "$docker_dir" ]
-then
-	rm -rf "$docker_dir"
-fi
+echo "==> [$engine] Building image '$image_tag' from ${image}:${tag}"
 
-mkdir "$docker_dir"
-
-echo "Will build an image for ${image}:${image_tag} using Docker file at $docker_dir/Dockerfile"
-
-cp "$dockerfile" "$docker_dir/Dockerfile"
-	case $(uname -s) in
-		Linux)
-			sudo docker build --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
-		*)
-			docker build --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
-	esac
+# Stream the Dockerfile via stdin so the build has an empty context
+# (no tarballs, RPMs, or transient build dirs get sent to the daemon).
+"$engine" build \
+	--pull \
+	--build-arg "image=$image" \
+	--build-arg "image_tag=$tag" \
+	-t "$image_tag" \
+	${extra_args[@]+"${extra_args[@]}"} \
+	- < Dockerfile.template
