@@ -1,46 +1,54 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+# Build the OCI image used to produce the zero-dependency Erlang RPM
+# for CentOS 7. CentOS 7 predates systemd and ships a low default
+# nofile limit, so we raise it for the build (Erlang has a lot of
+# files). Works with docker or podman; no sudo.
 
-os_name="$1"
-docker_params=${2:-"--pull"}
+set -euo pipefail
 
-dockerfile="Dockerfile.template"
+# shellcheck source=common.sh
+. "$(dirname "$0")/common.sh"
 
-case $os_name in
+usage() {
+	cat >&2 <<'EOF'
+Usage: build-docker-image.sh <flavor> [extra build args...]
+
+Flavors:
+  7 | centos7   CentOS 7 (the only supported flavor on this branch)
+EOF
+	exit 1
+}
+
+[[ $# -ge 1 ]] || usage
+flavor=$1; shift
+extra_args=("$@")
+
+case $flavor in
 	7|centos7)
-		dockerfile="Dockerfile.centos7.template"
 		image="quay.io/centos/centos"
-		image_tag=centos7;;
+		tag="centos7"
+		dockerfile="Dockerfile.centos7.template"
+		;;
+	*)
+		echo "Unknown flavor: $flavor" >&2
+		echo "Use branch \`erlang-28\` for other variants, this branch for Erlang 28 is entirely CentOS 7-specific" >&2
+		usage
+		;;
 esac
 
-docker_dir="docker-$os_name"
+cd "$(dirname "$0")"
 
-if [ -z "$os_name" ]
-then
-	echo "
-This script takes two arguments.
-first: distribution in this case is always 7,
-second: docker build parameters such as --no-cache
------------------------------------------
-Ex: ./build-docker-image.sh 7 --no-cache
-Ex: ./build-docker-image.sh 7 --no-cache
-Ex: ./build-docker-image.sh 7 --no-cache
-"
-exit 1
-fi
+engine=$(detect_engine)
+image_tag="erlang-rpm-build-$flavor"
 
-if [ -e "$docker_dir" ]
-then
-	rm -rf "$docker_dir"
-fi
+echo "==> [$engine] Building image '$image_tag' from ${image}:${tag}"
 
-mkdir "$docker_dir"
-
-echo "Will build an image for ${image}:${image_tag} using Docker file at $docker_dir/Dockerfile"
-
-cp "$dockerfile" "$docker_dir/Dockerfile"
-	case $(uname -s) in
-		Linux)
-			sudo docker build --ulimit nofile=1024000:1024000 --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
-		*)
-			docker build --ulimit nofile=1024000:1024000 --build-arg image="$image" --build-arg image_tag="$image_tag" "$docker_params" -t="erlang-rpm-build-$os_name" "$docker_dir";;
-	esac
+# Stream the Dockerfile via stdin so the build has an empty context.
+"$engine" build \
+	--pull \
+	--ulimit nofile=1024000:1024000 \
+	--build-arg "image=$image" \
+	--build-arg "image_tag=$tag" \
+	-t "$image_tag" \
+	${extra_args[@]+"${extra_args[@]}"} \
+	- < "$dockerfile"

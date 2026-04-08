@@ -222,7 +222,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/bin/start.boot
 %{_libdir}/erlang/bin/start.script
 %{_libdir}/erlang/bin/start_clean.boot
-%{_libdir}/erlang/bin/start_erl
+# brp-mangle-shebangs rewrites this script via mktemp+rename and ends
+# up clearing its execute bits; force them back here.
+%attr(0755,root,root) %{_libdir}/erlang/bin/start_erl
 %{_libdir}/erlang/bin/start_sasl.boot
 %{_libdir}/erlang/bin/to_erl
 %dir %{_libdir}/erlang/erts-*/bin
@@ -230,17 +232,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/erts-*/bin/erl_child_setup
 %{_libdir}/erlang/erts-*/bin/dyn_erl
 %{_libdir}/erlang/erts-*/bin/epmd
-%{_libdir}/erlang/erts-*/bin/erl
-%{_libdir}/erlang/erts-*/bin/erl.src
+# See note above %{_libdir}/erlang/bin/start_erl about brp-mangle-shebangs.
+%attr(0755,root,root) %{_libdir}/erlang/erts-*/bin/erl
+%attr(0755,root,root) %{_libdir}/erlang/erts-*/bin/erl.src
 %{_libdir}/erlang/erts-*/bin/erlc
 %{_libdir}/erlang/erts-*/bin/erlexec
 %{_libdir}/erlang/erts-*/bin/escript
 %{_libdir}/erlang/erts-*/bin/heart
 %{_libdir}/erlang/erts-*/bin/inet_gethost
 %{_libdir}/erlang/erts-*/bin/run_erl
-%{_libdir}/erlang/erts-*/bin/start
-%{_libdir}/erlang/erts-*/bin/start.src
-%{_libdir}/erlang/erts-*/bin/start_erl.src
+%attr(0755,root,root) %{_libdir}/erlang/erts-*/bin/start
+%attr(0755,root,root) %{_libdir}/erlang/erts-*/bin/start.src
+%attr(0755,root,root) %{_libdir}/erlang/erts-*/bin/start_erl.src
 %{_libdir}/erlang/erts-*/bin/to_erl
 %{_libdir}/erlang/erts-*/include
 %{_libdir}/erlang/erts-*/lib
