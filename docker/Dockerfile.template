@@ -1,13 +1,30 @@
 ARG image
 ARG image_tag
 
-FROM $image:$image_tag
+FROM ${image}:${image_tag}
 
-RUN yum install dnf -y
-RUN dnf -y update && dnf clean all
+# Some older base images (RHEL/CentOS 8) ship yum but not dnf.
+RUN command -v dnf >/dev/null 2>&1 || yum install -y dnf
 
-RUN dnf install -y autoconf clang m4 openssl-devel ncurses-devel rpm-build rpmdevtools rpmlint tar wget zlib-devel systemd-devel make sudo
+RUN dnf -y update \
+ && dnf -y install \
+        autoconf \
+        clang \
+        m4 \
+        make \
+        ncurses-devel \
+        openssl-devel \
+        rpm-build \
+        rpmdevtools \
+        systemd-devel \
+        tar \
+        wget \
+        zlib-devel \
+ && (dnf -y install rpmlint || true) \
+ && dnf clean all \
+ && rm -rf /var/cache/dnf
 
-RUN mkdir /build
+RUN mkdir -p /build/pkg-build-dir
 WORKDIR /build/pkg-build-dir
-CMD ["sh", "-c", "make"]
+
+CMD ["make"]

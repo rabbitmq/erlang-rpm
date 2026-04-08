@@ -1,19 +1,26 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+# Build the zero-dependency Erlang RPM for every shipped flavor.
+# The OTP source tarball is downloaded once and reused across flavors.
 
-all_rpms_dir="all_rpms"
+set -euo pipefail
 
-mkdir -p "$all_rpms_dir"
+cd "$(dirname "$0")"
 
-build_and_fetch_rpm_for() {
-  distribution=$1
-  ./build-image-and-rpm.sh "$distribution"
-  cp pkg-build-dir/RPMS/*/erlang-* "$all_rpms_dir"
-}
+flavors=(
+	rocky10
+	rocky9
+	rocky8
+	al2023
+	fedora42
+)
 
-# These cover CentOS Stream, Rocky Linux, Alma Linux, Oracle Linux
-# of the same respective version
-build_and_fetch_rpm_for "rocky9"
-build_and_fetch_rpm_for "rocky8"
-# These distributions cannot use CentOS Stream packages
-build_and_fetch_rpm_for "al2023"
-build_and_fetch_rpm_for "fc42"
+for flavor in "${flavors[@]}"; do
+	echo
+	echo "############################################################"
+	echo "# Building flavor: $flavor"
+	echo "############################################################"
+	./build-image-and-rpm.sh "$flavor"
+done
+
+echo
+echo "==> All RPMs available in $PWD/all_rpms"
