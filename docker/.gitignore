@@ -1,4 +1,5 @@
-build-dir-*/*
-docker-*/*
-pkg-build-dir/*
-all_rpms/*
+all_rpms/
+docker-*/
+pkg-build-dir/
+pkg-build-dir.*/
+tarballs/

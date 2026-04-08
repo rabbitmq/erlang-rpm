@@ -1,84 +1,62 @@
 # Docker Build Environment
 
-This directory contains tooling that sets up a Docker image which can be used to build
-several flavors (varieties) of the zero-dependency Erlang RPM.
+This directory contains tooling that builds the zero-dependency
+Erlang RPM inside an OCI image, for several RPM-based distributions.
 
-Run
+The scripts work on macOS (Docker Desktop, Podman, OrbStack, ...) and
+on RPM-based Linux distributions with any Docker-compatible daemon.
+None of them require `sudo`: configure your daemon for rootless use,
+or add your user to the appropriate group.
 
-``` bash
-# builds a Docker image for building the RHEL 9/CentOS Stream 9 version
-# of the RPM
-./build-docker-image.sh stream9 --no-cache
-```
-
-to build a RHEL 9/CentOS Stream 9 Docker image with all the build dependencies installed.
-
-Having this image, we can proceed to building an actual zero-dependency Erlang RPM.
-
-## Building the RPM
+## Quick Start
 
 ``` bash
-# builds a RHEL 9 and CentOS Stream 9 flavor of the package
-./build-rpm-in-docker.sh stream9
+# Build the OCI image for RHEL/Rocky/Alma/Oracle 9.x
+./build-docker-image.sh 9
+
+# Build the RPM inside it
+./build-rpm-in-docker.sh 9
 ```
 
-to do the build. This will create a directory `all_rpms` in this
-directory; the built RPMs will be copied there.
-
-## Building Different Image Flavors
-
-It is possible to build the RPM on and for a number of RPM-based operating systems:
+The two steps can also be chained:
 
 ``` bash
-# for RHEL 9 and CentOS Stream 9
-./build-image-and-rpm.sh stream9 --no-cache
+./build-image-and-rpm.sh 9
 ```
 
-``` bash
-# builds an Amazon Linux 2023 flavor of the package
-./build-rpm-in-docker.sh al2023
-```
+Built RPMs are copied to `./all_rpms`.
 
-``` bash
-# builds a Fedora 38 flavor of the package
-./build-rpm-in-docker.sh fc38
-```
+## Supported Flavors
 
-``` bash
-# builds a Fedora 39 flavor of the package
-./build-rpm-in-docker.sh fc39
-```
+| Flavor                              | Distributions                                          |
+|-------------------------------------|--------------------------------------------------------|
+| `10` / `stream10` / `centos10`      | RHEL, Rocky, Alma, Oracle Linux 10.x                   |
+| `9`  / `stream9`  / `centos9`       | RHEL, Rocky, Alma, Oracle Linux 9.x                    |
+| `8`  / `stream8`  / `centos8`       | RHEL, Rocky, Alma, Oracle Linux 8.x                    |
+| `rocky10` / `rocky9` / `rocky8`     | Rocky Linux                                            |
+| `alma10`  / `alma9`                 | AlmaLinux                                              |
+| `oracle10` / `oracle9`              | Oracle Linux                                           |
+| `al2023`                            | Amazon Linux 2023                                      |
+| `fc42` / `fc41`                     | Fedora                                                 |
 
-``` bash
-# builds a Rocky Linux 9 flavor of the package
-./build-rpm-in-docker.sh rocky
-```
-
-``` bash
-# builds an Alma Linux 9 flavor of the package
-./build-rpm-in-docker.sh alma
-```
-
-``` bash
-# builds an Oracle Linux 9 flavor of the package
-./build-rpm-in-docker.sh oracle
-```
-
-The commands assume that the image for the targeted distribution was built (see the earlier step).
-
-Built RPMs can be found under `./pkg-build-dir/RPMS/{architecture}`.
-
-## Building All Flavors
+## Building Every Flavor
 
 ``` bash
 ./build-packages.sh
 ```
 
-will produce a number of packages for the most popular distributions (in the RabbitMQ community):
+builds the package for every flavor we ship today and drops the
+results into `./all_rpms`.
 
- * RHEL 9 and CentOS Stream 9 (including Rocky Linux 9, Alma Linux 9, Oracle Linux 9)
- * RHEL 8 and CentOS Stream 8
- * Amazon Linux 2023
- * Fedora 38
+## Tarball Cache
 
-Built RPMs will be copied to the `./all_rpms` directory under `docker`.
+The upstream Erlang/OTP source tarball is downloaded **once** into
+`./tarballs` and reused across every flavor and every subsequent run.
+Delete the file (or the directory) to force a re-download.
+
+## Transient Build Directories
+
+Each invocation of `build-rpm-in-docker.sh` stages its inputs in a
+fresh `pkg-build-dir.XXXXXX` directory and removes it on exit (even
+on failure or interrupt). The container chowns the artifacts back to
+the invoking host user before exiting, so cleanup never needs `sudo`.
