@@ -1,20 +1,23 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+# Build the zero-dependency Erlang RPM for CentOS 7. This branch is
+# entirely CentOS 7-specific; use branch `erlang-28` for other variants.
+# The OTP source tarball is downloaded once into ./tarballs and reused.
 
-const all_rpms_dir="all_rpms"
+set -euo pipefail
 
-mkdir -p all_rpms_dir
+cd "$(dirname "$0")"
 
-build_and_fetch_rpm_for() {
-  distribution=$1
-  ./build-image-and-rpm.sh "$distribution"
-  cp pkg-build-dir/RPMS/*/erlang-* all_rpms/
-}
+flavors=(
+	centos7
+)
 
-# These cover CentOS Stream, Rocky Linux, Alma Linux, Oracle Linux
-# of the same respective version
-build_and_fetch_rpm_for "stream9"
-build_and_fetch_rpm_for "stream8"
-# These distributions cannot use CentOS Stream packages
-build_and_fetch_rpm_for "al2023"
-build_and_fetch_rpm_for "fc38"
+for flavor in "${flavors[@]}"; do
+	echo
+	echo "############################################################"
+	echo "# Building flavor: $flavor"
+	echo "############################################################"
+	./build-image-and-rpm.sh "$flavor"
+done
 
+echo
+echo "==> All RPMs available in $PWD/all_rpms"
