@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 28.4.1
-%global package_ver  28.4.1
+%global upstream_ver 28.5
+%global package_ver  28.5
 %global package_ver_release 1
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
@@ -209,7 +209,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/lib/eldap-*/asn1
 %{_libdir}/erlang/lib/eldap-*/ebin
 %{_libdir}/erlang/lib/eldap-*/include
-%{_libdir}/erlang/lib/eldap-*/src
 
 %{_libdir}/erlang/lib/eunit-*/
 
@@ -236,7 +235,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/bin/start.boot
 %{_libdir}/erlang/bin/start.script
 %{_libdir}/erlang/bin/start_clean.boot
-%{_libdir}/erlang/bin/start_erl
+# brp-mangle-shebangs rewrites this script via mktemp+rename and ends
+# up clearing its execute bits; force them back here.
+%attr(0755,root,root) %{_libdir}/erlang/bin/start_erl
 %{_libdir}/erlang/bin/start_sasl.boot
 %{_libdir}/erlang/bin/to_erl
 %dir %{_libdir}/erlang/erts-*/bin
@@ -244,17 +245,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/erts-*/bin/erl_child_setup
 %{_libdir}/erlang/erts-*/bin/dyn_erl
 %{_libdir}/erlang/erts-*/bin/epmd
-%{_libdir}/erlang/erts-*/bin/erl
-%{_libdir}/erlang/erts-*/bin/erl.src
+# See note above %{_libdir}/erlang/bin/start_erl about brp-mangle-shebangs.
+%attr(0755,root,root) %{_libdir}/erlang/erts-*/bin/erl
+%attr(0755,root,root) %{_libdir}/erlang/erts-*/bin/erl.src
 %{_libdir}/erlang/erts-*/bin/erlc
 %{_libdir}/erlang/erts-*/bin/erlexec
 %{_libdir}/erlang/erts-*/bin/escript
 %{_libdir}/erlang/erts-*/bin/heart
 %{_libdir}/erlang/erts-*/bin/inet_gethost
 %{_libdir}/erlang/erts-*/bin/run_erl
-%{_libdir}/erlang/erts-*/bin/start
-%{_libdir}/erlang/erts-*/bin/start.src
-%{_libdir}/erlang/erts-*/bin/start_erl.src
+%attr(0755,root,root) %{_libdir}/erlang/erts-*/bin/start
+%attr(0755,root,root) %{_libdir}/erlang/erts-*/bin/start.src
+%attr(0755,root,root) %{_libdir}/erlang/erts-*/bin/start_erl.src
 %{_libdir}/erlang/erts-*/bin/to_erl
 %{_libdir}/erlang/erts-*/include
 %{_libdir}/erlang/erts-*/lib
@@ -321,10 +323,19 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Apr 24 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.5
+- Update to Erlang/OTP 28.5
+
+* Tue Apr 21 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.4.3
+- Update to Erlang/OTP 28.4.3
+
+* Tue Apr 07 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.4.2
+- Update to Erlang/OTP 28.4.2
+
 * Sat Mar 14 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.4.1
 - Update to Erlang/OTP 28.4.1
 
-* Tue Jan 14 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.3.1
+* Wed Jan 14 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.3.1
 - Update to Erlang/OTP 28.3.1
 
 * Wed Dec 10 2025 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.3

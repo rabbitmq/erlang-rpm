@@ -15,13 +15,13 @@ aarch64 hosts. See the **Building from Source** section below.
 [Binary builds](https://github.com/rabbitmq/erlang-rpm/releases) of this package **target modern RPM-based distributions**:
 
  * RHEL 8.10 and later (the most recent series [covered by full support](https://access.redhat.com/support/policy/updates/errata))
- * CentOS Stream 9
- * Fedora 40 or later
- * Rocky Linux 8.10 and 9.5 (the [most recent maintained](https://wiki.rockylinux.org/rocky/version/) 8.x and 9.x releases)
- * Alma Linux 8.10 and 9.5 (the [most recent maintained](https://wiki.almalinux.org/release-notes/) 8.x and 9.x releases)
+ * CentOS Stream 9 and 10
+ * Fedora 41 or later
+ * Rocky Linux 8.10, 9.7, and 10.0 (the [most recent maintained](https://wiki.rockylinux.org/rocky/version/) 8.x, 9.x, and 10.x releases)
+ * Alma Linux 8.10, 9.7, and 10.0 (the [most recent maintained](https://wiki.almalinux.org/release-notes/) 8.x, 9.x, and 10.x releases)
  * Amazon Linux 2023
  * VMware PhotonOS 5
- * Oracle Linux 9
+ * Oracle Linux 9 and 10
 
 ## RHEL and CentOS Stream 8 Distribution Family
 
@@ -32,7 +32,8 @@ of these packages are produced on Rocky Linux 8.10+ from July 2024 and onwards.
 
 [Team RabbitMQ stopped supporting CentOS 7](https://blog.rabbitmq.com/posts/2022/04/centos-7-support-discontinued/) in May 2022.
 
-Erlang [28.1.1](https://github.com/rabbitmq/erlang-rpm/releases/tag/v28.1.1), [27.3.4.5](https://github.com/rabbitmq/erlang-rpm/releases/tag/v27.3.4.5), [26.2.5.16](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.5.16) include one-off CentOS 7 packages statically linked against OpenSSL 1.1.x.
+Erlang [28.4.3](https://github.com/rabbitmq/erlang-rpm/releases/tag/v28.4.3), [27.3.4.11](https://github.com/rabbitmq/erlang-rpm/releases/tag/v27.3.4.11), [26.2.5.19](https://github.com/rabbitmq/erlang-rpm/releases/tag/v26.2.5.19) and [25.3.2.21](https://github.com/rabbitmq/erlang-rpm/releases/tag/v25.3.2.21)
+include one-off CentOS 7 packages statically linked against OpenSSL 1.1.x.
 
 Regular CentOS 7 and Amazon Linux 2 builds were produced up to [Erlang 23.3.4.18](https://github.com/rabbitmq/erlang-rpm/releases/tag/v23.3.4.18).
 They are dynamically linked against OpenSSL 1.0.
@@ -59,7 +60,7 @@ for an up-to-date compatibility matrix.
 This package intentionally **does not include OpenSSL**/libcrypto. It must be provisioned separately.
 Recent Erlang versions require a modern OpenSSL version.
 
-For the `el9` variant (modern Fedora, RHEL 9, CentOS Stream 9, Rocky Linux 9.x, Alma Linux 9.x, and so on) this means OpenSSL `3.x`.
+For the `el9` and `el10` variants (modern Fedora, RHEL 9+, CentOS Stream 9+, Rocky Linux 9.x+, Alma Linux 9.x+, and so on) this means OpenSSL `3.x`.
 For the `el8` variant (Rocky Linux 8.x, Alma Linux 8.x) this means OpenSSL `1.1.x`.
 
 ## Release Artifacts
@@ -298,39 +299,48 @@ cd docker
 # build an image and build the RPM in it
 #
 # Supported distribution aliases:
+#  * rocky10 for Rocky Linux 10.x
 #  * rocky9 for Rocky Linux 9.x
+#  * alma10 for Alma Linux 10.x
 #  * alma9 for Alma Linux 9.x
 #  * al2023 for Amazon Linux 2023
 #  * f41 for Fedora 41
+#  * stream10 for CentOS Stream 10
 #  * stream9 for CentOS Stream 9
 #  * stream8 for CentOS Stream 8
-./build-image-and-rpm.sh rocky9 --no-cache
+./build-image-and-rpm.sh rocky10 --no-cache
 
 #
 # To only build an image with the necessary toolchain,
 # use ./build-docker-image.sh.
 #
 # Supported distribution aliases:
+#  * rocky10 for Rocky Linux 10.x
 #  * rocky9 for Rocky Linux 9.x
+#  * alma10 for Alma Linux 10.x
 #  * alma9 for Alma Linux 9.x
 #  * al2023 for Amazon Linux 2023
 #  * f41 for Fedora 41
+#  * stream10 for CentOS Stream 10
 #  * stream9 for CentOS Stream 9
 #  * stream8 for CentOS Stream 8
- ./build-docker-image.sh rocky9 --no-cache
+ ./build-docker-image.sh rocky10 --no-cache
 
 #
 # To only build the RPM using an already built and available image,
 # use ./build-rpm-in-docker.sh
 #
 # Supported distribution aliases:
+#  * rocky10 for Rocky Linux 10.x
 #  * rocky9 for Rocky Linux 9.x
+#  * alma10 for Alma Linux 10.x
 #  * alma9 for Alma Linux 9.x
 #  * al2023 for Amazon Linux 2023
 #  * f41 for Fedora 41
+#  * stream10 for CentOS Stream 10
 #  * stream9 for CentOS Stream 9
 #  * stream8 for CentOS Stream 8
-./build-rpm-in-docker.sh rocky9
+./build-rpm-in-docker.sh rocky10
 ```
 
 Built packages can be found under `docker/pkg-build-dir/RPMS/{architecture}/`.
