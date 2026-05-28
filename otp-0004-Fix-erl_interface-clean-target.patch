@@ -1,0 +1,12 @@
+diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/erl_interface/src/Makefile.in otp-src-patched/lib/erl_interface/src/Makefile.in
+--- otp-src/lib/erl_interface/src/Makefile.in	2026-05-27 00:00:00.000000000 +0100
++++ otp-src-patched/lib/erl_interface/src/Makefile.in	2026-05-28 00:00:00.000000000 +0100
+@@ -453,7 +453,7 @@
+ 	rm -f $(FAKE_TARGETS)
+ 	rm -f $(APP_TARGET)
+ 	rm -f $(APPUP_TARGET)
+-	rm -f erts/*; rmdir erts
++	rm -rf erts
+
+ distclean: clean
+ 	rm -f config.h config.log config.status configure
