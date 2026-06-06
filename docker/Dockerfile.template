@@ -6,7 +6,9 @@ FROM ${image}:${image_tag}
 # Some older base images (RHEL/CentOS 8) ship yum but not dnf.
 RUN command -v dnf >/dev/null 2>&1 || yum install -y dnf
 
-RUN dnf -y update \
+# --nobest: tolerate temporarily out-of-sync BaseOS/AppStream mirrors
+# during distribution point releases.
+RUN dnf -y update --nobest \
  && dnf -y install \
         autoconf \
         clang \
