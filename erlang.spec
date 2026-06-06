@@ -243,7 +243,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/erlang/erts-*/bin
 %{_libdir}/erlang/erts-*/bin/beam.smp
 %{_libdir}/erlang/erts-*/bin/erl_child_setup
-%{_libdir}/erlang/erts-*/bin/dyn_erl
 %{_libdir}/erlang/erts-*/bin/epmd
 # See note above %{_libdir}/erlang/bin/start_erl about brp-mangle-shebangs.
 %attr(0755,root,root) %{_libdir}/erlang/erts-*/bin/erl
@@ -269,7 +268,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/erlang/lib/inets-*/
 %{_libdir}/erlang/lib/inets-*/ebin
 %{_libdir}/erlang/lib/inets-*/include
-%{_libdir}/erlang/lib/inets-*/priv
 %{_libdir}/erlang/lib/inets-*/src
 
 
