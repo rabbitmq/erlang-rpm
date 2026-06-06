@@ -49,6 +49,10 @@ if [[ ! -f "$cache_dir/$tarball" ]]; then
 	else
 		wget -O "$tmp" "$url"
 	fi
+	# mktemp creates 0600 files; the cached tarball must be readable
+	# both on the host and inside build containers, whatever user
+	# either side runs as
+	chmod 0644 "$tmp"
 	mv "$tmp" "$cache_dir/$tarball"
 	trap - EXIT
 else
