@@ -84,10 +84,15 @@ cp -p "$repo_root"/Makefile \
 cp -p "$repo_root"/*.patch "$build_dir/"
 
 echo "==> [$engine] Building RPM in $build_dir using image '$image_tag'"
+# DNF_CMD override: '--nobest' keeps 'dnf update' from failing when a
+# distribution is mid-point-release and its BaseOS/AppStream mirrors are
+# temporarily out of sync (e.g. AppStream already serves N.M+1 builds
+# whose dependencies BaseOS does not provide yet).
 "$engine" run --rm \
 	--pull=never \
 	-v "$build_dir:/build/pkg-build-dir:z" \
-	"$image_tag"
+	"$image_tag" \
+	make "DNF_CMD=dnf --nobest"
 
 # Collect every produced .rpm into all_rpms/<arch>/. The arch is the
 # component just before the final ".rpm" suffix in the filename.
