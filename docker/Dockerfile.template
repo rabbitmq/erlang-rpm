@@ -9,7 +9,7 @@ RUN command -v dnf >/dev/null 2>&1 || yum install -y dnf
 # --nobest: tolerate temporarily out-of-sync BaseOS/AppStream mirrors
 # during distribution point releases.
 RUN dnf -y update --nobest \
- && dnf -y install \
+ && dnf -y install --nobest \
         autoconf \
         clang \
         m4 \
@@ -22,7 +22,7 @@ RUN dnf -y update --nobest \
         tar \
         wget \
         zlib-devel \
- && (dnf -y install rpmlint || true) \
+ && (dnf -y install --nobest rpmlint || true) \
  && dnf clean all \
  && rm -rf /var/cache/dnf
 
