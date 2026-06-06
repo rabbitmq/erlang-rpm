@@ -7,8 +7,9 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/asn1/src/Makef
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA)  $(ERL_FILES) $(HRL_FILES) $(APP_SRC) $(APPUP_SRC) "$(RELSYSDIR)/src"
 +	$(INSTALL_DATA) $(HRL_FILES) "$(RELSYSDIR)/src"
- 	$(INSTALL_DIR) "$(RELSYSDIR)/examples"
- 	$(INSTALL_DATA) $(EXAMPLES) "$(RELSYSDIR)/examples"
+
+
+ # there are no include files to be used by the user
 
 diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/compiler/src/Makefile otp-src-patched/lib/compiler/src/Makefile
 --- otp-src/lib/compiler/src/Makefile	2021-05-12 21:31:58.000000000 +0100
@@ -51,15 +52,15 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/debugger/src/M
 diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/edoc/src/Makefile otp-src-patched/lib/edoc/src/Makefile
 --- otp-src/lib/edoc/src/Makefile	2021-05-12 21:31:56.000000000 +0100
 +++ otp-src-patched/lib/edoc/src/Makefile	2020-05-13 23:54:07.000000000 +0100
-@@ -79,7 +79,6 @@
+@@ -106,7 +106,7 @@
  	$(INSTALL_DIR) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DATA) $(OBJECTS) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
--	$(INSTALL_DATA) $(SOURCES) $(HRL_FILES) $(YRL_FILE) "$(RELSYSDIR)/src"
+-	$(INSTALL_DATA) $(ERL_FILES) $(HRL_FILES) $(YRL_FILE) "$(RELSYSDIR)/src"
 +	$(INSTALL_DATA) $(HRL_FILES) $(YRL_FILE) "$(RELSYSDIR)/src"
  
  release_docs_spec:
--
+ 
 diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/eldap/src/Makefile otp-src-patched/lib/eldap/src/Makefile
 --- otp-src/lib/eldap/src/Makefile	2021-05-12 21:31:53.000000000 +0100
 +++ otp-src-patched/lib/eldap/src/Makefile	2020-05-13 23:51:34.000000000 +0100
@@ -222,7 +223,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/runtime_tools/
 -	$(INSTALL_DATA) $(ERL_FILES) "$(RELSYSDIR)/src"
  	$(INSTALL_DIR) "$(RELSYSDIR)/include"
  	$(INSTALL_DATA) $(HRL_FILES) "$(RELSYSDIR)/include"
- 	$(INSTALL_DIR) "$(RELSYSDIR)/examples"
+ 	$(INSTALL_DIR) "$(RELSYSDIR)/ebin"
 diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/sasl/src/Makefile otp-src-patched/lib/sasl/src/Makefile
 --- otp-src/lib/sasl/src/Makefile	2021-05-12 21:31:55.000000000 +0100
 +++ otp-src-patched/lib/sasl/src/Makefile	2019-05-28 00:07:59.000000000 +0100
@@ -265,7 +266,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/syntax_tools/s
  	$(INSTALL_DIR) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DATA) $(OBJECTS) "$(RELSYSDIR)/ebin"
 -	$(INSTALL_DIR) "$(RELSYSDIR)/src"
--	$(INSTALL_DATA) $(SOURCES) "$(RELSYSDIR)/src"
+-	$(INSTALL_DATA) $(ERL_FILES) "$(RELSYSDIR)/src"
  	$(INSTALL_DIR) "$(RELSYSDIR)/include"
  	$(INSTALL_DATA) $(INCLUDE_DELIVERABLES) "$(RELSYSDIR)/include"
 
