@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 28.5.0.2
-%global package_ver  28.5.0.2
+%global upstream_ver 29.0.2
+%global package_ver  29.0.2
 %global package_ver_release 1
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
@@ -232,7 +232,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/erlang/erts-*/bin
 %{_libdir}/erlang/erts-*/bin/beam.smp
 %{_libdir}/erlang/erts-*/bin/erl_child_setup
-%{_libdir}/erlang/erts-*/bin/dyn_erl
 %{_libdir}/erlang/erts-*/bin/epmd
 # See note above %{_libdir}/erlang/bin/start_erl about brp-mangle-shebangs.
 %attr(0755,root,root) %{_libdir}/erlang/erts-*/bin/erl
@@ -312,8 +311,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Fri Jun 12 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.5.0.2
-- Update to Erlang/OTP 28.5.0.2
+* Fri Jun 12 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 29.0.2
+- Update to Erlang/OTP 29.0.2
 
 * Wed May 27 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.5.0.1
 - Update to Erlang/OTP 28.5.0.1

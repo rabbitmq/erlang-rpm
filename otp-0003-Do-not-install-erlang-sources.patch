@@ -1,7 +1,7 @@
 diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/asn1/src/Makefile otp-src-patched/lib/asn1/src/Makefile
 --- otp-src/lib/asn1/src/Makefile	2021-05-12 21:31:53.000000000 +0100
 +++ otp-src-patched/lib/asn1/src/Makefile	2020-05-13 23:51:34.000000000 +0100
-@@ -160,7 +160,7 @@
+@@ -151,7 +151,7 @@
  	$(INSTALL_DIR) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DATA) $(TARGET_FILES) $(APP_TARGET) $(APPUP_TARGET) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
@@ -15,7 +15,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/compiler/src/M
 --- otp-src/lib/compiler/src/Makefile	2021-05-12 21:31:58.000000000 +0100
 +++ otp-src-patched/lib/compiler/src/Makefile	2020-05-13 23:52:23.000000000 +0100
 @@ -182,8 +182,8 @@
-
+ 
  release_spec: opt
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(ERL_FILES) $(HRL_FILES) $(EXTRA_FILES) \
@@ -30,7 +30,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/crypto/src/Mak
 +++ otp-src-patched/lib/crypto/src/Makefile	2020-05-13 23:52:42.000000000 +0100
 @@ -81,8 +81,6 @@
  include $(ERL_TOP)/make/otp_release_targets.mk
-
+ 
  release_spec: opt
 -	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(ERL_FILES) "$(RELSYSDIR)/src"
@@ -41,7 +41,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/debugger/src/M
 --- otp-src/lib/debugger/src/Makefile	2021-05-12 21:31:57.000000000 +0100
 +++ otp-src-patched/lib/debugger/src/Makefile	2020-05-13 23:53:33.000000000 +0100
 @@ -117,7 +117,7 @@
-
+ 
  release_spec: opt
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(ERL_FILES) $(INTERNAL_HRL_FILES) $(TOOLBOX_FILES) "$(RELSYSDIR)/src"
@@ -52,19 +52,19 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/debugger/src/M
 diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/edoc/src/Makefile otp-src-patched/lib/edoc/src/Makefile
 --- otp-src/lib/edoc/src/Makefile	2021-05-12 21:31:56.000000000 +0100
 +++ otp-src-patched/lib/edoc/src/Makefile	2020-05-13 23:54:07.000000000 +0100
-@@ -87,7 +87,6 @@
+@@ -106,7 +106,7 @@
  	$(INSTALL_DIR) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DATA) $(OBJECTS) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
--	$(INSTALL_DATA) $(SOURCES) $(HRL_FILES) $(YRL_FILE) "$(RELSYSDIR)/src"
+-	$(INSTALL_DATA) $(ERL_FILES) $(HRL_FILES) $(YRL_FILE) "$(RELSYSDIR)/src"
 +	$(INSTALL_DATA) $(HRL_FILES) $(YRL_FILE) "$(RELSYSDIR)/src"
-
+ 
  release_docs_spec:
--
+ 
 diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/eldap/src/Makefile otp-src-patched/lib/eldap/src/Makefile
 --- otp-src/lib/eldap/src/Makefile	2021-05-12 21:31:53.000000000 +0100
 +++ otp-src-patched/lib/eldap/src/Makefile	2020-05-13 23:51:34.000000000 +0100
-@@ -101,8 +101,6 @@
+@@ -99,8 +99,6 @@
  release_spec: opt
  	$(INSTALL_DIR) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DATA) $(ASN1_HRL) $(TARGET_FILES) $(APP_TARGET) $(APPUP_TARGET) "$(RELSYSDIR)/ebin"
@@ -76,7 +76,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/eldap/src/Make
 diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/eunit/src/Makefile otp-src-patched/lib/eunit/src/Makefile
 --- otp-src/lib/eunit/src/Makefile	2021-05-12 21:31:53.000000000 +0100
 +++ otp-src-patched/lib/eunit/src/Makefile	2020-05-13 23:51:34.000000000 +0100
-@@ -149,7 +149,6 @@
+@@ -121,7 +121,6 @@
  	$(INSTALL_DIR) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DATA) $(PARSE_TRANSFORM_BIN) $(OBJECTS) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
@@ -136,7 +136,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/kernel/src/Mak
 --- otp-src/lib/kernel/src/Makefile	2021-05-12 21:31:59.000000000 +0100
 +++ otp-src-patched/lib/kernel/src/Makefile	2019-05-28 00:04:12.000000000 +0100
 @@ -228,7 +228,6 @@
-
+ 
  release_spec: opt
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(ERL_FILES) "$(RELSYSDIR)/src"
@@ -147,7 +147,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/mnesia/src/Mak
 --- otp-src/lib/mnesia/src/Makefile	2021-05-12 21:31:59.000000000 +0100
 +++ otp-src-patched/lib/mnesia/src/Makefile	2019-05-28 00:04:48.000000000 +0100
 @@ -135,7 +135,7 @@
-
+ 
  release_spec: opt
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(HRL_FILES) $(ERL_FILES) "$(RELSYSDIR)/src"
@@ -159,7 +159,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/os_mon/src/Mak
 --- otp-src/lib/os_mon/src/Makefile	2021-05-12 21:31:55.000000000 +0100
 +++ otp-src-patched/lib/os_mon/src/Makefile	2019-05-28 00:05:12.000000000 +0100
 @@ -95,7 +95,6 @@
-
+ 
  release_spec: opt
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(ERL_FILES) "$(RELSYSDIR)/src"
@@ -171,7 +171,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/parsetools/src
 +++ otp-src-patched/lib/parsetools/src/Makefile	2019-05-28 00:05:52.000000000 +0100
 @@ -91,8 +91,6 @@
  include $(ERL_TOP)/make/otp_release_targets.mk
-
+ 
  release_spec: opt
 -	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(ERL_FILES) "$(RELSYSDIR)/src"
@@ -183,7 +183,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/public_key/src
 +++ otp-src-patched/lib/public_key/src/Makefile	2019-05-28 00:06:31.000000000 +0100
 @@ -110,8 +108,6 @@
  include $(ERL_TOP)/make/otp_release_targets.mk
-
+ 
  release_spec: opt
 -	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(INTERNAL_HRL_FILES) $(ERL_FILES) "$(RELSYSDIR)/src"
@@ -193,7 +193,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/public_key/src
 diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/public_key/asn1/Makefile otp-src-patched/lib/public_key/asn1/Makefile
 --- otp-src/lib/public_key/asn1/Makefile	2021-05-12 21:31:57.000000000 +0100
 +++ otp-src-patched/lib/public_key/asn1/Makefile	2019-05-28 00:06:31.000000000 +0100
-@@ -137,6 +137,4 @@
+@@ -100,6 +100,4 @@
  	$(INSTALL_DATA) $(ASN_ASNS) $(ASN_CONFIGS) \
  		  "$(RELSYSDIR)/asn1"
 -	$(INSTALL_DIR) "$(RELSYSDIR)/src"
@@ -204,7 +204,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/reltool/src/Ma
 --- otp-src/lib/reltool/src/Makefile	2021-05-12 21:31:57.000000000 +0100
 +++ otp-src-patched/lib/reltool/src/Makefile	2019-05-28 00:07:05.000000000 +0100
 @@ -100,7 +100,7 @@
-
+ 
  release_spec: opt
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(INTERNAL_HRL_FILES) $(ERL_FILES) "$(RELSYSDIR)/src"
@@ -215,9 +215,9 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/reltool/src/Ma
 diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/runtime_tools/src/Makefile otp-src-patched/lib/runtime_tools/src/Makefile
 --- otp-src/lib/runtime_tools/src/Makefile	2021-05-12 21:31:55.000000000 +0100
 +++ otp-src-patched/lib/runtime_tools/src/Makefile	2019-05-28 00:07:27.000000000 +0100
-@@ -102,8 +102,6 @@
+@@ -99,8 +99,6 @@
  include $(ERL_TOP)/make/otp_release_targets.mk
-
+ 
  release_spec: opt
 -	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(ERL_FILES) "$(RELSYSDIR)/src"
@@ -228,7 +228,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/sasl/src/Makef
 --- otp-src/lib/sasl/src/Makefile	2021-05-12 21:31:55.000000000 +0100
 +++ otp-src-patched/lib/sasl/src/Makefile	2019-05-28 00:07:59.000000000 +0100
 @@ -94,7 +94,6 @@
-
+ 
  release_spec: opt
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(ERL_FILES) "$(RELSYSDIR)/src"
@@ -239,7 +239,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/ssl/src/Makefi
 --- otp-src/lib/ssl/src/Makefile	2021-05-12 21:31:54.000000000 +0100
 +++ otp-src-patched/lib/ssl/src/Makefile	2019-05-28 00:10:30.000000000 +0100
 @@ -207,7 +207,7 @@
-
+ 
  release_spec: opt
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(ERL_FILES) $(INTERNAL_HRL_FILES) "$(RELSYSDIR)/src"
@@ -251,7 +251,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/stdlib/src/Mak
 --- otp-src/lib/stdlib/src/Makefile	2021-05-12 21:31:57.000000000 +0100
 +++ otp-src-patched/lib/stdlib/src/Makefile	2019-05-28 00:10:57.000000000 +0100
 @@ -221,7 +221,6 @@
-
+ 
  release_spec: opt
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(ERL_FILES) erl_parse.yrl "$(RELSYSDIR)/src"
@@ -266,7 +266,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/syntax_tools/s
  	$(INSTALL_DIR) "$(RELSYSDIR)/ebin"
  	$(INSTALL_DATA) $(OBJECTS) "$(RELSYSDIR)/ebin"
 -	$(INSTALL_DIR) "$(RELSYSDIR)/src"
--	$(INSTALL_DATA) $(SOURCES) "$(RELSYSDIR)/src"
+-	$(INSTALL_DATA) $(ERL_FILES) "$(RELSYSDIR)/src"
  	$(INSTALL_DIR) "$(RELSYSDIR)/include"
  	$(INSTALL_DATA) $(INCLUDE_DELIVERABLES) "$(RELSYSDIR)/include"
 
@@ -274,7 +274,7 @@ diff --ignore-blank-lines --ignore-space-change -u -r otp-src/lib/tools/src/Make
 --- otp-src/lib/tools/src/Makefile	2021-05-12 21:31:54.000000000 +0100
 +++ otp-src-patched/lib/tools/src/Makefile	2019-05-28 00:11:51.000000000 +0100
 @@ -109,7 +109,7 @@
-
+ 
  release_spec: opt
  	$(INSTALL_DIR) "$(RELSYSDIR)/src"
 -	$(INSTALL_DATA) $(ERL_FILES) $(YRL_FILE) $(HRL_FILES) "$(RELSYSDIR)/src"
