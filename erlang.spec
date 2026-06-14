@@ -42,6 +42,8 @@ Patch1: otp-0002-Do-not-install-C-sources.patch
 Patch2: otp-0003-Do-not-install-erlang-sources.patch
 #   Fix erl_interface clean target: tolerate a missing erts/ directory
 Patch3: otp-0004-Fix-erl_interface-clean-target.patch
+#   Drop the HTTP server parts of inets, which RabbitMQ does not use
+Patch4: otp-0005-Drop-the-HTTP-server-parts-of-inets.patch
 
 # BuildRoot not strictly needed since F10, but keep it for spec file robustness
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
@@ -73,6 +75,12 @@ syntax_tools and xmerl.
 
 # Automatically apply all listed patches
 %autopatch -v -p 1
+
+# Fail the build if the inets HTTP server removal patch did not apply
+if grep -q httpd_child_spec lib/inets/src/inets_app/inets_sup.erl; then
+    echo "otp-0004 (inets HTTP server removal) did not apply" >&2
+    exit 1
+fi
 
 # Fix 664 file mode
 chmod 644 lib/kernel/examples/uds_dist/c_src/Makefile
@@ -136,6 +144,11 @@ make DESTDIR=$RPM_BUILD_ROOT install
 
 # Do not install info files - they are almost empty and useless
 find $RPM_BUILD_ROOT%{_libdir}/erlang -type f -name info -exec rm -f {} \;
+
+# Remove the unused inets HTTP server modules and their sources
+rm -f $RPM_BUILD_ROOT%{_libdir}/erlang/lib/inets-*/ebin/httpd*.beam \
+      $RPM_BUILD_ROOT%{_libdir}/erlang/lib/inets-*/ebin/mod_*.beam
+rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/lib/inets-*/src/http_server
 
 # fix 0775 permission on some directories
 chmod 0755 $RPM_BUILD_ROOT%{_libdir}/erlang/bin
