@@ -36,10 +36,6 @@ Vendor:		VMware, Inc.
 
 #   Do not format man-pages and do not install miscellaneous
 Patch0: otp-0001-Do-not-format-man-pages-and-do-not-install-miscellan.patch
-#   Do not install C sources
-Patch1: otp-0002-Do-not-install-C-sources.patch
-#   Do not install erlang sources
-Patch2: otp-0003-Do-not-install-erlang-sources.patch
 #   Drop the HTTP server parts of inets, which RabbitMQ does not use
 Patch3: otp-0004-Drop-the-HTTP-server-parts-of-inets.patch
 
@@ -208,10 +204,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %doc %{OSL_File_Name}
 
+# Do not ship Erlang/C sources (replaces the otp-0002 and otp-0003 patches).
+# Public headers under include/ and usr/include/ are kept.
+%exclude %{_libdir}/erlang/lib/*/src
+%exclude %{_libdir}/erlang/lib/*/c_src
+%exclude %{_libdir}/erlang/erts-*/src
+
 %dir %{_libdir}/erlang/lib/asn1-*/
 %{_libdir}/erlang/lib/asn1-*/ebin
 %{_libdir}/erlang/lib/asn1-*/priv
-%{_libdir}/erlang/lib/asn1-*/src
 
 
 %{_libdir}/erlang/lib/compiler-*/
@@ -275,7 +276,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/erts-*/bin/to_erl
 %{_libdir}/erlang/erts-*/include
 %{_libdir}/erlang/erts-*/lib
-%{_libdir}/erlang/erts-*/src
 %{_libdir}/erlang/lib/erts-*/
 %{_libdir}/erlang/releases/*
 %{_libdir}/erlang/usr/
@@ -285,19 +285,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/erlang/lib/inets-*/ebin
 %{_libdir}/erlang/lib/inets-*/include
 %{_libdir}/erlang/lib/inets-*/priv
-%{_libdir}/erlang/lib/inets-*/src
 
 
 %dir %{_libdir}/erlang/lib/kernel-*/
 %{_libdir}/erlang/lib/kernel-*/ebin
 %{_libdir}/erlang/lib/kernel-*/include
-%{_libdir}/erlang/lib/kernel-*/src
 
 
 %dir %{_libdir}/erlang/lib/mnesia-*/
 %{_libdir}/erlang/lib/mnesia-*/ebin
 %{_libdir}/erlang/lib/mnesia-*/include
-%{_libdir}/erlang/lib/mnesia-*/src
 
 
 %{_libdir}/erlang/lib/os_mon-*/
@@ -309,7 +306,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_libdir}/erlang/lib/reltool-*/
 %{_libdir}/erlang/lib/reltool-*/ebin
-%{_libdir}/erlang/lib/reltool-*/src
 
 %dir %{_libdir}/erlang/lib/syntax_tools-*/
 %{_libdir}/erlang/lib/syntax_tools-*/ebin
@@ -320,18 +316,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_libdir}/erlang/lib/sasl-*/
 %{_libdir}/erlang/lib/sasl-*/ebin
-%{_libdir}/erlang/lib/sasl-*/src
 
 
 %dir %{_libdir}/erlang/lib/ssl-*/
 %{_libdir}/erlang/lib/ssl-*/ebin
-%{_libdir}/erlang/lib/ssl-*/src
 
 
 %dir %{_libdir}/erlang/lib/stdlib-*/
 %{_libdir}/erlang/lib/stdlib-*/ebin
 %{_libdir}/erlang/lib/stdlib-*/include
-%{_libdir}/erlang/lib/stdlib-*/src
 
 %{_libdir}/erlang/lib/tools-*/
 
