@@ -1,0 +1,38 @@
+diff --git a/lib/inets/src/inets_app/inets_sup.erl b/lib/inets/src/inets_app/inets_sup.erl
+index aff3ede961..0bf16e7591 100644
+--- a/lib/inets/src/inets_app/inets_sup.erl
++++ b/lib/inets/src/inets_app/inets_sup.erl
+@@ -60,9 +60,8 @@ get_services() ->
+ 
+ children() ->
+     Services = get_services(),
+-    HttpdServices = [Service || Service <- Services, is_httpd(Service)],
+     HttpcServices =  [Service || Service <- Services, is_httpc(Service)],
+-    [httpc_child_spec(HttpcServices), httpd_child_spec(HttpdServices)].
++    [httpc_child_spec(HttpcServices)].
+ 
+ httpc_child_spec(HttpcServices0) ->
+     HttpcServices = default_profile(HttpcServices0, []),
+@@ -74,22 +73,6 @@ httpc_child_spec(HttpcServices0) ->
+     Type = supervisor,
+     {Name, StartFunc, Restart, Shutdown, Type, Modules}.
+ 
+-httpd_child_spec(HttpdServices) ->
+-    Name = httpd_sup,
+-    StartFunc = {httpd_sup, start_link, [HttpdServices]},
+-    Restart = permanent, 
+-    Shutdown = infinity,
+-    Modules = [httpd_sup],
+-    Type = supervisor,
+-    {Name, StartFunc, Restart, Shutdown, Type, Modules}.
+-
+-is_httpd({httpd, _}) ->
+-    true;
+-is_httpd({httpd, _, _}) ->
+-    true;
+-is_httpd(_) ->
+-    false.
+-
+ is_httpc({httpc, _}) ->
+     true;
+ is_httpc(_) ->
