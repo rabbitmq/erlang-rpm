@@ -14,7 +14,7 @@
 
 %global upstream_ver 28.5.0.4
 %global package_ver  28.5.0.4
-%global package_ver_release 1
+%global package_ver_release 2
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
 %global __brp_check_rpaths %{nil}
@@ -141,9 +141,12 @@ make DESTDIR=$RPM_BUILD_ROOT install
 # Do not install info files - they are almost empty and useless
 find $RPM_BUILD_ROOT%{_libdir}/erlang -type f -name info -exec rm -f {} \;
 
-# Remove the unused inets HTTP server modules and their sources
-rm -f $RPM_BUILD_ROOT%{_libdir}/erlang/lib/inets-*/ebin/httpd*.beam \
-      $RPM_BUILD_ROOT%{_libdir}/erlang/lib/inets-*/ebin/mod_*.beam
+# Remove the unused inets HTTP server modules and their sources.
+# httpd_util is a general-purpose utility used outside the HTTP server, so keep it.
+# See rabbitmq/erlang-rpm#158
+find $RPM_BUILD_ROOT%{_libdir}/erlang/lib/inets-*/ebin \
+     -type f \( -name 'httpd*.beam' -o -name 'mod_*.beam' \) \
+     ! -name 'httpd_util.beam' -delete
 rm -rf $RPM_BUILD_ROOT%{_libdir}/erlang/lib/inets-*/src/http_server
 
 # fix 0775 permission on some directories
@@ -331,6 +334,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Jul 30 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.5.0.4-2
+- Preserve inets' httpd_util module, which was accidentally stripped together with the
+  inets HTTP server modules. It is used outside the HTTP server (e.g. by RabbitMQ), and
+  removing it made management HTTP API 404 responses fail with a 500. See rabbitmq/erlang-rpm#158
+
 * Mon Jul 27 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 28.5.0.4
 - Update to Erlang/OTP 28.5.0.4
 
