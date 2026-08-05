@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-%global upstream_ver 27.3.4.15
-%global package_ver  27.3.4.15
+%global upstream_ver 27.3.4.16
+%global package_ver  27.3.4.16
 %global package_ver_release 1
 
 # See https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
@@ -320,6 +320,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Aug 04 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4.16
+- Update to Erlang/OTP 27.3.4.16
+
 * Thu Jul 30 2026 Michael Klishin <mikhail.klishinm@broadcom.com> - 27.3.4.15-2
 - Preserve inets' httpd_util module, which was accidentally stripped together with the
   inets HTTP server modules. It is used outside the HTTP server (e.g. by RabbitMQ), and
